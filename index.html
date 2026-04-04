@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noshahi Test Builder </title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;700;900&family=Outfit:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #FFFFFF;
+            --bg-card: #f8fafc;
+            --bg-card-alt: #f1f5f9;
+            --accent-primary: #00bcd4;
+            --accent-secondary: #7000FF;
+            --accent-tertiary: #FF00A0;
+            --text-light: #1e293b;
+            --text-muted: #64748b;
+            --glass-border: rgba(0, 0, 0, 0.08);
+
+            --gradient-primary: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
+            --gradient-hot: linear-gradient(135deg, var(--accent-tertiary), var(--accent-secondary));
+            --shadow-btn: 0 6px 0 rgba(112, 0, 255, 0.3), 0 15px 25px rgba(112, 0, 255, 0.2);
+            --shadow-card: 0 20px 50px rgba(0, 0, 0, 0.06), inset 0 2px 2px rgba(255, 255, 255, 1);
+            --neon-glow: 0 0 15px rgba(0, 240, 255, 0.3), 0 0 30px rgba(112, 0, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            /* Dark text */
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .cyber-font {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Branding Text Glow */
+        .brand-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 3px rgba(112, 0, 255, 0.2));
+            display: inline-block;
+        }
+
+        /* Dynamic Background Orbs */
+        .ambient-back {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+            animation: orbFloat 20s infinite alternate ease-in-out;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--accent-secondary);
+            top: -200px;
+            left: -100px;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent-primary);
+            bottom: -100px;
+            right: -50px;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 600px;
+            height: 600px;
+            background: var(--accent-tertiary);
+            top: 40%;
+            left: 30%;
+            animation-delay: -10s;
+        }
+
+        @keyframes orbFloat {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(100px, 100px) scale(1.2);
+            }
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Unique Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 24px;
+            font-weight: 800;
+            text-decoration: none;
+            transform: translateZ(20px);
+        }
+
+        .logo-icon {
+            position: relative;
+            width: 45px;
+            height: 45px;
+            background: rgba(112, 0, 255, 0.05);
+            border: 2px solid var(--accent-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(0, 188, 212, 0.2);
+            transform-style: preserve-3d;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover .logo-icon {
+            transform: rotateY(15deg) rotateX(15deg);
+        }
+
+        .logo-icon i {
+            background: var(--gradient-hot);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 22px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            transform: translateZ(10px);
+            align-items: center;
+        }
+
+        .nav-links>a,
+        .dropdown>a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .nav-links>a.active {
+            color: var(--accent-secondary);
+        }
+
+        .nav-links>a:hover,
+        .dropdown>a:hover {
+            color: var(--accent-secondary);
+            transform: translateY(-2px);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown>a>i:last-child {
+            font-size: 9px;
+            margin-left: 5px;
+            transition: transform 0.3s;
+            vertical-align: middle;
+        }
+
+        .dropdown:hover>a>i:last-child {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: calc(100% + 15px);
+            left: -20px;
+            background: #ffffff;
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 15px 0;
+            display: flex;
+            flex-direction: column;
+            min-width: 240px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 0 20px rgba(112, 0, 255, 0.05);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px) rotateX(-10deg);
+            transition: all 0.3s ease;
+            transform-origin: top;
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) rotateX(0);
+        }
+
+        .dropdown-content a {
+            padding: 12px 25px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dropdown-content a i {
+            font-size: 14px;
+            color: var(--accent-primary);
+            margin: 0;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(0, 188, 212, 0.05);
+            color: var(--accent-secondary);
+            padding-left: 30px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1001;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .hamburger span {
+            display: block;
+            height: 3px;
+            width: 22px;
+            background: var(--text-light);
+            border-radius: 3px;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .hamburger:hover { box-shadow: 0 8px 20px rgba(0,188,212,0.2); transform: translateY(-2px); border-color: var(--accent-secondary); }
+        .hamburger:hover span:nth-child(1) { width: 14px; transform: translateX(-4px); background: var(--accent-primary); }
+        .hamburger:hover span:nth-child(2) { background: var(--accent-secondary); }
+        .hamburger:hover span:nth-child(3) { width: 14px; transform: translateX(4px); background: var(--accent-tertiary); }
+
+        .hamburger.active { background: var(--gradient-primary); border-color: transparent; }
+        .hamburger.active span { background: white; }
+        .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); width: 22px; }
+        .hamburger.active span:nth-child(2) { width: 0; opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); width: 22px; }
+
+        /* True 3D Button */
+        .btn-3d {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: var(--gradient-primary);
+            color: white !important;
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: var(--shadow-btn);
+            transform: translateY(0) translateZ(30px);
+            transition: all 0.2s cubic-bezier(0.3, 0.7, 0.4, 1);
+            position: relative;
+        }
+
+        .btn-3d::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 12px;
+            box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.4);
+            pointer-events: none;
+        }
+
+        .btn-3d:hover {
+            transform: translateY(3px) translateZ(30px);
+            box-shadow: 0 3px 0 rgba(112, 0, 255, 0.6), 0 10px 15px rgba(112, 0, 255, 0.2);
+            filter: brightness(1.1);
+        }
+
+        .btn-3d:active {
+            transform: translateY(6px) translateZ(30px);
+            box-shadow: 0 0 0 rgba(112, 0, 255, 0.6), inset 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent-secondary);
+            box-shadow: none;
+            color: var(--text-light) !important;
+        }
+
+        .btn-outline:hover {
+            background: rgba(112, 0, 255, 0.05);
+            box-shadow: 0 0 15px rgba(112, 0, 255, 0.2);
+            color: var(--accent-secondary) !important;
+        }
+
+        .btn-outline::after {
+            display: none;
+        }
+
+        .corner-favicon {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--neon-glow);
+            z-index: 9999;
+            transition: transform 0.3s;
+            text-decoration: none;
+        }
+
+        .corner-favicon:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 0 25px var(--accent-primary), 0 0 40px var(--accent-secondary);
+        }
+
+        .corner-favicon i {
+            font-size: 30px;
+            color: white;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            perspective: 1500px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content {
+            transform-style: preserve-3d;
+            animation: floatUp 1s ease-out forwards;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(112, 0, 255, 0.05);
+            border: 1px solid rgba(112, 0, 255, 0.2);
+            border-radius: 50px;
+            color: var(--accent-secondary);
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+            transform: translateZ(20px);
+            box-shadow: 0 5px 15px rgba(112, 0, 255, 0.1);
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            transform: translateZ(40px);
+            color: var(--text-light);
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 500px;
+            transform: translateZ(30px);
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            transform: translateZ(50px);
+        }
+
+        /* Professional Modern "Glass Dashboard" Setup */
+        .hero-visual {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .glass-dashboard {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.1), inset 0 2px 5px rgba(255, 255, 255, 1);
+            padding: 25px;
+            transform: perspective(1000px) rotateY(-15deg) rotateX(5deg);
+            animation: dashboardFloat 6s ease-in-out infinite alternate;
+            z-index: 2;
+        }
+
+        .glass-header {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .glass-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .glass-dots span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .glass-dots span:nth-child(1) {
+            background: #ff5f56;
+        }
+
+        .glass-dots span:nth-child(2) {
+            background: #ffbd2e;
+        }
+
+        .glass-dots span:nth-child(3) {
+            background: #27c93f;
+        }
+
+        .glass-body {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 20px;
+        }
+
+        .glass-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .glass-sidebar .g-line {
+            height: 10px;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 5px;
+        }
+
+        .glass-sidebar .g-line:first-child {
+            height: 35px;
+            background: var(--gradient-hot);
+            border-radius: 10px;
+            opacity: 0.9;
+        }
+
+        .glass-main {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .glass-chart {
+            height: 150px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            align-items: flex-end;
+            gap: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
+        }
+
+        .chart-bar {
+            flex: 1;
+            border-radius: 6px 6px 0 0;
+            background: var(--gradient-primary);
+        }
+
+        .chart-bar.b1 {
+            height: 40%;
+            opacity: 0.6;
+        }
+
+        .chart-bar.b2 {
+            height: 75%;
+            opacity: 0.8;
+        }
+
+        .chart-bar.b3 {
+            height: 50%;
+            opacity: 0.7;
+        }
+
+        .chart-bar.b4 {
+            height: 95%;
+        }
+
+        .glass-stats {
+            display: flex;
+            gap: 15px;
+        }
+
+        .g-stat-card {
+            flex: 1;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 1);
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            gap: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        .g-icon {
+            width: 35px;
+            height: 35px;
+            background: rgba(112, 0, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-secondary);
+            font-size: 16px;
+        }
+
+        .g-lines {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .g-line-sm {
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .g-line-sm-thick {
+            height: 10px;
+            width: 70%;
+            border-radius: 5px;
+            background: var(--gradient-primary);
+            opacity: 0.9;
+        }
+
+        .hero-visual::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: 0;
+            width: 180px;
+            height: 180px;
+            background: var(--gradient-hot);
+            border-radius: 50%;
+            z-index: 1;
+            filter: blur(40px);
+            opacity: 0.4;
+        }
+
+        .hero-visual::after {
+            content: '';
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            width: 250px;
+            height: 250px;
+            background: var(--gradient-primary);
+            border-radius: 40%;
+            z-index: 1;
+            filter: blur(50px);
+            opacity: 0.3;
+        }
+
+        @keyframes dashboardFloat {
+            0% {
+                transform: perspective(1000px) rotateY(-15deg) rotateX(5deg) translateY(0px);
+            }
+
+            100% {
+                transform: perspective(1000px) rotateY(-15deg) rotateX(5deg) translateY(-25px);
+            }
+        }
+
+        @keyframes floatUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sections General */
+        .section-padding {
+            padding: 120px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+            perspective: 1000px;
+        }
+
+        .section-title h2 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 3D Card Grids */
+        .grid-3d {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            perspective: 1500px;
+        }
+
+        .card-3d {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid var(--glass-border);
+            transform-style: preserve-3d;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: var(--shadow-card);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .card-3d:hover {
+            transform: translateY(-15px) rotateX(10deg) rotateY(-5deg);
+            border-color: var(--accent-secondary);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.1), 0 0 30px rgba(112, 0, 255, 0.1) inset;
+        }
+
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(112, 0, 255, 0.05);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: var(--accent-secondary);
+            margin-bottom: 25px;
+            transform: translateZ(40px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(112, 0, 255, 0.1);
+        }
+
+        .card-3d:hover .card-icon {
+            transform: translateZ(60px) scale(1.1);
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 0 10px 20px rgba(112, 0, 255, 0.3);
+            border-color: transparent;
+        }
+
+        .card-3d h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            transform: translateZ(30px);
+            color: var(--text-light);
+        }
+
+        .card-3d p {
+            color: var(--text-muted);
+            transform: translateZ(20px);
+            font-weight: 500;
+        }
+
+        /* Improved Exam Administration Layout */
+        .phases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            padding-top: 30px;
+            align-items: start;
+        }
+
+        .phase-card {
+            background: var(--bg-card-alt);
+            border-radius: 20px;
+            padding: 50px 30px 40px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .phase-card:hover {
+            transform: translateY(-10px) translateZ(20px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .phase-num {
+            width: 70px;
+            height: 70px;
+            background: var(--bg-dark);
+            border: 3px solid var(--accent-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--text-light);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%) translateZ(40px);
+        }
+
+        .phase-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--accent-secondary);
+            margin-top: 15px;
+        }
+
+        .phase-card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        /* Careers White Panel */
+        .career-panel {
+            background: #ffffff;
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 60px 40px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        /* Dedicated Professional Footer */
+        .footer-pro {
+            background: var(--bg-card);
+            padding: 80px 0 30px;
+            border-top: 1px solid var(--glass-border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.5fr 2fr 1.5fr;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            margin: 20px 0;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 188, 212, 0.3);
+            border-color: transparent;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .link-col h4 {
+            margin-bottom: 25px;
+            font-size: 18px;
+            color: var(--text-light);
+        }
+
+        .link-col a {
+            display: block;
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-bottom: 15px;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .link-col a:hover {
+            color: var(--accent-secondary);
+        }
+
+        .footer-newsletter h4 {
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .footer-newsletter p {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .newsletter-box {
+            display: flex;
+            gap: 10px;
+        }
+
+        .newsletter-box input {
+            flex: 1;
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 1px solid var(--glass-border);
+            background: var(--bg-dark);
+            color: var(--text-light);
+            outline: none;
+            transition: border 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .newsletter-box input:focus {
+            border-color: var(--accent-primary);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .b-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .b-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .b-links a:hover {
+            color: var(--accent-tertiary);
+        }
+
+        /* --- Mobile Responsive Rules --- */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-links {
+                justify-content: flex-start;
+                gap: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px 30px;
+                border-bottom: 1px solid var(--accent-primary);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+                transform: translateY(-20px);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .dropdown-content {
+                position: relative;
+                top: 0;
+                left: 0;
+                min-width: 100%;
+                box-shadow: none;
+                background: transparent;
+                border: none;
+                border-left: 2px solid var(--accent-secondary);
+                padding-left: 10px;
+                margin-top: 10px;
+                border-radius: 0;
+                display: none !important;
+            }
+
+            .dropdown.mobile-open .dropdown-content {
+                display: flex !important;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+            }
+
+            .logo-icon i {
+                font-size: 18px;
+            }
+
+            .logo .brand-text {
+                font-size: 20px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .hero-actions .btn-3d {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .career-panel {
+                padding: 30px 20px;
+            }
+            .career-panel .grid-3d {
+                grid-template-columns: 1fr;
+            }
+            .career-panel .card-3d {
+                padding: 20px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <span id="top"></span>
+    <a href="#top" class="corner-favicon"><i class="fa-solid fa-graduation-cap"></i></a>
+
+    <div class="ambient-back">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Master Header Dropdown & Sync Logic -->
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#home" class="logo">
+                <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <span class="brand-text">Noshahi Test Builder</span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#home" class="active">Home</a>
+                <div class="dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle">Products <i
+                            class="fa-solid fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="academic-research.html"><i class="fa-solid fa-flask"></i> Academic Research</a>
+                        <a href="insight-assessments.html"><i class="fa-solid fa-book-open"></i> Insight Assessments</a>
+                        <a href="english-resources.html"><i class="fa-solid fa-language"></i> English Resources</a>
+                    </div>
+                </div>
+                <a href="#portals">Portals</a>
+                <a href="#exam">Exam Admin</a>
+                <a href="#careers">Careers</a>
+                <div class="nav-actions dropdown">
+                    <a href="javascript:void(0)" class="btn-3d dropdown-toggle" style="padding: 8px 15px; font-size: 14px;"><i
+                            class="fa-regular fa-user"></i> Account <i class="fa-solid fa-chevron-down"></i></a>
+                    <div class="dropdown-content" style="left: auto; right: 0; min-width: 180px;">
+                        <a href="login.html"><i class="fa-solid fa-right-to-bracket"></i> Login Area</a>
+                        <a href="register.html"><i class="fa-solid fa-user-plus"></i> Register</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge cyber-font">Platform Activated</div>
+                <h1>Experience <br><span class="brand-text">Noshahi Test Builder</span></h1>
+                <p>From revolutionary Test Maker capabilities to world-class academic research. Join the most advanced
+                    educational publishing and global support network.</p>
+                <div class="hero-actions">
+                    <a href="#products" class="btn-3d">Explore Services</a>
+                    <a href="#exam" class="btn-3d btn-outline">Start Exam Phase</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="glass-dashboard">
+                    <div class="glass-header">
+                        <div class="glass-dots"><span></span><span></span><span></span></div>
+                    </div>
+                    <div class="glass-body">
+                        <div class="glass-sidebar">
+                            <div class="g-line"></div>
+                            <div class="g-line"></div>
+                            <div class="g-line"></div>
+                            <div class="g-line"></div>
+                        </div>
+                        <div class="glass-main">
+                            <div class="glass-chart">
+                                <div class="chart-bar b1"></div>
+                                <div class="chart-bar b2"></div>
+                                <div class="chart-bar b3"></div>
+                                <div class="chart-bar b4"></div>
+                            </div>
+                            <div class="glass-stats">
+                                <div class="g-stat-card">
+                                    <div class="g-icon"><i class="fa-solid fa-check-double"></i></div>
+                                    <div class="g-lines">
+                                        <div class="g-line-sm-thick"></div>
+                                        <div class="g-line-sm"></div>
+                                    </div>
+                                </div>
+                                <div class="g-stat-card">
+                                    <div class="g-icon"><i class="fa-solid fa-chart-line"></i></div>
+                                    <div class="g-lines">
+                                        <div class="g-line-sm-thick"></div>
+                                        <div class="g-line-sm"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section-padding" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Products & Services</h2>
+                <p>Advancing knowledge through premier academic publishing, authoritative resources, and the highest
+                    global standards.</p>
+            </div>
+            <div class="grid-3d">
+                <div class="card-3d" onclick="window.location.href='academic-research.html';">
+                    <div class="card-icon"><i class="fa-solid fa-flask"></i></div>
+                    <h3>Academic Research</h3>
+                    <p>Advancing knowledge through premier academic publishing and institutional resources.</p>
+                </div>
+                <div class="card-3d" onclick="window.location.href='insight-assessments.html';">
+                    <div class="card-icon"><i class="fa-solid fa-book-open"></i></div>
+                    <h3>Insight Assessments</h3>
+                    <p>Deploy enterprise-grade cognitive tracking metrics and customized student profiles.</p>
+                </div>
+                <div class="card-3d" onclick="window.location.href='english-resources.html';">
+                    <div class="card-icon"><i class="fa-solid fa-language"></i></div>
+                    <h3>English Resources</h3>
+                    <p>Providing industry-leading language assessments and linguistic certification globally.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portals -->
+    <section class="section-padding" id="portals">
+        <div class="container">
+            <div class="section-title">
+                <h2>Support Portals</h2>
+                <p>Secure, streamlined access to educational tools, professional development, and student welfare
+                    systems.</p>
+            </div>
+            <div class="grid-3d">
+                <div class="card-3d">
+                    <div class="card-icon"><i class="fa-solid fa-school"></i></div>
+                    <h3>School Support Hub</h3>
+                    <p>The central destination for registered schools to access syllabus materials and teaching
+                        resources.</p>
+                </div>
+                <div class="card-3d">
+                    <div class="card-icon"><i class="fa-solid fa-building-columns"></i></div>
+                    <h3>International Direct</h3>
+                    <p>Our secure administrative portal allowing exam officers to submit entries securely.</p>
+                </div>
+                <div class="card-3d">
+                    <div class="card-icon"><i class="fa-solid fa-upload"></i></div>
+                    <h3>Submit for Assessment</h3>
+                    <p>A seamless digital environment for uploading coursework and digital portfolios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phases -->
+    <section class="section-padding" id="exam"
+        style="background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(5px);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Exam Administration Phases</h2>
+                <p>Master the <span class="brand-text">Noshahi Test Builder</span> process from preparation to final
+                    verification.</p>
+            </div>
+            <div class="phases-grid">
+                <div class="phase-card">
+                    <div class="phase-num">1</div>
+                    <h3>Preparation Phase</h3>
+                    <p>Establishing the foundation. Perfectly planning logistics.</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-num">2</div>
+                    <h3>Managing Entries</h3>
+                    <p>Registering candidates securely and managing syllabus options.</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-num">3</div>
+                    <h3>Coursework</h3>
+                    <p>Guidance on submitting internal assessments via portal logs.</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-num">4</div>
+                    <h3>Before The Exam</h3>
+                    <p>Securing exam papers, organizing venues, and briefing local invigilators.</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-num">5</div>
+                    <h3>Exam Day Operations</h3>
+                    <p>Executing examinations under strict global policies.</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-num">6</div>
+                    <h3>Results & Certificates</h3>
+                    <p>Accessing candidate results and distributing official certificates securely.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Careers -->
+    <section class="section-padding" id="careers">
+        <div class="container">
+            <div class="career-panel">
+                <div class="section-title" style="margin-bottom: 40px;">
+                    <h2 class="brand-text">Join The Innovation</h2>
+                    <p>No matter who you are, what you do, or where you come from, you'll feel proud to work here.</p>
+                </div>
+                <div class="grid-3d" style="gap:20px;">
+                    <div class="card-3d" style="padding: 20px;">
+                        <i class="fa-solid fa-laptop-house"
+                            style="font-size:40px; color:var(--accent-primary); margin-bottom:15px;"></i>
+                        <h3 style="font-size:20px;">Remote Friendly</h3>
+                        <p style="font-size:14px;">Work securely from over 150+ global locations.</p>
+                    </div>
+                    <div class="card-3d" style="padding: 20px;">
+                        <i class="fa-solid fa-heart-pulse"
+                            style="font-size:40px; color:var(--accent-tertiary); margin-bottom:15px;"></i>
+                        <h3 style="font-size:20px;">Top Tier Health</h3>
+                        <p style="font-size:14px;">Comprehensive global insurance and wellness policies.</p>
+                    </div>
+                    <div class="card-3d" style="padding: 20px; border-color: var(--accent-secondary);">
+                        <i class="fa-solid fa-handshake"
+                            style="font-size:40px; color:var(--accent-secondary); margin-bottom:15px;"></i>
+                        <h3 style="font-size:20px;">Open Roles</h3>
+                        <p style="font-size:14px;">Discover thousands of jobs perfectly tailored for leaders.</p>
+                        <a href="#careers" class="btn-3d"
+                            style="margin-top:15px; padding: 10px 20px; font-size:12px;">Discover Roles</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRO FOOTER -->
+    <footer class="footer-pro">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#home" class="logo" style="margin-bottom: 15px;">
+                        <div class="logo-icon" style="width: 35px; height: 35px; box-shadow: none;"><i
+                                class="fa-solid fa-graduation-cap" style="font-size: 16px;"></i></div>
+                        <span class="brand-text">Noshahi Test Builder</span>
+                    </a>
+                    <p>Revolutionizing digital education tools and academic research for a world-class standard. We
+                        build the future of unified learning algorithms.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-github"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="link-col">
+                        <h4>Products</h4>
+                        <a href="academic-research.html">Academic Research</a>
+                        <a href="insight-assessments.html">Insight Assessments</a>
+                        <a href="english-resources.html">English Resources</a>
+                    </div>
+                    <div class="link-col">
+                        <h4>Platform & Tools</h4>
+                        <a href="#portals">Support Portals</a>
+                        <a href="#exam">Exam Administration</a>
+                        <a href="#careers">Careers Portal</a>
+                    </div>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Join 10,000+ educators receiving our latest system updates and insights securely in their inbox.
+                    </p>
+                    <form class="newsletter-box" onsubmit="event.preventDefault();">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit" class="btn-3d"
+                            style="padding: 10px 20px; transform: none; box-shadow: none;"><i
+                                class="fa-solid fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 <span class="brand-text"
+                        style="filter: none; -webkit-text-fill-color: var(--accent-secondary);">Noshahi Test
+                        Builder</span>. All rights reserved.</p>
+                <div class="b-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Accessibility Standard</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.querySelectorAll('.card-3d, .phase-card, .career-panel, .glass-dashboard').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -10;
+                const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 10;
+
+                if (card.classList.contains('glass-dashboard')) {
+                    card.style.transform = `perspective(1000px) rotateX(${5 + rotateX}deg) rotateY(${-15 + rotateY}deg) translateY(-10px)`;
+                } else {
+                    card.style.transform = `translateY(-10px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                }
+            });
+            card.addEventListener('mouseleave', () => {
+                if (card.classList.contains('glass-dashboard')) {
+                    card.style.transform = `perspective(1000px) rotateY(-15deg) rotateX(5deg)`;
+                } else {
+                    card.style.transform = `translateY(0) rotateX(0deg) rotateY(0deg)`;
+                }
+            });
+        });
+
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        const dropdowns = document.querySelectorAll('.dropdown');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            if (!navLinks.classList.contains('active')) {
+                dropdowns.forEach(d => d.classList.remove('mobile-open'));
+            }
+        });
+
+        document.querySelectorAll('.nav-links > a:not(.dropdown-toggle)').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+                dropdowns.forEach(d => d.classList.remove('mobile-open'));
+            });
+        });
+
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const parentDropdown = toggle.closest('.dropdown');
+                    if(parentDropdown) {
+                        // Close other dropdowns
+                        dropdowns.forEach(d => {
+                            if(d !== parentDropdown) d.classList.remove('mobile-open');
+                        });
+                        parentDropdown.classList.toggle('mobile-open');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

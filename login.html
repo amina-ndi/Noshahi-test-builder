@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Login | Noshahi Test Builder</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;700;900&family=Outfit:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #FFFFFF;
+            --bg-card: #f8fafc;
+            --bg-card-alt: #f1f5f9;
+            --accent-primary: #00bcd4;
+            --accent-secondary: #7000FF;
+            --accent-tertiary: #FF00A0;
+            --text-light: #1e293b;
+            --text-muted: #64748b;
+            --glass-border: rgba(0, 0, 0, 0.08);
+
+            --gradient-primary: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
+            --gradient-hot: linear-gradient(135deg, var(--accent-tertiary), var(--accent-secondary));
+            --shadow-btn: 0 6px 0 rgba(112, 0, 255, 0.3), 0 15px 25px rgba(112, 0, 255, 0.2);
+            --shadow-card: 0 20px 50px rgba(0, 0, 0, 0.06), inset 0 2px 2px rgba(255, 255, 255, 1);
+            --neon-glow: 0 0 15px rgba(0, 240, 255, 0.3), 0 0 30px rgba(112, 0, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .cyber-font {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .brand-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 3px rgba(112, 0, 255, 0.2));
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .ambient-back {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+            animation: orbFloat 20s infinite alternate ease-in-out;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--accent-secondary);
+            top: -200px;
+            left: -100px;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent-primary);
+            bottom: -100px;
+            right: -50px;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 600px;
+            height: 600px;
+            background: var(--accent-tertiary);
+            top: 40%;
+            left: 30%;
+            animation-delay: -10s;
+        }
+
+        @keyframes orbFloat {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(100px, 100px) scale(1.2);
+            }
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 24px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            position: relative;
+            width: 45px;
+            height: 45px;
+            background: rgba(112, 0, 255, 0.05);
+            border: 2px solid var(--accent-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-style: preserve-3d;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover .logo-icon {
+            transform: rotateY(15deg) rotateX(15deg);
+        }
+
+        .logo-icon i {
+            background: var(--gradient-hot);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 22px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-links>a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links>a:hover {
+            color: var(--accent-secondary);
+            transform: translateY(-2px);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown>a>i:last-child {
+            font-size: 9px;
+            margin-left: 5px;
+            transition: transform 0.3s;
+            vertical-align: middle;
+        }
+
+        .dropdown:hover>a>i:last-child {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: calc(100% + 15px);
+            left: -20px;
+            background: #ffffff;
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 15px 0;
+            display: flex;
+            flex-direction: column;
+            min-width: 240px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px) rotateX(-10deg);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) rotateX(0);
+        }
+
+        .dropdown-content a {
+            padding: 12px 25px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dropdown-content a i {
+            font-size: 14px;
+            color: var(--accent-primary);
+            margin: 0;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(0, 188, 212, 0.05);
+            color: var(--accent-secondary);
+            padding-left: 30px;
+        }
+
+        .btn-3d {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: var(--gradient-primary);
+            color: white !important;
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: var(--shadow-btn);
+            transform: translateY(0);
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .btn-3d::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 12px;
+            box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.4);
+            pointer-events: none;
+        }
+
+        .btn-3d:hover {
+            transform: translateY(3px);
+            box-shadow: 0 3px 0 rgba(112, 0, 255, 0.6), 0 10px 15px rgba(112, 0, 255, 0.2);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 45px;
+            height: 45px;
+            background: var(--bg-card);
+            border: 2px solid var(--glass-border);
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1001;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .hamburger span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background: var(--text-light);
+            border-radius: 2px;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .hamburger:hover {
+            box-shadow: 0 8px 20px rgba(0, 188, 212, 0.2);
+            transform: translateY(-2px);
+            border-color: var(--accent-secondary);
+        }
+
+        .hamburger:hover span:nth-child(1) {
+            width: 14px;
+            transform: translateX(-4px);
+            background: var(--accent-primary);
+        }
+
+        .hamburger:hover span:nth-child(2) {
+            background: var(--accent-secondary);
+        }
+
+        .hamburger:hover span:nth-child(3) {
+            width: 14px;
+            transform: translateX(4px);
+            background: var(--accent-tertiary);
+        }
+
+        .hamburger.active {
+            background: var(--gradient-primary);
+            border-color: transparent;
+        }
+
+        .hamburger.active span {
+            background: white;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+            width: 22px;
+        }
+
+        .hamburger.active span:nth-child(2) {
+            width: 0;
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+            width: 22px;
+        }
+
+        /* Login Layout */
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 90px 20px 40px;
+            perspective: 1500px;
+        }
+
+        .login-card-3d {
+            display: flex;
+            max-width: 900px;
+            width: 100%;
+            background: var(--bg-card);
+            border-radius: 25px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.1), inset 0 2px 2px rgba(255, 255, 255, 1);
+            transform-style: preserve-3d;
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            z-index: 10;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        /* Left Info Side */
+        .login-visual {
+            flex: 1;
+            background: var(--gradient-primary);
+            padding: 40px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.2) 0%, transparent 60%);
+        }
+
+        .login-visual h2 {
+            color: white;
+            font-size: 32px;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-visual p {
+            font-size: 15px;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* 3D Abstract Object inside Login Visual */
+        .obj-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transform-style: preserve-3d;
+            perspective: 800px;
+        }
+
+        .obj-molecule {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: floatMolecule 8s infinite alternate ease-in-out;
+        }
+
+        .m-orb {
+            position: absolute;
+            border-radius: 50%;
+            box-shadow: inset -10px -10px 20px rgba(0, 0, 0, 0.2), inset 10px 10px 20px rgba(255, 255, 255, 0.8);
+        }
+
+        .m-orb-main {
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.3);
+            top: 25px;
+            left: 25px;
+            backdrop-filter: blur(5px);
+        }
+
+        .m-orb-1 {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-tertiary);
+            top: 0;
+            left: 0;
+            animation: orbit1 5s linear infinite;
+        }
+
+        .m-orb-2 {
+            width: 50px;
+            height: 50px;
+            background: #00e5ff;
+            bottom: 0;
+            right: 0;
+            animation: orbit2 6s linear infinite;
+        }
+
+        @keyframes floatMolecule {
+            0% {
+                transform: translateY(-10px) rotateX(10deg) rotateY(-10deg);
+            }
+
+            100% {
+                transform: translateY(10px) rotateX(-10deg) rotateY(10deg);
+            }
+        }
+
+        @keyframes orbit1 {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(110px, 30px) scale(0.8);
+            }
+
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+        }
+
+        @keyframes orbit2 {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(-100px, -50px) scale(1.2);
+            }
+
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+        }
+
+        /* Right Form Side */
+        .login-form {
+            flex: 1.2;
+            padding: 40px 50px;
+            background: white;
+        }
+
+        .login-form h2 {
+            color: var(--text-light);
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .login-form p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 16px;
+            color: var(--text-muted);
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 14px 14px 14px 45px;
+            border-radius: 12px;
+            border: 2px solid var(--glass-border);
+            outline: none;
+            background: var(--bg-card-alt);
+            color: var(--text-light);
+            font-size: 15px;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .input-wrapper input:focus {
+            border-color: var(--accent-primary);
+            background: white;
+            box-shadow: 0 10px 20px rgba(0, 188, 212, 0.1);
+        }
+
+        .input-wrapper input:focus+i,
+        .input-wrapper input:focus~i {
+            color: var(--accent-primary);
+        }
+
+        .pass-toggle {
+            position: absolute;
+            right: 16px;
+            left: auto !important;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        .pass-toggle:hover {
+            color: var(--text-light);
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .remember-me input {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--accent-primary);
+            cursor: pointer;
+        }
+
+        .forgot-pass {
+            color: var(--accent-secondary);
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .forgot-pass:hover {
+            color: var(--accent-tertiary);
+        }
+
+        .login-btn {
+            width: 100%;
+            justify-content: center;
+            padding: 14px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .signup-link {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .signup-link a {
+            color: var(--accent-primary);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .signup-link a:hover {
+            color: var(--accent-secondary);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 992px) {
+            .login-card-3d {
+                flex-direction: column;
+                max-width: 500px;
+            }
+
+            .login-visual {
+                padding: 40px;
+            }
+
+            .obj-container {
+                height: 200px;
+                margin: 30px 0;
+            }
+
+            .login-form {
+                padding: 50px 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px 30px;
+                border-bottom: 1px solid var(--accent-primary);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+                transform: translateY(-20px);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                display: flex;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .dropdown-content {
+                position: relative;
+                top: 0;
+                left: 0;
+                min-width: 100%;
+                box-shadow: none;
+                background: transparent;
+                border: none;
+                border-left: 2px solid var(--accent-secondary);
+                padding-left: 10px;
+                margin-top: 10px;
+                border-radius: 0;
+                display: none !important;
+            }
+
+            .dropdown.mobile-open .dropdown-content {
+                display: flex !important;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+            }
+
+            .login-container {
+                padding: 100px 15px 40px;
+            }
+
+            .login-form {
+                padding: 40px 25px;
+            }
+
+            .login-form h2 {
+                font-size: 28px;
+            }
+
+            .obj-molecule {
+                transform: scale(0.8);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container nav-wrapper">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <span style="font-size: 20px;" class="brand-text">Noshahi Test Builder</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="academic-research.html">Products</a>
+                <a href="index.html#portals" class="active">Portals</a>
+                <div class="nav-actions dropdown">
+                    <a href="javascript:void(0)" class="btn-3d dropdown-toggle" style="padding: 8px 15px; font-size: 14px;"><i
+                            class="fa-regular fa-user"></i> Account <i class="fa-solid fa-chevron-down"></i></a>
+                    <div class="dropdown-content" style="left: auto; right: 0; min-width: 180px;">
+                        <a href="login.html"><i class="fa-solid fa-right-to-bracket"></i> Login Area</a>
+                        <a href="register.html"><i class="fa-solid fa-user-plus"></i> Register</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="ambient-back">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="login-container">
+        <div class="login-card-3d" id="loginCard">
+            <!-- Left 3D Visual panel -->
+            <div class="login-visual">
+                <div>
+                    <h2>Secure Access</h2>
+                    <p>Enter the world's most advanced academic evaluation and testing portal.</p>
+                </div>
+
+                <div class="obj-container">
+                    <div class="obj-molecule">
+                        <div class="m-orb m-orb-main"></div>
+                        <div class="m-orb m-orb-1"></div>
+                        <div class="m-orb m-orb-2"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <p style="font-size: 13px; opacity: 0.7;"><i class="fa-solid fa-shield-halved"></i> 256-bit
+                        Enterprise Encryption</p>
+                </div>
+            </div>
+
+            <!-- Right Form Panel -->
+            <div class="login-form">
+                <h2>Welcome Back</h2>
+                <p>Please enter your credentials to proceed.</p>
+
+                <form onsubmit="event.preventDefault();">
+                    <div class="form-group">
+                        <label>Platform Email</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="email" placeholder="educator@noshahi.edu" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" placeholder="••••••••" required id="passwordInput">
+                            <i class="fa-regular fa-eye-slash pass-toggle" id="togglePassword"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox"> <span>Remember your device</span>
+                        </label>
+                        <a href="#" class="forgot-pass">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="btn-3d login-btn">Secure Sign In <i
+                            class="fa-solid fa-arrow-right"></i></button>
+
+                    <p class="signup-link">Don't have an institution ID? <a href="register.html">Create Platform
+                            Info</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script for 3D card tilt & password toggle -->
+    <script>
+        const card = document.getElementById('loginCard');
+        card.addEventListener('mousemove', e => {
+            if (window.innerWidth > 992) {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -5;
+                const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 5;
+                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            }
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+        });
+
+        const togglePassword = document.querySelector('#togglePassword');
+        const passwordInput = document.querySelector('#passwordInput');
+        togglePassword.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        // Navigation Toggle Logic
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        const dropdowns = document.querySelectorAll('.dropdown');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            if (!navLinks.classList.contains('active')) {
+                dropdowns.forEach(d => d.classList.remove('mobile-open'));
+            }
+        });
+
+        document.querySelectorAll('.nav-links > a:not(.dropdown-toggle)').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+                dropdowns.forEach(d => d.classList.remove('mobile-open'));
+            });
+        });
+
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const parentDropdown = toggle.closest('.dropdown');
+                    if (parentDropdown) {
+                        dropdowns.forEach(d => {
+                            if (d !== parentDropdown) d.classList.remove('mobile-open');
+                        });
+                        parentDropdown.classList.toggle('mobile-open');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
