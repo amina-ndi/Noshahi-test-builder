@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Noshahi Test Builder</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Font Awesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#0A0A0A',
+                        primary: {
+                            DEFAULT: '#D94C58',
+                            foreground: '#ffffff',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0A0A0A;
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- Header styling --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 20px;
+            color: #ffffff;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #D94C58, rgba(217, 76, 88, 0.4));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 18px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+            font-size: 15px;
+            transition: all 0.3s;
+            padding: 8px 12px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-links a.active {
+            color: #D94C58;
+            background: rgba(217, 76, 88, 0.1);
+            text-shadow: 0 0 15px rgba(217, 76, 88, 0.3);
+        }
+
+        /* --- Dropdown Styles --- */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(20px);
+            min-width: 200px;
+            padding: 8px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            z-index: 1100;
+            margin-top: 10px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-content a {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.7) !important;
+            font-size: 14px;
+            font-weight: 500;
+            width: 100%;
+            white-space: nowrap;
+            background: transparent !important;
+        }
+
+        .dropdown-content a:hover {
+            color: #D94C58 !important;
+            background: rgba(217, 76, 88, 0.1) !important;
+            padding-left: 20px;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background: transparent;
+            color: #D94C58;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: all 0.3s;
+            border: 1px solid rgba(217, 76, 88, 0.4);
+            font-size: 14px;
+        }
+
+        .btn-3d {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 25px;
+            background: #D94C58;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: all 0.3s;
+            border: none;
+            font-size: 14px;
+        }
+
+        .btn-3d:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(217, 76, 88, 0.4);
+            background: #c23d48;
+        }
+
+        /* Dashboard Specific Styles */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(217, 76, 88, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .search-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 12px 16px 12px 48px;
+            color: white;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: #D94C58;
+            background: rgba(217, 76, 88, 0.05);
+        }
+
+        /* --- Footer styling --- */
+        footer {
+            padding: 80px 0 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: #0A0A0A;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 60px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            display: block;
+            text-decoration: none;
+            color: white;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: white;
+        }
+
+        .footer-links a {
+            display: block;
+            margin-bottom: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                padding: 0 15px;
+            }
+
+            #menu-toggle {
+                display: block;
+                z-index: 1100;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                width: 40px;
+                height: 40px;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s;
+            }
+
+            #menu-toggle:active {
+                transform: scale(0.9);
+                background: rgba(217, 76, 88, 0.2);
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 15px;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 1000;
+                padding: 40px 20px;
+                display: flex;
+                visibility: hidden;
+            }
+
+            .nav-links.open {
+                right: 0;
+                visibility: visible;
+            }
+
+            .nav-links a {
+                font-size: 20px;
+                width: 100%;
+                text-align: center;
+                padding: 15px;
+            }
+
+            .nav-links .dropdown {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links .dropdown-content {
+                position: static;
+                transform: none;
+                opacity: 1;
+                visibility: visible;
+                background: transparent;
+                box-shadow: none;
+                border: none;
+                width: 100%;
+                padding: 0;
+                margin-top: 0;
+            }
+
+            .nav-links .dropdown-content a {
+                font-size: 16px;
+                padding: 10px;
+                justify-content: center;
+            }
+
+            .nav-links .flex.items-center.gap-6.ml-4 {
+                flex-direction: column;
+                width: 100%;
+                margin-left: 0;
+                margin-top: 20px;
+                gap: 15px;
+            }
+
+            .nav-links .btn-secondary,
+            .nav-links .btn-3d {
+                width: 80%;
+                justify-content: center;
+                padding: 14px;
+                font-size: 16px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            body.menu-open {
+                overflow: hidden;
+            }
+        }
+
+        #menu-toggle {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            #menu-toggle {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-wrapper">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <span>Noshahi Test Builder</span>
+            </a>
+
+            <nav class="nav-links" id="nav-menu">
+                <a href="index.html">Home</a>
+
+                <a href="insights.html" class="active">Question Bank Insights</a>
+
+                <a href="index.html#features">Features</a>
+                <a href="index.html#testimonials">Testimonials</a>
+
+                <div class="flex items-center gap-6 ml-4">
+                    <a href="login.html" class="btn-secondary">Login</a>
+                    <a href="register.html" class="btn-3d">Sign Up</a>
+                </div>
+            </nav>
+
+            <button id="menu-toggle" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="relative min-h-[calc(100vh-120px)] text-white bg-[#0A0A0A] pt-32 pb-24 overflow-hidden">
+        <!-- Background decorative elements -->
+        <div class="absolute top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
+            <div class="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-primary/10 blur-[120px]"></div>
+            <div class="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-blue-500/5 blur-[100px]">
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Title Section -->
+            <div class="mb-12 text-center">
+                <h1
+                    class="text-4xl md:text-5xl font-bold mb-3 bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+                    Academic Insights Dashboard
+                </h1>
+                <p class="text-lg text-white/70 max-w-2xl mx-auto">
+                    Analyze your question bank distribution and curriculum coverage at a glance.
+                </p>
+            </div>
+
+            <!-- Search Section -->
+            <div class="max-w-4xl mx-auto mb-16">
+                <div class="search-container">
+                    <div class="absolute left-4 top-1/2 -translate-y-1/2 text-white/40">
+                        <i class="fa-solid fa-magnifying-glass text-xl"></i>
+                    </div>
+                    <input type="text" class="search-input"
+                        placeholder="Search Question Bank (e.g., 'Class 10 Physics Chapter 2 MCQ')">
+                    <button
+                        class="absolute right-2 top-1/2 -translate-y-1/2 px-4 py-2 bg-primary rounded-lg text-sm font-bold shadow-lg shadow-primary/20 hover:bg-[#c23d48] transition">
+                        Find
+                    </button>
+                </div>
+                <div class="flex justify-center gap-4 mt-6">
+                    <div class="dropdown">
+                        <button
+                            class="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm flex items-center gap-2 hover:bg-white/10 transition">
+                            <i class="fa-solid fa-filter text-primary"></i> All Categories <i
+                                class="fa-solid fa-chevron-down text-[10px]"></i>
+                        </button>
+                    </div>
+                    <div class="dropdown">
+                        <button
+                            class="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm flex items-center gap-2 hover:bg-white/10 transition">
+                            <i class="fa-solid fa-calendar text-primary"></i> Last 30 Days <i
+                                class="fa-solid fa-chevron-down text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="glass-card p-6 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full translate-x-8 -translate-y-8 blur-2xl group-hover:bg-primary/20 transition-all duration-500">
+                    </div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                            <i class="fa-solid fa-file-lines"></i>
+                        </div>
+                        <p class="text-sm text-white/50 uppercase tracking-widest font-bold">Questions Available</p>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white mb-2">52,149</h3>
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="text-green-400 flex items-center gap-1"><i class="fa-solid fa-arrow-up"></i>
+                            +1,200</span>
+                        <span class="text-white/30">Added this month</span>
+                    </div>
+                </div>
+                <div class="glass-card p-6 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 rounded-full translate-x-8 -translate-y-8 blur-2xl group-hover:bg-blue-500/20 transition-all duration-500">
+                    </div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
+                            <i class="fa-solid fa-book-open"></i>
+                        </div>
+                        <p class="text-sm text-white/50 uppercase tracking-widest font-bold">Curriculum Coverage</p>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white mb-2">94.2%</h3>
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="text-blue-400 flex items-center gap-1"><i class="fa-solid fa-check"></i>
+                            Optimal</span>
+                        <span class="text-white/30">Syllabus aligned</span>
+                    </div>
+                </div>
+                <div class="glass-card p-6 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-24 h-24 bg-green-500/10 rounded-full translate-x-8 -translate-y-8 blur-2xl group-hover:bg-green-500/20 transition-all duration-500">
+                    </div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div
+                            class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </div>
+                        <p class="text-sm text-white/50 uppercase tracking-widest font-bold">PDFs Exported</p>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white mb-2">12.8k</h3>
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="text-green-400 flex items-center gap-1"><i class="fa-solid fa-arrow-up"></i>
+                            2.4k</span>
+                        <span class="text-white/30">This session</span>
+                    </div>
+                </div>
+                <div class="glass-card p-6 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-24 h-24 bg-purple-500/10 rounded-full translate-x-8 -translate-y-8 blur-2xl group-hover:bg-purple-500/20 transition-all duration-500">
+                    </div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div
+                            class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <p class="text-sm text-white/50 uppercase tracking-widest font-bold">Active Teachers</p>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white mb-2">4,291</h3>
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="text-purple-400 flex items-center gap-1"><i class="fa-solid fa-arrow-up"></i>
+                            +420</span>
+                        <span class="text-white/30">New registrations</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Large Chart Wrap -->
+                <div class="lg:col-span-2 glass-card p-8">
+                    <div class="flex justify-between items-center mb-8">
+                        <div>
+                            <h3 class="text-xl font-bold">Jobs Posted Trend</h3>
+                            <p class="text-xs text-white/30">Monthly breakdown of available opportunities</p>
+                        </div>
+                        <div class="flex bg-white/5 rounded-lg p-1">
+                            <button
+                                class="px-3 py-1 rounded-md bg-primary text-xs font-bold shadow-lg shadow-primary/20">Monthly</button>
+                            <button
+                                class="px-3 py-1 rounded-md text-xs font-bold text-white/40 hover:text-white transition">Quarterly</button>
+                        </div>
+                    </div>
+
+                    <!-- SVG Chart Replacement for Bar Chart -->
+                    <div class="relative h-64 w-full flex items-end gap-2 md:gap-4 px-2">
+                        <!-- Bars with hover effect -->
+                        <div
+                            class="group relative flex-1 bg-white/5 rounded-t-lg h-[40%] hover:bg-primary/40 transition-all duration-500">
+                            <div
+                                class="absolute -top-8 left-1/2 -translate-x-1/2 bg-black border border-white/10 px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition">
+                                12.4k</div>
+                        </div>
+                        <div
+                            class="group relative flex-1 bg-white/5 rounded-t-lg h-[65%] hover:bg-primary/40 transition-all duration-500">
+                            <div
+                                class="absolute -top-8 left-1/2 -translate-x-1/2 bg-black border border-white/10 px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition">
+                                18.2k</div>
+                        </div>
+                        <div
+                            class="group relative flex-1 bg-white/5 rounded-t-lg h-[45%] hover:bg-primary/40 transition-all duration-500">
+                            <div
+                                class="absolute -top-8 left-1/2 -translate-x-1/2 bg-black border border-white/10 px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition">
+                                14.1k</div>
+                        </div>
+                        <div
+                            class="group relative flex-1 bg-white/5 rounded-t-lg h-[80%] hover:bg-primary/40 transition-all duration-500">
+                            <div
+                                class="absolute -top-8 left-1/2 -translate-x-1/2 bg-black border border-white/10 px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition">
+                                22.5k</div>
+                        </div>
+                        <div
+                            class="group relative flex-1 bg-primary/20 rounded-t-lg h-[95%] border-t-2 border-primary shadow-[0_0_20px_rgba(217,76,88,0.2)]">
+                            <div
+                                class="absolute -top-8 left-1/2 -translate-x-1/2 bg-black border border-white/10 px-2 py-1 rounded text-[10px] opacity-100 font-bold text-primary">
+                                26.8k</div>
+                        </div>
+                        <div
+                            class="group relative flex-1 bg-white/5 rounded-t-lg h-[60%] hover:bg-primary/40 transition-all duration-500">
+                            <div
+                                class="absolute -top-8 left-1/2 -translate-x-1/2 bg-black border border-white/10 px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition">
+                                17.4k</div>
+                        </div>
+                        <div
+                            class="group relative flex-1 bg-white/5 rounded-t-lg h-[40%] hover:bg-primary/40 transition-all duration-500">
+                            <div
+                                class="absolute -top-8 left-1/2 -translate-x-1/2 bg-black border border-white/10 px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition">
+                                11.9k</div>
+                        </div>
+                        <div
+                            class="group relative flex-1 bg-white/5 rounded-t-lg h-[75%] hover:bg-primary/40 transition-all duration-500">
+                            <div
+                                class="absolute -top-8 left-1/2 -translate-x-1/2 bg-black border border-white/10 px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition">
+                                20.1k</div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between mt-6 text-[11px] text-white/30 uppercase tracking-widest px-2">
+                        <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span>
+                    </div>
+                </div>
+
+                <!-- Country Ranking -->
+                <div class="glass-card p-8">
+                    <h3 class="text-xl font-bold mb-2">Top Countries</h3>
+                    <p class="text-xs text-white/30 mb-8">By Total Job Postings</p>
+
+                    <div class="space-y-6">
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="flex items-center gap-2"><span
+                                        class="w-1.5 h-1.5 rounded-full bg-primary"></span> United States</span>
+                                <span class="font-bold text-white">45%</span>
+                            </div>
+                            <div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
+                                <div class="bg-primary h-full rounded-full w-[45%]"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="flex items-center gap-2"><span
+                                        class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> United Kingdom</span>
+                                <span class="font-bold text-white">18%</span>
+                            </div>
+                            <div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
+                                <div class="bg-blue-500 h-full rounded-full w-[18%]"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="flex items-center gap-2"><span
+                                        class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Canada</span>
+                                <span class="font-bold text-white">12%</span>
+                            </div>
+                            <div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
+                                <div class="bg-green-500 h-full rounded-full w-[12%]"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="flex items-center gap-2"><span
+                                        class="w-1.5 h-1.5 rounded-full bg-purple-500"></span> Germany</span>
+                                <span class="font-bold text-white">9%</span>
+                            </div>
+                            <div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
+                                <div class="bg-purple-500 h-full rounded-full w-[9%]"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="flex items-center gap-2"><span
+                                        class="w-1.5 h-1.5 rounded-full bg-orange-500"></span> Australia</span>
+                                <span class="font-bold text-white">7%</span>
+                            </div>
+                            <div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
+                                <div class="bg-orange-500 h-full rounded-full w-[7%]"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button
+                        class="w-full mt-8 py-3 border border-white/5 rounded-xl text-xs font-bold text-white/40 hover:bg-white/5 hover:text-white transition uppercase tracking-widest">
+                        View Detailed List
+                    </button>
+                </div>
+            </div>
+
+            <!-- Skills & Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+                <!-- Most Searched Skills -->
+                <div class="glass-card p-8">
+                    <div class="flex justify-between items-center mb-8">
+                        <div>
+                            <h3 class="text-xl font-bold">Trending Skills</h3>
+                            <p class="text-xs text-white/30">Skills with highest demand increase</p>
+                        </div>
+                        <div
+                            class="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-400">
+                            <i class="fa-solid fa-fire"></i>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span
+                            class="px-4 py-2 rounded-xl bg-primary text-white font-semibold text-sm shadow-lg shadow-primary/20">React
+                            Native</span>
+                        <span
+                            class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white/70 text-sm hover:border-primary/30 hover:bg-primary/10 transition cursor-default">Machine
+                            Learning</span>
+                        <span
+                            class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white/70 text-sm hover:border-primary/30 hover:bg-primary/10 transition cursor-default">Python</span>
+                        <span
+                            class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white/70 text-sm hover:border-primary/30 hover:bg-primary/10 transition cursor-default">UI/UX
+                            Design</span>
+                        <span
+                            class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white/70 text-sm hover:border-primary/30 hover:bg-primary/10 transition cursor-default">AWS</span>
+                        <span
+                            class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white/70 text-sm hover:border-primary/30 hover:bg-primary/10 transition cursor-default">Data
+                            Science</span>
+                        <span
+                            class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white/70 text-sm hover:border-primary/30 hover:bg-primary/10 transition cursor-default">Blockchain</span>
+                        <span
+                            class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white/70 text-sm hover:border-primary/30 hover:bg-primary/10 transition cursor-default">DevOps</span>
+                    </div>
+                </div>
+
+                <!-- Client Breakdown -->
+                <div class="glass-card p-8">
+                    <div class="flex justify-between items-center mb-8">
+                        <div>
+                            <h3 class="text-xl font-bold">Client Segmentation</h3>
+                            <p class="text-xs text-white/30">Based on historic activity & budget</p>
+                        </div>
+                        <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
+                            <i class="fa-solid fa-pie-chart"></i>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div
+                            class="text-center p-6 bg-white/5 rounded-2xl border border-white/5 hover:border-white/10 transition">
+                            <p class="text-[10px] text-white/30 uppercase tracking-widest mb-2">High Budget</p>
+                            <p class="text-3xl font-bold text-white">42% <i
+                                    class="fa-solid fa-arrow-up text-green-400 text-xs ml-1"></i></p>
+                        </div>
+                        <div
+                            class="text-center p-6 bg-white/5 rounded-2xl border border-white/5 hover:border-white/10 transition">
+                            <p class="text-[10px] text-white/30 uppercase tracking-widest mb-2">Recurring</p>
+                            <p class="text-3xl font-bold text-white">68% <i
+                                    class="fa-solid fa-arrow-up text-green-400 text-xs ml-1"></i></p>
+                        </div>
+                        <div
+                            class="text-center p-6 bg-white/5 rounded-2xl border border-white/5 hover:border-white/10 transition">
+                            <p class="text-[10px] text-white/30 uppercase tracking-widest mb-2">Top Rated</p>
+                            <p class="text-3xl font-bold text-white">15% <i
+                                    class="fa-solid fa-minus text-white/20 text-xs ml-1"></i></p>
+                        </div>
+                        <div
+                            class="text-center p-6 bg-white/5 rounded-2xl border border-white/5 hover:border-white/10 transition">
+                            <p class="text-[10px] text-white/30 uppercase tracking-widest mb-2">Enterprise</p>
+                            <p class="text-3xl font-bold text-white">4% <i
+                                    class="fa-solid fa-arrow-up text-green-400 text-xs ml-1"></i></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <a href="index.html" class="footer-logo">Noshahi Builder</a>
+                <p style="color: rgba(255,255,255,0.4); font-size: 14px;">The professional test building platform for
+                    Matric and Intermediate teachers across Pakistan.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <a href="#">About Us</a>
+                <a href="#">Our Vision</a>
+                <a href="#">Careers</a>
+            </div>
+            <div class="footer-links">
+                <h4>Resources</h4>
+                <a href="#">Documentation</a>
+                <a href="#">Help Center</a>
+                <a href="#">API Status</a>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Noshahi Developers Inc. All rights reserved.</p>
+            <div style="display: flex; gap: 20px; font-size: 18px;">
+                <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Mobile Menu Toggle
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            const menuIcon = menuToggle.querySelector('i');
+            const body = document.body;
+
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('open');
+                body.classList.toggle('menu-open');
+
+                // Toggle between hamburger and X icon
+                if (navMenu.classList.contains('open')) {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-xmark');
+                } else {
+                    menuIcon.classList.remove('fa-xmark');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+
+            // Close menu when clicking a link
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('open');
+                    body.classList.remove('menu-open');
+                    menuIcon.classList.remove('fa-xmark');
+                    menuIcon.classList.add('fa-bars');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

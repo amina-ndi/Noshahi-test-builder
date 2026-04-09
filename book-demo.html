@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Demo | Noshahi Test Builder</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Font Awesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#D94C58',
+                        'primary-foreground': '#ffffff',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0A0A0A;
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- Header styling --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 20px;
+            color: #ffffff;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #D94C58, rgba(217, 76, 88, 0.4));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 18px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+            font-size: 15px;
+            transition: all 0.3s;
+            padding: 8px 12px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-links a.active {
+            color: #D94C58;
+            background: rgba(217, 76, 88, 0.1);
+            text-shadow: 0 0 15px rgba(217, 76, 88, 0.3);
+        }
+
+        /* --- Dropdown Styles --- */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(20px);
+            min-width: 200px;
+            padding: 8px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            z-index: 1100;
+            margin-top: 10px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-content a {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.7) !important;
+            font-size: 14px;
+            font-weight: 500;
+            width: 100%;
+            white-space: nowrap;
+            background: transparent !important;
+        }
+
+        .dropdown-content a:hover {
+            color: #D94C58 !important;
+            background: rgba(217, 76, 88, 0.1) !important;
+            padding-left: 20px;
+        }
+
+        /* Standard Select Reset for Tailwind */
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='rgba(255,255,255,0.3)'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.2em;
+        }
+        
+        select option {
+            background-color: #1a1a1a;
+            color: white;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background: transparent;
+            color: #D94C58;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: all 0.3s;
+            border: 1px solid rgba(217, 76, 88, 0.4);
+            font-size: 14px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(217, 76, 88, 0.1);
+            border-color: #D94C58;
+        }
+
+        .btn-3d {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 25px;
+            background: #D94C58;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: all 0.3s;
+            border: none;
+            font-size: 14px;
+        }
+
+        .btn-3d:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(217, 76, 88, 0.4);
+            background: #c23d48;
+        }
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                padding: 0 15px;
+            }
+
+            #menu-toggle {
+                display: block;
+                z-index: 1100;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                width: 40px;
+                height: 40px;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s;
+            }
+
+            #menu-toggle:active {
+                transform: scale(0.9);
+                background: rgba(217, 76, 88, 0.2);
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 15px;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 1000;
+                padding: 40px 20px;
+                display: flex;
+                visibility: hidden;
+            }
+
+            .nav-links.open {
+                right: 0;
+                visibility: visible;
+            }
+
+            .nav-links a {
+                font-size: 20px;
+                width: 100%;
+                text-align: center;
+                padding: 15px;
+            }
+
+            .nav-links .dropdown {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links .dropdown-content {
+                position: static;
+                transform: none;
+                opacity: 1;
+                visibility: visible;
+                background: transparent;
+                box-shadow: none;
+                border: none;
+                width: 100%;
+                padding: 0;
+                margin-top: 0;
+            }
+
+            .nav-links .dropdown-content a {
+                font-size: 16px;
+                padding: 10px;
+                justify-content: center;
+            }
+
+            .nav-links .flex.items-center.gap-6.ml-4 {
+                flex-direction: column;
+                width: 100%;
+                margin-left: 0;
+                margin-top: 20px;
+                gap: 15px;
+            }
+
+            .nav-links .btn-secondary, .nav-links .btn-3d {
+                width: 80%;
+                justify-content: center;
+                padding: 14px;
+                font-size: 16px;
+            }
+
+            body.menu-open {
+                overflow: hidden;
+            }
+        }
+
+        #menu-toggle {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            #menu-toggle {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-wrapper">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <span>Noshahi Test Builder</span>
+            </a>
+
+            <nav class="nav-links" id="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="insights.html">Question Bank Insights</a>
+                <div class="dropdown">
+                    <a href="#">English Resources <i class="fa-solid fa-chevron-down text-[10px] ml-1"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#"><i class="fa-solid fa-book mr-2"></i> Grammar Guide</a>
+                        <a href="#"><i class="fa-solid fa-spell-check mr-2"></i> Vocabulary Builder</a>
+                        <a href="#"><i class="fa-solid fa-file-lines mr-2"></i> Writing Templates</a>
+                        <a href="#"><i class="fa-solid fa-microphone mr-2"></i> Speaking Modules</a>
+                    </div>
+                </div>
+                <a href="index.html#features">Features</a>
+                <a href="index.html#testimonials">Testimonials</a>
+
+                <div class="flex items-center gap-6 ml-4">
+                    <a href="login.html" class="btn-secondary">Login</a>
+                    <a href="register.html" class="btn-3d">Sign Up</a>
+                </div>
+            </nav>
+
+            <button id="menu-toggle" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="overflow-hidden pt-24 lg:pt-32 pb-20">
+        <div class="mx-auto max-w-6xl px-6 sm:px-8 lg:px-10">
+            <div class="text-center mb-10 lg:mb-16">
+                <h1 class="text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">Book a Demo</h1>
+                <p class="text-white/60 text-lg max-w-2xl mx-auto">Let's see how Noshahi can automate professional Matric and Intermediate test creation for your school.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+                <!-- Form Area -->
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-3xl">
+                    <form class="space-y-6" action="index.html">
+                        
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold text-white/70 ml-1">Your name <span class="text-primary">*</span></label>
+                            <input class="flex h-12 w-full rounded-xl border px-4 py-2 text-sm bg-white/5 border-white/10 text-white placeholder:text-white/30 focus-visible:outline-none focus:border-primary transition" placeholder="Your full name" name="name" required>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold text-white/70 ml-1">Email address <span class="text-primary">*</span></label>
+                            <input class="flex h-12 w-full rounded-xl border px-4 py-2 text-sm bg-white/5 border-white/10 text-white placeholder:text-white/30 focus-visible:outline-none focus:border-primary transition" placeholder="you@example.com" type="email" name="email" required>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold text-white/70 ml-1">Role <span class="text-primary">*</span></label>
+                            <select class="flex h-12 w-full rounded-xl border px-4 py-2 text-sm bg-white/5 border-white/10 text-white focus:outline-none focus:border-primary transition cursor-pointer" required>
+                                <option value="" disabled selected>Select one</option>
+                                <option value="Solo Freelancer">Class Teacher (9-12)</option>
+                                <option value="Agency Owner">School Principal</option>
+                                <option value="Testing Agency">Institutional Administrator</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold text-white/70 ml-1">Which of these best describes you? <span class="text-primary">*</span></label>
+                            <select class="flex h-12 w-full rounded-xl border px-4 py-2 text-sm bg-white/5 border-white/10 text-white focus:outline-none focus:border-primary transition cursor-pointer" required>
+                                <option value="" disabled selected>Select one</option>
+                                <option value="Veteran">An Educational Veteran</option>
+                                <option value="Just Starting">New to Automated Testing</option>
+                                <option value="Periodically">I create tests periodically</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold text-white/70 ml-1">How many tests a month do you generate? <span class="text-primary">*</span></label>
+                            <select class="flex h-12 w-full rounded-xl border px-4 py-2 text-sm bg-white/5 border-white/10 text-white focus:outline-none focus:border-primary transition cursor-pointer" required>
+                                <option value="" disabled selected>Select volume</option>
+                                <option value="1-10">1-10 papers</option>
+                                <option value="10-50">10-50 papers</option>
+                                <option value="50-100">50-100 papers</option>
+                                <option value="100+">100+ papers</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold text-white/70 ml-1">Share a link to your School's Website/LinkedIn</label>
+                            <input class="flex h-12 w-full rounded-xl border px-4 py-2 text-sm bg-white/5 border-white/10 text-white placeholder:text-white/30 focus-visible:outline-none focus:border-primary transition" placeholder="https://www.yourschool.edu" name="websiteUrl">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold text-white/70 ml-1">Any questions or notes?</label>
+                            <textarea class="flex w-full rounded-xl border px-4 py-3 text-sm bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition min-h-[100px]" name="notes" placeholder="Please share anything that will help prepare for our meeting."></textarea>
+                        </div>
+
+                        <button class="inline-flex items-center justify-center rounded-2xl font-bold transition-all duration-300 disabled:opacity-50 relative overflow-hidden group px-6 py-4 text-lg bg-[#D94C58] text-white hover:bg-[#c23d48] hover:shadow-2xl hover:shadow-[#D94C58]/30 w-full" type="submit">
+                            <span class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-linear-to-r from-transparent via-white/10 to-transparent"></span>
+                            <span class="relative z-10 flex items-center justify-center gap-3">Continue to Pick a Time <i class="fa-solid fa-arrow-right text-sm"></i></span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Visual/Info Sidebar -->
+                <div class="space-y-10 lg:sticky lg:top-32 lg:self-start">
+                    <div class="flex flex-col gap-6">
+                        <div class="flex items-center gap-6">
+                            <div class="relative">
+                                <span class="relative flex shrink-0 overflow-hidden rounded-full w-20 h-20 border-2 border-primary shadow-xl shadow-primary/20">
+                                    <img class="aspect-square size-full object-cover" alt="Product Expert" src="https://ui-avatars.com/api/?name=Product+Expert&background=D94C58&color=fff">
+                                </span>
+                                <div class="absolute bottom-1 right-1 w-5 h-5 bg-green-500 border-2 border-[#0A0A0A] rounded-full"></div>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Book Demo with Noshahi</h3>
+                                <div class="text-primary font-semibold text-sm">Product Expert</div>
+                                <div class="text-white/50 text-xs mt-2 leading-relaxed">I'll walk you through how Noshahi can transform your school's assessment success.</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 border-t border-white/10 pt-6">
+                            <span class="text-white/40 text-xs font-bold uppercase tracking-widest">Connect:</span>
+                            <div class="flex gap-4">
+                                <a href="#" class="text-white/50 hover:text-blue-400 transition-colors"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                                <a href="#" class="text-white/50 hover:text-pink-400 transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
+                                <a href="#" class="text-white/50 hover:text-white/90 transition-colors"><i class="fa-solid fa-globe text-xl"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-2">High-Quality Assessments.</h3>
+                            <p class="text-white/40 font-medium">Teachers are automating entire test batches in minutes.</p>
+                        </div>
+                        
+                        <!-- Video Section -->
+                        <div class="relative rounded-2xl overflow-hidden bg-white/5 border border-white/10 group">
+                            <video src="https://firebasestorage.googleapis.com/v0/b/lancer-prod.firebasestorage.app/o/gifs%2Fnikola-final.mp4?alt=media&token=89ceb1b0-63c6-4d01-8984-28501380a767" class="w-full h-56 lg:h-64 object-cover" autoplay loop muted playsinline></video>
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300"></div>
+                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <div class="w-16 h-16 rounded-full bg-primary/90 flex items-center justify-center text-white text-xl">
+                                    <i class="fa-solid fa-play ml-1"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <blockquote class="bg-white/5 p-8 rounded-3xl border border-white/10 relative">
+                            <div class="absolute top-4 left-6 text-primary/20 text-6xl font-serif">“</div>
+                            <p class="text-white/80 leading-relaxed italic relative z-10">“Noshahi was so effective for our school. We were able to generate and grade over 300 papers in just under two weeks. Our faculty is finally focusing on teaching instead of paperwork.”</p>
+                            <div class="mt-8 flex items-center gap-4">
+                                <img class="w-10 h-10 rounded-full border border-white/10" alt="Ali Hasan" src="https://ui-avatars.com/api/?name=Ali+Hasan&background=0A0A0A&color=fff">
+                                <div>
+                                    <div class="font-bold text-white text-sm uppercase tracking-wider">Ali Hasan</div>
+                                    <div class="text-primary text-xs font-bold">Senior Teacher</div>
+                                </div>
+                            </div>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Simple Footer -->
+    <footer class="py-10 border-t border-white/5 bg-[#0A0A0A]">
+        <div class="max-w-6xl mx-auto px-10 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-graduation-cap text-[#D94C58] text-lg"></i>
+                <span class="font-bold text-white uppercase tracking-widest text-sm">Noshahi Builder</span>
+            </div>
+            <p class="text-white/30 text-xs">© 2026 Noshahi Developers. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="#" class="text-white/30 hover:text-white transition-colors"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" class="text-white/30 hover:text-white transition-colors"><i class="fa-brands fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Mobile Menu Toggle
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            const menuIcon = menuToggle.querySelector('i');
+            const body = document.body;
+
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('open');
+                body.classList.toggle('menu-open');
+                
+                // Toggle between hamburger and X icon
+                if (navMenu.classList.contains('open')) {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-xmark');
+                } else {
+                    menuIcon.classList.remove('fa-xmark');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+
+            // Close menu when clicking a link
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('open');
+                    body.classList.remove('menu-open');
+                    menuIcon.classList.remove('fa-xmark');
+                    menuIcon.classList.add('fa-bars');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
