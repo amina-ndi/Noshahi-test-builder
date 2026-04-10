@@ -321,6 +321,167 @@
                 display: flex;
             }
         }
+        /* --- New Footer Styling --- */
+        .pre-footer {
+            padding: 100px 20px;
+            background: radial-gradient(circle at 50% 0%, rgba(217, 76, 88, 0.1) 0%, transparent 70%);
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        footer {
+            padding: 80px 0 40px;
+            background: #0A0A0A;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(217, 76, 88, 0.3), transparent);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+
+        .footer-brand .footer-logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .footer-links h4 {
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 15px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-links a i {
+            font-size: 12px;
+            margin-left: 8px;
+            opacity: 0;
+            transition: all 0.3s;
+            transform: translateX(-10px);
+        }
+
+        .footer-links a:hover i {
+            opacity: 1;
+            transform: translateX(0);
+            color: #D94C58;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .social-btn:hover {
+            background: rgba(217, 76, 88, 0.1);
+            border-color: #D94C58;
+            color: white;
+            transform: translateY(-5px) rotate(8deg);
+            box-shadow: 0 10px 20px rgba(217, 76, 88, 0.2);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr !important;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .footer-brand .footer-logo {
+                justify-content: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 
@@ -490,18 +651,76 @@
         </div>
     </main>
 
-    <!-- Simple Footer -->
-    <footer class="py-10 border-t border-white/5 bg-[#0A0A0A]">
-        <div class="max-w-6xl mx-auto px-10 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-2">
-                <i class="fa-solid fa-graduation-cap text-[#D94C58] text-lg"></i>
-                <span class="font-bold text-white uppercase tracking-widest text-sm">Noshahi Builder</span>
+    <!-- Pre-footer CTA -->
+    <section class="pre-footer">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">Ready to automate your <br> academic assessments?</h2>
+            <p class="text-white/60 text-lg mb-10 max-w-2xl mx-auto">Join thousands of teachers who are saving hours every week with Noshahi's professional test builder.</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="register.html" class="btn-3d py-4 px-10 text-lg shadow-xl shadow-primary/20">Create Free Account</a>
+                <a href="book-demo.html" class="btn-secondary py-4 px-10 text-lg">Book a School Demo</a>
             </div>
-            <p class="text-white/30 text-xs">© 2026 Noshahi Developers. All rights reserved.</p>
-            <div class="flex gap-6">
-                <a href="#" class="text-white/30 hover:text-white transition-colors"><i class="fa-brands fa-twitter"></i></a>
-                <a href="#" class="text-white/30 hover:text-white transition-colors"><i class="fa-brands fa-github"></i></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">
+                    <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <span>Noshahi Builder</span>
+                </a>
+                <p>The premium test building platform for Matric and Intermediate teachers. Empowering education through automation and quality assessment tools across Pakistan.</p>
+                <div class="social-links">
+                    <a href="#" class="social-btn" aria-label="Twitter">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-btn" aria-label="LinkedIn">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="social-btn" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="#" class="social-btn" aria-label="GitHub">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </div>
             </div>
+            
+            <div class="footer-links">
+                <h4>Platform</h4>
+                <ul>
+                    <li><a href="index.html#features">Features <i class="fa-solid fa-arrow-right-long"></i></a></li>
+                    <li><a href="insights.html">Insights <i class="fa-solid fa-arrow-right-long"></i></a></li>
+                    <li><a href="index.html#testimonials">Testimonials <i class="fa-solid fa-arrow-right-long"></i></a></li>
+                    <li><a href="login.html">Login <i class="fa-solid fa-arrow-right-long"></i></a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Support Center <i class="fa-solid fa-arrow-right-long"></i></a></li>
+                    <li><a href="#">Question Bank <i class="fa-solid fa-arrow-right-long"></i></a></li>
+                    <li><a href="#">API Documentation <i class="fa-solid fa-arrow-right-long"></i></a></li>
+                    <li><a href="#">User Guides <i class="fa-solid fa-arrow-right-long"></i></a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us <i class="fa-solid fa-arrow-right-long"></i></a></li>
+                    <li><a href="#">Our Vision <i class="fa-solid fa-arrow-right-long"></i></a></li>
+                    <li><a href="#">Privacy Policy <i class="fa-solid fa-arrow-right-long"></i></a></li>
+                    <li><a href="#">Terms of Service <i class="fa-solid fa-arrow-right-long"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Noshahi Developers Inc. All rights reserved.</p>
+            <p>Made with <i class="fa-solid fa-heart text-[#D94C58] mx-1"></i> for Pakistan's Educators</p>
         </div>
     </footer>
     <script>
