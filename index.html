@@ -538,6 +538,32 @@
         .video-control-btn i {
             font-size: 16px;
         }
+
+        /* --- Mobile Hero Responsive Fix --- */
+        @media (max-width: 640px) {
+            #home {
+                min-height: 100svh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            #home section,
+            #home > div {
+                flex: 1;
+            }
+
+            /* Limit video height on mobile so hero fits without scrolling */
+            #home .aspect-video,
+            #home [style*="aspect-ratio"] {
+                max-height: 35vh !important;
+            }
+
+            /* Reduce top padding for header offset */
+            #home .relative.pt-2 {
+                padding-top: 70px !important;
+            }
+        }
     </style>
 </head>
 
@@ -600,16 +626,16 @@
                     class="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,#0A0A0A_75%)]">
                 </div>
                 <div class="mx-auto max-w-7xl px-6">
-                    <div class="text-center sm:mx-auto lg:mr-auto mt-20 md:mt-32">
+                    <div class="text-center sm:mx-auto lg:mr-auto mt-14 sm:mt-20 md:mt-32">
                         <div style="opacity: 1;">
                             <div style="opacity: 1; filter: blur(0px); transform: none;">
                                 <span
-                                    class="inline-block px-3 sm:px-4 py-1 mb-6 rounded-full text-xs sm:text-sm font-semibold tracking-wide mt-10"
+                                    class="inline-block px-3 sm:px-4 py-1 mb-3 sm:mb-6 rounded-full text-xs sm:text-sm font-semibold tracking-wide mt-4 sm:mt-10"
                                     style="background-color: rgba(109, 40, 217, 0.2); color: rgb(167, 139, 250); border: 1px solid rgba(109, 40, 217, 0.35);">Pro
                                     Test Builder for Classes 9-12</span>
                             </div>
                             <div style="opacity: 1; filter: blur(0px); transform: none;">
-                                <h1 class="relative inline-block max-w-full md:max-w-6xl mx-auto text-balance text-5xl font-bold md:text-6xl md:font-semibold xl:text-[5.25rem] text-white"
+                                <h1 class="relative inline-block max-w-full md:max-w-6xl mx-auto text-balance text-3xl sm:text-4xl font-bold md:text-6xl md:font-semibold xl:text-[5.25rem] text-white"
                                     style="--sparkles-first-color: #9E7AFF; --sparkles-second-color: #FE8BBB;">
                                     <svg class="pointer-events-none absolute z-20" width="21" height="21"
                                         viewBox="0 0 21 21"
@@ -619,13 +645,13 @@
                                             fill="#FE8BBB"></path>
                                     </svg>
                                     <span class="relative">Create perfect Matric & Inter tests <span
-                                            class="text-3xl md:text-6xl xl:text-[5.25rem]">Without The
+                                            class="text-2xl sm:text-3xl md:text-6xl xl:text-[5.25rem]">Without The
                                             Grind.</span></span>
                                 </h1>
                             </div>
                             <div style="opacity: 1; filter: blur(0px); transform: none;">
                                 <p
-                                    class="mx-auto mt-8 mb-8 max-w-[800px] text-balance text-lg sm:text-xl md:text-2xl font-normal text-white/100">
+                                    class="mx-auto mt-4 sm:mt-8 mb-4 sm:mb-8 max-w-[800px] text-balance text-sm sm:text-xl md:text-2xl font-normal text-white/100">
                                     A professional platform for <span
                                         class="inline-block px-2 sm:px-3 md:px-4 py-[2px] mx-0.5 sm:mx-1 rounded-full font-semibold text-base sm:text-lg md:text-2xl"
                                         style="background-color: rgba(109, 40, 217, 0.25); color: rgb(167, 139, 250); border: 1px solid rgba(109, 40, 217, 0.4);">Matric</span>
@@ -641,16 +667,16 @@
             </div>
             <div class="">
                 <div style="opacity: 1; filter: blur(0px); transform: none;">
-                    <div class="relative flex justify-center mt-4 px-2 sm:mr-0 sm:mt-8 md:mt-12 z-10 pb-16">
+                    <div class="relative flex justify-center mt-2 sm:mt-4 px-2 sm:mr-0 sm:mt-8 md:mt-12 z-10 pb-6 sm:pb-16">
                         <div class="absolute top-0 -z-10 h-full w-full">
                             <div
                                 class="absolute bottom-auto left-auto right-0 top-0 h-[500px] w-[800px] -translate-x-[15%] translate-y-[-10%] rounded-full bg-[rgba(173,109,244,0.5)] opacity-50 blur-[80px]">
                             </div>
                         </div>
-                        <div class="relative w-full pt-8">
+                        <div class="relative w-full pt-2 sm:pt-8">
                             <div
                                 class="relative mx-auto max-w-6xl overflow-hidden rounded-2xl border border-white/[0.08] shadow-2xl shadow-black/40">
-                                <div class="relative aspect-video rounded-2xl overflow-hidden bg-black">
+                                <div class="relative rounded-2xl overflow-hidden bg-black" style="aspect-ratio: 16/9; max-height: 40vh;">
                                     <video
                                         id="heroVideo"
                                         src="video/noshahi.jpg.mp4"
