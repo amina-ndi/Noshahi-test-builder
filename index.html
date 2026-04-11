@@ -508,6 +508,105 @@
             }
         }
 
+        /* --- Laptop Frame Styles --- */
+        .laptop-frame {
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+            perspective: 1200px;
+        }
+
+        .laptop-screen {
+            position: relative;
+            background: #1a1a1a;
+            border-radius: 16px 16px 0 0;
+            padding: 18px 18px 12px;
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            border-bottom: none;
+            box-shadow:
+                0 -2px 30px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .laptop-screen::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 30;
+        }
+
+        .laptop-screen-inner {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .laptop-base {
+            position: relative;
+            background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+            height: 18px;
+            border-radius: 0 0 8px 8px;
+            margin: 0 -2px;
+            border: 2px solid rgba(255, 255, 255, 0.06);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .laptop-base::before {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 5px;
+            border-radius: 0 0 6px 6px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-top: none;
+        }
+
+        .laptop-bottom {
+            position: relative;
+            height: 10px;
+            background: linear-gradient(180deg, #1a1a1a 0%, #111 100%);
+            margin: 0 40px;
+            border-radius: 0 0 12px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-top: none;
+        }
+
+        .laptop-shadow {
+            width: 85%;
+            height: 30px;
+            margin: 0 auto;
+            background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, transparent 70%);
+            filter: blur(8px);
+            margin-top: -5px;
+        }
+
+        /* Subtle glow behind the laptop */
+        .laptop-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 120%;
+            height: 120%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(ellipse at center, rgba(173, 109, 244, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
         /* --- Video Control Button --- */
         .video-control-btn {
             position: absolute;
@@ -539,7 +638,34 @@
             font-size: 16px;
         }
 
-        /* --- Mobile Hero Responsive Fix --- */
+        /* --- Mobile & Tablet Hero Responsive Fix --- */
+        @media (max-width: 1024px) {
+            .laptop-screen {
+                padding: 12px 12px 8px;
+                border-radius: 12px 12px 0 0;
+            }
+
+            .laptop-screen::before {
+                width: 6px;
+                height: 6px;
+                top: 5px;
+            }
+
+            .laptop-base {
+                height: 14px;
+            }
+
+            .laptop-base::before {
+                width: 60px;
+                height: 4px;
+            }
+
+            .laptop-bottom {
+                height: 8px;
+                margin: 0 30px;
+            }
+        }
+
         @media (max-width: 640px) {
             #home {
                 min-height: 100svh;
@@ -549,14 +675,50 @@
             }
 
             #home section,
-            #home > div {
+            #home>div {
                 flex: 1;
             }
 
-            /* Limit video height on mobile so hero fits without scrolling */
-            #home .aspect-video,
-            #home [style*="aspect-ratio"] {
-                max-height: 35vh !important;
+            .laptop-screen {
+                padding: 8px 8px 6px;
+                border-radius: 8px 8px 0 0;
+            }
+
+            .laptop-screen::before {
+                width: 5px;
+                height: 5px;
+                top: 3px;
+            }
+
+            .laptop-screen-inner {
+                border-radius: 4px;
+            }
+
+            .laptop-base {
+                height: 10px;
+                border-radius: 0 0 4px 4px;
+            }
+
+            .laptop-base::before {
+                width: 40px;
+                height: 3px;
+            }
+
+            .laptop-bottom {
+                height: 6px;
+                margin: 0 20px;
+                border-radius: 0 0 8px 8px;
+            }
+
+            .video-control-btn {
+                width: 32px;
+                height: 32px;
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .video-control-btn i {
+                font-size: 12px;
             }
 
             /* Reduce top padding for header offset */
@@ -667,28 +829,34 @@
             </div>
             <div class="">
                 <div style="opacity: 1; filter: blur(0px); transform: none;">
-                    <div class="relative flex justify-center mt-2 sm:mt-4 px-2 sm:mr-0 sm:mt-8 md:mt-12 z-10 pb-6 sm:pb-16">
+                    <div
+                        class="relative flex justify-center mt-2 sm:mt-4 px-2 sm:mr-0 sm:mt-8 md:mt-12 z-10 pb-6 sm:pb-16">
                         <div class="absolute top-0 -z-10 h-full w-full">
                             <div
                                 class="absolute bottom-auto left-auto right-0 top-0 h-[500px] w-[800px] -translate-x-[15%] translate-y-[-10%] rounded-full bg-[rgba(173,109,244,0.5)] opacity-50 blur-[80px]">
                             </div>
                         </div>
                         <div class="relative w-full pt-2 sm:pt-8">
-                            <div
-                                class="relative mx-auto max-w-6xl overflow-hidden rounded-2xl border border-white/[0.08] shadow-2xl shadow-black/40">
-                                <div class="relative rounded-2xl overflow-hidden bg-black" style="aspect-ratio: 16/9; max-height: 40vh;">
-                                    <video
-                                        id="heroVideo"
-                                        src="video/noshahi.jpg.mp4"
-                                        class="absolute inset-0 w-full h-full object-cover rounded-2xl"
-                                        autoplay loop muted playsinline preload="metadata"></video>
-                                    <button id="videoToggle" class="video-control-btn" aria-label="Toggle Video Playback">
-                                        <i class="fa-solid fa-pause text-[#D94C58]"></i>
-                                    </button>
-                                    <div
-                                        class="absolute inset-0 pointer-events-none z-[15] rounded-2xl ring-1 ring-inset ring-white/[0.06]">
+                            <!-- Laptop Frame -->
+                            <div class="laptop-frame">
+                                <div class="laptop-glow"></div>
+                                <div class="laptop-screen">
+                                    <div class="laptop-screen-inner">
+                                        <video id="heroVideo" src="video/noshahi.jpg.mp4"
+                                            class="absolute inset-0 w-full h-full object-cover" autoplay loop muted
+                                            playsinline preload="metadata"></video>
+                                        <button id="videoToggle" class="video-control-btn"
+                                            aria-label="Toggle Video Playback">
+                                            <i class="fa-solid fa-pause text-[#D94C58]"></i>
+                                        </button>
+                                        <div
+                                            class="absolute inset-0 pointer-events-none z-[15] ring-1 ring-inset ring-white/[0.06]">
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="laptop-base"></div>
+                                <div class="laptop-bottom"></div>
+                                <div class="laptop-shadow"></div>
                             </div>
                         </div>
                     </div>
@@ -906,10 +1074,12 @@
                                             class="relative inline-block rounded-lg bg-gradient-to-r px-1 pb-1 from-green-700 to-emerald-700 text-white">Syllabus-Aligned</span>
                                         Question Bank
                                     </h3>
-                                    <p class="text-base md:text-lg leading-relaxed text-white/80">A centralized
-                                        repository of questions tagged with Class, Subject, Chapter, and Topic.
-                                        Specifically built for the Matric and Intermediate curriculum, ensuring every
-                                        question matches your teaching plan.</p>
+                                    <p class="text-base md:text-lg leading-relaxed text-white/80">
+                                        A single place where all questions are stored and organized by Class, Subject,
+                                        Chapter, and Topic. It is specially designed for
+                                        Matric and Intermediate students, so every question matches your syllabus and
+                                        teaching plan.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -938,9 +1108,11 @@
                                         Exam Patterns
                                     </h3>
                                     <p class="text-base md:text-lg leading-relaxed text-white/80">Take full control of
-                                        your assessments. Customize tests by chapter coverage, difficulty ratios, and
-                                        specific board patterns. Teachers can even add their own custom questions to the
-                                        bank effortlessly.</p>
+                                        your tests. You can choose chapters,
+                                        set difficulty levels, and follow board patterns. Teachers can also easily add
+                                        their own questions to the question bank.
+
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -997,10 +1169,11 @@
                                     <h3 class="text-2xl md:text-3xl font-semibold text-white">Multi-Role <span
                                             class="relative inline-block rounded-lg bg-gradient-to-r px-1 pb-1 from-yellow-700 to-amber-700">Management</span>
                                     </h3>
-                                    <p class="text-base md:text-lg leading-relaxed text-white/80">Empower your entire
-                                        institution with role-based access. Dedicated portals for Admins to manage
-                                        staff, Teachers to build tests, and Students to view their respective assessment
-                                        schedules.</p>
+                                    <p class="text-base md:text-lg leading-relaxed text-white/80">Give your whole
+                                        institution easy access with different roles.
+                                        Admins can manage staff, teachers can create tests, and
+                                        students can check their test schedules.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -1324,8 +1497,10 @@
     <!-- Pre-footer CTA -->
     <section class="pre-footer">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">Ready to automate your <br> academic assessments?</h2>
-            <p class="text-white/60 text-lg mb-10 max-w-2xl mx-auto">Join thousands of teachers who are saving hours every week with Noshahi's professional test builder.</p>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">Ready to automate your <br> academic assessments?
+            </h2>
+            <p class="text-white/60 text-lg mb-10 max-w-2xl mx-auto">Join thousands of teachers who are saving hours
+                every week with Noshahi's professional test builder.</p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a href="register.html" class="btn-3d py-4 px-10 text-lg">Create Free Account</a>
                 <a href="book-demo.html" class="btn-secondary py-4 px-10 text-lg">Book a School Demo</a>
@@ -1341,7 +1516,8 @@
                     <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
                     <span>Noshahi Builder</span>
                 </a>
-                <p>The premium test building platform for Matric and Intermediate teachers. Empowering education through automation and quality assessment tools across Pakistan.</p>
+                <p>The premium test building platform for Matric and Intermediate teachers. Empowering education through
+                    automation and quality assessment tools across Pakistan.</p>
                 <div class="social-links">
                     <a href="#" class="social-btn" aria-label="Twitter">
                         <i class="fa-brands fa-twitter"></i>
@@ -1357,13 +1533,14 @@
                     </a>
                 </div>
             </div>
-            
+
             <div class="footer-links">
                 <h4>Platform</h4>
                 <ul>
                     <li><a href="index.html#features">Features <i class="fa-solid fa-arrow-right-long"></i></a></li>
                     <li><a href="insights.html">Insights <i class="fa-solid fa-arrow-right-long"></i></a></li>
-                    <li><a href="index.html#testimonials">Testimonials <i class="fa-solid fa-arrow-right-long"></i></a></li>
+                    <li><a href="index.html#testimonials">Testimonials <i class="fa-solid fa-arrow-right-long"></i></a>
+                    </li>
                     <li><a href="login.html">Login <i class="fa-solid fa-arrow-right-long"></i></a></li>
                 </ul>
             </div>
