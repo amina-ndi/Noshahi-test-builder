@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="light">
 
 <head>
     <meta charset="UTF-8">
@@ -22,11 +22,18 @@
                         sans: ['Outfit', 'sans-serif'],
                     },
                     colors: {
-                        background: '#0A0A0A',
+                        background: '#F8FAFC',
                         primary: {
-                            DEFAULT: '#D94C58',
+                            DEFAULT: '#004B93',
+                            light: '#0693E3',
+                            deep: '#003569',
                             foreground: '#ffffff',
-                        }
+                        },
+                        secondary: {
+                            DEFAULT: '#FFB800',
+                            glow: 'rgba(255, 184, 0, 0.4)',
+                            deep: '#E5A600',
+                        },
                     }
                 }
             }
@@ -35,8 +42,8 @@
 
     <style>
         body {
-            background-color: #0A0A0A;
-            color: #ffffff;
+            background-color: #F8FAFC;
+            color: #0F172A;
             font-family: 'Outfit', sans-serif;
             overflow-x: hidden;
         }
@@ -67,19 +74,19 @@
 
         .visual-side {
             flex: 1.2;
-            background: #0A0A0A;
+            background: #F8FAFC;
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: center;
             padding: 60px;
             overflow: hidden;
-            border-left: 1px solid rgba(255, 255, 255, 0.05);
+            border-left: 1px solid rgba(0, 75, 147, 0.05);
         }
 
         .glass-card {
             background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(15, 23, 42, 0.1);
             backdrop-filter: blur(20px);
             border-radius: 24px;
             padding: 48px;
@@ -96,27 +103,27 @@
             display: block;
             font-size: 13px;
             font-weight: 600;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(15, 23, 42, 0.6);
             margin-bottom: 8px;
             letter-spacing: 0.02em;
         }
 
         .input-field {
             width: 100%;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(15, 23, 42, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             padding: 12px 16px;
-            color: white;
+            color: #0F172A;
             outline: none;
             transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-size: 14px;
         }
 
         .input-field:focus {
-            border-color: #D94C58;
-            background: rgba(217, 76, 88, 0.05);
-            box-shadow: 0 0 20px rgba(217, 76, 88, 0.1);
+            border-color: #004B93;
+            background: rgba(0, 75, 147, 0.05);
+            box-shadow: 0 0 20px rgba(0, 75, 147, 0.1);
         }
 
         select.input-field {
@@ -129,33 +136,34 @@
 
         .btn-primary {
             width: 100%;
-            background: #D94C58;
-            color: white;
+            background: #FFB800;
+            color: #0F172A;
             padding: 16px;
             border-radius: 12px;
             font-weight: 700;
             border: none;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             margin-top: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
             font-size: 15px;
+            box-shadow: 0 4px 0 #E5A600, 0 8px 20px rgba(255, 184, 0, 0.3);
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            background: #e65561;
-            box-shadow: 0 10px 30px rgba(217, 76, 88, 0.4);
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, #FFCA28, #FFB800);
+            box-shadow: 0 8px 0 #E5A600, 0 15px 30px rgba(255, 184, 0, 0.4);
         }
 
         .visual-glow {
             position: absolute;
             width: 800px;
             height: 800px;
-            background: radial-gradient(circle, rgba(217, 76, 88, 0.12) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(109, 40, 217, 0.12) 0%, transparent 70%);
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -179,18 +187,19 @@
             text-decoration: none;
             font-weight: 800;
             font-size: 22px;
-            color: #ffffff;
+            color: #0F172A;
         }
 
         .logo-icon {
             width: 44px;
             height: 44px;
-            background: linear-gradient(135deg, #D94C58, rgba(217, 76, 88, 0.5));
+            background: #FFB800;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 20px rgba(217, 76, 88, 0.3);
+            box-shadow: 0 8px 20px rgba(255, 184, 0, 0.3);
+            color: #0F172A;
         }
 
         @media (max-width: 1024px) {
@@ -206,15 +215,15 @@
         /* --- New Footer Styling --- */
         .pre-footer {
             padding: 100px 20px;
-            background: radial-gradient(circle at 50% 0%, rgba(217, 76, 88, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle at 50% 0%, rgba(0, 75, 147, 0.1) 0%, transparent 70%);
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(15, 23, 42, 0.05);
         }
 
         footer {
             padding: 80px 0 40px;
-            background: #0A0A0A;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            background: #FFFFFF;
+            border-top: 1px solid rgba(15, 23, 42, 0.08);
             position: relative;
             overflow: hidden;
             width: 100%;
@@ -227,7 +236,7 @@
             left: 10%;
             right: 10%;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(217, 76, 88, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(0, 75, 147, 0.3), transparent);
         }
 
         .footer-grid {
@@ -242,7 +251,7 @@
         .footer-brand .footer-logo {
             font-size: 24px;
             font-weight: 800;
-            color: white;
+            color: #0F172A;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -251,13 +260,13 @@
         }
 
         .footer-brand p {
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(15, 23, 42, 0.6);
             line-height: 1.6;
             font-size: 15px;
         }
 
         .footer-links h4 {
-            color: white;
+            color: #0F172A;
             font-size: 14px;
             font-weight: 700;
             margin-bottom: 25px;
@@ -276,7 +285,7 @@
         }
 
         .footer-links a {
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(15, 23, 42, 0.6);
             text-decoration: none;
             font-size: 15px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -285,7 +294,7 @@
         }
 
         .footer-links a:hover {
-            color: white;
+            color: #0F172A;
             transform: translateX(5px);
         }
 
@@ -300,7 +309,7 @@
         .footer-links a:hover i {
             opacity: 1;
             transform: translateX(0);
-            color: #D94C58;
+            color: #004B93;
         }
 
         .social-links {
@@ -313,33 +322,33 @@
             width: 44px;
             height: 44px;
             border-radius: 12px;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(15, 23, 42, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(15, 23, 42, 0.6);
             text-decoration: none;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .social-btn:hover {
-            background: rgba(217, 76, 88, 0.1);
-            border-color: #D94C58;
-            color: white;
+            background: rgba(6, 147, 227, 0.1);
+            border-color: #004B93;
+            color: #0F172A;
             transform: translateY(-5px) rotate(8deg);
-            box-shadow: 0 10px 20px rgba(217, 76, 88, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 75, 147, 0.2);
         }
 
         .footer-bottom {
             max-width: 1200px;
             margin: 0 auto;
             padding: 30px 20px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(15, 23, 42, 0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(15, 23, 42, 0.5);
             font-size: 14px;
         }
 
@@ -380,13 +389,13 @@
         <!-- Form Side -->
         <div class="form-side">
             <div class="visual-glow"
-                style="background: radial-gradient(circle, rgba(217, 76, 88, 0.08) 0%, transparent 70%); top: 60%; left: 70%;">
+                style="background: radial-gradient(circle, rgba(6, 147, 227, 0.08) 0%, transparent 70%); top: 60%; left: 70%;">
             </div>
 
             <div class="glass-card">
                 <div class="mb-8 text-center">
                     <h1 class="text-3xl font-bold mb-3 tracking-tight">Create Account</h1>
-                    <p class="text-white/40 text-sm">Join the next generation of educators</p>
+                    <p class="text-slate-900/40 text-sm">Join the next generation of educators</p>
                 </div>
 
                 <form action="index.html">
@@ -417,7 +426,7 @@
 
                     <div class="input-group">
                         <label class="input-label" for="password">Create Password</label>
-                        <input type="password" id="password" class="input-field" placeholder="••••••••" required>
+                        <input type="password" id="password" class="input-field" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" required>
                     </div>
 
                     <button type="submit" class="btn-primary">
@@ -426,7 +435,7 @@
                     </button>
 
                     <div class="mt-8 text-center text-sm">
-                        <span class="text-white/30">Already have an account?</span>
+                        <span class="text-slate-900/30">Already have an account?</span>
                         <a href="login.html" class="text-primary font-bold ml-1 hover:underline underline-offset-4">Sign
                             In</a>
                     </div>
@@ -444,14 +453,13 @@
                     The Gold Standard
                 </div>
 
-                <h2 class="text-5xl font-bold leading-[1.15] mb-8">
+                <h2 class="text-5xl font-bold leading-[1.15] mb-8 text-slate-900">
                     Automate testing, <br>
                     <span
-                        class="bg-gradient-to-r from-primary to-[#e65561] bg-clip-text text-transparent italic">elevate
-                        results.</span>
+                        class="bg-gradient-to-r from-primary-light to-secondary bg-clip-text text-transparent italic">elevate results.</span>
                 </h2>
 
-                <p class="text-xl text-white/50 mb-12 max-w-lg leading-relaxed">
+                <p class="text-xl text-slate-500 mb-12 max-w-lg leading-relaxed">
                     Focus on teaching while we handle the heavy lifting. Generate professional assessments, auto-grade
                     students, and track progress over time.
                 </p>
@@ -460,44 +468,44 @@
                     <div class="space-y-6">
                         <div class="flex items-center gap-4">
                             <div
-                                class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-primary">
+                                class="w-10 h-10 rounded-xl bg-white/80 shadow-md border-inherit border-slate-200 border border-slate-200 flex items-center justify-center text-primary">
                                 <i class="fa-solid fa-bolt"></i>
                             </div>
                             <div>
-                                <p class="text-sm font-bold text-white">Instant Gen</p>
-                                <p class="text-[11px] text-white/40">Zero wait time</p>
+                                <p class="text-sm font-bold text-slate-900">Instant Gen</p>
+                                <p class="text-[11px] text-slate-900/40">Zero wait time</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-4">
                             <div
-                                class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-primary">
+                                class="w-10 h-10 rounded-xl bg-white/80 shadow-md border-inherit border-slate-200 border border-slate-200 flex items-center justify-center text-primary">
                                 <i class="fa-solid fa-shield-halved"></i>
                             </div>
                             <div>
-                                <p class="text-sm font-bold text-white">Secure Bank</p>
-                                <p class="text-[11px] text-white/40">Private content</p>
+                                <p class="text-sm font-bold text-slate-900">Secure Bank</p>
+                                <p class="text-[11px] text-slate-900/40">Private content</p>
                             </div>
                         </div>
                     </div>
                     <div class="space-y-6">
                         <div class="flex items-center gap-4">
                             <div
-                                class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-primary">
+                                class="w-10 h-10 rounded-xl bg-white/80 shadow-md border-inherit border-slate-200 border border-slate-200 flex items-center justify-center text-primary">
                                 <i class="fa-solid fa-graduation-cap"></i>
                             </div>
                             <div>
-                                <p class="text-sm font-bold text-white">Academic Align</p>
-                                <p class="text-[11px] text-white/40">Syllabus synced</p>
+                                <p class="text-sm font-bold text-slate-900">Academic Align</p>
+                                <p class="text-[11px] text-slate-900/40">Syllabus synced</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-4">
                             <div
-                                class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-primary">
+                                class="w-10 h-10 rounded-xl bg-white/80 shadow-md border-inherit border-slate-200 border border-slate-200 flex items-center justify-center text-primary">
                                 <i class="fa-solid fa-robot"></i>
                             </div>
                             <div>
-                                <p class="text-sm font-bold text-white">AI Grading</p>
-                                <p class="text-[11px] text-white/40">Unbiased results</p>
+                                <p class="text-sm font-bold text-slate-900">AI Grading</p>
+                                <p class="text-[11px] text-slate-900/40">Unbiased results</p>
                             </div>
                         </div>
                     </div>
@@ -505,13 +513,13 @@
             </div>
 
             <!-- Bottom Testimonial -->
-            <div class="mt-auto pt-16 border-t border-white/5">
+            <div class="mt-auto pt-16 border-t border-slate-100">
                 <div class="flex items-center gap-4">
-                    <img src="https://ui-avatars.com/api/?name=Sarah+M&background=D94C58&color=fff"
-                        class="w-12 h-12 rounded-full border border-white/10 shadow-lg shadow-white/5">
+                    <img src="https://ui-avatars.com/api/?name=Sarah+M&background=004b93&color=fff"
+                        class="w-12 h-12 rounded-full border border-slate-200 shadow-lg shadow-white/5">
                     <div>
-                        <p class="text-white font-bold text-sm">Sarah Mitchell</p>
-                        <p class="text-white/30 text-[11px]">Principal · "Transformed our school's efficiency"</p>
+                        <p class="text-slate-900 font-bold text-sm">Sarah Mitchell</p>
+                        <p class="text-slate-900/30 text-[11px]">Principal Â· "Transformed our school's efficiency"</p>
                     </div>
                 </div>
             </div>
@@ -522,3 +530,5 @@
 </body>
 
 </html>
+
+

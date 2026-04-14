@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noshahi Test Builder</title>
     <meta name="description"
-        content="Automate test creation, manage student portals, and export professional PDF assessments worldwide—on autopilot.">
+        content="Automate test creation, manage student portals, and export professional PDF assessments worldwideâ€”on autopilot.">
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
@@ -25,15 +25,33 @@
                         sans: ['Outfit', 'sans-serif'],
                     },
                     colors: {
-                        background: '#0A0A0A',
+                        background: '#F8FAFC',
                         primary: {
-                            DEFAULT: '#0070ff',
+                            DEFAULT: '#004B93',
+                            light: '#0693E3',
+                            deep: '#003569',
                             foreground: '#ffffff',
-                        }
+                        },
+                        accent: {
+                            DEFAULT: '#0693E3',
+                            glow: 'rgba(6, 147, 227, 0.4)',
+                        },
+                        secondary: {
+                            DEFAULT: '#FFB800',
+                            glow: 'rgba(255, 184, 0, 0.4)',
+                            deep: '#E5A600',
+                        },
+                    },
+                    boxShadow: {
+                        '3d': '0 10px 30px -5px rgba(0, 0, 0, 0.1), 0 20px 60px -10px rgba(0, 75, 147, 0.05)',
+                        '3d-hover': '0 20px 40px -5px rgba(0, 0, 0, 0.15), 0 30px 80px -10px rgba(0, 75, 147, 0.15)',
+                        'blue-glow': '0 0 20px rgba(6, 147, 227, 0.5)',
+                        'gold-glow': '0 0 25px rgba(255, 184, 0, 0.5)',
                     },
                     animation: {
                         'scroll-ltr': 'scroll-ltr 30s linear infinite',
                         'scroll-rtl': 'scroll-rtl 30s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
                     },
                     keyframes: {
                         'scroll-ltr': {
@@ -43,6 +61,10 @@
                         'scroll-rtl': {
                             '0%': { transform: 'translateX(-50%)' },
                             '100%': { transform: 'translateX(0)' },
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
                         }
                     }
                 }
@@ -50,9 +72,23 @@
         }
     </script>
     <style>
+        :root {
+            --primary: #004B93;
+            --primary-light: #0693E3;
+            --primary-deep: #003569;
+            --secondary: #FFB800;
+            --secondary-deep: #E5A600;
+            --accent: #0693E3;
+            --bg: #F8FAFC;
+            --text-main: #0F172A;
+            --text-muted: #475569;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(0, 75, 147, 0.1);
+        }
+
         body {
-            background-color: #0A0A0A;
-            color: #ffffff;
+            background: linear-gradient(135deg, #F9FAFB 0%, #E2E8F0 100%);
+            color: var(--text-main);
             font-family: 'Outfit', sans-serif;
             overflow-x: hidden;
             scroll-behavior: smooth;
@@ -66,9 +102,9 @@
             width: 100%;
             padding: 20px 0;
             z-index: 1000;
-            background: rgba(10, 10, 10, 0.8);
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(15, 23, 42, 0.1);
         }
 
         .nav-wrapper {
@@ -87,19 +123,27 @@
             text-decoration: none;
             font-weight: 800;
             font-size: 20px;
-            color: #ffffff;
+            color: #0F172A;
         }
 
         .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #D94C58, rgba(217, 76, 88, 0.4));
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 10px;
-            font-size: 18px;
+            border-radius: 14px;
+            font-size: 20px;
+            box-shadow: 0 4px 15px rgba(0, 75, 147, 0.3);
+            transform: perspective(500px) rotateY(-10deg);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .logo-icon:hover {
+            transform: perspective(500px) rotateY(0deg) scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 75, 147, 0.4);
         }
 
         .nav-links {
@@ -110,7 +154,7 @@
 
         .nav-links a {
             text-decoration: none;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(15, 23, 42, 0.7);
             font-weight: 500;
             font-size: 15px;
             transition: all 0.3s;
@@ -120,14 +164,16 @@
         }
 
         .nav-links a:hover {
-            color: white;
-            background: rgba(255, 255, 255, 0.05);
+            color: var(--primary);
+            background: rgba(0, 71, 171, 0.05);
+            transform: translateY(-2px);
         }
 
         .nav-links a.active {
-            color: #D94C58;
-            background: rgba(217, 76, 88, 0.1);
-            text-shadow: 0 0 15px rgba(217, 76, 88, 0.3);
+            color: var(--primary);
+            background: rgba(0, 71, 171, 0.08);
+            box-shadow: inset 0 -2px 0 var(--secondary);
+            text-shadow: 0 0 15px rgba(0, 71, 171, 0.2);
         }
 
         /* --- Dropdown Styles --- */
@@ -141,16 +187,16 @@
             top: 100%;
             left: 50%;
             transform: translateX(-50%) translateY(10px);
-            background: rgba(20, 20, 20, 0.95);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            min-width: 200px;
-            padding: 8px;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            min-width: 220px;
+            padding: 10px;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0, 71, 171, 0.15);
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid var(--glass-border);
             z-index: 1100;
             margin-top: 10px;
         }
@@ -166,7 +212,7 @@
             align-items: center;
             padding: 10px 15px;
             border-radius: 8px;
-            color: rgba(255, 255, 255, 0.7) !important;
+            color: rgba(15, 23, 42, 0.7) !important;
             font-size: 14px;
             font-weight: 500;
             width: 100%;
@@ -175,8 +221,8 @@
         }
 
         .dropdown-content a:hover {
-            color: #D94C58 !important;
-            background: rgba(217, 76, 88, 0.1) !important;
+            color: var(--primary) !important;
+            background: rgba(0, 75, 147, 0.1) !important;
             padding-left: 20px;
         }
 
@@ -190,55 +236,68 @@
         .btn-secondary {
             display: inline-flex;
             align-items: center;
-            padding: 10px 20px;
+            padding: 12px 24px;
             background: transparent;
-            color: #D94C58;
+            color: var(--primary);
             text-decoration: none;
             font-weight: 700;
-            border-radius: 8px;
-            transition: all 0.3s;
-            border: 1px solid rgba(217, 76, 88, 0.4);
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid rgba(0, 71, 171, 0.2);
             font-size: 14px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 71, 171, 0.05);
         }
 
         .btn-secondary:hover {
-            background: rgba(217, 76, 88, 0.1);
-            border-color: #D94C58;
+            background: rgba(255, 184, 0, 0.05);
+            border-color: var(--secondary);
+            color: var(--secondary-deep);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 184, 0, 0.15);
         }
 
         .btn-3d {
             display: inline-flex;
             align-items: center;
-            padding: 10px 25px;
-            background: #D94C58;
-            color: #fff;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, var(--secondary), #FFCA28);
+            color: #0F172A;
             text-decoration: none;
             font-weight: 700;
-            border-radius: 8px;
-            transition: all 0.3s;
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: none;
             font-size: 14px;
+            box-shadow: 0 4px 0 var(--secondary-deep), 0 8px 20px rgba(255, 184, 0, 0.3);
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
         }
 
         .btn-3d:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(217, 76, 88, 0.4);
-            background: #c23d48;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 0 var(--secondary-deep), 0 15px 30px rgba(255, 184, 0, 0.4);
+            background: linear-gradient(135deg, #FFCA28, var(--secondary));
+        }
+
+        .btn-3d:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 0 var(--primary-deep), 0 4px 10px rgba(0, 71, 171, 0.2);
         }
 
 
         /* --- New Footer Styling --- */
         .pre-footer {
             padding: 100px 20px;
-            background: radial-gradient(circle at 50% 0%, rgba(217, 76, 88, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle at 50% 0%, rgba(6, 147, 227, 0.1) 0%, transparent 70%);
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(15, 23, 42, 0.05);
         }
 
         footer {
             padding: 80px 0 40px;
-            background: #0A0A0A;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            background: #FFFFFF;
+            border-top: 1px solid rgba(15, 23, 42, 0.08);
             position: relative;
             overflow: hidden;
         }
@@ -250,7 +309,7 @@
             left: 10%;
             right: 10%;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(217, 76, 88, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(6, 147, 227, 0.3), transparent);
         }
 
         .footer-grid {
@@ -265,7 +324,7 @@
         .footer-brand .footer-logo {
             font-size: 24px;
             font-weight: 800;
-            color: white;
+            color: #0F172A;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -274,13 +333,13 @@
         }
 
         .footer-brand p {
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(15, 23, 42, 0.6);
             line-height: 1.6;
             font-size: 15px;
         }
 
         .footer-links h4 {
-            color: white;
+            color: #0F172A;
             font-size: 14px;
             font-weight: 700;
             margin-bottom: 25px;
@@ -299,7 +358,7 @@
         }
 
         .footer-links a {
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(15, 23, 42, 0.6);
             text-decoration: none;
             font-size: 15px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -308,7 +367,7 @@
         }
 
         .footer-links a:hover {
-            color: white;
+            color: #0F172A;
             transform: translateX(5px);
         }
 
@@ -323,7 +382,7 @@
         .footer-links a:hover i {
             opacity: 1;
             transform: translateX(0);
-            color: #D94C58;
+            color: #6D28D9;
         }
 
         .social-links {
@@ -336,33 +395,33 @@
             width: 44px;
             height: 44px;
             border-radius: 12px;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(15, 23, 42, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(15, 23, 42, 0.6);
             text-decoration: none;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .social-btn:hover {
-            background: rgba(217, 76, 88, 0.1);
-            border-color: #D94C58;
-            color: white;
+            background: rgba(6, 147, 227, 0.1);
+            border-color: var(--primary-light);
+            color: #0F172A;
             transform: translateY(-5px) rotate(8deg);
-            box-shadow: 0 10px 20px rgba(217, 76, 88, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 75, 147, 0.2);
         }
 
         .footer-bottom {
             max-width: 1200px;
             margin: 0 auto;
             padding: 30px 20px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(15, 23, 42, 0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(15, 23, 42, 0.5);
             font-size: 14px;
         }
 
@@ -409,7 +468,7 @@
 
             #menu-toggle:active {
                 transform: scale(0.9);
-                background: rgba(217, 76, 88, 0.2);
+                background: rgba(109, 40, 217, 0.2);
             }
 
             .nav-links {
@@ -621,17 +680,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: #0F172A;
             cursor: pointer;
             z-index: 20;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .video-control-btn:hover {
-            background: rgba(217, 76, 88, 0.8);
-            border-color: #D94C58;
+            background: rgba(0, 75, 147, 0.8);
+            border-color: var(--primary);
             transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(217, 76, 88, 0.4);
+            box-shadow: 0 0 20px rgba(0, 75, 147, 0.4);
         }
 
         .video-control-btn i {
@@ -726,10 +785,168 @@
                 padding-top: 70px !important;
             }
         }
+
+        /* --- Moving Stars Background --- */
+        body section {
+            background-color: transparent !important;
+        }
+
+        #css-stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+            background: #F8FAFC;
+        }
+
+        .moving-star {
+            position: absolute;
+            background-color: var(--primary);
+            border-radius: 50%;
+            animation: moveStar linear infinite;
+            box-shadow: 0 0 10px rgba(0, 71, 171, 0.4);
+            opacity: 0.6;
+        }
+
+        @keyframes moveStar {
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+
+        /* --- Custom Professional Cursor --        .custom-cursor {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 14px;
+            height: 14px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 999999;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+                height 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+                background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(0, 71, 171, 0.5);
+        }
+
+        .custom-cursor.hover-state {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 184, 0, 0.9);
+            border: 2px solid #FFFFFF;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 0 30px rgba(255, 184, 0, 0.6);
+        }
+
+        .custom-cursor i {
+            color: var(--secondary);
+            font-size: 18px;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }         transform: scale(0) rotate(-45deg);
+        }
+
+        .custom-cursor.hover-state i {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+
+        @media (min-width: 1024px) {
+
+            body,
+            a,
+            button,
+            .faq-card,
+            .trust-card,
+            section,
+            [class*="hover:"] {
+                cursor: none !important;
+            }
+        }
+
+        @media (max-width: 1023px) {
+            .custom-cursor {
+                display: none !important;
+            }
+        }
+
+        /* --- Custom Animated Text Reveal for Headings --- */
+        .reveal-text {
+            position: relative;
+            display: inline-block;
+            padding: 4px 12px;
+            z-index: 1;
+        }
+
+        .reveal-text::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(6, 147, 227, 0.12), rgba(0, 75, 147, 0.1));
+            border-radius: 12px;
+            z-index: -1;
+            opacity: 0;
+            transform: scale(0.9);
+            box-shadow: inset 0 0 0 1px rgba(6, 147, 227, 0.15);
+            transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+        }
+
+        .reveal-text-inner {
+            color: #0F172A;
+            background: linear-gradient(90deg, #004B93, #0693E3, #003569);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            transition: color 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-parent.in-view .reveal-text::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .reveal-parent.in-view .reveal-text-inner {
+            color: transparent;
+            animation: shine 4s linear infinite 1.5s;
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
     </style>
 </head>
 
 <body>
+
+    <!-- CSS Stars Container -->
+    <div id="css-stars-container"></div>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"><i class="fa-solid fa-location-arrow"></i></div>
 
     <!-- Header -->
     <header>
@@ -773,7 +990,7 @@
             </div>
         </div>
 
-        <section id="home" class="relative" style="background-color: rgb(10, 10, 10);">
+        <section id="home" class="relative" style="background-color: transparent;">
             <div class="relative pt-2 md:pt-26">
                 <div class="absolute inset-0 -z-20">
                     <div style="opacity: 1; transform: none;">
@@ -792,13 +1009,18 @@
                         <div style="opacity: 1;">
                             <div style="opacity: 1; filter: blur(0px); transform: none;">
                                 <span
-                                    class="inline-block px-3 sm:px-4 py-1 mb-3 sm:mb-6 rounded-full text-xs sm:text-sm font-semibold tracking-wide mt-4 sm:mt-10"
-                                    style="background-color: rgba(109, 40, 217, 0.2); color: rgb(167, 139, 250); border: 1px solid rgba(109, 40, 217, 0.35);">Pro
+                                    class="inline-block px-5 sm:px-6 py-2 mb-3 sm:mb-6 rounded-full text-xs sm:text-sm font-bold tracking-widest mt-4 sm:mt-10 uppercase shadow-3d"
+                                    style="background-color: rgba(0, 71, 171, 0.1); color: var(--primary); border: 2px solid rgba(0, 71, 171, 0.2);">Pro
                                     Test Builder for Classes 9-12</span>
                             </div>
                             <div style="opacity: 1; filter: blur(0px); transform: none;">
-                                <h1 class="relative inline-block max-w-full md:max-w-6xl mx-auto text-balance text-3xl sm:text-4xl font-bold md:text-6xl md:font-semibold xl:text-[5.25rem] text-white"
-                                    style="--sparkles-first-color: #9E7AFF; --sparkles-second-color: #FE8BBB;">
+                                <h1 class="relative inline-block max-w-full md:max-w-6xl mx-auto text-balance text-3xl sm:text-4xl font-extrabold md:text-6xl xl:text-[5.5rem] tracking-tight leading-[1.1]"
+                                    style="--sparkles-first-color: var(--primary); --sparkles-second-color: var(--secondary);">
+                                    <span class="text-slate-900">Transform your</span> <br>
+                                    <span
+                                        class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Institutional</span>
+                                    <br>
+                                    <span class="text-slate-900">Assessments</span>
                                     <svg class="pointer-events-none absolute z-20" width="21" height="21"
                                         viewBox="0 0 21 21"
                                         style="opacity: 0.756332; left: 54.0389%; top: 56.8459%; transform: scale(0.901881) rotate(109.035deg);">
@@ -806,14 +1028,12 @@
                                             d="M9.82531 0.843845C10.0553 0.215178 10.9446 0.215178 11.1746 0.843845L11.8618 2.72026C12.4006 4.19229 12.3916 6.39157 13.5 7.5C14.6084 8.60843 16.8077 8.59935 18.2797 9.13822L20.1561 9.82534C20.7858 10.0553 20.7858 10.9447 20.1561 11.1747L18.2797 11.8618C16.8077 12.4007 14.6084 12.3916 13.5 13.5C12.3916 14.6084 12.4006 16.8077 11.8618 18.2798L11.1746 20.1562C10.9446 20.7858 10.0553 20.7858 9.82531 20.1562L9.13819 18.2798C8.59932 16.8077 8.60843 14.6084 7.5 13.5C6.39157 12.3916 4.19225 12.4007 2.72023 11.8618L0.843814 11.1747C0.215148 10.9447 0.215148 10.0553 0.843814 9.82534L2.72023 9.13822C4.19225 8.59935 6.39157 8.60843 7.5 7.5C8.60843 6.39157 8.59932 4.19229 9.13819 2.72026L9.82531 0.843845Z"
                                             fill="#FE8BBB"></path>
                                     </svg>
-                                    <span class="relative">Build Test Papers in Minutes <span
-                                            class="text-2xl sm:text-3xl md:text-6xl xl:text-[5.25rem]">Not
-                                            Hours.</span></span>
+                                    Hours.</span></span>
                                 </h1>
                             </div>
                             <div style="opacity: 1; filter: blur(0px); transform: none;">
                                 <p
-                                    class="mx-auto mt-4 sm:mt-8 mb-4 sm:mb-8 max-w-[800px] text-balance text-sm sm:text-xl md:text-2xl font-normal text-white/100">
+                                    class="mx-auto mt-4 sm:mt-8 mb-4 sm:mb-8 max-w-[800px] text-balance text-sm sm:text-xl md:text-2xl font-normal text-slate-900">
                                     A professional platform for <span
                                         class="inline-block px-2 sm:px-3 md:px-4 py-[2px] mx-0.5 sm:mx-1 rounded-full font-semibold text-base sm:text-lg md:text-2xl"
                                         style="background-color: rgba(109, 40, 217, 0.25); color: rgb(167, 139, 250); border: 1px solid rgba(109, 40, 217, 0.4);">Matric</span>
@@ -840,17 +1060,20 @@
                             <!-- Laptop Frame -->
                             <div class="laptop-frame">
                                 <div class="laptop-glow"></div>
-                                <div class="laptop-screen">
-                                    <div class="laptop-screen-inner">
+                                <div
+                                    class="relative group aspect-[16/9] w-full overflow-hidden rounded-2xl bg-white shadow-3d-blue border-[6px] border-white/50 ring-1 ring-primary/20 transform perspective(1000px) rotateX(2deg) transition-all duration-700 hover:rotateX(0deg) hover:scale-[1.02] hover:shadow-3d-hover">
+                                    <div class="absolute inset-0 z-10 bg-gradient-to-tr from-primary/10 to-transparent">
+                                    </div>
+                                    <div class="relative h-full w-full">
                                         <video id="heroVideo" src="video/noshahi.jpg.mp4"
                                             class="absolute inset-0 w-full h-full object-cover" autoplay loop muted
                                             playsinline preload="metadata"></video>
                                         <button id="videoToggle" class="video-control-btn"
                                             aria-label="Toggle Video Playback">
-                                            <i class="fa-solid fa-pause text-[#D94C58]"></i>
+                                            <i class="fa-solid fa-pause text-primary"></i>
                                         </button>
                                         <div
-                                            class="absolute inset-0 pointer-events-none z-[15] ring-1 ring-inset ring-white/[0.06]">
+                                            class="absolute inset-0 pointer-events-none z-[15] ring-2 ring-inset ring-white/20">
                                         </div>
                                     </div>
                                 </div>
@@ -863,178 +1086,14 @@
                 </div>
             </div>
         </section>
-        <section id="trusted" class="py-24 px-4 md:px-0 overflow-hidden relative"
-            style="background-color: rgb(10, 10, 10);">
-            <!-- Decorative background elements for depth -->
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none -z-10">
-                <div class="absolute top-1/4 left-0 w-64 h-64 bg-[#D94C58]/5 blur-[100px] rounded-full"></div>
-                <div class="absolute bottom-1/4 right-0 w-64 h-64 bg-blue-500/5 blur-[100px] rounded-full"></div>
-            </div>
-
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-20 relative">
-                    <div class="inline-block px-3 py-1 mb-4 rounded-full bg-[#D94C58]/10 border border-[#D94C58]/20">
-                        <span class="text-xs font-bold text-[#D94C58] uppercase tracking-[0.2em]">Institutional
-                            Trust</span>
-                    </div>
-                    <h2 class="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-white leading-tight">
-                        Trusted by top schools <br class="hidden md:block"> & educators
-                    </h2>
-                    <p class="max-w-2xl mx-auto text-lg text-white/60 leading-relaxed font-light">
-                        Joining forces with the most prestigious educational institutions to set new standards in
-                        academic assessment.
-                    </p>
-                </div>
-
-                <!-- 3D Scrolling Perspective Container -->
-                <div class="perspective-container relative py-10">
-                    <div class="mask-image-fade">
-                        <div class="flex gap-8 animate-scroll-ltr w-max px-10">
-                            <!-- Premium 3D Cards -->
-                            <div class="trust-card">
-                                <i class="fa-solid fa-school text-4xl text-[#D94C58]"></i>
-                                <div class="h-px w-12 bg-white/10 my-2"></div>
-                                <span class="text-2xl font-bold text-white/90">Beaconhouse</span>
-                                <span class="text-[10px] text-white/40 uppercase tracking-[0.3em] font-bold">Standard
-                                    Partner</span>
-                            </div>
-                            <div class="trust-card">
-                                <i class="fa-solid fa-globe text-4xl text-[#D94C58]"></i>
-                                <div class="h-px w-12 bg-white/10 my-2"></div>
-                                <span class="text-2xl font-bold text-white/90">Roots Millennium</span>
-                                <span class="text-[10px] text-white/40 uppercase tracking-[0.3em] font-bold">Global
-                                    Partner</span>
-                            </div>
-                            <div class="trust-card">
-                                <i class="fa-solid fa-building-columns text-4xl text-[#D94C58]"></i>
-                                <div class="h-px w-12 bg-white/10 my-2"></div>
-                                <span class="text-2xl font-bold text-white/90">LGS</span>
-                                <span class="text-[10px] text-white/40 uppercase tracking-[0.3em] font-bold">Elite
-                                    Educator</span>
-                            </div>
-                            <div class="trust-card">
-                                <i class="fa-solid fa-city text-4xl text-[#D94C58]"></i>
-                                <div class="h-px w-12 bg-white/10 my-2"></div>
-                                <span class="text-2xl font-bold text-white/90">City School</span>
-                                <span class="text-[10px] text-white/40 uppercase tracking-[0.3em] font-bold">Network
-                                    Member</span>
-                            </div>
-                            <div class="trust-card">
-                                <i class="fa-solid fa-book-open text-4xl text-[#D94C58]"></i>
-                                <div class="h-px w-12 bg-white/10 my-2"></div>
-                                <span class="text-2xl font-bold text-white/90">Bloomfield Hall</span>
-                                <span class="text-[10px] text-white/40 uppercase tracking-[0.3em] font-bold">Resouce
-                                    Partner</span>
-                            </div>
-
-                            <!-- Duplicates for Infinite Scroll -->
-                            <div class="trust-card">
-                                <i class="fa-solid fa-school text-4xl text-[#D94C58]"></i>
-                                <div class="h-px w-12 bg-white/10 my-2"></div>
-                                <span class="text-2xl font-bold text-white/90">Beaconhouse</span>
-                                <span class="text-[10px] text-white/40 uppercase tracking-[0.3em] font-bold">Standard
-                                    Partner</span>
-                            </div>
-                            <div class="trust-card">
-                                <i class="fa-solid fa-globe text-4xl text-[#D94C58]"></i>
-                                <div class="h-px w-12 bg-white/10 my-2"></div>
-                                <span class="text-2xl font-bold text-white/90">Roots Millennium</span>
-                                <span class="text-[10px] text-white/40 uppercase tracking-[0.3em] font-bold">Global
-                                    Partner</span>
-                            </div>
-                            <div class="trust-card">
-                                <i class="fa-solid fa-building-columns text-4xl text-[#D94C58]"></i>
-                                <div class="h-px w-12 bg-white/10 my-2"></div>
-                                <span class="text-2xl font-bold text-white/90">LGS</span>
-                                <span class="text-[10px] text-white/40 uppercase tracking-[0.3em] font-bold">Elite
-                                    Educator</span>
-                            </div>
-                            <div class="trust-card">
-                                <i class="fa-solid fa-city text-4xl text-[#D94C58]"></i>
-                                <div class="h-px w-12 bg-white/10 my-2"></div>
-                                <span class="text-2xl font-bold text-white/90">City School</span>
-                                <span class="text-[10px] text-white/40 uppercase tracking-[0.3em] font-bold">Network
-                                    Member</span>
-                            </div>
-                            <div class="trust-card">
-                                <i class="fa-solid fa-book-open text-4xl text-[#D94C58]"></i>
-                                <div class="h-px w-12 bg-white/10 my-2"></div>
-                                <span class="text-2xl font-bold text-white/90">Bloomfield Hall</span>
-                                <span class="text-[10px] text-white/40 uppercase tracking-[0.3em] font-bold">Resouce
-                                    Partner</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <style>
-                .trust-card {
-                    width: 300px;
-                    height: 180px;
-                    background: rgba(255, 255, 255, 0.02);
-                    border: 1px solid rgba(255, 255, 255, 0.08);
-                    border-radius: 20px;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 4px;
-                    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-                    transform-style: preserve-3d;
-                    perspective: 1000px;
-                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-                }
-
-                .trust-card:hover {
-                    background: rgba(255, 255, 255, 0.05);
-                    border-color: rgba(217, 76, 88, 0.3);
-                    transform: translateY(-10px) rotateY(10deg);
-                    box-shadow: 0 20px 40px rgba(217, 76, 88, 0.1);
-                }
-
-                .trust-card i {
-                    transition: all 0.5s ease;
-                }
-
-                .trust-card:hover i {
-                    transform: translateZ(30px);
-                    color: #fff;
-                    text-shadow: 0 0 20px rgba(217, 76, 88, 0.6);
-                }
-
-                .mask-image-fade {
-                    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-                    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-                }
-
-                .animate-scroll-ltr {
-                    animation: scroll-ltr 40s linear infinite;
-                }
-
-                @keyframes scroll-ltr {
-                    0% {
-                        transform: translateX(0);
-                    }
-
-                    100% {
-                        transform: translateX(calc(-300px * 5 - 2rem * 5));
-                    }
-                }
-
-                .perspective-container {
-                    perspective: 2000px;
-                }
-            </style>
-        </section>
 
 
         <!-- Features Section -->
-        <section class="py-16" id="features" style="background-color: rgb(10, 10, 10);">
-            <div class="mx-auto max-w-7xl px-6 py-16 flex flex-col items-center justify-center gap-5">
+        <section class="pt-8 pb-16" id="features" style="background-color: transparent;">
+            <div class="mx-auto max-w-7xl px-6 pt-4 pb-16 flex flex-col items-center justify-center gap-5">
                 <div style="opacity: 1;">
                     <span
-                        class="inline-flex items-center gap-2 justify-center border font-medium w-fit whitespace-nowrap py-2 px-4 rounded-full border-[#D94C58] text-[#D94C58] text-sm">
+                        class="inline-flex items-center gap-2 justify-center border font-medium w-fit whitespace-nowrap py-2 px-4 rounded-full border-[#6D28D9] text-[#6D28D9] text-sm">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path
@@ -1046,40 +1105,58 @@
                 </div>
                 <div style="opacity: 1;">
                     <div class="flex flex-col items-center justify-center gap-15">
-                        <h2 class="text-4xl leading-tight font-bold text-center max-w-4xl mx-auto text-white">The
-                            complete toolkit for 9-12 education test management</h2>
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-center max-w-5xl mx-auto text-slate-900 leading-tight tracking-tight">
+                            The complete toolkit for 9-12 education test management
+                        </h2>
                     </div>
                 </div>
             </div>
 
-            <div class="mt-10 space-y-16 max-w-7xl mx-auto px-6">
+            <div class="mt-10 space-y-20 max-w-7xl mx-auto px-6">
                 <!-- Feature 1 -->
                 <div style="opacity: 1;">
-                    <div class="transition-all duration-300 hover:scale-[1.02]">
+                    <div class="transition-all duration-500 hover:scale-[1.03] hover:translate-y-[-12px]">
                         <div
-                            class="relative max-w-7xl border-[3px] border-white/20 py-6 px-6 md:py-10 md:px-10 rounded-xl overflow-hidden bg-black/40 backdrop-blur-sm">
-                            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 md:gap-0">
-                                <div class="order-1 md:order-2 md:flex-[0.4] flex justify-center w-full">
+                            class="relative max-w-7xl border-[1px] border-primary/20 py-8 px-6 md:py-12 md:px-12 rounded-3xl overflow-hidden bg-white shadow-3d-blue backdrop-blur-md">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none">
+                            </div>
+                            <div
+                                class="flex flex-col md:flex-row md:items-center md:justify-between gap-10 md:gap-0 relative z-10">
+                                <div class="order-1 md:order-2 md:flex-[0.45] flex justify-center w-full">
                                     <div
-                                        class="relative rounded-xl overflow-hidden w-full md:max-w-none border border-white/20">
+                                        class="relative rounded-2xl overflow-hidden w-full md:max-w-none border-4 border-white shadow-2xl transform hover:rotate-2 transition-transform duration-700 ring-1 ring-primary/10">
                                         <video
                                             src="https://firebasestorage.googleapis.com/v0/b/lancer-prod.firebasestorage.app/o/gifs%2Fai-filtering.mp4?alt=media&token=f913ab2c-ab19-442f-b194-330ed2eb41f4"
                                             class="object-cover rounded-xl w-full h-auto" loop muted autoplay
                                             playsinline preload="metadata"></video>
                                     </div>
                                 </div>
-                                <div class="order-2 md:order-1 flex flex-col gap-6 md:gap-10 md:flex-[0.6]">
-                                    <h3 class="text-2xl md:text-3xl font-semibold text-white">
-                                        <span
-                                            class="relative inline-block rounded-lg bg-gradient-to-r px-1 pb-1 from-green-700 to-emerald-700 text-white">Syllabus-Aligned</span>
+                                <div class="order-2 md:order-1 flex flex-col gap-6 md:gap-10 md:flex-[0.5]">
+                                    <h3
+                                        class="text-3xl md:text-5xl font-extrabold text-slate-900 reveal-parent leading-tight">
+                                        <span class="reveal-text"><span
+                                                class="reveal-text-inner text-primary">Syllabus-Aligned</span></span>
                                         Question Bank
                                     </h3>
-                                    <p class="text-base md:text-lg leading-relaxed text-white/80">
-                                        A single place where all questions are stored and organized by Class, Subject,
-                                        Chapter, and Topic. It is specially designed for
-                                        Matric and Intermediate students, so every question matches your syllabus and
-                                        teaching plan.
+                                    <p class="text-base md:text-xl leading-relaxed text-slate-600 font-light">
+                                        A sophisticated repository where every question is meticulously categorized.
+                                        Specially architected for
+                                        Pakistan's educational landscape, ensuring 100% alignment with Matric and
+                                        Intermediate benchmarks.
                                     </p>
+                                    <div class="flex flex-wrap gap-4 mt-4">
+                                        <div
+                                            class="flex items-center gap-2 px-4 py-2 bg-primary/5 rounded-xl border border-primary/10">
+                                            <i class="fa-solid fa-check-double text-primary"></i>
+                                            <span class="text-sm font-bold text-slate-700">BISE Verified</span>
+                                        </div>
+                                        <div
+                                            class="flex items-center gap-2 px-4 py-2 bg-secondary/10 rounded-xl border border-secondary/20">
+                                            <i class="fa-solid fa-bolt text-secondary"></i>
+                                            <span class="text-sm font-bold text-slate-700">Instant Access</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1088,30 +1165,79 @@
 
                 <!-- Feature 2 -->
                 <div style="opacity: 1;">
-                    <div class="transition-all duration-300 hover:scale-[1.02]">
+                    <div class="transition-all duration-500 hover:scale-[1.03] hover:translate-y-[-12px] group">
                         <div
-                            class="relative max-w-7xl border-[3px] border-white/20 py-6 px-6 md:py-10 md:px-10 rounded-xl overflow-hidden bg-black/40 backdrop-blur-sm">
+                            class="relative max-w-7xl border-[1px] border-primary/20 py-8 px-6 md:py-12 md:px-12 rounded-3xl overflow-hidden bg-white shadow-3d-blue backdrop-blur-md">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-bl from-secondary/5 to-transparent pointer-events-none">
+                            </div>
+                            <div
+                                class="flex flex-col md:flex-row md:items-center md:justify-between gap-10 md:gap-0 relative z-10">
+                                <div class="order-1 md:order-2 md:flex-[0.45] flex justify-center w-full">
+                                    <div
+                                        class="relative rounded-2xl overflow-hidden w-full md:max-w-none border-4 border-white shadow-2xl transform hover:-rotate-2 transition-transform duration-700 ring-1 ring-primary/10">
+                                        <video
+                                            src="https://firebasestorage.googleapis.com/v0/b/lancer-prod.firebasestorage.app/o/gifs%2Funlimited-campaigns.mp4?alt=media&token=bcb7c12b-1023-436a-852c-817ab68d2f3c"
+                                            class="object-cover rounded-xl w-full h-auto transition-all duration-700 group-hover:scale-[1.1] group-hover:rotate-1"
+                                            loop muted autoplay playsinline preload="metadata"></video>
+                                    </div>
+                                </div>
+                                <div class="order-2 md:order-1 flex flex-col gap-6 md:gap-10 md:flex-[0.5]">
+                                    <h3
+                                        class="text-3xl md:text-5xl font-extrabold text-slate-900 reveal-parent leading-tight">
+                                        <span class="reveal-text"><span
+                                                class="reveal-text-inner text-primary">Institutional</span></span>
+                                        Custom Branding
+                                    </h3>
+                                    <p class="text-base md:text-xl leading-relaxed text-slate-600 font-light">
+                                        Transition from drafting to elite professional assessments in a single click.
+                                        Our 3D formatter ensures your institutional identity shines through with
+                                        perfectly structured branding and school logos.
+                                    </p>
+                                    <div class="flex flex-wrap gap-4 mt-4">
+                                        <div
+                                            class="flex items-center gap-2 px-4 py-2 bg-primary/5 rounded-xl border border-primary/10">
+                                            <i class="fa-solid fa-stamp text-primary"></i>
+                                            <span class="text-sm font-bold text-slate-700">Official Logos</span>
+                                        </div>
+                                        <div
+                                            class="flex items-center gap-2 px-4 py-2 bg-secondary/10 rounded-xl border border-secondary/20">
+                                            <i class="fa-solid fa-file-pdf text-secondary"></i>
+                                            <span class="text-sm font-bold text-slate-700">HD PDF Export</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div style="opacity: 1;">
+                    <div class="transition-all duration-300 hover:scale-[1.02] group">
+                        <div
+                            class="relative max-w-7xl border-[3px] border-slate-300 py-6 px-6 md:py-10 md:px-10 rounded-xl overflow-hidden bg-white shadow-xl backdrop-blur-sm">
                             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 md:gap-0">
                                 <div class="order-1 md:order-2 md:flex-[0.4] flex justify-center w-full">
                                     <div
-                                        class="relative rounded-xl overflow-hidden w-full md:max-w-none border border-white/20">
+                                        class="relative rounded-xl overflow-hidden w-full md:max-w-none border border-slate-300">
                                         <video
                                             src="https://firebasestorage.googleapis.com/v0/b/lancer-prod.firebasestorage.app/o/gifs%2Funlimited-campaigns.mp4?alt=media&token=bcb7c12b-1023-436a-852c-817ab68d2f3c"
-                                            class="object-cover rounded-xl w-full h-auto" loop muted autoplay
-                                            playsinline preload="metadata"></video>
+                                            class="object-cover rounded-xl w-full h-auto transition-all duration-700 group-hover:scale-[1.08] group-hover:-rotate-1"
+                                            loop muted autoplay playsinline preload="metadata"></video>
                                     </div>
                                 </div>
                                 <div class="order-2 md:order-1 flex flex-col gap-6 md:gap-10 md:flex-[0.6]">
-                                    <h3 class="text-2xl md:text-3xl font-semibold text-white">
-                                        <span
-                                            class="relative inline-block rounded-lg bg-gradient-to-r px-1 pb-1 from-red-700 to-rose-700">Custom</span>
+                                    <h3
+                                        class="text-3xl md:text-5xl font-extrabold text-slate-900 reveal-parent leading-tight">
+                                        <span class="reveal-text font-bold"><span
+                                                class="reveal-text-inner text-primary">Custom</span></span>
                                         Exam Patterns
                                     </h3>
-                                    <p class="text-base md:text-lg leading-relaxed text-white/80">Take full control of
-                                        your tests. You can choose chapters,
-                                        set difficulty levels, and follow board patterns. Teachers can also easily add
-                                        their own questions to the question bank.
-
+                                    <p class="text-base md:text-xl leading-relaxed text-slate-600 font-light">Take full
+                                        control of
+                                        your tests. You can choose chapters, set difficulty levels, and follow board
+                                        patterns with our unique automation.
                                     </p>
                                 </div>
                             </div>
@@ -1121,28 +1247,30 @@
 
                 <!-- Feature 3 -->
                 <div style="opacity: 1;">
-                    <div class="transition-all duration-300 hover:scale-[1.02]">
+                    <div class="transition-all duration-300 hover:scale-[1.02] group">
                         <div
-                            class="relative max-w-7xl border-[3px] border-white/20 py-6 px-6 md:py-10 md:px-10 rounded-xl overflow-hidden bg-black/40 backdrop-blur-sm">
+                            class="relative max-w-7xl border-[3px] border-slate-300 py-6 px-6 md:py-10 md:px-10 rounded-xl overflow-hidden bg-white shadow-xl backdrop-blur-sm">
                             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 md:gap-0">
                                 <div class="order-1 md:order-2 md:flex-[0.4] flex justify-center w-full">
                                     <div
-                                        class="relative rounded-xl overflow-hidden w-full md:max-w-none border border-white/20">
+                                        class="relative rounded-xl overflow-hidden w-full md:max-w-none border border-slate-300">
                                         <video
                                             src="https://firebasestorage.googleapis.com/v0/b/lancer-prod.firebasestorage.app/o/gifs%2Funlimited-campaigns.mp4?alt=media&token=bcb7c12b-1023-436a-852c-817ab68d2f3c"
-                                            class="object-cover rounded-xl w-full h-auto" loop muted autoplay
-                                            playsinline preload="metadata"></video>
+                                            class="object-cover rounded-xl w-full h-auto transition-all duration-700 group-hover:scale-[1.1] group-hover:rotate-1"
+                                            loop muted autoplay playsinline preload="metadata"></video>
                                     </div>
                                 </div>
                                 <div class="order-2 md:order-1 flex flex-col gap-6 md:gap-10 md:flex-[0.6]">
-                                    <h3 class="text-2xl md:text-3xl font-semibold text-white">
-                                        <span
-                                            class="relative inline-block rounded-lg bg-gradient-to-r px-1 pb-1 from-blue-700 to-cyan-700">Branded</span>
+                                    <h3
+                                        class="text-3xl md:text-5xl font-extrabold text-slate-900 reveal-parent leading-tight">
+                                        <span class="reveal-text font-bold"><span
+                                                class="reveal-text-inner text-primary">Branded</span></span>
                                         PDF Export
                                     </h3>
-                                    <p class="text-base md:text-lg leading-relaxed text-white/80">Generate professional,
-                                        print-ready PDFs in seconds. Every test comes pre-formatted with your school's
-                                        official branding, including logo and name, for a consistent institutional look.
+                                    <p class="text-base md:text-xl leading-relaxed text-slate-600 font-light">Generate
+                                        professional, print-ready PDFs in seconds. Every test comes pre-formatted with
+                                        your school's
+                                        official branding for a consistent institutional look.
                                     </p>
                                 </div>
                             </div>
@@ -1152,27 +1280,29 @@
 
                 <!-- Feature 4 -->
                 <div style="opacity: 1;">
-                    <div class="transition-all duration-300 hover:scale-[1.02]">
+                    <div class="transition-all duration-300 hover:scale-[1.02] group">
                         <div
-                            class="relative max-w-7xl border-[3px] border-white/20 py-6 px-6 md:py-10 md:px-10 rounded-xl overflow-hidden bg-black/40 backdrop-blur-sm">
+                            class="relative max-w-7xl border-[3px] border-slate-300 py-6 px-6 md:py-10 md:px-10 rounded-xl overflow-hidden bg-white shadow-xl backdrop-blur-sm">
                             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 md:gap-0">
                                 <div class="order-1 md:order-2 md:flex-[0.4] flex justify-center w-full">
                                     <div
-                                        class="relative rounded-xl overflow-hidden w-full md:max-w-none border border-white/20">
+                                        class="relative rounded-xl overflow-hidden w-full md:max-w-none border border-slate-300">
                                         <video
                                             src="https://firebasestorage.googleapis.com/v0/b/lancer-prod.firebasestorage.app/o/gifs%2Fanalytics.mp4?alt=media&token=4d817fb7-2199-481e-8e84-407aedcb0461"
-                                            class="object-cover rounded-xl w-full h-auto" loop muted autoplay
-                                            playsinline preload="metadata"></video>
+                                            class="object-cover rounded-xl w-full h-auto transition-all duration-700 group-hover:scale-[1.08] group-hover:-rotate-1"
+                                            loop muted autoplay playsinline preload="metadata"></video>
                                     </div>
                                 </div>
                                 <div class="order-2 md:order-1 flex flex-col gap-6 md:gap-10 md:flex-[0.6]">
-                                    <h3 class="text-2xl md:text-3xl font-semibold text-white">Multi-Role <span
-                                            class="relative inline-block rounded-lg bg-gradient-to-r px-1 pb-1 from-yellow-700 to-amber-700">Management</span>
+                                    <h3
+                                        class="text-3xl md:text-5xl font-extrabold text-slate-900 reveal-parent leading-tight">
+                                        Multi-Role <span class="reveal-text font-bold"><span
+                                                class="reveal-text-inner text-primary">Management</span></span>
                                     </h3>
-                                    <p class="text-base md:text-lg leading-relaxed text-white/80">Give your whole
+                                    <p class="text-base md:text-xl leading-relaxed text-slate-600 font-light">Give your
+                                        whole
                                         institution easy access with different roles.
-                                        Admins can manage staff, teachers can create tests, and
-                                        students can check their test schedules.
+                                        Admins, teachers, and students get their own unique perspective of the platform.
                                     </p>
                                 </div>
                             </div>
@@ -1183,80 +1313,92 @@
         </section>
 
         <!-- Testimonials Section -->
-        <section id="testimonials" class="py-24 overflow-hidden" style="background-color: rgb(10, 10, 10);">
+        <section id="testimonials" class="py-24 overflow-hidden" style="background-color: transparent;">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">What Our Users Say</h2>
-                    <p class="text-lg text-white/70 max-w-2xl mx-auto">Educators and institutions are saving countless
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-6 leading-tight tracking-tight">What Our Users Say</h2>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">Educators and institutions are saving countless
                         hours using our platform.</p>
                 </div>
 
                 <div class="relative overflow-hidden w-full mask-image-fade">
                     <div class="flex gap-6 animate-scroll-ltr w-max hover:[animation-play-state:paused]">
-                        <!-- Original Testimonial 1 -->
+                        <!-- Testimonial 1 -->
                         <div
-                            class="w-[350px] flex-none rounded-2xl border-2 border-white/10 p-6 bg-white/5 backdrop-blur-sm flex flex-col transition-all duration-300 hover:shadow-[0_8px_32px_rgba(158,122,255,0.15)] hover:border-white/30 h-[360px]">
-                            <div class="flex items-center justify-between mb-4">
+                            class="w-[380px] flex-none rounded-3xl border border-primary/20 p-8 bg-white shadow-3d-blue flex flex-col transition-all duration-500 hover:shadow-3d-hover hover:translate-y-[-15px] h-[400px] relative overflow-hidden group">
+                            <div
+                                class="absolute top-0 right-0 p-4 opacity-5 transform translate-x-4 -translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-700">
+                                <i class="fa-solid fa-quote-right text-8xl text-primary"></i>
+                            </div>
+                            <div class="flex items-center justify-between mb-6">
                                 <div class="flex items-center gap-3">
-                                    <h3 class="text-lg font-bold text-white">The City School</h3>
+                                    <h3 class="text-xl font-extrabold text-slate-900">The City School</h3>
                                 </div>
                             </div>
-                            <div class="flex gap-1 mb-4 text-yellow-400">
+                            <div
+                                class="flex gap-1 mb-6 text-secondary transform group-hover:scale-110 origin-left transition-transform duration-300">
                                 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                                     class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                                     class="fa-solid fa-star"></i>
                             </div>
-                            <div class="flex-1 mb-6">
-                                <p class="text-base leading-relaxed text-white/90">Generating <span
-                                        style="color: rgb(217, 76, 88);">branded PDF tests on autopilot</span> has
-                                    transformed our school's workflow. <br><br>Our teachers spend zero hours on
-                                    formatting and can focus entirely on syllabus coverage for Matric students.</p>
+                            <div class="flex-1 mb-8">
+                                <p class="text-lg leading-relaxed text-slate-700 font-medium italic">"Generating <span
+                                        class="text-primary font-bold">branded PDF tests</span> has
+                                    completely shifted our school's dynamic. Excellence delivered on autopilot."</p>
                             </div>
-                            <div class="flex items-center gap-3 pt-4 border-t border-white/10 mt-auto">
-                                <img alt="Ali Raza" width="48" height="48" class="rounded-full object-cover"
-                                    src="https://ui-avatars.com/api/?name=Ali+Raza&background=D94C58&color=fff">
+                            <div class="flex items-center gap-4 pt-6 border-t border-slate-100 mt-auto">
+                                <img alt="Ali Raza" width="56" height="56"
+                                    class="rounded-2xl object-cover ring-4 ring-primary/10"
+                                    src="https://ui-avatars.com/api/?name=Ali+Raza&background=0047AB&color=fff">
                                 <div>
-                                    <p class="font-semibold text-sm text-white">Ali Raza</p>
-                                    <p class="text-sm text-white/60">Senior Coordinator</p>
+                                    <p class="font-extrabold text-sm text-slate-900">Ali Raza</p>
+                                    <p class="text-[10px] font-extrabold text-primary uppercase tracking-[0.2em]">Senior
+                                        Coordinator</p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Testimonial 2 -->
                         <div
-                            class="w-[350px] flex-none rounded-2xl border-2 border-white/10 p-6 bg-white/5 backdrop-blur-sm flex flex-col transition-all duration-300 hover:shadow-[0_8px_32px_rgba(158,122,255,0.15)] hover:border-white/30 h-[360px]">
-                            <div class="flex items-center justify-between mb-4">
+                            class="w-[380px] flex-none rounded-3xl border border-primary/20 p-8 bg-white shadow-3d-blue flex flex-col transition-all duration-500 hover:shadow-3d-hover hover:translate-y-[-15px] h-[400px] relative overflow-hidden group">
+                            <div
+                                class="absolute top-0 right-0 p-4 opacity-5 transform translate-x-4 -translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-700">
+                                <i class="fa-solid fa-quote-right text-8xl text-primary"></i>
+                            </div>
+                            <div class="flex items-center justify-between mb-6">
                                 <div class="flex items-center gap-3">
-                                    <h3 class="text-lg font-bold text-white">Noshahi Academy</h3>
+                                    <h3 class="text-xl font-extrabold text-slate-900">Noshahi Academy</h3>
                                 </div>
                             </div>
-                            <div class="flex gap-1 mb-4 text-yellow-400">
+                            <div
+                                class="flex gap-1 mb-6 text-secondary transform group-hover:scale-110 origin-left transition-transform duration-300">
                                 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                                     class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                                     class="fa-solid fa-star"></i>
                             </div>
-                            <div class="flex-1 mb-6">
-                                <p class="text-base leading-relaxed text-white/90">We create <span
-                                        style="color: rgb(61, 223, 114);">perfectly aligned Intermediate tests</span> in
-                                    minutes.<br><br>The chapter-wise filtering and exam pattern customization make
-                                    organizing Class 11 & 12 assessments remarkably easy.</p>
+                            <div class="flex-1 mb-8">
+                                <p class="text-lg leading-relaxed text-slate-700 font-medium italic">"We create <span
+                                        class="text-primary font-bold">perfectly aligned tests</span> in minutes. The 3D
+                                    output is simply professional."</p>
                             </div>
-                            <div class="flex items-center gap-3 pt-4 border-t border-white/10 mt-auto">
-                                <img alt="Ali Hasan" width="48" height="48" class="rounded-full object-cover"
-                                    src="https://ui-avatars.com/api/?name=Ali+Hasan&background=0A0A0A&color=fff">
+                            <div class="flex items-center gap-4 pt-6 border-t border-slate-100 mt-auto">
+                                <img alt="Ali Hasan" width="56" height="56"
+                                    class="rounded-2xl object-cover ring-4 ring-primary/10"
+                                    src="https://ui-avatars.com/api/?name=Ali+Hasan&background=0047AB&color=fff">
                                 <div>
-                                    <p class="font-semibold text-sm text-white">Ali Hasan</p>
-                                    <p class="text-sm text-white/60">Senior Teacher</p>
+                                    <p class="font-extrabold text-sm text-slate-900">Ali Hasan</p>
+                                    <p class="text-[10px] font-extrabold text-primary uppercase tracking-[0.2em]">Senior
+                                        Teacher</p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Testimonial 3 -->
                         <div
-                            class="w-[350px] flex-none rounded-2xl border-2 border-white/10 p-6 bg-white/5 backdrop-blur-sm flex flex-col transition-all duration-300 hover:shadow-[0_8px_32px_rgba(158,122,255,0.15)] hover:border-white/30 h-[360px]">
+                            class="w-[350px] flex-none rounded-2xl border-2 border-slate-200 p-6 bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm flex flex-col transition-all duration-300 hover:shadow-[0_8px_32px_rgba(158,122,255,0.15)] hover:border-slate-300 h-[360px]">
                             <div class="flex items-center justify-between mb-4">
                                 <div class="flex items-center gap-3">
-                                    <h3 class="text-lg font-bold text-white">Rightway Schools</h3>
+                                    <h3 class="text-lg font-bold text-slate-900">Rightway Schools</h3>
                                 </div>
                             </div>
                             <div class="flex gap-1 mb-4 text-yellow-400">
@@ -1265,28 +1407,28 @@
                                     class="fa-solid fa-star"></i>
                             </div>
                             <div class="flex-1 mb-6">
-                                <p class="text-base leading-relaxed text-white/90">The role-based access for teachers
+                                <p class="text-base leading-relaxed text-slate-800">The role-based access for teachers
                                     and students has revolutionized our testing cycle. <span
                                         style="color: rgb(254, 139, 187);">Highly
                                         recommended!</span><br><br>A complete solution for modern matriculation schools.
                                 </p>
                             </div>
-                            <div class="flex items-center gap-3 pt-4 border-t border-white/10 mt-auto">
+                            <div class="flex items-center gap-3 pt-4 border-t border-slate-200 mt-auto">
                                 <img alt="Sarah M." width="48" height="48" class="rounded-full object-cover"
                                     src="https://ui-avatars.com/api/?name=Sarah+M&background=0D0D0D&color=fff">
                                 <div>
-                                    <p class="font-semibold text-sm text-white">Sarah M.</p>
-                                    <p class="text-sm text-white/60">Principal</p>
+                                    <p class="font-semibold text-sm text-slate-900">Sarah M.</p>
+                                    <p class="text-sm text-slate-500">Principal</p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Testimonial 4 -->
                         <div
-                            class="w-[350px] flex-none rounded-2xl border-2 border-white/10 p-6 bg-white/5 backdrop-blur-sm flex flex-col transition-all duration-300 hover:shadow-[0_8px_32px_rgba(158,122,255,0.15)] hover:border-white/30 h-[360px]">
+                            class="w-[350px] flex-none rounded-2xl border-2 border-slate-200 p-6 bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm flex flex-col transition-all duration-300 hover:shadow-[0_8px_32px_rgba(158,122,255,0.15)] hover:border-slate-300 h-[360px]">
                             <div class="flex items-center justify-between mb-4">
                                 <div class="flex items-center gap-3">
-                                    <h3 class="text-lg font-bold text-white">The Educators</h3>
+                                    <h3 class="text-lg font-bold text-slate-900">The Educators</h3>
                                 </div>
                             </div>
                             <div class="flex gap-1 mb-4 text-yellow-400">
@@ -1295,114 +1437,114 @@
                                     class="fa-solid fa-star"></i>
                             </div>
                             <div class="flex-1 mb-6">
-                                <p class="text-base leading-relaxed text-white/90">We generated over <span
+                                <p class="text-base leading-relaxed text-slate-800">We generated over <span
                                         style="color: rgb(255, 204, 0);">100 branded papers</span> last month without a
                                     single error.<br><br>Exporting professional PDFs with our school logo makes every
                                     assessment look prestigious.</p>
                             </div>
-                            <div class="flex items-center gap-3 pt-4 border-t border-white/10 mt-auto">
+                            <div class="flex items-center gap-3 pt-4 border-t border-slate-200 mt-auto">
                                 <img alt="Umer Zia" width="48" height="48" class="rounded-full object-cover"
                                     src="https://ui-avatars.com/api/?name=Umer+Zia&background=3DDF72&color=fff">
                                 <div>
-                                    <p class="font-semibold text-sm text-white">Umer Zia</p>
-                                    <p class="text-sm text-white/60">Administrator</p>
+                                    <p class="font-semibold text-sm text-slate-900">Umer Zia</p>
+                                    <p class="text-sm text-slate-500">Administrator</p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Duplicate 1 -->
                         <div
-                            class="w-[350px] flex-none rounded-2xl border-2 border-white/10 p-6 bg-white/5 backdrop-blur-sm flex flex-col transition-all duration-300 hover:shadow-[0_8px_32px_rgba(158,122,255,0.15)] hover:border-white/30 h-[360px]">
+                            class="w-[350px] flex-none rounded-2xl border-2 border-slate-200 p-6 bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm flex flex-col transition-all duration-300 hover:shadow-[0_8px_32px_rgba(158,122,255,0.15)] hover:border-slate-300 h-[360px]">
                             <div class="flex items-center justify-between mb-4">
                                 <div class="flex items-center gap-3">
-                                    <h3 class="text-lg font-bold text-white">The City School</h3>
+                                    <h3 class="text-lg font-bold text-slate-900">The City School</h3>
                                 </div>
                             </div>
                             <div class="flex-1 mb-6">
-                                <p class="text-base leading-relaxed text-white/90">Generating <span
-                                        style="color: rgb(217, 76, 88);">branded PDF tests on autopilot</span> has
+                                <p class="text-base leading-relaxed text-slate-800">Generating <span
+                                        style="color: rgb(109, 40, 217);">branded PDF tests on autopilot</span> has
                                     transformed our school's workflow. <br><br>Our teachers spend zero hours on
                                     formatting and can focus entirely on syllabus coverage for Matric students.</p>
                             </div>
-                            <div class="flex items-center gap-3 pt-4 border-t border-white/10 mt-auto">
+                            <div class="flex items-center gap-3 pt-4 border-t border-slate-200 mt-auto">
                                 <img alt="Ali Raza" width="48" height="48" class="rounded-full object-cover"
-                                    src="https://ui-avatars.com/api/?name=Ali+Raza&background=D94C58&color=fff">
+                                    src="https://ui-avatars.com/api/?name=Ali+Raza&background=6d28d9&color=fff">
                                 <div>
-                                    <p class="font-semibold text-sm text-white">Ali Raza</p>
-                                    <p class="text-sm text-white/60">Senior Coordinator</p>
+                                    <p class="font-semibold text-sm text-slate-900">Ali Raza</p>
+                                    <p class="text-sm text-slate-500">Senior Coordinator</p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Duplicate 2 -->
                         <div
-                            class="w-[350px] flex-none rounded-2xl border-2 border-white/10 p-6 bg-white/5 backdrop-blur-sm flex flex-col transition-all duration-300 hover:shadow-[0_8px_32px_rgba(158,122,255,0.15)] hover:border-white/30 h-[360px]">
+                            class="w-[350px] flex-none rounded-2xl border-2 border-slate-200 p-6 bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm flex flex-col transition-all duration-300 hover:shadow-[0_8px_32px_rgba(158,122,255,0.15)] hover:border-slate-300 h-[360px]">
                             <div class="flex items-center justify-between mb-4">
                                 <div class="flex items-center gap-3">
-                                    <h3 class="text-lg font-bold text-white">Noshahi Academy</h3>
+                                    <h3 class="text-lg font-bold text-slate-900">Noshahi Academy</h3>
                                 </div>
                             </div>
                             <div class="flex-1 mb-6">
-                                <p class="text-base leading-relaxed text-white/90">We create <span
+                                <p class="text-base leading-relaxed text-slate-800">We create <span
                                         style="color: rgb(61, 223, 114);">perfectly aligned Intermediate tests</span> in
                                     minutes.<br><br>The chapter-wise filtering and exam pattern customization make
                                     organizing Class 11 & 12 assessments remarkably easy.</p>
                             </div>
-                            <div class="flex items-center gap-3 pt-4 border-t border-white/10 mt-auto">
+                            <div class="flex items-center gap-3 pt-4 border-t border-slate-200 mt-auto">
                                 <img alt="Ali Hasan" width="48" height="48" class="rounded-full object-cover"
                                     src="https://ui-avatars.com/api/?name=Ali+Hasan&background=0A0A0A&color=fff">
                                 <div>
-                                    <p class="font-semibold text-sm text-white">Ali Hasan</p>
-                                    <p class="text-sm text-white/60">Senior Teacher</p>
+                                    <p class="font-semibold text-sm text-slate-900">Ali Hasan</p>
+                                    <p class="text-sm text-slate-500">Senior Teacher</p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Duplicate 3 -->
                         <div
-                            class="w-[350px] flex-none rounded-2xl border-2 border-white/10 p-6 bg-white/5 backdrop-blur-sm flex flex-col transition-all duration-300 hover:shadow-[0_8px_32px_rgba(158,122,255,0.15)] hover:border-white/30 h-[360px]">
+                            class="w-[350px] flex-none rounded-2xl border-2 border-slate-200 p-6 bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm flex flex-col transition-all duration-300 hover:shadow-[0_8px_32px_rgba(158,122,255,0.15)] hover:border-slate-300 h-[360px]">
                             <div class="flex items-center justify-between mb-4">
                                 <div class="flex items-center gap-3">
-                                    <h3 class="text-lg font-bold text-white">Rightway Schools</h3>
+                                    <h3 class="text-lg font-bold text-slate-900">Rightway Schools</h3>
                                 </div>
                             </div>
                             <div class="flex-1 mb-6">
-                                <p class="text-base leading-relaxed text-white/90">The role-based access for teachers
+                                <p class="text-base leading-relaxed text-slate-800">The role-based access for teachers
                                     and students has revolutionized our testing cycle. <span
                                         style="color: rgb(254, 139, 187);">Highly
                                         recommended!</span><br><br>A complete solution for modern matriculation schools.
                                 </p>
                             </div>
-                            <div class="flex items-center gap-3 pt-4 border-t border-white/10 mt-auto">
+                            <div class="flex items-center gap-3 pt-4 border-t border-slate-200 mt-auto">
                                 <img alt="Sarah M." width="48" height="48" class="rounded-full object-cover"
                                     src="https://ui-avatars.com/api/?name=Sarah+M&background=0D0D0D&color=fff">
                                 <div>
-                                    <p class="font-semibold text-sm text-white">Sarah M.</p>
-                                    <p class="text-sm text-white/60">Principal</p>
+                                    <p class="font-semibold text-sm text-slate-900">Sarah M.</p>
+                                    <p class="text-sm text-slate-500">Principal</p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Duplicate 4 -->
                         <div
-                            class="w-[350px] flex-none rounded-2xl border-2 border-white/10 p-6 bg-white/5 backdrop-blur-sm flex flex-col transition-all duration-300 hover:shadow-[0_8px_32px_rgba(158,122,255,0.15)] hover:border-white/30 h-[360px]">
+                            class="w-[350px] flex-none rounded-2xl border-2 border-slate-200 p-6 bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm flex flex-col transition-all duration-300 hover:shadow-[0_8px_32px_rgba(158,122,255,0.15)] hover:border-slate-300 h-[360px]">
                             <div class="flex items-center justify-between mb-4">
                                 <div class="flex items-center gap-3">
-                                    <h3 class="text-lg font-bold text-white">The Educators</h3>
+                                    <h3 class="text-lg font-bold text-slate-900">The Educators</h3>
                                 </div>
                             </div>
                             <div class="flex-1 mb-6">
-                                <p class="text-base leading-relaxed text-white/90">We generated over <span
+                                <p class="text-base leading-relaxed text-slate-800">We generated over <span
                                         style="color: rgb(255, 204, 0);">100 branded papers</span> last month without a
                                     single error.<br><br>Exporting professional PDFs with our school logo makes every
                                     assessment look prestigious.</p>
                             </div>
-                            <div class="flex items-center gap-3 pt-4 border-t border-white/10 mt-auto">
+                            <div class="flex items-center gap-3 pt-4 border-t border-slate-200 mt-auto">
                                 <img alt="Umer Zia" width="48" height="48" class="rounded-full object-cover"
                                     src="https://ui-avatars.com/api/?name=Umer+Zia&background=3DDF72&color=fff">
                                 <div>
-                                    <p class="font-semibold text-sm text-white">Umer Zia</p>
-                                    <p class="text-sm text-white/60">Administrator</p>
+                                    <p class="font-semibold text-sm text-slate-900">Umer Zia</p>
+                                    <p class="text-sm text-slate-500">Administrator</p>
                                 </div>
                             </div>
                         </div>
@@ -1413,161 +1555,496 @@
         </section>
 
         <!-- ROI Section -->
-        <section id="roi" class="py-24 px-4 md:px-0" style="background-color: rgb(10, 10, 10);">
+        <section id="roi" class="pt-24 pb-0 px-4 md:px-0" style="background-color: transparent;">
             <div
-                class="max-w-6xl mx-auto border py-8 md:py-16 border-white/10 bg-white/5 backdrop-blur-sm shadow-sm rounded-3xl px-4 sm:px-8 md:px-16 lg:px-24">
-                <div class="text-center mb-8 md:mb-12">
-                    <h2 class="text-xl sm:text-2xl md:text-4xl font-bold mb-2 text-white">The Smartest Way To Manage
-                        Your <span class="block sm:inline">Assessments</span></h2>
-                    <p class="text-sm sm:text-base md:text-lg mb-4 text-white/80">Hire the best AI Test Builder and let
-                        it outcompete manual labor.</p>
+                class="max-w-6xl mx-auto border py-10 md:py-20 border-primary/10 bg-white shadow-3d-blue backdrop-blur-md rounded-[3rem] px-4 sm:px-8 md:px-16 lg:px-24 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-b from-primary/[0.02] to-transparent pointer-events-none">
+                </div>
+                <div class="text-center mb-12 md:mb-16 relative z-10">
+                    <div
+                        class="inline-block px-4 py-1.5 mb-6 rounded-full bg-secondary/10 border border-secondary/20 shadow-3d">
+                        <span class="text-xs font-bold text-slate-800 uppercase tracking-[0.2em]">Efficiency
+                            Report</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-8 text-slate-900 leading-tight tracking-tight">The
+                        Smartest Way To Manage
+                        Your <span class="text-primary">Assessments</span></h2>
+                    <p class="text-base sm:text-lg md:text-xl mb-4 text-slate-600 font-light max-w-2xl mx-auto">
+                        Modernize your institutional workflow and let Noshahi outcompete manual labor with 3D precision.
+                    </p>
                 </div>
 
                 <div
-                    class="relative flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 mt-6 md:mt-8">
+                    class="relative flex flex-col md:flex-row items-center justify-center gap-8 md:gap-0 mt-6 md:mt-8 relative z-10">
                     <!-- Without -->
                     <div
-                        class="bg-black/40 border-2 border-[#F86367] shadow-[0_4px_32px_0_rgba(248,99,103,0.2)] rounded-2xl p-5 sm:p-6 md:p-8 w-full max-w-full sm:max-w-[420px] mx-auto transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_48px_0_rgba(248,99,103,0.3)]">
-                        <div class="flex w-full items-center mb-4">
+                        class="bg-white shadow-2xl border-t-4 border-[#FFCA28] rounded-3xl p-8 sm:p-10 w-full max-w-full sm:max-w-[450px] mx-auto transition-all duration-500 hover:scale-[1.05] hover:shadow-3d-hover transform perspective(1000px) hover:rotateY(-5deg)">
+                        <div class="flex w-full items-center mb-6">
                             <div class="flex-1 flex flex-col justify-center">
-                                <h3 class="text-base sm:text-lg md:text-xl font-bold text-white mb-1">Without Noshahi
+                                <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 mb-text-[#FFCA28]">Without
+                                    Noshahi
                                 </h3>
-                                <div class="text-xs text-white/70">Hours wasted, manual formatting</div>
+                                <div class="text-sm text-slate-500 font-medium">Hours wasted, manual formatting</div>
                             </div>
-                            <div class="text-3xl">😞</div>
+                            <div class="text-4xl filter grayscale">😫</div>
                         </div>
-                        <div class="w-full border-b border-white/10 mb-4"></div>
-                        <ul class="space-y-3 text-sm text-white/90">
-                            <li><span class="text-[#F86367] font-semibold">4 hours</span> a day wasted on manual
-                                formatting
+                        <div class="w-full border-b border-slate-100 mb-6"></div>
+                        <ul class="space-y-4 text-slate-700">
+                            <li class="flex items-center gap-3"><i
+                                    class="fa-solid fa-xmark text-[#FFCA28] font-bold"></i><span><span
+                                        class="text-[#FFCA28] font-bold">4 hours</span> a day wasted on manual
+                                    tasks</span></li>
+                            <li class="flex items-center gap-3"><i
+                                    class="fa-solid fa-xmark text-[#FFCA28] font-bold"></i><span><span
+                                        class="text-[#FFCA28] font-bold">Inconsistent</span> school branding</span></li>
+                            <li class="flex items-center gap-3"><i
+                                    class="fa-solid fa-xmark text-[#FFCA28] font-bold"></i><span><span
+                                        class="text-[#FFCA28] font-bold">Difficulty</span> in syllabus matching</span>
                             </li>
-                            <li><span class="text-[#F86367] font-semibold">Inconsistent</span> school branding</li>
-                            <li><span class="text-[#F86367] font-semibold">Difficulty</span> in syllabus topic matching
+                            <li class="flex items-center gap-3"><i
+                                    class="fa-solid fa-xmark text-[#FFCA28] font-bold"></i><span><span
+                                        class="text-[#FFCA28] font-bold">Manual</span> typing of paper headers</span>
                             </li>
-                            <li><span class="text-[#F86367] font-semibold">Manual</span> typing of paper headers</li>
                         </ul>
                     </div>
 
-                    <div class="z-10 flex items-center justify-center my-4 md:my-0">
+                    <div class="z-20 flex items-center justify-center my-8 md:my-0 md:-mx-8">
                         <div
-                            class="w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center shadow-lg border-4 border-white/20 text-white text-xl font-bold">
+                            class="w-20 h-20 rounded-full bg-white flex items-center justify-center shadow-3d-blue border-4 border-primary text-primary text-2xl font-black transform hover:scale-110 transition-transform duration-300">
                             VS</div>
                     </div>
 
                     <!-- With -->
                     <div
-                        class="bg-black/40 border-2 border-[#3DDF72] shadow-[0_4px_32px_0_rgba(61,223,114,0.2)] rounded-2xl p-5 sm:p-6 md:p-8 w-full max-w-full sm:max-w-[420px] mx-auto transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_48px_0_rgba(61,223,114,0.3)]">
-                        <div class="flex w-full items-center mb-4">
+                        class="bg-white shadow-2xl border-t-4 border-[#0047AB] rounded-3xl p-8 sm:p-10 w-full max-w-full sm:max-w-[450px] mx-auto transition-all duration-500 hover:scale-[1.05] hover:shadow-3d-hover transform perspective(1000px) hover:rotateY(5deg)">
+                        <div class="flex w-full items-center mb-6">
                             <div class="flex-1 flex flex-col justify-center">
-                                <h3 class="text-base sm:text-lg md:text-xl font-bold text-white mb-1">With Noshahi</h3>
-                                <div class="text-xs text-white/70">Instant export, curriculum aligned</div>
+                                <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 mb-2 text-primary">With
+                                    Noshahi
+                                </h3>
+                                <div class="text-sm text-slate-500 font-medium">Instant export, curriculum aligned</div>
                             </div>
-                            <div class="text-3xl">🤩</div>
+                            <div class="text-4xl">😍</div>
                         </div>
-                        <div class="w-full border-b border-white/10 mb-4"></div>
-                        <ul class="space-y-3 text-sm text-white/90">
-                            <li>Creation & export in <span class="text-[#3DDF72] font-semibold">10 minutes</span></li>
-                            <li><span class="text-[#3DDF72] font-semibold">0 errors</span> in curriculum alignment</li>
-                            <li><span class="text-[#3DDF72] font-semibold">Automatic</span> branded PDF generation</li>
-                            <li><span class="text-[#3DDF72] font-semibold">Instant</span> print-ready paper export</li>
+                        <div class="w-full border-b border-slate-100 mb-6"></div>
+                        <ul class="space-y-4 text-slate-700">
+                            <li class="flex items-center gap-3"><i
+                                    class="fa-solid fa-check text-[#0047AB] font-bold"></i><span>Creation
+                                    & export in <span class="text-[#0047AB] font-bold">10
+                                        minutes</span></span></li>
+                            <li class="flex items-center gap-3"><i
+                                    class="fa-solid fa-check text-[#0047AB] font-bold"></i><span><span
+                                        class="text-[#0047AB] font-bold">0 errors</span> in curriculum
+                                    alignment</span></li>
+                            <li class="flex items-center gap-3"><i
+                                    class="fa-solid fa-check text-[#0047AB] font-bold"></i><span><span
+                                        class="text-[#0047AB] font-bold">Automatic</span> branded PDF
+                                    generation</span></li>
+                            <li class="flex items-center gap-3"><i
+                                    class="fa-solid fa-check text-[#0047AB] font-bold"></i><span><span
+                                        class="text-[#0047AB] font-bold">Instant</span> print-ready paper
+                                    export</span></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Stats Section -->
-        <section id="stats" class="relative py-24" style="background-color: rgb(10, 10, 10);">
-            <div class="relative z-10 mx-auto max-w-7xl px-6 text-center">
-                <h2
-                    class="text-8xl md:text-9xl lg:text-[12rem] font-bold tracking-tight bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">
-                    28,840</h2>
-                <p class="mt-6 text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed text-white/80">Matric &
-                    Intermediate questions generated
-                    by Noshahi users in the last 30 days</p>
-                <div class="mt-8 flex flex-col items-center justify-center gap-2 md:flex-row">
-                    <a href="register.html"
-                        class="inline-flex items-center justify-center rounded-xl font-semibold transition-all duration-200 px-6 py-3 text-base bg-[#D94C58] text-white hover:bg-[#c23d48] hover:shadow-lg hover:shadow-[#D94C58]/20 hover:scale-105">Get
-                        Started</a>
+        <!-- School Vault Section (Social Proof) -->
+        <section id="school-vault" class="pt-8 pb-32 relative overflow-hidden bg-slate-50/30">
+            <div class="absolute inset-0 bg-primary/[0.01] pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto px-6">
+                <!-- Section Header -->
+                <div class="text-center mb-12">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 mb-8 transform hover:scale-110 transition-transform">
+                        <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                        <span class="text-xs font-bold text-slate-800 uppercase tracking-widest">Global Educational
+                            Reach</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-8 tracking-tight leading-tight">
+                        Trusted by the <span class="text-primary italic">Best.</span>
+                    </h2>
+                    <p class="max-w-2xl mx-auto text-xl text-slate-500 font-light leading-relaxed">
+                        Setting the standard for 9-12 education in Pakistan's leading institutions with deep 3D
+                        automated assessments.
+                    </p>
+                </div>
+
+                <!-- 3D Card Orbit / Wall -->
+                <div class="school-3d-scene">
+                    <div class="school-3d-grid">
+                        <!-- Card 1 -->
+                        <div class="school-card-wrapper">
+                            <div class="school-card-3d">
+                                <div class="card-face front">
+                                    <div class="card-content">
+                                        <div class="icon-wrap bg-primary/5 text-primary">
+                                            <i class="fa-solid fa-school text-4xl"></i>
+                                        </div>
+                                        <h3
+                                            class="name text-2xl font-black text-slate-800 mt-6 md:whitespace-nowrap transition-colors duration-300">
+                                            Beaconhouse</h3>
+                                        <p
+                                            class="tag text-[10px] font-bold text-primary/40 uppercase tracking-[.3em] mt-2 transition-colors duration-300">
+                                            Core Educational Partner</p>
+                                        <p
+                                            class="sub-text text-sm text-slate-500 mt-4 font-medium transition-colors duration-300 opacity-80">
+                                            Pioneering localized curriculum digitisation with advanced automated
+                                            assessments.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card-face side-right"></div>
+                                <div class="card-face side-bottom"></div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="school-card-wrapper">
+                            <div class="school-card-3d">
+                                <div class="card-face front">
+                                    <div class="card-content">
+                                        <div class="icon-wrap bg-primary/5 text-primary">
+                                            <i class="fa-solid fa-globe text-4xl"></i>
+                                        </div>
+                                        <h3
+                                            class="name text-2xl font-black text-slate-800 mt-6 md:whitespace-nowrap transition-colors duration-300">
+                                            Roots Millennium</h3>
+                                        <p
+                                            class="tag text-[10px] font-bold text-primary/40 uppercase tracking-[.3em] mt-2 transition-colors duration-300">
+                                            Global Network Member</p>
+                                        <p
+                                            class="sub-text text-sm text-slate-500 mt-4 font-medium transition-colors duration-300 opacity-80">
+                                            Integrating global testing standards into daily institutional workflows.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card-face side-right"></div>
+                                <div class="card-face side-bottom"></div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="school-card-wrapper">
+                            <div class="school-card-3d">
+                                <div class="card-face front">
+                                    <div class="card-content">
+                                        <div class="icon-wrap bg-primary/5 text-primary">
+                                            <i class="fa-solid fa-building-columns text-4xl"></i>
+                                        </div>
+                                        <h3
+                                            class="name text-2xl font-black text-slate-800 mt-6 md:whitespace-nowrap transition-colors duration-300">
+                                            LGS</h3>
+                                        <p
+                                            class="tag text-[10px] font-bold text-primary/40 uppercase tracking-[.3em] mt-2 transition-colors duration-300">
+                                            Elite Academic Partner</p>
+                                        <p
+                                            class="sub-text text-sm text-slate-500 mt-4 font-medium transition-colors duration-300 opacity-80">
+                                            Empowering elite educators with smart, 0-error evaluation tools.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card-face side-right"></div>
+                                <div class="card-face side-bottom"></div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="school-card-wrapper">
+                            <div class="school-card-3d">
+                                <div class="card-face front">
+                                    <div class="card-content">
+                                        <div class="icon-wrap bg-primary/5 text-primary">
+                                            <i class="fa-solid fa-city text-4xl"></i>
+                                        </div>
+                                        <h3
+                                            class="name text-2xl font-black text-slate-800 mt-6 md:whitespace-nowrap transition-colors duration-300">
+                                            City School</h3>
+                                        <p
+                                            class="tag text-[10px] font-bold text-primary/40 uppercase tracking-[.3em] mt-2 transition-colors duration-300">
+                                            Nationwide Integration</p>
+                                        <p
+                                            class="sub-text text-sm text-slate-500 mt-4 font-medium transition-colors duration-300 opacity-80">
+                                            Scaleable assessment solutions for nationwide educational excellence.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card-face side-right"></div>
+                                <div class="card-face side-bottom"></div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
+
+            <style>
+                .school-3d-scene {
+                    perspective: 2000px;
+                    padding: 60px 0;
+                    width: 100%;
+                }
+
+                .school-3d-grid {
+                    display: flex;
+                    flex-wrap: nowrap;
+                    justify-content: center;
+                    gap: 2rem;
+                    transform-style: preserve-3d;
+                }
+
+                .school-card-wrapper {
+                    perspective: 1000px;
+                    width: 280px;
+                    height: 380px;
+                }
+
+                .school-card-3d {
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+                    transform-style: preserve-3d;
+                    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+                    cursor: pointer;
+                }
+
+                /* Thickness effect */
+                .school-card-3d .card-face {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    backface-visibility: hidden;
+                    border-radius: 24px;
+                }
+
+                .card-face.front {
+                    background: #ffffff;
+                    border: 1px solid rgba(0, 0, 0, 0.05);
+                    box-shadow: 0 10px 30px rgba(0, 71, 171, 0.05);
+                    z-index: 2;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transform: translateZ(15px);
+                }
+
+                .icon-wrap {
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 20px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto;
+                    transition: all 0.4s ease;
+                }
+
+                .card-content {
+                    text-align: center;
+                    padding: 2rem;
+                }
+
+                /* 3D Sides */
+                .card-face.side-right {
+                    width: 30px;
+                    background: #f1f5f9;
+                    right: -15px;
+                    transform: rotateY(90deg);
+                    z-index: 1;
+                }
+
+                .card-face.side-bottom {
+                    height: 30px;
+                    background: #e2e8f0;
+                    bottom: -15px;
+                    transform: rotateX(-90deg);
+                    z-index: 1;
+                }
+
+                /* Hover States */
+                .school-card-wrapper:hover .school-card-3d {
+                    transform: scale(1.05);
+                }
+
+                .school-card-wrapper:hover .card-face.front {
+                    background: var(--primary);
+                    border-color: var(--secondary);
+                    box-shadow: 0 40px 80px rgba(0, 71, 171, 0.25);
+                }
+
+                .school-card-wrapper:hover .name,
+                .school-card-wrapper:hover .tag,
+                .school-card-wrapper:hover .sub-text {
+                    color: #ffffff !important;
+                    opacity: 1;
+                }
+
+                .school-card-wrapper:hover .icon-wrap {
+                    background: rgba(255, 255, 255, 0.1);
+                    color: var(--secondary);
+                }
+
+                .school-card-wrapper:hover .icon-wrap i {
+                    color: var(--secondary) !important;
+                }
+            </style>
         </section>
+
     </main>
 
+
     <!-- Pre-footer CTA -->
-    <section class="pre-footer">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">Ready to automate your <br> academic assessments?
-            </h2>
-            <p class="text-white/60 text-lg mb-10 max-w-2xl mx-auto">Join thousands of teachers who are saving hours
-                every week with Noshahi's professional test builder.</p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="register.html" class="btn-3d py-4 px-10 text-lg">Create Free Account</a>
-                <a href="book-demo.html" class="btn-secondary py-4 px-10 text-lg">Book a School Demo</a>
+    <section class="pre-footer py-24 relative overflow-hidden bg-slate-50">
+        <div
+            class="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-secondary/5 pointer-events-none">
+        </div>
+        <div class="max-w-5xl mx-auto px-6 relative z-10 text-center">
+            <div class="transition-all duration-500 hover:scale-[1.02]">
+                <div
+                    class="bg-white border border-primary/10 rounded-[3rem] p-12 md:p-20 shadow-3d-blue backdrop-blur-md relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32">
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl -ml-32 -mb-32">
+                    </div>
+
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-8 text-slate-900 leading-tight tracking-tight">
+                        Ready to automate your <br> <span class="text-primary">academic assessments?</span>
+                    </h2>
+                    <p class="text-slate-600 text-xl md:text-2xl mb-12 max-w-3xl mx-auto font-light">
+                        Join the elite circle of Superior-aligned educators who are saving 20+ hours every month with
+                        Pakistans most advanced 3D test builder.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                        <a href="register.html" class="btn-3d py-5 px-12 text-xl font-bold rounded-2xl">
+                            Create Free Account <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="book-demo.html"
+                            class="bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white py-5 px-12 text-xl font-bold rounded-2xl transition-all duration-300 shadow-xl hover:shadow-3d hover:-translate-y-1">
+                            Book a School Demo
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="index.html" class="footer-logo">
-                    <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                    <span>Noshahi Builder</span>
+    <footer class="bg-slate-900 pt-24 pb-12 border-t border-slate-800 relative overflow-hidden">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none">
+        </div>
+        <div
+            class="footer-grid max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 relative z-10">
+            <div class="footer-brand space-y-8">
+                <a href="index.html" class="footer-logo inline-flex items-center gap-3 group">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-blue-700 flex items-center justify-center text-white shadow-3d group-hover:scale-110 transition-transform duration-500">
+                        <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                    </div>
+                    <span class="text-3xl font-black text-white tracking-tight">nTB <span
+                            class="text-secondary">PRO</span></span>
                 </a>
-                <p>The premium test building platform for Matric and Intermediate teachers. Empowering education through
-                    automation and quality assessment tools across Pakistan.</p>
-                <div class="social-links">
-                    <a href="#" class="social-btn" aria-label="Twitter">
-                        <i class="fa-brands fa-twitter"></i>
+                <p class="text-slate-400 text-lg leading-relaxed font-light">
+                    The premium test building platform for elite institutions. Empowering education through
+                    state-of-the-art automation and high-fidelity assessment tools.
+                </p>
+                <div class="social-links flex gap-4">
+                    <a href="#"
+                        class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-primary hover:border-primary hover:shadow-3d-blue transition-all duration-300 hover:-translate-y-2">
+                        <i class="fa-brands fa-twitter text-xl"></i>
                     </a>
-                    <a href="#" class="social-btn" aria-label="LinkedIn">
-                        <i class="fa-brands fa-linkedin"></i>
+                    <a href="#"
+                        class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-primary hover:border-primary hover:shadow-3d-blue transition-all duration-300 hover:-translate-y-2">
+                        <i class="fa-brands fa-linkedin-in text-xl"></i>
                     </a>
-                    <a href="#" class="social-btn" aria-label="Facebook">
-                        <i class="fa-brands fa-facebook"></i>
+                    <a href="#"
+                        class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-primary hover:border-primary hover:shadow-3d-blue transition-all duration-300 hover:-translate-y-2">
+                        <i class="fa-brands fa-facebook-f text-xl"></i>
                     </a>
-                    <a href="#" class="social-btn" aria-label="GitHub">
-                        <i class="fa-brands fa-github"></i>
+                    <a href="#"
+                        class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-primary hover:border-primary hover:shadow-3d-blue transition-all duration-300 hover:-translate-y-2">
+                        <i class="fa-brands fa-instagram text-xl"></i>
                     </a>
                 </div>
             </div>
 
-            <div class="footer-links">
-                <h4>Platform</h4>
-                <ul>
-                    <li><a href="index.html#features">Features <i class="fa-solid fa-arrow-right-long"></i></a></li>
-                    <li><a href="insights.html">Insights <i class="fa-solid fa-arrow-right-long"></i></a></li>
-                    <li><a href="index.html#testimonials">Testimonials <i class="fa-solid fa-arrow-right-long"></i></a>
+            <div class="footer-links space-y-8">
+                <h4 class="text-xl font-bold text-white relative flex items-center gap-2">
+                    <span class="w-2 h-2 bg-secondary rounded-full"></span> Platform
+                </h4>
+                <ul class="space-y-4">
+                    <li><a href="#features"
+                            class="text-slate-400 hover:text-white transition-colors flex items-center group">Features
+                            <i
+                                class="fa-solid fa-chevron-right ml-2 text-[10px] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i></a>
                     </li>
-                    <li><a href="login.html">Login <i class="fa-solid fa-arrow-right-long"></i></a></li>
+                    <li><a href="insights.html"
+                            class="text-slate-400 hover:text-white transition-colors flex items-center group">Insights
+                            <i
+                                class="fa-solid fa-chevron-right ml-2 text-[10px] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i></a>
+                    </li>
+                    <li><a href="#testimonials"
+                            class="text-slate-400 hover:text-white transition-colors flex items-center group">Testimonials
+                            <i
+                                class="fa-solid fa-chevron-right ml-2 text-[10px] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i></a>
+                    </li>
+                    <li><a href="login.html"
+                            class="text-slate-400 hover:text-white transition-colors flex items-center group">Portal
+                            Access <i
+                                class="fa-solid fa-chevron-right ml-2 text-[10px] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i></a>
+                    </li>
                 </ul>
             </div>
 
-            <div class="footer-links">
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="#">Support Center <i class="fa-solid fa-arrow-right-long"></i></a></li>
-                    <li><a href="#">Question Bank <i class="fa-solid fa-arrow-right-long"></i></a></li>
-                    <li><a href="#">API Documentation <i class="fa-solid fa-arrow-right-long"></i></a></li>
-                    <li><a href="#">User Guides <i class="fa-solid fa-arrow-right-long"></i></a></li>
+            <div class="footer-links space-y-8">
+                <h4 class="text-xl font-bold text-white relative flex items-center gap-2">
+                    <span class="w-2 h-2 bg-secondary rounded-full"></span> Resources
+                </h4>
+                <ul class="space-y-4">
+                    <li><a href="book-demo.html"
+                            class="text-slate-400 hover:text-white transition-colors flex items-center group">Book a
+                            Demo <i
+                                class="fa-solid fa-chevron-right ml-2 text-[10px] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i></a>
+                    </li>
+                    <li><a href="register.html"
+                            class="text-slate-400 hover:text-white transition-colors flex items-center group">Open
+                            Account <i
+                                class="fa-solid fa-chevron-right ml-2 text-[10px] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i></a>
+                    </li>
+                    <li><a href="#"
+                            class="text-slate-400 hover:text-white transition-colors flex items-center group">Question
+                            Bank <i
+                                class="fa-solid fa-chevron-right ml-2 text-[10px] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i></a>
+                    </li>
+                    <li><a href="#"
+                            class="text-slate-400 hover:text-white transition-colors flex items-center group">User Guide
+                            <i
+                                class="fa-solid fa-chevron-right ml-2 text-[10px] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i></a>
+                    </li>
                 </ul>
             </div>
 
-            <div class="footer-links">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="#">About Us <i class="fa-solid fa-arrow-right-long"></i></a></li>
-                    <li><a href="#">Our Vision <i class="fa-solid fa-arrow-right-long"></i></a></li>
-                    <li><a href="#">Privacy Policy <i class="fa-solid fa-arrow-right-long"></i></a></li>
-                    <li><a href="#">Terms of Service <i class="fa-solid fa-arrow-right-long"></i></a></li>
-                </ul>
+            <div class="footer-links space-y-8">
+                <h4 class="text-xl font-bold text-white relative flex items-center gap-2">
+                    <span class="w-2 h-2 bg-secondary rounded-full"></span> Support
+                </h4>
+                <div class="space-y-6">
+                    <p class="text-slate-400 leading-relaxed font-light">Need institutional assistance? Our elite
+                        support team is ready.</p>
+                    <a href="book-demo.html"
+                        class="inline-flex py-4 px-8 bg-primary rounded-xl text-white font-bold shadow-3d-blue hover:shadow-3d-hover hover:-translate-y-1 transition-all duration-300">
+                        Contact Support
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Noshahi Developers Inc. All rights reserved.</p>
-            <p>Made with <i class="fa-solid fa-heart text-[#D94C58] mx-1"></i> for Pakistan's Educators</p>
+        <div
+            class="footer-bottom mt-24 pt-8 border-t border-slate-800 max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
+            <p class="text-slate-500 text-sm italic">&copy; 2026 Noshahi Test Builder. Designed for Superior Excellence.
+            </p>
+            <div class="flex items-center gap-2 text-slate-500 text-sm">
+                Made with <i class="fa-solid fa-heart text-red-500 animate-pulse"></i> for Pakistan's Educators
+            </div>
         </div>
     </footer>
 
@@ -1628,6 +2105,7 @@
                 });
             });
 
+
             // Video Play/Pause Toggle
             const heroVideo = document.getElementById('heroVideo');
             const videoToggle = document.getElementById('videoToggle');
@@ -1644,6 +2122,54 @@
                     toggleIcon.classList.add('fa-play');
                 }
             });
+
+            // ---- Moving Stars Generator ----
+            const starsContainer = document.getElementById('css-stars-container');
+            const numStars = 100;
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'moving-star';
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 150 + 'vh';
+                star.style.animationDuration = (Math.random() * 40 + 20) + 's';
+                star.style.animationDelay = (Math.random() * -40) + 's';
+
+                const size = Math.random() * 2 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+
+                // Add some variation in opacity for depth
+                star.style.opacity = Math.random();
+
+                starsContainer.appendChild(star);
+            }
+
+            // ---- Custom Cursor Logic ----
+            const customCursor = document.querySelector('.custom-cursor');
+
+            document.addEventListener('mousemove', (e) => {
+                customCursor.style.left = e.clientX + 'px';
+                customCursor.style.top = e.clientY + 'px';
+            });
+
+            // Add hover state to interactive elements and cards
+            const interactives = document.querySelectorAll('a, button, .faq-card, .trust-card, [class*="hover:-translate-y-"], [class*="hover:scale-"]');
+            interactives.forEach(el => {
+                el.addEventListener('mouseenter', () => customCursor.classList.add('hover-state'));
+                el.addEventListener('mouseleave', () => customCursor.classList.remove('hover-state'));
+            });
+
+            // Animated Heading Reveal
+            const revealElements = document.querySelectorAll('.reveal-parent');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        observer.unobserve(entry.target); // Ensures animation happens only once and won't reverse
+                    }
+                });
+            }, { threshold: 0.5 });
+            revealElements.forEach(el => revealObserver.observe(el));
         });
     </script>
 </body>

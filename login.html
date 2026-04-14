@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="light">
 
 <head>
     <meta charset="UTF-8">
@@ -22,7 +22,9 @@
                         sans: ['Outfit', 'sans-serif'],
                     },
                     colors: {
-                        primary: '#D94C58',
+                        primary: '#004B93',
+                        secondary: '#FFB800',
+                        accent: '#0693E3',
                         'primary-foreground': '#ffffff',
                     }
                 }
@@ -32,8 +34,8 @@
 
     <style>
         body {
-            background-color: #0A0A0A;
-            color: white;
+            background-color: #F8FAFC;
+            color: #0F172A;
             font-family: 'Outfit', sans-serif;
             margin: 0;
             overflow-x: hidden;
@@ -44,22 +46,22 @@
         }
 
         .input-focus:focus {
-            border-color: #D94C58;
-            box-shadow: 0 0 0 2px rgba(217, 76, 88, 0.2);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(0, 75, 147, 0.2);
         }
 
         /* --- New Footer Styling --- */
         .pre-footer {
             padding: 100px 20px;
-            background: radial-gradient(circle at 50% 0%, rgba(217, 76, 88, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle at 50% 0%, rgba(6, 147, 227, 0.1) 0%, transparent 70%);
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(15, 23, 42, 0.05);
         }
 
         footer {
             padding: 80px 0 40px;
-            background: #0A0A0A;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            background: #FFFFFF;
+            border-top: 1px solid rgba(15, 23, 42, 0.08);
             position: relative;
             overflow: hidden;
             width: 100%;
@@ -72,7 +74,7 @@
             left: 10%;
             right: 10%;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(217, 76, 88, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(6, 147, 227, 0.3), transparent);
         }
 
         .footer-grid {
@@ -87,7 +89,7 @@
         .footer-brand .footer-logo {
             font-size: 24px;
             font-weight: 800;
-            color: white;
+            color: #0F172A;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -96,13 +98,13 @@
         }
 
         .footer-brand p {
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(15, 23, 42, 0.6);
             line-height: 1.6;
             font-size: 15px;
         }
 
         .footer-links h4 {
-            color: white;
+            color: #0F172A;
             font-size: 14px;
             font-weight: 700;
             margin-bottom: 25px;
@@ -121,7 +123,7 @@
         }
 
         .footer-links a {
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(15, 23, 42, 0.6);
             text-decoration: none;
             font-size: 15px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -130,7 +132,7 @@
         }
 
         .footer-links a:hover {
-            color: white;
+            color: #0F172A;
             transform: translateX(5px);
         }
 
@@ -145,7 +147,7 @@
         .footer-links a:hover i {
             opacity: 1;
             transform: translateX(0);
-            color: #D94C58;
+            color: #6D28D9;
         }
 
         .social-links {
@@ -158,33 +160,33 @@
             width: 44px;
             height: 44px;
             border-radius: 12px;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(15, 23, 42, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(15, 23, 42, 0.6);
             text-decoration: none;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .social-btn:hover {
-            background: rgba(217, 76, 88, 0.1);
-            border-color: #D94C58;
-            color: white;
+            background: rgba(6, 147, 227, 0.1);
+            border-color: #004B93;
+            color: #0F172A;
             transform: translateY(-5px) rotate(8deg);
-            box-shadow: 0 10px 20px rgba(217, 76, 88, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 75, 147, 0.2);
         }
 
         .footer-bottom {
             max-width: 1200px;
             margin: 0 auto;
             padding: 30px 20px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(15, 23, 42, 0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(15, 23, 42, 0.5);
             font-size: 14px;
         }
 
@@ -214,7 +216,7 @@
 
 <body>
     <div class="w-screen min-h-screen">
-        <div class="flex flex-col lg:flex-row w-full h-screen bg-[#0A0A0A]">
+        <div class="flex flex-col lg:flex-row w-full h-screen bg-slate-50">
             <!-- Left Side - Form -->
             <div class="w-full lg:w-5/12 flex flex-col bg-white overflow-y-auto">
                 <div class="flex min-h-full flex-1 items-start lg:items-center">
@@ -224,26 +226,25 @@
                                 <div class="mb-4">
                                     <a href="index.html" class="flex items-center gap-3 no-underline">
                                         <div
-                                            class="w-12 h-12 rounded-xl bg-[#D94C58] flex items-center justify-center text-white shadow-lg shadow-[#D94C58]/20">
+                                            class="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center text-[#0F172A] shadow-lg shadow-secondary/20">
                                             <i class="fa-solid fa-graduation-cap text-2xl"></i>
                                         </div>
-                                        <span class="text-2xl font-extrabold text-[#0A0A0A] tracking-tight">Noshahi Test
-                                            Builder</span>
+                                        <span class="text-2xl font-extrabold text-[#0A0A0A] tracking-tight">Noshahi Test Builder</span>
                                     </a>
                                 </div>
-                                <h1 class="text-4xl font-semibold tracking-tight text-gray-900 mt-4">Welcome Back</h1>
-                                <p class="text-gray-500 mt-2">Log in to manage your school's assessments</p>
+                                <h1 class="text-4xl font-semibold tracking-tight text-slate-900 mt-4">Welcome Back</h1>
+                                <p class="text-slate-500 mt-2">Log in to manage your school's assessments</p>
                             </div>
 
                             <form class="space-y-5" action="index.html">
                                 <div class="space-y-4">
                                     <div class="space-y-2">
                                         <label
-                                            class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium text-gray-700"
+                                            class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium text-slate-700"
                                             for="email">School Email</label>
                                         <div class="w-full">
                                             <input
-                                                class="flex w-full rounded-md border bg-white px-3 py-2 text-sm shadow-sm placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-[#d94c58] focus-visible:border-[#d94c58] disabled:cursor-not-allowed disabled:opacity-50 transition-colors h-12 border-gray-300 focus:border-black focus-visible:ring-0 focus-visible:ring-offset-0 input-focus"
+                                                class="flex w-full rounded-md border bg-white px-3 py-2 text-sm shadow-sm placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-primary focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50 transition-colors h-12 border-gray-300 focus:border-black focus-visible:ring-0 focus-visible:ring-offset-0 input-focus"
                                                 id="email" placeholder="teacher@school.edu" required type="email"
                                                 name="email">
                                         </div>
@@ -251,33 +252,34 @@
                                     <div class="space-y-2">
                                         <div class="flex items-center justify-between">
                                             <label
-                                                class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium text-gray-700"
+                                                class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium text-slate-700"
                                                 for="password">Password</label>
-                                            <a class="text-xs font-medium text-gray-600 hover:text-black transition-colors"
+                                            <a class="text-xs font-medium text-slate-600 hover:text-black transition-colors"
                                                 href="#">Forgot password?</a>
                                         </div>
                                         <div class="w-full">
                                             <input
-                                                class="flex w-full rounded-md border bg-white px-3 py-2 text-sm shadow-sm placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-[#d94c58] focus-visible:border-[#d94c58] disabled:cursor-not-allowed disabled:opacity-50 transition-colors h-12 border-gray-300 focus:border-black focus-visible:ring-0 focus-visible:ring-offset-0 input-focus"
+                                                class="flex w-full rounded-md border bg-white px-3 py-2 text-sm shadow-sm placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-primary focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50 transition-colors h-12 border-gray-300 focus:border-black focus-visible:ring-0 focus-visible:ring-offset-0 input-focus"
                                                 id="password" required type="password" name="password"
                                                 placeholder="••••••••">
                                         </div>
                                     </div>
                                     <div class="flex items-center space-x-2">
                                         <input type="checkbox" id="remember"
-                                            class="w-4 h-4 rounded border-gray-300 text-[#D94C58] focus:ring-[#D94C58] cursor-pointer">
+                                            class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary cursor-pointer">
                                         <label for="remember"
-                                            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-gray-600 cursor-pointer">Keep
+                                            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-slate-600 cursor-pointer">Keep
                                             me logged in</label>
                                     </div>
                                 </div>
                                 <button
-                                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 shadow px-4 py-2 w-full h-12 font-medium bg-[#0A0A0A] hover:bg-black/90 text-white text-sm tracking-wide"
+                                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md transition-all duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 shadow-lg px-4 py-2 w-full h-12 font-bold text-slate-900 text-sm tracking-wide transform hover:-translate-y-1.5"
+                                    style="background: linear-gradient(135deg, #FFB800, #FFCA28); box-shadow: 0 5px 0 #E5A600, 0 10px 20px rgba(255, 184, 0, 0.2);"
                                     type="submit">
                                     <span>Sign in</span>
                                 </button>
-                                <p class="text-center text-sm text-gray-500 mt-6">First time here? <a
-                                        class="font-semibold text-[#D94C58] hover:text-[#c23d48] transition-colors"
+                                <p class="text-center text-sm text-slate-500 mt-6">First time here? <a
+                                        class="font-semibold text-primary hover:text-secondary transition-colors"
                                         href="register.html">Create school account</a></p>
                             </form>
                         </div>
@@ -286,21 +288,20 @@
             </div>
 
             <!-- Right Side - Visuals -->
-            <div class="hidden lg:flex flex-col lg:w-7/12 bg-[#0A0A0A] text-white h-screen">
+            <div class="hidden lg:flex flex-col lg:w-7/12 bg-slate-50 text-slate-900 h-screen">
                 <div class="relative z-10 w-full h-full flex flex-col">
-                    <div class="absolute inset-0 bg-gradient-to-tl from-[#d94c58]/40 from-10% via-[#2d1b69]/30 via-40% to-[#0A0A0A] to-80% pointer-events-none"
-                        style="background-image: radial-gradient(circle at right bottom, rgba(217, 76, 88, 0.35) 20%, rgba(45, 27, 105, 0.25) 40%, rgba(10, 10, 10, 0.9) 80%);">
+                    <div class="absolute inset-0 bg-gradient-to-tl from-[#004B93]/40 from-10% via-[#003569]/30 via-40% to-slate-100 to-80% pointer-events-none"
+                        style="background-image: radial-gradient(circle at right bottom, rgba(0, 75, 147, 0.35) 20%, rgba(0, 53, 105, 0.25) 40%, rgba(248, 250, 252, 0.9) 80%);">
                     </div>
-                    <div class="absolute inset-0 bg-[#0A0A0A]/40 backdrop-blur-[100px] pointer-events-none"></div>
+                    <div class="absolute inset-0 bg-slate-50/40 backdrop-blur-[100px] pointer-events-none"></div>
 
                     <div class="relative z-20 px-12 pt-12">
                         <div
-                            class="inline-block px-3 py-1 rounded-full bg-[#D94C58]/20 border border-[#D94C58]/30 mb-6">
-                            <span class="text-xs font-bold text-[#D94C58] uppercase tracking-widest">The Gold
-                                Standard</span>
+                            class="inline-block px-3 py-1 rounded-full bg-[#004B93]/20 border border-[#004B93]/30 mb-6">
+                            <span class="text-xs font-bold text-[#004B93] uppercase tracking-widest">Supreme Quality</span>
                         </div>
                         <h2 class="text-5xl font-bold tracking-tight mb-3">Academic outreach on autopilot</h2>
-                        <p class="text-lg text-gray-300">Turn Noshahi into your best-performing education channel</p>
+                        <p class="text-lg text-slate-300">Turn Noshahi into your best-performing education channel</p>
                     </div>
 
                     <div class="relative z-20 flex-1 flex items-center">
@@ -310,61 +311,61 @@
                                 <div class="grid grid-cols-5 gap-4 mb-10">
 
                                     <div
-                                        class="bg-white/5 backdrop-blur-sm rounded-xl p-5 flex flex-col items-center border border-white/10">
+                                        class="bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm rounded-xl p-5 flex flex-col items-center border border-slate-200">
                                         <div
-                                            class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-3">
+                                            class="w-12 h-12 rounded-full bg-slate-100/50 flex items-center justify-center mb-3">
                                             <i class="fa-solid fa-file-signature text-blue-500 text-lg"></i>
                                         </div>
                                         <div class="text-center">
-                                            <div class="text-xs text-gray-400 mb-1">TESTS MADE</div>
+                                            <div class="text-xs text-slate-400 mb-1">TESTS MADE</div>
                                             <div class="text-2xl font-bold">252</div>
                                         </div>
                                     </div>
 
                                     <div
-                                        class="bg-white/5 backdrop-blur-sm rounded-xl p-5 flex flex-col items-center border border-white/10">
+                                        class="bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm rounded-xl p-5 flex flex-col items-center border border-slate-200">
                                         <div
-                                            class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-3">
+                                            class="w-12 h-12 rounded-full bg-slate-100/50 flex items-center justify-center mb-3">
                                             <i class="fa-solid fa-user-graduate text-green-500 text-lg"></i>
                                         </div>
                                         <div class="text-center">
-                                            <div class="text-xs text-gray-400 mb-1">GRADED</div>
+                                            <div class="text-xs text-slate-400 mb-1">GRADED</div>
                                             <div class="text-2xl font-bold">42</div>
                                         </div>
                                     </div>
 
                                     <div
-                                        class="bg-white/5 backdrop-blur-sm rounded-xl p-5 flex flex-col items-center border border-white/10">
+                                        class="bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm rounded-xl p-5 flex flex-col items-center border border-slate-200">
                                         <div
-                                            class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-3">
+                                            class="w-12 h-12 rounded-full bg-slate-100/50 flex items-center justify-center mb-3">
                                             <i class="fa-solid fa-chalkboard-user text-purple-500 text-lg"></i>
                                         </div>
                                         <div class="text-center">
-                                            <div class="text-xs text-gray-400 mb-1">AUTOMATED</div>
+                                            <div class="text-xs text-slate-400 mb-1">AUTOMATED</div>
                                             <div class="text-2xl font-bold">22</div>
                                         </div>
                                     </div>
 
                                     <div
-                                        class="bg-white/5 backdrop-blur-sm rounded-xl p-5 flex flex-col items-center border border-white/10">
+                                        class="bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm rounded-xl p-5 flex flex-col items-center border border-slate-200">
                                         <div
-                                            class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-3">
+                                            class="w-12 h-12 rounded-full bg-slate-100/50 flex items-center justify-center mb-3">
                                             <i class="fa-solid fa-clock-rotate-left text-orange-500 text-lg"></i>
                                         </div>
                                         <div class="text-center">
-                                            <div class="text-xs text-gray-400 mb-1">HOURS SAVED</div>
+                                            <div class="text-xs text-slate-400 mb-1">HOURS SAVED</div>
                                             <div class="text-2xl font-bold">50+</div>
                                         </div>
                                     </div>
 
                                     <div
-                                        class="bg-white/5 backdrop-blur-sm rounded-xl p-5 flex flex-col items-center border border-white/10">
+                                        class="bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm rounded-xl p-5 flex flex-col items-center border border-slate-200">
                                         <div
-                                            class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-3">
+                                            class="w-12 h-12 rounded-full bg-slate-100/50 flex items-center justify-center mb-3">
                                             <i class="fa-solid fa-chart-line text-blue-500 text-lg"></i>
                                         </div>
                                         <div class="text-center">
-                                            <div class="text-xs text-gray-400 mb-1">EFFICIENCY</div>
+                                            <div class="text-xs text-slate-400 mb-1">EFFICIENCY</div>
                                             <div class="text-2xl font-bold">95%</div>
                                         </div>
                                     </div>
@@ -372,14 +373,14 @@
                                 </div>
                             </div>
 
-                            <div class="px-12 py-8 border-t border-white/10">
+                            <div class="px-12 py-8 border-t border-slate-200">
                                 <div class="grid grid-cols-3 gap-6">
 
                                     <!-- Testimonial 1 -->
                                     <div
-                                        class="bg-white/5 backdrop-blur-sm rounded-xl p-6 relative border border-white/5">
+                                        class="bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm rounded-xl p-6 relative border border-slate-100">
                                         <div class="absolute -top-3 left-6 text-blue-500 transform scale-[1.5]">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#d94c58">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#004B93">
                                                 <path
                                                     d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179z">
                                                 </path>
@@ -387,28 +388,28 @@
                                         </div>
                                         <div class="mt-6">
                                             <p class="text-sm italic text-gray-100 italic leading-relaxed">"Noshahi was
-                                                so effective I had to pause the assessment phase after just 2 weeks—we
+                                                so effective I had to pause the assessment phase after just 2 weeksâ€”we
                                                 graded 300+ papers and saved countless hours."</p>
                                         </div>
                                         <div class="mt-4 flex items-center gap-3">
                                             <span
-                                                class="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8 border border-white/10">
+                                                class="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8 border border-slate-200">
                                                 <img class="aspect-square h-full w-full object-cover" alt="Ali Hasan"
                                                     width="32" height="32"
-                                                    src="https://ui-avatars.com/api/?name=Ali+Hasan&background=D94C58&color=fff">
+                                                    src="https://ui-avatars.com/api/?name=Ali+Hasan&background=6d28d9&color=fff">
                                             </span>
                                             <div>
-                                                <p class="font-medium text-xs text-white">Ali Hasan</p>
-                                                <p class="text-gray-400 text-xs">Senior Teacher</p>
+                                                <p class="font-medium text-xs text-slate-900">Ali Hasan</p>
+                                                <p class="text-slate-400 text-xs">Senior Teacher</p>
                                             </div>
                                         </div>
                                     </div>
 
                                     <!-- Testimonial 2 -->
                                     <div
-                                        class="bg-white/5 backdrop-blur-sm rounded-xl p-6 relative border border-white/5">
+                                        class="bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm rounded-xl p-6 relative border border-slate-100">
                                         <div class="absolute -top-3 left-6 text-blue-500 transform scale-[1.5]">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#d94c58">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#004B93">
                                                 <path
                                                     d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179z">
                                                 </path>
@@ -421,23 +422,23 @@
                                         </div>
                                         <div class="mt-4 flex items-center gap-3">
                                             <span
-                                                class="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8 border border-white/10">
+                                                class="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8 border border-slate-200">
                                                 <img class="aspect-square h-full w-full object-cover" alt="Umer Zia"
                                                     width="32" height="32"
-                                                    src="https://ui-avatars.com/api/?name=Umer+Zia&background=D94C58&color=fff">
+                                                    src="https://ui-avatars.com/api/?name=Umer+Zia&background=6d28d9&color=fff">
                                             </span>
                                             <div>
-                                                <p class="font-medium text-xs text-white">Umer Zia</p>
-                                                <p class="text-gray-400 text-xs text-white/50">Administrator</p>
+                                                <p class="font-medium text-xs text-slate-900">Umer Zia</p>
+                                                <p class="text-slate-400 text-xs text-slate-400">Administrator</p>
                                             </div>
                                         </div>
                                     </div>
 
                                     <!-- Testimonial 3 -->
                                     <div
-                                        class="bg-white/5 backdrop-blur-sm rounded-xl p-6 relative border border-white/5">
+                                        class="bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm rounded-xl p-6 relative border border-slate-100">
                                         <div class="absolute -top-3 left-6 text-blue-500 transform scale-[1.5]">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#d94c58">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#6D28D9">
                                                 <path
                                                     d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179z">
                                                 </path>
@@ -445,19 +446,19 @@
                                         </div>
                                         <div class="mt-6">
                                             <p class="text-sm italic text-gray-100 italic leading-relaxed">"I avoided
-                                                automated builders for years—Noshahi changed my mind. I landed a
+                                                automated builders for yearsâ€”Noshahi changed my mind. I landed a
                                                 flawless exam batch in just 2 weeks."</p>
                                         </div>
                                         <div class="mt-4 flex items-center gap-3">
                                             <span
-                                                class="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8 border border-white/10">
+                                                class="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8 border border-slate-200">
                                                 <img class="aspect-square h-full w-full object-cover"
-                                                    alt="Ivo Damjanovski" width="32" height="32"
-                                                    src="https://ui-avatars.com/api/?name=Sarah+M&background=D94C58&color=fff">
+                                                    alt="Sarah M" width="32" height="32"
+                                                    src="https://ui-avatars.com/api/?name=Sarah+M&background=004b93&color=fff">
                                             </span>
                                             <div>
-                                                <p class="font-medium text-xs text-white">Sarah M.</p>
-                                                <p class="text-gray-400 text-xs">Principal</p>
+                                                <p class="font-medium text-xs text-slate-900">Sarah M.</p>
+                                                <p class="text-slate-400 text-xs">Principal</p>
                                             </div>
                                         </div>
                                     </div>
@@ -468,27 +469,27 @@
                     </div>
 
                     <!-- Bottom Footer Stats -->
-                    <div class="relative z-20 mt-auto px-12 py-6 border-t border-white/10">
+                    <div class="relative z-20 mt-auto px-12 py-6 border-t border-slate-200">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center">
                                 <i class="fa-solid fa-circle-check text-green-400 mr-2 text-sm"></i>
-                                <span class="text-sm text-gray-400 uppercase tracking-widest font-bold">Trusted by
+                                <span class="text-sm text-slate-400 uppercase tracking-widest font-bold">Trusted by
                                     10,000+ teachers</span>
                             </div>
                             <div class="flex items-center space-x-6">
                                 <div class="flex items-center space-x-2">
-                                    <i class="fa-solid fa-robot text-gray-400 text-sm"></i>
+                                    <i class="fa-solid fa-robot text-slate-400 text-sm"></i>
                                     <span
-                                        class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">AI-Powered</span>
+                                        class="text-[10px] text-slate-400 uppercase font-bold tracking-widest">AI-Powered</span>
                                 </div>
                                 <div class="flex items-center space-x-2">
-                                    <i class="fa-solid fa-bolt-lightning text-gray-400 text-sm"></i>
-                                    <span class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">24/7
+                                    <i class="fa-solid fa-bolt-lightning text-slate-400 text-sm"></i>
+                                    <span class="text-[10px] text-slate-400 uppercase font-bold tracking-widest">24/7
                                         Automation</span>
                                 </div>
                                 <div class="flex items-center space-x-2">
-                                    <i class="fa-solid fa-lock text-gray-400 text-sm"></i>
-                                    <span class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Secure
+                                    <i class="fa-solid fa-lock text-slate-400 text-sm"></i>
+                                    <span class="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Secure
                                         Integration</span>
                                 </div>
                             </div>
@@ -504,3 +505,5 @@
 </body>
 
 </html>
+
+

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book a Demo | Noshahi Test Builder</title>
+    <title> Noshahi Test Builder</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <!-- Font Awesome & Google Fonts -->
@@ -22,7 +22,9 @@
                         sans: ['Outfit', 'sans-serif'],
                     },
                     colors: {
-                        primary: '#D94C58',
+                        primary: '#004B93',
+                        secondary: '#FFB800',
+                        accent: '#0693E3',
                         'primary-foreground': '#ffffff',
                     }
                 }
@@ -32,8 +34,8 @@
 
     <style>
         body {
-            background-color: #0A0A0A;
-            color: #ffffff;
+            background-color: #F8FAFC;
+            color: #0F172A;
             font-family: 'Outfit', sans-serif;
             overflow-x: hidden;
             scroll-behavior: smooth;
@@ -47,9 +49,9 @@
             width: 100%;
             padding: 20px 0;
             z-index: 1000;
-            background: rgba(10, 10, 10, 0.8);
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(15, 23, 42, 0.1);
         }
 
         .nav-wrapper {
@@ -68,19 +70,20 @@
             text-decoration: none;
             font-weight: 800;
             font-size: 20px;
-            color: #ffffff;
+            color: #0F172A;
         }
 
         .logo-icon {
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, #D94C58, rgba(217, 76, 88, 0.4));
-            color: white;
+            background: #FFB800;
+            color: #0F172A;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 10px;
             font-size: 18px;
+            box-shadow: 0 4px 10px rgba(255, 184, 0, 0.2);
         }
 
         .nav-links {
@@ -91,7 +94,7 @@
 
         .nav-links a {
             text-decoration: none;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(15, 23, 42, 0.7);
             font-weight: 500;
             font-size: 15px;
             transition: all 0.3s;
@@ -101,14 +104,14 @@
         }
 
         .nav-links a:hover {
-            color: white;
+            color: #0F172A;
             background: rgba(255, 255, 255, 0.05);
         }
 
         .nav-links a.active {
-            color: #D94C58;
-            background: rgba(217, 76, 88, 0.1);
-            text-shadow: 0 0 15px rgba(217, 76, 88, 0.3);
+            color: #004B93;
+            background: rgba(0, 75, 147, 0.1);
+            text-shadow: 0 0 15px rgba(0, 75, 147, 0.3);
         }
 
         /* --- Dropdown Styles --- */
@@ -122,7 +125,7 @@
             top: 100%;
             left: 50%;
             transform: translateX(-50%) translateY(10px);
-            background: rgba(20, 20, 20, 0.95);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             min-width: 200px;
             padding: 8px;
@@ -131,7 +134,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(15, 23, 42, 0.1);
             z-index: 1100;
             margin-top: 10px;
         }
@@ -147,7 +150,7 @@
             align-items: center;
             padding: 10px 15px;
             border-radius: 8px;
-            color: rgba(255, 255, 255, 0.7) !important;
+            color: rgba(15, 23, 42, 0.7) !important;
             font-size: 14px;
             font-weight: 500;
             width: 100%;
@@ -156,8 +159,8 @@
         }
 
         .dropdown-content a:hover {
-            color: #D94C58 !important;
-            background: rgba(217, 76, 88, 0.1) !important;
+            color: #004B93 !important;
+            background: rgba(0, 75, 147, 0.1) !important;
             padding-left: 20px;
         }
 
@@ -169,10 +172,10 @@
             background-position: right 1rem center;
             background-size: 1.2em;
         }
-        
+
         select option {
             background-color: #1a1a1a;
-            color: white;
+            color: #0F172A;
         }
 
         .btn-secondary {
@@ -180,39 +183,43 @@
             align-items: center;
             padding: 10px 20px;
             background: transparent;
-            color: #D94C58;
+            color: #004B93;
             text-decoration: none;
             font-weight: 700;
             border-radius: 8px;
             transition: all 0.3s;
-            border: 1px solid rgba(217, 76, 88, 0.4);
+            border: 1px solid rgba(0, 75, 147, 0.4);
             font-size: 14px;
         }
 
         .btn-secondary:hover {
-            background: rgba(217, 76, 88, 0.1);
-            border-color: #D94C58;
+            background: rgba(255, 184, 0, 0.05);
+            border-color: #FFB800;
+            color: #E5A600;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 184, 0, 0.15);
         }
 
         .btn-3d {
             display: inline-flex;
             align-items: center;
             padding: 10px 25px;
-            background: #D94C58;
-            color: #fff;
+            background: #FFB800;
+            color: #0F172A;
             text-decoration: none;
             font-weight: 700;
             border-radius: 8px;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: none;
             font-size: 14px;
         }
 
         .btn-3d:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(217, 76, 88, 0.4);
-            background: #c23d48;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 0 #E5A600, 0 15px 30px rgba(255, 184, 0, 0.3);
+            background: linear-gradient(135deg, #FFCA28, #FFB800);
         }
+
         @media (max-width: 768px) {
             .nav-wrapper {
                 padding: 0 15px;
@@ -234,7 +241,7 @@
 
             #menu-toggle:active {
                 transform: scale(0.9);
-                background: rgba(217, 76, 88, 0.2);
+                background: rgba(0, 75, 147, 0.2);
             }
 
             .nav-links {
@@ -300,7 +307,8 @@
                 gap: 15px;
             }
 
-            .nav-links .btn-secondary, .nav-links .btn-3d {
+            .nav-links .btn-secondary,
+            .nav-links .btn-3d {
                 width: 80%;
                 justify-content: center;
                 padding: 14px;
@@ -321,18 +329,19 @@
                 display: flex;
             }
         }
+
         /* --- New Footer Styling --- */
         .pre-footer {
             padding: 100px 20px;
-            background: radial-gradient(circle at 50% 0%, rgba(217, 76, 88, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle at 50% 0%, rgba(6, 147, 227, 0.1) 0%, transparent 70%);
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(15, 23, 42, 0.05);
         }
 
         footer {
             padding: 80px 0 40px;
-            background: #0A0A0A;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            background: #FFFFFF;
+            border-top: 1px solid rgba(15, 23, 42, 0.08);
             position: relative;
             overflow: hidden;
             width: 100%;
@@ -345,7 +354,7 @@
             left: 10%;
             right: 10%;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(217, 76, 88, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(6, 147, 227, 0.3), transparent);
         }
 
         .footer-grid {
@@ -360,7 +369,7 @@
         .footer-brand .footer-logo {
             font-size: 24px;
             font-weight: 800;
-            color: white;
+            color: #0F172A;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -369,13 +378,13 @@
         }
 
         .footer-brand p {
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(15, 23, 42, 0.6);
             line-height: 1.6;
             font-size: 15px;
         }
 
         .footer-links h4 {
-            color: white;
+            color: #0F172A;
             font-size: 14px;
             font-weight: 700;
             margin-bottom: 25px;
@@ -394,7 +403,7 @@
         }
 
         .footer-links a {
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(15, 23, 42, 0.6);
             text-decoration: none;
             font-size: 15px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -403,7 +412,7 @@
         }
 
         .footer-links a:hover {
-            color: white;
+            color: #0F172A;
             transform: translateX(5px);
         }
 
@@ -418,7 +427,7 @@
         .footer-links a:hover i {
             opacity: 1;
             transform: translateX(0);
-            color: #D94C58;
+            color: #6D28D9;
         }
 
         .social-links {
@@ -431,33 +440,33 @@
             width: 44px;
             height: 44px;
             border-radius: 12px;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(15, 23, 42, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(15, 23, 42, 0.6);
             text-decoration: none;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .social-btn:hover {
-            background: rgba(217, 76, 88, 0.1);
-            border-color: #D94C58;
-            color: white;
+            background: rgba(6, 147, 227, 0.1);
+            border-color: #004B93;
+            color: #0F172A;
             transform: translateY(-5px) rotate(8deg);
-            box-shadow: 0 10px 20px rgba(217, 76, 88, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 75, 147, 0.2);
         }
 
         .footer-bottom {
             max-width: 1200px;
             margin: 0 auto;
             padding: 30px 20px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(15, 23, 42, 0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(15, 23, 42, 0.5);
             font-size: 14px;
         }
 
@@ -497,15 +506,7 @@
             <nav class="nav-links" id="nav-menu">
                 <a href="index.html">Home</a>
                 <a href="insights.html">Question Bank Insights</a>
-                <div class="dropdown">
-                    <a href="#">English Resources <i class="fa-solid fa-chevron-down text-[10px] ml-1"></i></a>
-                    <div class="dropdown-content">
-                        <a href="#"><i class="fa-solid fa-book mr-2"></i> Grammar Guide</a>
-                        <a href="#"><i class="fa-solid fa-spell-check mr-2"></i> Vocabulary Builder</a>
-                        <a href="#"><i class="fa-solid fa-file-lines mr-2"></i> Writing Templates</a>
-                        <a href="#"><i class="fa-solid fa-microphone mr-2"></i> Speaking Modules</a>
-                    </div>
-                </div>
+
                 <a href="index.html#features">Features</a>
                 <a href="index.html#testimonials">Testimonials</a>
 
@@ -524,28 +525,38 @@
     <main class="overflow-hidden pt-24 lg:pt-32 pb-20">
         <div class="mx-auto max-w-6xl px-6 sm:px-8 lg:px-10">
             <div class="text-center mb-10 lg:mb-16">
-                <h1 class="text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">Book a Demo</h1>
-                <p class="text-white/60 text-lg max-w-2xl mx-auto">Let's see how Noshahi can automate professional Matric and Intermediate test creation for your school.</p>
+                <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-4 tracking-tight">Book a Demo</h1>
+                <p class="text-slate-500 text-lg max-w-2xl mx-auto">Let's see how Noshahi can automate professional
+                    Matric and Intermediate test creation for your school.</p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
                 <!-- Form Area -->
-                <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-3xl">
+                <div class="bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm border border-slate-200 p-8 rounded-3xl">
                     <form class="space-y-6" action="index.html">
-                        
+
                         <div class="space-y-2">
-                            <label class="text-sm font-semibold text-white/70 ml-1">Your name <span class="text-primary">*</span></label>
-                            <input class="flex h-12 w-full rounded-xl border px-4 py-2 text-sm bg-white/5 border-white/10 text-white placeholder:text-white/30 focus-visible:outline-none focus:border-primary transition" placeholder="Your full name" name="name" required>
+                            <label class="text-sm font-semibold text-slate-600 ml-1">Your name <span
+                                    class="text-primary">*</span></label>
+                            <input
+                                class="flex h-12 w-full rounded-xl border px-4 py-2 text-sm bg-white/80 shadow-md border-inherit border-slate-200 border-slate-200 text-slate-900 placeholder:text-slate-900/30 focus-visible:outline-none focus:border-primary transition"
+                                placeholder="Your full name" name="name" required>
                         </div>
 
                         <div class="space-y-2">
-                            <label class="text-sm font-semibold text-white/70 ml-1">Email address <span class="text-primary">*</span></label>
-                            <input class="flex h-12 w-full rounded-xl border px-4 py-2 text-sm bg-white/5 border-white/10 text-white placeholder:text-white/30 focus-visible:outline-none focus:border-primary transition" placeholder="you@example.com" type="email" name="email" required>
+                            <label class="text-sm font-semibold text-slate-600 ml-1">Email address <span
+                                    class="text-primary">*</span></label>
+                            <input
+                                class="flex h-12 w-full rounded-xl border px-4 py-2 text-sm bg-white/80 shadow-md border-inherit border-slate-200 border-slate-200 text-slate-900 placeholder:text-slate-900/30 focus-visible:outline-none focus:border-primary transition"
+                                placeholder="you@example.com" type="email" name="email" required>
                         </div>
 
                         <div class="space-y-2">
-                            <label class="text-sm font-semibold text-white/70 ml-1">Role <span class="text-primary">*</span></label>
-                            <select class="flex h-12 w-full rounded-xl border px-4 py-2 text-sm bg-white/5 border-white/10 text-white focus:outline-none focus:border-primary transition cursor-pointer" required>
+                            <label class="text-sm font-semibold text-slate-600 ml-1">Role <span
+                                    class="text-primary">*</span></label>
+                            <select
+                                class="flex h-12 w-full rounded-xl border px-4 py-2 text-sm bg-white/80 shadow-md border-inherit border-slate-200 border-slate-200 text-slate-900 focus:outline-none focus:border-primary transition cursor-pointer"
+                                required>
                                 <option value="" disabled selected>Select one</option>
                                 <option value="Solo Freelancer">Class Teacher (9-12)</option>
                                 <option value="Agency Owner">School Principal</option>
@@ -554,8 +565,11 @@
                         </div>
 
                         <div class="space-y-2">
-                            <label class="text-sm font-semibold text-white/70 ml-1">Which of these best describes you? <span class="text-primary">*</span></label>
-                            <select class="flex h-12 w-full rounded-xl border px-4 py-2 text-sm bg-white/5 border-white/10 text-white focus:outline-none focus:border-primary transition cursor-pointer" required>
+                            <label class="text-sm font-semibold text-slate-600 ml-1">Which of these best describes you?
+                                <span class="text-primary">*</span></label>
+                            <select
+                                class="flex h-12 w-full rounded-xl border px-4 py-2 text-sm bg-white/80 shadow-md border-inherit border-slate-200 border-slate-200 text-slate-900 focus:outline-none focus:border-primary transition cursor-pointer"
+                                required>
                                 <option value="" disabled selected>Select one</option>
                                 <option value="Veteran">An Educational Veteran</option>
                                 <option value="Just Starting">New to Automated Testing</option>
@@ -564,8 +578,11 @@
                         </div>
 
                         <div class="space-y-2">
-                            <label class="text-sm font-semibold text-white/70 ml-1">How many tests a month do you generate? <span class="text-primary">*</span></label>
-                            <select class="flex h-12 w-full rounded-xl border px-4 py-2 text-sm bg-white/5 border-white/10 text-white focus:outline-none focus:border-primary transition cursor-pointer" required>
+                            <label class="text-sm font-semibold text-slate-600 ml-1">How many tests a month do you
+                                generate? <span class="text-primary">*</span></label>
+                            <select
+                                class="flex h-12 w-full rounded-xl border px-4 py-2 text-sm bg-white/80 shadow-md border-inherit border-slate-200 border-slate-200 text-slate-900 focus:outline-none focus:border-primary transition cursor-pointer"
+                                required>
                                 <option value="" disabled selected>Select volume</option>
                                 <option value="1-10">1-10 papers</option>
                                 <option value="10-50">10-50 papers</option>
@@ -575,18 +592,29 @@
                         </div>
 
                         <div class="space-y-2">
-                            <label class="text-sm font-semibold text-white/70 ml-1">Share a link to your School's Website/LinkedIn</label>
-                            <input class="flex h-12 w-full rounded-xl border px-4 py-2 text-sm bg-white/5 border-white/10 text-white placeholder:text-white/30 focus-visible:outline-none focus:border-primary transition" placeholder="https://www.yourschool.edu" name="websiteUrl">
+                            <label class="text-sm font-semibold text-slate-600 ml-1">Share a link to your School's
+                                Website/LinkedIn</label>
+                            <input
+                                class="flex h-12 w-full rounded-xl border px-4 py-2 text-sm bg-white/80 shadow-md border-inherit border-slate-200 border-slate-200 text-slate-900 placeholder:text-slate-900/30 focus-visible:outline-none focus:border-primary transition"
+                                placeholder="https://www.yourschool.edu" name="websiteUrl">
                         </div>
 
                         <div class="space-y-2">
-                            <label class="text-sm font-semibold text-white/70 ml-1">Any questions or notes?</label>
-                            <textarea class="flex w-full rounded-xl border px-4 py-3 text-sm bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition min-h-[100px]" name="notes" placeholder="Please share anything that will help prepare for our meeting."></textarea>
+                            <label class="text-sm font-semibold text-slate-600 ml-1">Any questions or notes?</label>
+                            <textarea
+                                class="flex w-full rounded-xl border px-4 py-3 text-sm bg-white/80 shadow-md border-inherit border-slate-200 border-slate-200 text-slate-900 placeholder:text-slate-900/30 focus:outline-none focus:border-primary transition min-h-[100px]"
+                                name="notes"
+                                placeholder="Please share anything that will help prepare for our meeting."></textarea>
                         </div>
 
-                        <button class="inline-flex items-center justify-center rounded-2xl font-bold transition-all duration-300 disabled:opacity-50 relative overflow-hidden group px-6 py-4 text-lg bg-[#D94C58] text-white hover:bg-[#c23d48] hover:shadow-2xl hover:shadow-[#D94C58]/30 w-full" type="submit">
-                            <span class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-linear-to-r from-transparent via-white/10 to-transparent"></span>
-                            <span class="relative z-10 flex items-center justify-center gap-3">Continue to Pick a Time <i class="fa-solid fa-arrow-right text-sm"></i></span>
+                        <button
+                            class="inline-flex items-center justify-center rounded-2xl font-bold transition-all duration-300 disabled:opacity-50 relative overflow-hidden group px-6 py-4 text-lg bg-[#FFB800] text-[#0F172A] hover:shadow-2xl hover:shadow-[#FFB800]/40 w-full transform hover:-translate-y-1.5"
+                            style="background: linear-gradient(135deg, #FFB800, #FFCA28); box-shadow: 0 5px 0 #E5A600, 0 10px 20px rgba(255, 184, 0, 0.2);"
+                            type="submit">
+                            <span
+                                class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-linear-to-r from-transparent via-white/20 to-transparent"></span>
+                            <span class="relative z-10 flex items-center justify-center gap-3">Continue to Pick a Time
+                                <i class="fa-solid fa-arrow-right text-sm"></i></span>
                         </button>
                     </form>
                 </div>
@@ -596,51 +624,69 @@
                     <div class="flex flex-col gap-6">
                         <div class="flex items-center gap-6">
                             <div class="relative">
-                                <span class="relative flex shrink-0 overflow-hidden rounded-full w-20 h-20 border-2 border-primary shadow-xl shadow-primary/20">
-                                    <img class="aspect-square size-full object-cover" alt="Product Expert" src="https://ui-avatars.com/api/?name=Product+Expert&background=D94C58&color=fff">
+                                <span
+                                    class="relative flex shrink-0 overflow-hidden rounded-full w-20 h-20 border-2 border-primary shadow-xl shadow-primary/20">
+                                    <img class="aspect-square size-full object-cover" alt="Product Expert"
+                                        src="https://ui-avatars.com/api/?name=Product+Expert&background=004b93&color=fff">
                                 </span>
-                                <div class="absolute bottom-1 right-1 w-5 h-5 bg-green-500 border-2 border-[#0A0A0A] rounded-full"></div>
+                                <div
+                                    class="absolute bottom-1 right-1 w-5 h-5 bg-green-500 border-2 border-[#0A0A0A] rounded-full">
+                                </div>
                             </div>
                             <div>
-                                <h3 class="text-2xl font-bold text-white">Book Demo with Noshahi</h3>
+                                <h3 class="text-2xl font-bold text-slate-900">Book Demo with Noshahi</h3>
                                 <div class="text-primary font-semibold text-sm">Product Expert</div>
-                                <div class="text-white/50 text-xs mt-2 leading-relaxed">I'll walk you through how Noshahi can transform your school's assessment success.</div>
+                                <div class="text-slate-400 text-xs mt-2 leading-relaxed">I'll walk you through how
+                                    Noshahi can transform your school's assessment success.</div>
                             </div>
                         </div>
-                        <div class="flex items-center gap-4 border-t border-white/10 pt-6">
-                            <span class="text-white/40 text-xs font-bold uppercase tracking-widest">Connect:</span>
+                        <div class="flex items-center gap-4 border-t border-slate-200 pt-6">
+                            <span class="text-slate-900/40 text-xs font-bold uppercase tracking-widest">Connect:</span>
                             <div class="flex gap-4">
-                                <a href="#" class="text-white/50 hover:text-blue-400 transition-colors"><i class="fa-brands fa-linkedin text-xl"></i></a>
-                                <a href="#" class="text-white/50 hover:text-pink-400 transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
-                                <a href="#" class="text-white/50 hover:text-white/90 transition-colors"><i class="fa-solid fa-globe text-xl"></i></a>
+                                <a href="#" class="text-slate-400 hover:text-blue-400 transition-colors"><i
+                                        class="fa-brands fa-linkedin text-xl"></i></a>
+                                <a href="#" class="text-slate-400 hover:text-pink-400 transition-colors"><i
+                                        class="fa-brands fa-instagram text-xl"></i></a>
+                                <a href="#" class="text-slate-400 hover:text-slate-800 transition-colors"><i
+                                        class="fa-solid fa-globe text-xl"></i></a>
                             </div>
                         </div>
                     </div>
 
                     <div class="space-y-8">
                         <div>
-                            <h3 class="text-2xl font-bold text-white mb-2">High-Quality Assessments.</h3>
-                            <p class="text-white/40 font-medium">Teachers are automating entire test batches in minutes.</p>
+                            <h3 class="text-2xl font-bold text-slate-900 mb-2">High-Quality Assessments.</h3>
+                            <p class="text-slate-900/40 font-medium">Teachers are automating entire test batches in minutes.
+                            </p>
                         </div>
-                        
+
                         <!-- Video Section -->
-                        <div class="relative rounded-2xl overflow-hidden bg-white/5 border border-white/10 group">
-                            <video src="https://firebasestorage.googleapis.com/v0/b/lancer-prod.firebasestorage.app/o/gifs%2Fnikola-final.mp4?alt=media&token=89ceb1b0-63c6-4d01-8984-28501380a767" class="w-full h-56 lg:h-64 object-cover" autoplay loop muted playsinline></video>
-                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300"></div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                                <div class="w-16 h-16 rounded-full bg-primary/90 flex items-center justify-center text-white text-xl">
+                        <div class="relative rounded-2xl overflow-hidden bg-white/80 shadow-md border-inherit border-slate-200 border border-slate-200 group">
+                            <video
+                                src="https://firebasestorage.googleapis.com/v0/b/lancer-prod.firebasestorage.app/o/gifs%2Fnikola-final.mp4?alt=media&token=89ceb1b0-63c6-4d01-8984-28501380a767"
+                                class="w-full h-56 lg:h-64 object-cover" autoplay loop muted playsinline></video>
+                            <div
+                                class="absolute inset-0 bg-white shadow-xl group-hover:bg-white/20 transition-all duration-300">
+                            </div>
+                            <div
+                                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <div
+                                    class="w-16 h-16 rounded-full bg-primary/90 flex items-center justify-center text-slate-900 text-xl">
                                     <i class="fa-solid fa-play ml-1"></i>
                                 </div>
                             </div>
                         </div>
 
-                        <blockquote class="bg-white/5 p-8 rounded-3xl border border-white/10 relative">
-                            <div class="absolute top-4 left-6 text-primary/20 text-6xl font-serif">“</div>
-                            <p class="text-white/80 leading-relaxed italic relative z-10">“Noshahi was so effective for our school. We were able to generate and grade over 300 papers in just under two weeks. Our faculty is finally focusing on teaching instead of paperwork.”</p>
+                        <blockquote class="bg-white/80 shadow-md border-inherit border-slate-200 p-8 rounded-3xl border border-slate-200 relative">
+                            <div class="absolute top-4 left-6 text-primary/20 text-6xl font-serif">â€œ</div>
+                            <p class="text-slate-700 leading-relaxed italic relative z-10">â€œNoshahi was so effective for
+                                our school. We were able to generate and grade over 300 papers in just under two weeks.
+                                Our faculty is finally focusing on teaching instead of paperwork.â€</p>
                             <div class="mt-8 flex items-center gap-4">
-                                <img class="w-10 h-10 rounded-full border border-white/10" alt="Ali Hasan" src="https://ui-avatars.com/api/?name=Ali+Hasan&background=0A0A0A&color=fff">
+                                <img class="w-10 h-10 rounded-full border border-slate-200" alt="Ali Hasan"
+                                    src="https://ui-avatars.com/api/?name=Ali+Hasan&background=0A0A0A&color=fff">
                                 <div>
-                                    <div class="font-bold text-white text-sm uppercase tracking-wider">Ali Hasan</div>
+                                    <div class="font-bold text-slate-900 text-sm uppercase tracking-wider">Ali Hasan</div>
                                     <div class="text-primary text-xs font-bold">Senior Teacher</div>
                                 </div>
                             </div>
@@ -654,10 +700,13 @@
     <!-- Pre-footer CTA -->
     <section class="pre-footer">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">Ready to automate your <br> academic assessments?</h2>
-            <p class="text-white/60 text-lg mb-10 max-w-2xl mx-auto">Join thousands of teachers who are saving hours every week with Noshahi's professional test builder.</p>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-slate-900">Ready to automate your <br> academic assessments?
+            </h2>
+            <p class="text-slate-500 text-lg mb-10 max-w-2xl mx-auto">Join thousands of teachers who are saving hours
+                every week with Noshahi's professional test builder.</p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="register.html" class="btn-3d py-4 px-10 text-lg shadow-xl shadow-primary/20">Create Free Account</a>
+                <a href="register.html" class="btn-3d py-4 px-10 text-lg shadow-xl shadow-primary/20">Create Free
+                    Account</a>
                 <a href="book-demo.html" class="btn-secondary py-4 px-10 text-lg">Book a School Demo</a>
             </div>
         </div>
@@ -671,7 +720,8 @@
                     <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
                     <span>Noshahi Builder</span>
                 </a>
-                <p>The premium test building platform for Matric and Intermediate teachers. Empowering education through automation and quality assessment tools across Pakistan.</p>
+                <p>The premium test building platform for Matric and Intermediate teachers. Empowering education through
+                    automation and quality assessment tools across Pakistan.</p>
                 <div class="social-links">
                     <a href="#" class="social-btn" aria-label="Twitter">
                         <i class="fa-brands fa-twitter"></i>
@@ -687,13 +737,14 @@
                     </a>
                 </div>
             </div>
-            
+
             <div class="footer-links">
                 <h4>Platform</h4>
                 <ul>
                     <li><a href="index.html#features">Features <i class="fa-solid fa-arrow-right-long"></i></a></li>
                     <li><a href="insights.html">Insights <i class="fa-solid fa-arrow-right-long"></i></a></li>
-                    <li><a href="index.html#testimonials">Testimonials <i class="fa-solid fa-arrow-right-long"></i></a></li>
+                    <li><a href="index.html#testimonials">Testimonials <i class="fa-solid fa-arrow-right-long"></i></a>
+                    </li>
                     <li><a href="login.html">Login <i class="fa-solid fa-arrow-right-long"></i></a></li>
                 </ul>
             </div>
@@ -720,7 +771,7 @@
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Noshahi Developers Inc. All rights reserved.</p>
-            <p>Made with <i class="fa-solid fa-heart text-[#D94C58] mx-1"></i> for Pakistan's Educators</p>
+            <p>Made with <i class="fa-solid fa-heart text-primary mx-1"></i> for Pakistan's Educators</p>
         </div>
     </footer>
     <script>
@@ -734,7 +785,7 @@
             menuToggle.addEventListener('click', () => {
                 navMenu.classList.toggle('open');
                 body.classList.toggle('menu-open');
-                
+
                 // Toggle between hamburger and X icon
                 if (navMenu.classList.contains('open')) {
                     menuIcon.classList.remove('fa-bars');
@@ -759,3 +810,5 @@
 </body>
 
 </html>
+
+
