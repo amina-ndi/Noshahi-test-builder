@@ -47,17 +47,19 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 20px 0;
+            padding: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(16px);
             border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 47, 109, 0.08);
         }
 
         .nav-wrapper {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 78px;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
@@ -76,26 +78,27 @@
         .logo-icon {
             width: 40px;
             height: 40px;
-            background: #FFB800;
+            background: linear-gradient(135deg, #FFCA28, #FFB800);
             color: #0F172A;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 10px;
             font-size: 18px;
-            box-shadow: 0 4px 10px rgba(255, 184, 0, 0.2);
+            box-shadow: 0 10px 24px rgba(255, 184, 0, 0.32);
         }
 
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 18px;
             align-items: center;
+            margin-left: clamp(28px, 6vw, 94px);
         }
 
-        .nav-links a {
+        .nav-links > a {
             text-decoration: none;
             color: rgba(15, 23, 42, 0.7);
-            font-weight: 500;
+            font-weight: 600;
             font-size: 15px;
             transition: all 0.3s;
             padding: 8px 12px;
@@ -103,12 +106,36 @@
             position: relative;
         }
 
-        .nav-links a:hover {
+        .nav-links .dropdown > a {
+            text-decoration: none;
+            color: rgba(15, 23, 42, 0.7);
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s;
+            padding: 8px 12px;
+            border-radius: 8px;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .nav-links > a:hover {
             color: #0F172A;
             background: rgba(255, 255, 255, 0.05);
         }
 
-        .nav-links a.active {
+        .nav-links .dropdown > a:hover {
+            color: #0F172A;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-links > a.active {
+            color: #004B93;
+            background: rgba(0, 75, 147, 0.1);
+            text-shadow: 0 0 15px rgba(0, 75, 147, 0.3);
+        }
+
+        .nav-links .dropdown > a.active {
             color: #004B93;
             background: rgba(0, 75, 147, 0.1);
             text-shadow: 0 0 15px rgba(0, 75, 147, 0.3);
@@ -261,6 +288,7 @@
                 padding: 40px 20px;
                 display: flex;
                 visibility: hidden;
+                margin-left: 0;
             }
 
             .nav-links.open {
@@ -268,7 +296,7 @@
                 visibility: visible;
             }
 
-            .nav-links a {
+            .nav-links > a {
                 font-size: 20px;
                 width: 100%;
                 text-align: center;
@@ -278,6 +306,16 @@
             .nav-links .dropdown {
                 width: 100%;
                 text-align: center;
+            }
+
+            .nav-links .dropdown > a {
+                font-size: 20px;
+                width: 100%;
+                text-align: center;
+                padding: 15px;
+                color: #0F172A;
+                font-weight: 700;
+                justify-content: center;
             }
 
             .nav-links .dropdown-content {
@@ -357,6 +395,7 @@
             background: linear-gradient(90deg, transparent, rgba(6, 147, 227, 0.3), transparent);
         }
 
+        /* --- New Footer Styling (Synced from Homepage) --- */
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1.5fr;
@@ -369,7 +408,7 @@
         .footer-brand .footer-logo {
             font-size: 24px;
             font-weight: 800;
-            color: #0F172A;
+            color: #ffffff;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -378,13 +417,13 @@
         }
 
         .footer-brand p {
-            color: rgba(15, 23, 42, 0.6);
+            color: #ffffff;
             line-height: 1.6;
             font-size: 15px;
         }
 
         .footer-links h4 {
-            color: #0F172A;
+            color: #ffffff;
             font-size: 14px;
             font-weight: 700;
             margin-bottom: 25px;
@@ -403,7 +442,7 @@
         }
 
         .footer-links a {
-            color: rgba(15, 23, 42, 0.6);
+            color: #ffffff;
             text-decoration: none;
             font-size: 15px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -412,7 +451,7 @@
         }
 
         .footer-links a:hover {
-            color: #0F172A;
+            color: var(--secondary);
             transform: translateX(5px);
         }
 
@@ -427,7 +466,7 @@
         .footer-links a:hover i {
             opacity: 1;
             transform: translateX(0);
-            color: #6D28D9;
+            color: #d3d616;
         }
 
         .social-links {
@@ -440,39 +479,39 @@
             width: 44px;
             height: 44px;
             border-radius: 12px;
-            background: rgba(15, 23, 42, 0.03);
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: rgba(15, 23, 42, 0.6);
+            color: #ffffff;
             text-decoration: none;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .social-btn:hover {
-            background: rgba(6, 147, 227, 0.1);
-            border-color: #004B93;
-            color: #0F172A;
+            background: rgba(255, 184, 0, 0.15);
+            border-color: var(--secondary);
+            color: var(--secondary);
             transform: translateY(-5px) rotate(8deg);
-            box-shadow: 0 10px 20px rgba(0, 75, 147, 0.2);
+            box-shadow: 0 10px 20px rgba(255, 184, 0, 0.2);
         }
 
         .footer-bottom {
             max-width: 1200px;
             margin: 0 auto;
             padding: 30px 20px 0;
-            border-top: 1px solid rgba(15, 23, 42, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: rgba(15, 23, 42, 0.5);
+            color: rgba(255, 255, 255, 0.7);
             font-size: 14px;
         }
 
         @media (max-width: 768px) {
             .footer-grid {
-                grid-template-columns: 1fr !important;
+                grid-template-columns: 1fr;
                 gap: 40px;
                 text-align: center;
             }
@@ -492,40 +531,40 @@
             }
         }
     </style>
+
+    <link rel="stylesheet" href="assets/ntb-shared.css">
+    <script src="assets/ntb-shared.js" defer></script>
 </head>
 
 <body>
     <!-- Header -->
-    <header>
-        <div class="nav-wrapper">
-            <a href="index.html" class="logo">
-                <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+    <header class="site-header">
+        <div class="site-nav">
+            <a class="site-logo" href="index.html#home">
+                <span class="site-logo-icon"><i class="fa-solid fa-graduation-cap"></i></span>
                 <span>Noshahi Test Builder</span>
             </a>
 
-            <nav class="nav-links" id="nav-menu">
+            <nav class="site-links" data-ntb-nav-menu>
                 <a href="index.html">Home</a>
-                <a href="insights.html">Question Bank Insights</a>
-
+                <a href="insights.html">Insights</a>
+                <a href="book-demo.html" class="active">Book Demo</a>
                 <a href="index.html#features">Features</a>
-                <a href="index.html#testimonials">Testimonials</a>
-
-                <div class="flex items-center gap-6 ml-4">
-                    <a href="login.html" class="btn-secondary">Login</a>
-                    <a href="register.html" class="btn-3d">Sign Up</a>
-                </div>
+                <a href="index.html#highlights">Highlights</a>
+                <a href="login.html">Login</a>
+                <a href="register.html" class="nav-cta">Get Started</a>
             </nav>
 
-            <button id="menu-toggle" aria-label="Toggle Menu">
+            <button class="site-menu-toggle" type="button" aria-label="Toggle Menu" aria-expanded="false" data-ntb-menu-toggle>
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
     </header>
 
-    <main class="overflow-hidden pt-24 lg:pt-32 pb-20">
+    <main class="overflow-hidden pt-14 lg:pt-16 pb-20">
         <div class="mx-auto max-w-6xl px-6 sm:px-8 lg:px-10">
             <div class="text-center mb-10 lg:mb-16">
-                <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-4 tracking-tight">Book a Demo</h1>
+                <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-4 tracking-tight">Book a <span class="brand-word">Demo</span></h1>
                 <p class="text-slate-500 text-lg max-w-2xl mx-auto">Let's see how Noshahi can automate professional
                     Matric and Intermediate test creation for your school.</p>
             </div>
@@ -697,116 +736,76 @@
         </div>
     </main>
 
-    <!-- Pre-footer CTA -->
-    <section class="pre-footer">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-slate-900">Ready to automate your <br> academic assessments?
-            </h2>
-            <p class="text-slate-500 text-lg mb-10 max-w-2xl mx-auto">Join thousands of teachers who are saving hours
-                every week with Noshahi's professional test builder.</p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="register.html" class="btn-3d py-4 px-10 text-lg shadow-xl shadow-primary/20">Create Free
-                    Account</a>
-                <a href="book-demo.html" class="btn-secondary py-4 px-10 text-lg">Book a School Demo</a>
-            </div>
-        </div>
-    </section>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand footer-col">
+                    <a class="footer-logo" href="index.html#home">
+                        <span class="site-logo-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+                        <span>Noshahi Test Builder</span>
+                    </a>
+                    <p>Inspiring minds, building futures. Create print-ready Matric &amp; Intermediate papers with a premium 3D experience.</p>
+                    <div class="footer-contact">
+                        <a href="mailto:support@noshahitestbuilder.com">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>support@noshahitestbuilder.com</span>
+                        </a>
+                        <a href="tel:+923000000000">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>+92 300 000 0000</span>
+                        </a>
+                    </div>
+                </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="index.html" class="footer-logo">
-                    <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                    <span>Noshahi Builder</span>
-                </a>
-                <p>The premium test building platform for Matric and Intermediate teachers. Empowering education through
-                    automation and quality assessment tools across Pakistan.</p>
-                <div class="social-links">
-                    <a href="#" class="social-btn" aria-label="Twitter">
-                        <i class="fa-brands fa-twitter"></i>
-                    </a>
-                    <a href="#" class="social-btn" aria-label="LinkedIn">
-                        <i class="fa-brands fa-linkedin"></i>
-                    </a>
-                    <a href="#" class="social-btn" aria-label="Facebook">
-                        <i class="fa-brands fa-facebook"></i>
-                    </a>
-                    <a href="#" class="social-btn" aria-label="GitHub">
-                        <i class="fa-brands fa-github"></i>
-                    </a>
+                <div class="footer-col">
+                    <h4>Institutional</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Why Noshahi <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="index.html#features">Features <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="index.html#highlights">Highlights <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="book-demo.html">Book Demo <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="insights.html">Insights <i class="fa-solid fa-arrow-right"></i></a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="login.html">Login <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="register.html">Create Account <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="#">Privacy Policy <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="#">Terms of Service <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="mailto:support@noshahitestbuilder.com">Contact Us <i class="fa-solid fa-arrow-right"></i></a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-subscribe footer-col">
+                    <h4>Join the legacy</h4>
+                    <p>Subscribe to receive product updates, academic templates, and release notes.</p>
+                    <form class="footer-form" action="#" onsubmit="return false;">
+                        <input type="email" placeholder="Your email address" aria-label="Email address">
+                        <button type="submit" aria-label="Subscribe">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </form>
+                    <div class="footer-social" aria-label="Social links">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
                 </div>
             </div>
 
-            <div class="footer-links">
-                <h4>Platform</h4>
-                <ul>
-                    <li><a href="index.html#features">Features <i class="fa-solid fa-arrow-right-long"></i></a></li>
-                    <li><a href="insights.html">Insights <i class="fa-solid fa-arrow-right-long"></i></a></li>
-                    <li><a href="index.html#testimonials">Testimonials <i class="fa-solid fa-arrow-right-long"></i></a>
-                    </li>
-                    <li><a href="login.html">Login <i class="fa-solid fa-arrow-right-long"></i></a></li>
-                </ul>
+            <div class="footer-bottom">
+                <span>© 2026 Noshahi Test Builder — Excellence in Education</span>
+                <div>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
             </div>
-
-            <div class="footer-links">
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="#">Support Center <i class="fa-solid fa-arrow-right-long"></i></a></li>
-                    <li><a href="#">Question Bank <i class="fa-solid fa-arrow-right-long"></i></a></li>
-                    <li><a href="#">API Documentation <i class="fa-solid fa-arrow-right-long"></i></a></li>
-                    <li><a href="#">User Guides <i class="fa-solid fa-arrow-right-long"></i></a></li>
-                </ul>
-            </div>
-
-            <div class="footer-links">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="#">About Us <i class="fa-solid fa-arrow-right-long"></i></a></li>
-                    <li><a href="#">Our Vision <i class="fa-solid fa-arrow-right-long"></i></a></li>
-                    <li><a href="#">Privacy Policy <i class="fa-solid fa-arrow-right-long"></i></a></li>
-                    <li><a href="#">Terms of Service <i class="fa-solid fa-arrow-right-long"></i></a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Noshahi Developers Inc. All rights reserved.</p>
-            <p>Made with <i class="fa-solid fa-heart text-primary mx-1"></i> for Pakistan's Educators</p>
         </div>
     </footer>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Mobile Menu Toggle
-            const menuToggle = document.getElementById('menu-toggle');
-            const navMenu = document.getElementById('nav-menu');
-            const menuIcon = menuToggle.querySelector('i');
-            const body = document.body;
-
-            menuToggle.addEventListener('click', () => {
-                navMenu.classList.toggle('open');
-                body.classList.toggle('menu-open');
-
-                // Toggle between hamburger and X icon
-                if (navMenu.classList.contains('open')) {
-                    menuIcon.classList.remove('fa-bars');
-                    menuIcon.classList.add('fa-xmark');
-                } else {
-                    menuIcon.classList.remove('fa-xmark');
-                    menuIcon.classList.add('fa-bars');
-                }
-            });
-
-            // Close menu when clicking a link
-            navMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navMenu.classList.remove('open');
-                    body.classList.remove('menu-open');
-                    menuIcon.classList.remove('fa-xmark');
-                    menuIcon.classList.add('fa-bars');
-                });
-            });
-        });
-    </script>
 </body>
 
 </html>

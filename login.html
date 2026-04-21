@@ -212,27 +212,44 @@
             }
         }
     </style>
+
+    <link rel="stylesheet" href="assets/ntb-shared.css">
+    <script src="assets/ntb-shared.js" defer></script>
 </head>
 
 <body>
-    <div class="w-screen min-h-screen">
-        <div class="flex flex-col lg:flex-row w-full h-screen bg-slate-50">
+    <header class="site-header">
+        <div class="site-nav">
+            <a class="site-logo" href="index.html#home">
+                <span class="site-logo-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+                <span>Noshahi Test Builder</span>
+            </a>
+
+            <nav class="site-links" data-ntb-nav-menu>
+                <a href="index.html">Home</a>
+                <a href="insights.html">Insights</a>
+                <a href="book-demo.html">Book Demo</a>
+                <a href="index.html#features">Features</a>
+                <a href="index.html#highlights">Highlights</a>
+                <a href="login.html" class="active">Login</a>
+                <a href="register.html" class="nav-cta">Get Started</a>
+            </nav>
+
+            <button class="site-menu-toggle" type="button" aria-label="Toggle Menu" aria-expanded="false" data-ntb-menu-toggle>
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="w-screen">
+        <div class="flex flex-col lg:flex-row w-full min-h-[calc(100vh-78px)] bg-slate-50">
             <!-- Left Side - Form -->
             <div class="w-full lg:w-5/12 flex flex-col bg-white overflow-y-auto">
                 <div class="flex min-h-full flex-1 items-start lg:items-center">
                     <div class="w-full py-10 lg:py-12">
                         <div class="w-full max-w-md mx-auto space-y-8 px-8 sm:px-7 lg:mb-12">
                             <div class="flex flex-col">
-                                <div class="mb-4">
-                                    <a href="index.html" class="flex items-center gap-3 no-underline">
-                                        <div
-                                            class="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center text-[#0F172A] shadow-lg shadow-secondary/20">
-                                            <i class="fa-solid fa-graduation-cap text-2xl"></i>
-                                        </div>
-                                        <span class="text-2xl font-extrabold text-[#0A0A0A] tracking-tight">Noshahi Test Builder</span>
-                                    </a>
-                                </div>
-                                <h1 class="text-4xl font-semibold tracking-tight text-slate-900 mt-4">Welcome Back</h1>
+                                <h1 class="text-4xl font-semibold tracking-tight text-slate-900 mt-4">Welcome <span class="brand-word">Back</span></h1>
                                 <p class="text-slate-500 mt-2">Log in to manage your school's assessments</p>
                             </div>
 
@@ -501,6 +518,76 @@
         </div>
     </div>
 
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand footer-col">
+                    <a class="footer-logo" href="index.html#home">
+                        <span class="site-logo-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+                        <span>Noshahi Test Builder</span>
+                    </a>
+                    <p>Inspiring minds, building futures. Create print-ready Matric &amp; Intermediate papers with a premium 3D experience.</p>
+                    <div class="footer-contact">
+                        <a href="mailto:support@noshahitestbuilder.com">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>support@noshahitestbuilder.com</span>
+                        </a>
+                        <a href="tel:+923000000000">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>+92 300 000 0000</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Institutional</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Why Noshahi <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="index.html#features">Features <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="index.html#highlights">Highlights <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="book-demo.html">Book Demo <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="insights.html">Insights <i class="fa-solid fa-arrow-right"></i></a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="login.html">Login <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="register.html">Create Account <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="#">Privacy Policy <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="#">Terms of Service <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="mailto:support@noshahitestbuilder.com">Contact Us <i class="fa-solid fa-arrow-right"></i></a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-subscribe footer-col">
+                    <h4>Join the legacy</h4>
+                    <p>Subscribe to receive product updates, academic templates, and release notes.</p>
+                    <form class="footer-form" action="#" onsubmit="return false;">
+                        <input type="email" placeholder="Your email address" aria-label="Email address">
+                        <button type="submit" aria-label="Subscribe">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </form>
+                    <div class="footer-social" aria-label="Social links">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>© 2026 Noshahi Test Builder — Excellence in Education</span>
+                <div>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 </body>
 
