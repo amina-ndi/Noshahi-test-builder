@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Noshahi Test Builder</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" href="favicon.png" sizes="64x64">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" sizes="any">
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
 
     <!-- Font Awesome & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -169,37 +171,6 @@
             transform: translate(-50%, -50%);
             pointer-events: none;
             filter: blur(100px);
-        }
-
-        header {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 40px;
-            z-index: 100;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 22px;
-            color: #0F172A;
-        }
-
-        .logo-icon {
-            width: 44px;
-            height: 44px;
-            background: #FFB800;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 20px rgba(255, 184, 0, 0.3);
-            color: #0F172A;
         }
 
         @media (max-width: 1024px) {
@@ -373,6 +344,10 @@
                 text-align: center;
             }
         }
+
+        .site-footer {
+            display: none;
+        }
     </style>
 
     <link rel="stylesheet" href="assets/ntb-shared.css">
@@ -388,13 +363,13 @@
             </a>
 
             <nav class="site-links" data-ntb-nav-menu>
-                <a href="index.html">Home</a>
+                <a href="index.html" class="active">Home</a>
                 <a href="insights.html">Insights</a>
                 <a href="book-demo.html">Book Demo</a>
                 <a href="index.html#features">Features</a>
                 <a href="index.html#highlights">Highlights</a>
-                <a href="login.html">Login</a>
-                <a href="register.html" class="nav-cta active">Get Started</a>
+                <a href="login.html" class="nav-login-cta">Login</a>
+                <a href="register.html" class="nav-cta">Get Started</a>
             </nav>
 
             <button class="site-menu-toggle" type="button" aria-label="Toggle Menu" aria-expanded="false" data-ntb-menu-toggle>

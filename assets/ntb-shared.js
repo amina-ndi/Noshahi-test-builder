@@ -1,4 +1,23 @@
 (function () {
+  function ensureLink(rel, href, attrs) {
+    var selector = "link[rel='" + rel + "']";
+    var link = document.querySelector(selector);
+
+    if (!link) {
+      link = document.createElement("link");
+      link.rel = rel;
+      document.head.appendChild(link);
+    }
+
+    link.href = href;
+
+    if (attrs) {
+      Object.keys(attrs).forEach(function (key) {
+        link.setAttribute(key, attrs[key]);
+      });
+    }
+  }
+
   function initNtbNav() {
     var menuToggle = document.querySelector("[data-ntb-menu-toggle]");
     var navMenu = document.querySelector("[data-ntb-nav-menu]");
@@ -44,10 +63,58 @@
     });
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initNtbNav);
-  } else {
+  function ensureFavicon() {
+    ensureLink("icon", "favicon.png", { type: "image/png", sizes: "64x64" });
+    ensureLink("shortcut icon", "favicon.png", { type: "image/png" });
+    ensureLink("apple-touch-icon", "favicon.png");
+  }
+
+  function initQuickActions() {
+    if (document.querySelector("[data-ntb-quick-actions]")) return;
+
+    var wrapper = document.createElement("div");
+    wrapper.className = "ntb-quick-actions";
+    wrapper.setAttribute("data-ntb-quick-actions", "");
+
+    wrapper.innerHTML =
+      '<button class="ntb-scroll-top" type="button" aria-label="Back to top">' +
+        '<i class="fa-solid fa-angles-up"></i>' +
+      '</button>' +
+      '<a class="ntb-whatsapp-fab" href="https://wa.me/923281642297?text=Assalamualaikum%2C%20I%20need%20help%20with%20Noshahi%20Test%20Builder." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">' +
+        '<i class="fa-brands fa-whatsapp"></i>' +
+      '</a>';
+
+    var scrollTopButton = wrapper.querySelector(".ntb-scroll-top");
+
+    function syncScrollButton() {
+      var isVisible = window.scrollY > 160;
+      scrollTopButton.classList.toggle("is-visible", isVisible);
+    }
+
+    scrollTopButton.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Home" && !event.defaultPrevented) {
+        scrollTopButton.classList.add("is-visible");
+      }
+    });
+
+    document.body.appendChild(wrapper);
+    syncScrollButton();
+    window.addEventListener("scroll", syncScrollButton, { passive: true });
+  }
+
+  function initSharedUi() {
+    ensureFavicon();
     initNtbNav();
+    initQuickActions();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initSharedUi);
+  } else {
+    initSharedUi();
   }
 })();
-

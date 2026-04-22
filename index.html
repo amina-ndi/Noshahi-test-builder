@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Noshahi Test Builder</title>
   <meta name="description" content="Create professional, print-ready tests in minutes for Matric and Intermediate with premium 3D UI experience.">
+  <link rel="icon" type="image/png" href="favicon.png" sizes="64x64">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" sizes="any">
+  <link rel="shortcut icon" href="favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -1450,6 +1453,46 @@
     }
 
     @media (max-width: 620px) {
+      .hero {
+        min-height: calc(100svh - 78px);
+        padding: 14px 0 16px;
+      }
+
+      .hero-grid {
+        gap: 12px;
+        align-content: center;
+      }
+
+      .hero-left {
+        padding-top: 0;
+      }
+
+      .hero-pill {
+        margin-bottom: 12px;
+        font-size: 0.68rem;
+        letter-spacing: 0.06em;
+        padding: 8px 11px;
+      }
+
+      .hero-carousel {
+        min-height: 116px;
+      }
+
+      .hero-slide h1 {
+        font-size: clamp(1.72rem, 8vw, 2.3rem);
+        max-width: none;
+      }
+
+      .hero-actions {
+        margin-top: 14px;
+        gap: 10px;
+      }
+
+      .hero-actions .btn {
+        padding: 11px 16px;
+        font-size: 0.92rem;
+      }
+
       .section {
         padding: 34px 0;
       }
@@ -1462,30 +1505,54 @@
       }
 
       .hero-right {
-        min-height: 300px;
+        min-height: 220px;
       }
 
       .orbit-card {
-        min-width: 130px;
-        padding: 8px 10px;
+        min-width: 104px;
+        padding: 6px 8px;
       }
 
       .orbit-card span {
-        font-size: 0.72rem;
+        font-size: 0.64rem;
       }
 
       .orbit-shell {
-        width: min(320px, 100%);
+        width: min(226px, 62vw);
       }
 
       .carousel-dots {
-        bottom: 8px;
+        position: static;
+        transform: none;
+        margin-top: 10px;
       }
 
       .footer-wrap {
         flex-direction: column;
         text-align: center;
         padding: 16px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .hero {
+        padding: 10px 0 14px;
+      }
+
+      .hero-carousel {
+        min-height: 104px;
+      }
+
+      .hero-slide h1 {
+        font-size: clamp(1.58rem, 7.4vw, 2.02rem);
+      }
+
+      .hero-right {
+        min-height: 198px;
+      }
+
+      .orbit-shell {
+        width: min(204px, 58vw);
       }
     }
   </style>
@@ -1507,7 +1574,7 @@
         <a href="book-demo.html">Book Demo</a>
         <a href="index.html#features">Features</a>
         <a href="index.html#highlights">Highlights</a>
-        <a href="login.html">Login</a>
+        <a href="login.html" class="nav-login-cta">Login</a>
         <a href="register.html" class="nav-cta">Get Started</a>
       </nav>
 
