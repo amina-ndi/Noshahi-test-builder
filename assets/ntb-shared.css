@@ -93,6 +93,10 @@
 }
 
 .site-links a.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   background: linear-gradient(135deg, #ffb800, #ffca28);
   color: #0f172a;
   font-weight: 800;
@@ -106,6 +110,10 @@
 }
 
 .site-links a.nav-login-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   color: #ffffff;
   font-weight: 800;
   padding: 11px 16px;
