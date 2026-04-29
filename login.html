@@ -24,9 +24,9 @@
                         sans: ['Outfit', 'sans-serif'],
                     },
                     colors: {
-                        primary: '#004B93',
+                        primary: '#020D27',
                         secondary: '#FFB800',
-                        accent: '#0693E3',
+                        accent: '#020D27',
                         'primary-foreground': '#ffffff',
                     }
                 }
@@ -49,21 +49,62 @@
 
         .input-focus:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(0, 75, 147, 0.2);
+            box-shadow: 0 0 0 2px rgba(2, 13, 39, 0.2);
+        }
+
+        .btn-primary {
+            width: 100%;
+            background: linear-gradient(135deg, #FFB800, #FFD54F);
+            color: #0F172A;
+            padding: 16px;
+            border-radius: 14px;
+            font-weight: 700;
+            border: 1px solid #D49A00;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 15px;
+            box-shadow: 0 6px 16px rgba(255, 184, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-primary:hover::before {
+            opacity: 1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 14px 28px rgba(255, 184, 0, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.8);
         }
 
         /* --- New Footer Styling --- */
         .pre-footer {
             padding: 100px 20px;
-            background: radial-gradient(circle at 50% 0%, rgba(6, 147, 227, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle at 50% 0%, rgba(2, 13, 39, 0.1) 0%, transparent 70%);
             text-align: center;
             border-top: 1px solid rgba(15, 23, 42, 0.05);
         }
 
         footer {
-            padding: 80px 0 40px;
-            background: #FFFFFF;
-            border-top: 1px solid rgba(15, 23, 42, 0.08);
+            padding: 42px 0 48px;
+            background: linear-gradient(145deg, #041d4d 0%, #00091D 52%, #020D27 100%);
+            border-top: 1px solid rgba(173, 206, 255, 0.24);
             position: relative;
             overflow: hidden;
             width: 100%;
@@ -76,7 +117,7 @@
             left: 10%;
             right: 10%;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(6, 147, 227, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(2, 13, 39, 0.3), transparent);
         }
 
         .footer-grid {
@@ -91,7 +132,7 @@
         .footer-brand .footer-logo {
             font-size: 24px;
             font-weight: 800;
-            color: #0F172A;
+            color: #edf5ff;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -100,13 +141,13 @@
         }
 
         .footer-brand p {
-            color: rgba(15, 23, 42, 0.6);
+            color: #c6dbff;
             line-height: 1.6;
             font-size: 15px;
         }
 
         .footer-links h4 {
-            color: #0F172A;
+            color: #edf5ff;
             font-size: 14px;
             font-weight: 700;
             margin-bottom: 25px;
@@ -125,7 +166,7 @@
         }
 
         .footer-links a {
-            color: rgba(15, 23, 42, 0.6);
+            color: #c6dbff;
             text-decoration: none;
             font-size: 15px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -134,7 +175,7 @@
         }
 
         .footer-links a:hover {
-            color: #0F172A;
+            color: #edf5ff;
             transform: translateX(5px);
         }
 
@@ -149,7 +190,7 @@
         .footer-links a:hover i {
             opacity: 1;
             transform: translateX(0);
-            color: #6D28D9;
+            color: #FFB800;
         }
 
         .social-links {
@@ -173,11 +214,11 @@
         }
 
         .social-btn:hover {
-            background: rgba(6, 147, 227, 0.1);
-            border-color: #004B93;
+            background: rgba(2, 13, 39, 0.1);
+            border-color: #020D27;
             color: #0F172A;
             transform: translateY(-5px) rotate(8deg);
-            box-shadow: 0 10px 20px rgba(0, 75, 147, 0.2);
+            box-shadow: 0 10px 20px rgba(2, 13, 39, 0.2);
         }
 
         .footer-bottom {
@@ -232,9 +273,10 @@
             </a>
 
             <nav class="site-links" data-ntb-nav-menu>
-                <a href="index.html">Home</a>
+                <a href="index.html" class="active">Home</a>
                 <a href="insights.html">Insights</a>
                 <a href="book-demo.html">Book Demo</a>
+                <a href="contact-us.html">Contact Us</a>
                 <a href="index.html#features">Features</a>
                 <a href="index.html#highlights">Highlights</a>
                 <a href="login.html" class="nav-login-cta active">Login</a>
@@ -295,10 +337,7 @@
                                             me logged in</label>
                                     </div>
                                 </div>
-                                <button
-                                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md transition-all duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 shadow-lg px-4 py-2 w-full h-12 font-bold text-slate-900 text-sm tracking-wide transform hover:-translate-y-1.5"
-                                    style="background: linear-gradient(135deg, #FFB800, #FFCA28); box-shadow: 0 5px 0 #E5A600, 0 10px 20px rgba(255, 184, 0, 0.2);"
-                                    type="submit">
+                                <button type="submit" class="btn-primary">
                                     <span>Sign in</span>
                                 </button>
                                 <p class="text-center text-sm text-slate-500 mt-6">First time here? <a
@@ -313,18 +352,18 @@
             <!-- Right Side - Visuals -->
             <div class="hidden lg:flex flex-col lg:w-7/12 bg-slate-50 text-slate-900 h-screen">
                 <div class="relative z-10 w-full h-full flex flex-col">
-                    <div class="absolute inset-0 bg-gradient-to-tl from-[#004B93]/40 from-10% via-[#003569]/30 via-40% to-slate-100 to-80% pointer-events-none"
-                        style="background-image: radial-gradient(circle at right bottom, rgba(0, 75, 147, 0.35) 20%, rgba(0, 53, 105, 0.25) 40%, rgba(248, 250, 252, 0.9) 80%);">
+                    <div class="absolute inset-0 bg-gradient-to-tl from-[#020D27]/40 from-10% via-[#00091D]/30 via-40% to-slate-100 to-80% pointer-events-none"
+                        style="background-image: radial-gradient(circle at right bottom, rgba(2, 13, 39, 0.35) 20%, rgba(0, 9, 29, 0.25) 40%, rgba(248, 250, 252, 0.9) 80%);">
                     </div>
                     <div class="absolute inset-0 bg-slate-50/40 backdrop-blur-[100px] pointer-events-none"></div>
 
                     <div class="relative z-20 px-12 pt-12">
                         <div
-                            class="inline-block px-3 py-1 rounded-full bg-[#004B93]/20 border border-[#004B93]/30 mb-6">
-                            <span class="text-xs font-bold text-[#004B93] uppercase tracking-widest">Supreme Quality</span>
+                            class="inline-block px-3 py-1 rounded-full bg-[#020D27]/20 border border-[#020D27]/30 mb-6">
+                            <span class="text-xs font-bold text-[#020D27] uppercase tracking-widest">Supreme Quality</span>
                         </div>
                         <h2 class="text-5xl font-bold tracking-tight mb-3">Academic outreach on autopilot</h2>
-                        <p class="text-lg text-[#00346B]">Turn Noshahi into your best-performing education channel</p>
+                        <p class="text-lg text-[#020D27]">Turn Noshahi into your best-performing education channel</p>
                     </div>
 
                     <div class="relative z-20 flex-1 flex items-center">
@@ -403,7 +442,7 @@
                                     <div
                                         class="bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm rounded-xl p-6 relative border border-slate-100">
                                         <div class="absolute -top-3 left-6 text-blue-500 transform scale-[1.5]">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#004B93">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#020D27">
                                                 <path
                                                     d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179z">
                                                 </path>
@@ -432,7 +471,7 @@
                                     <div
                                         class="bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm rounded-xl p-6 relative border border-slate-100">
                                         <div class="absolute -top-3 left-6 text-blue-500 transform scale-[1.5]">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#004B93">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#020D27">
                                                 <path
                                                     d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179z">
                                                 </path>

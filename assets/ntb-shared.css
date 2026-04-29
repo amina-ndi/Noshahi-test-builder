@@ -1,15 +1,15 @@
 :root {
-  --ntb-primary: #004b93;
-  --ntb-primary-deep: #041d4d;
-  --ntb-primary-mid: #00346b;
-  --ntb-primary-soft: rgba(0, 75, 147, 0.12);
+  --ntb-primary: #020D27;
+  --ntb-primary-deep: #000511;
+  --ntb-primary-mid: #01081A;
+  --ntb-primary-soft: rgba(2, 13, 39, 0.12);
   --ntb-secondary: #ffb800;
   --ntb-secondary-deep: #e5a600;
   --ntb-text: #0f172a;
   --ntb-muted: rgba(15, 23, 42, 0.7);
   --ntb-surface: rgba(255, 255, 255, 0.82);
-  --ntb-border: rgba(0, 75, 147, 0.16);
-  --ntb-shadow: 0 10px 30px rgba(0, 47, 109, 0.08);
+  --ntb-border: rgba(2, 13, 39, 0.16);
+  --ntb-shadow: 0 10px 30px rgba(2, 13, 39, 0.08);
   --ntb-radius: 14px;
 }
 
@@ -25,7 +25,7 @@
   z-index: 1000;
   background: var(--ntb-surface);
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(0, 75, 147, 0.1);
+  border-bottom: 3px solid var(--ntb-secondary);
   box-shadow: var(--ntb-shadow);
 }
 
@@ -82,14 +82,14 @@
 }
 
 .site-links a:hover {
-  background: rgba(0, 75, 147, 0.08);
-  color: var(--ntb-text);
+  background: rgba(255, 184, 0, 0.1);
+  color: var(--ntb-secondary);
   transform: translateY(-1px);
 }
 
 .site-links a.active {
-  background: rgba(0, 75, 147, 0.1);
-  color: var(--ntb-text);
+  background: rgba(255, 184, 0, 0.15);
+  color: var(--ntb-secondary);
 }
 
 .site-links a.nav-cta {
@@ -97,16 +97,35 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: linear-gradient(135deg, #ffb800, #ffca28);
-  color: #0f172a;
+  background: linear-gradient(135deg, #FFB800, #FFD54F);
+  color: #0F172A;
   font-weight: 800;
   padding: 11px 16px;
-  box-shadow: 0 7px 0 var(--ntb-secondary-deep), 0 14px 32px rgba(255, 184, 0, 0.28);
+  border-radius: 12px;
+  border: 1px solid #D49A00;
+  box-shadow: 0 4px 12px rgba(255, 184, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.site-links a.nav-cta::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.site-links a.nav-cta:hover::before {
+  opacity: 1;
 }
 
 .site-links a.nav-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 0 var(--ntb-secondary-deep), 0 18px 40px rgba(255, 184, 0, 0.35);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(255, 184, 0, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 .site-links a.nav-login-cta {
@@ -117,22 +136,33 @@
   color: #ffffff;
   font-weight: 800;
   padding: 11px 16px;
+  border-radius: 12px;
   background: linear-gradient(135deg, var(--ntb-primary), #0a67bf);
-  border: 1px solid rgba(8, 92, 169, 0.2);
-  box-shadow:
-    0 7px 0 #00346b,
-    0 14px 32px rgba(0, 75, 147, 0.26),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(2, 13, 39, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.site-links a.nav-login-cta::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 100%);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.site-links a.nav-login-cta:hover::before {
+  opacity: 1;
 }
 
 .site-links a.nav-login-cta:hover {
   color: #ffffff;
-  background: linear-gradient(135deg, var(--ntb-primary-deep), #0d74d1);
-  transform: translateY(-2px);
-  box-shadow:
-    0 10px 0 #00346b,
-    0 18px 40px rgba(0, 75, 147, 0.34),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(2, 13, 39, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.2);
 }
 
 .site-links a.nav-login-cta.active {
@@ -145,7 +175,7 @@
   width: 44px;
   height: 44px;
   border-radius: 14px;
-  border: 1px solid rgba(0, 75, 147, 0.22);
+  border: 1px solid rgba(2, 13, 39, 0.22);
   background: rgba(255, 255, 255, 0.9);
   color: var(--ntb-primary);
   cursor: pointer;
@@ -182,7 +212,7 @@ body.ntb-menu-open {
     align-items: stretch;
     background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(18px);
-    border: 1px solid rgba(0, 75, 147, 0.12);
+    border: 1px solid rgba(2, 13, 39, 0.12);
     border-radius: 18px;
     box-shadow: 0 28px 70px rgba(0, 47, 109, 0.18);
     transform: translateY(-8px);
@@ -232,7 +262,7 @@ body.ntb-menu-open {
   position: absolute;
   inset: auto -200px -260px -200px;
   height: 420px;
-  background: radial-gradient(circle at 70% 55%, rgba(6, 147, 227, 0.34), transparent 65%);
+  background: radial-gradient(circle at 70% 55%, rgba(2, 13, 39, 0.34), transparent 65%);
   pointer-events: none;
 }
 
