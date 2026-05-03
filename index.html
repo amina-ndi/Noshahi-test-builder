@@ -248,7 +248,10 @@
     .btn::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 100%);
       z-index: -1;
       opacity: 0;
@@ -275,14 +278,16 @@
     .btn-gold {
       padding: 16px 32px;
       color: var(--white);
-      background: #8B0000;
-      box-shadow: 0 8px 20px rgba(139, 0, 0, 0.3);
+      background: #020d27;
+      box-shadow: 0 8px 20px rgba(2, 13, 39, 0.3);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .btn-gold:hover {
       transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 14px 28px rgba(139, 0, 0, 0.45);
+      background: #ffb800;
+      color: #020d27;
+      box-shadow: 0 14px 28px rgba(255, 184, 0, 0.45);
     }
 
     .btn-outline {
@@ -306,165 +311,168 @@
       display: flex;
       align-items: center;
       isolation: isolate;
+      background: linear-gradient(135deg, #020d27 0%, #051a44 100%);
     }
 
-    .hero-slider-container {
+
+    /* --- Modern Hero Carousel (Fade) --- */
+    .carousel {
       position: relative;
       width: 100%;
-      height: 100%;
+      background: #020d27;
+      overflow: hidden;
+    }
+
+    .carousel-inner {
+      position: relative;
+      width: 100%;
       min-height: calc(100vh - 78px);
     }
 
-    .hero-slider {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
-
-    .hero-slider-slide {
+    .carousel-inner .item {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       opacity: 0;
-      visibility: hidden;
-      transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
-      overflow: hidden;
-    }
-
-    .hero-slider-slide.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .slotholder {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 1;
-      backface-visibility: hidden;
-      transform: translate3d(0px, 0px, 0px);
-      visibility: inherit;
-      opacity: 1;
-    }
-
-    .tp-bgimg {
-      background-color: rgba(0, 0, 0, 0.3);
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center center;
-      width: 100%;
-      height: 100%;
-      opacity: 1;
-      z-index: 20;
-      visibility: inherit;
-      position: inherit;
-      transform: matrix(1, 0, 0, 1, 0, 0);
-      transition: opacity 0.5s ease-in-out;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 10;
       display: flex;
       align-items: center;
-      min-height: calc(100vh - 78px);
-      isolation: isolate;
+      justify-content: center;
     }
 
-    .hero-content::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -3;
-      background:
-        linear-gradient(118deg, rgba(5, 22, 59, 0.82) 0%, rgba(0, 49, 109, 0.74) 52%, rgba(1, 28, 70, 0.78) 100%);
+    .carousel-inner .item.active {
       opacity: 1;
-      transform: scale(1.02);
-      transition: background-image 0.55s ease;
+      z-index: 2;
     }
 
-    .hero-content::after {
-      content: "";
+    .carousel-inner .item>a {
+      display: block;
+      width: 100%;
+      height: 100%;
       position: absolute;
       inset: 0;
-      z-index: -2;
-      background: radial-gradient(circle at 20% 80%, rgba(255, 184, 0, 0.12) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
-      animation: gradientShift 15s ease infinite;
     }
 
-    .hero-slider-dots {
+    .carousel-inner .item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.65);
+    }
+
+
+    .carousel-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .carousel-content .container {
+      pointer-events: auto;
+    }
+
+    .glass-overlay {
+      background: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border: none;
+      border-radius: 0;
+      padding: clamp(20px, 4vw, 40px);
+      max-width: 950px;
+      text-align: center;
+      box-shadow: none;
+      margin: 0 auto;
+      transform: translateY(30px);
+      opacity: 0;
+      transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) 0.4s;
+    }
+
+
+    .item.active .glass-overlay {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .glass-overlay h1 {
+      color: #ffffff;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 18px;
+      text-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .glass-overlay p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      margin-bottom: 35px;
+      max-width: 700px;
+      margin-inline: auto;
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+
+    .carousel-indicators {
       position: absolute;
       bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
       gap: 12px;
-      z-index: 15;
+      list-style: none;
+      z-index: 10;
+      padding: 0;
+      margin: 0;
     }
 
-    .hero-slider-dot {
+    .carousel-indicators li {
       width: 12px;
       height: 12px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.3);
-      border: 2px solid rgba(255, 255, 255, 0.5);
       cursor: pointer;
-      transition: all 0.3s ease;
-      outline: none;
+      transition: all 0.4s ease;
+      border: 2px solid transparent;
     }
 
-    .hero-slider-dot:hover {
-      background: rgba(255, 255, 255, 0.5);
-      transform: scale(1.1);
+    .carousel-indicators li:hover {
+      background: rgba(255, 255, 255, 0.6);
     }
 
-    .hero-slider-dot.active {
-      width: 32px;
-      border-radius: 6px;
-      background: linear-gradient(135deg, #FFB800, #FFCA28);
-      border-color: transparent;
+    .carousel-indicators li.active {
+      background: var(--secondary);
+      transform: scale(1.3);
+      box-shadow: 0 0 15px rgba(255, 184, 0, 0.6);
+      width: 30px;
+      border-radius: 10px;
     }
 
-    .hero-slider-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 50px;
-      height: 50px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      color: white;
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      z-index: 15;
-      outline: none;
+    @media (max-width: 768px) {
+      .carousel-inner {
+        min-height: 250px;
+      }
+
+      .carousel-indicators {
+        bottom: 15px;
+      }
+
+      .carousel-indicators li.active {
+        width: 20px;
+      }
     }
 
-    .hero-slider-nav:hover {
-      background: rgba(255, 255, 255, 0.2);
-      border-color: rgba(255, 255, 255, 0.4);
-      transform: translateY(-50%) scale(1.1);
-    }
-
-    .hero-slider-nav.prev {
-      left: 20px;
-    }
-
-    .hero-slider-nav.next {
-      right: 20px;
-    }
 
     .hero-particles {
       position: absolute;
@@ -488,19 +496,22 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       align-items: center;
-      gap: clamp(24px, 5vw, 70px);
+      gap: 0;
+      height: 100%;
     }
 
     .hero-left {
       min-height: auto;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-      padding-top: clamp(4px, 1.4vw, 14px);
-      text-align: left;
-      align-items: flex-start;
+      justify-content: center;
+      padding-top: 0;
+      text-align: center;
+      align-items: center;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     .hero-pill {
@@ -626,10 +637,12 @@
       transform: rotateY(-5deg) rotateX(4deg);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     .hero-image-wrapper:hover {
       transform: rotateY(-2deg) rotateX(2deg) translateY(-8px);
       box-shadow: 0 32px 64px rgba(2, 13, 39, 0.35);
     }
+
     .hero-image-wrapper img {
       width: 100%;
       height: 100%;
@@ -949,361 +962,147 @@
       }
     }
 
-    /* Full 3D Workflow Design - Matching Image Style */
-    .workflow-3d-container {
+    /* --- Smart Workflow Section --- */
+    .smart-workflow {
       position: relative;
       padding: 100px 0;
-      perspective: 2000px;
-      transform-style: preserve-3d;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .workflow-3d-steps {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 40px;
-      position: relative;
-      max-width: 1200px;
-      width: 100%;
-      transform-style: preserve-3d;
-    }
-
-    .workflow-3d-step {
-      display: flex;
-      align-items: center;
-      position: relative;
-      flex: 1;
-      transform-style: preserve-3d;
-    }
-
-    .workflow-3d-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(203, 213, 225, 0.6);
-      border-radius: 24px;
-      padding: 30px;
-      position: relative;
-      flex: 1;
-      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      transform-style: preserve-3d;
-      transform: translateZ(0px) rotateY(0deg);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      background: radial-gradient(circle at 10% 20%, rgba(2, 13, 39, 0.03) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(255, 184, 0, 0.03) 0%, transparent 40%);
       overflow: hidden;
     }
 
-    .workflow-3d-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), transparent);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: 1;
-    }
-
-    .workflow-3d-step:hover .workflow-3d-card {
-      transform: translateZ(40px) rotateY(5deg) translateY(-15px);
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
-      border-color: rgba(255, 184, 0, 0.4);
-      background: rgba(255, 255, 255, 0.98);
-    }
-
-    .workflow-3d-step:hover .workflow-3d-card::before {
-      opacity: 1;
-    }
-
-    .workflow-3d-icon {
-      width: 70px;
-      height: 70px;
-      background: linear-gradient(135deg, #3b82f6, #60a5fa);
-      border-radius: 20px;
+    .workflow-grid {
       display: grid;
-      place-items: center;
-      margin-bottom: 20px;
-      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
-      position: relative;
-      z-index: 3;
-      transform-style: preserve-3d;
-      transform: translateZ(0px);
-    }
-
-    .workflow-3d-step:hover .workflow-3d-icon {
-      transform: translateZ(30px) rotateY(360deg) scale(1.1);
-      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.5);
-      background: linear-gradient(135deg, #2563eb, #3b82f6);
-    }
-
-    .workflow-3d-icon i {
-      font-size: 2rem;
-      color: white;
-      transition: all 0.4s ease;
-    }
-
-    .workflow-3d-content {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
       position: relative;
       z-index: 2;
-      transform-style: preserve-3d;
-      transform: translateZ(0px);
     }
 
-    .workflow-3d-content h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #1e293b;
-      margin-bottom: 10px;
-      transition: color 0.3s ease;
-      line-height: 1.3;
-      transform: translateZ(0px);
-    }
-
-    .workflow-3d-step:hover .workflow-3d-content h3 {
-      color: #FFB800;
-      transform: translateZ(10px);
-    }
-
-    .workflow-3d-content p {
-      color: #64748b;
-      line-height: 1.5;
-      margin-bottom: 0;
-      font-size: 0.85rem;
-      transition: color 0.3s ease;
-      transform: translateZ(0px);
-    }
-
-    .workflow-3d-step:hover .workflow-3d-content p {
-      color: #475569;
-      transform: translateZ(10px);
-    }
-
-    .workflow-3d-number {
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      width: 35px;
-      height: 35px;
-      background: linear-gradient(135deg, #FFB800, #ffca28);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      font-size: 0.8rem;
-      font-weight: 800;
-      color: #1e293b;
-      box-shadow: 0 6px 20px rgba(255, 184, 0, 0.4);
-      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      z-index: 4;
-      transform-style: preserve-3d;
-      transform: translateZ(0px);
-    }
-
-    .workflow-3d-step:hover .workflow-3d-number {
-      transform: translateZ(20px) scale(1.1);
-      box-shadow: 0 10px 30px rgba(255, 184, 0, 0.6);
-    }
-
-    .workflow-3d-arrow {
-      width: 50px;
-      height: 50px;
-      background: linear-gradient(135deg, #FFB800, #ffca28);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      margin-left: 20px;
-      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      box-shadow: 0 8px 25px rgba(255, 184, 0, 0.4);
+    .workflow-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(2, 13, 39, 0.08);
+      border-radius: 28px;
+      padding: 50px 35px;
       position: relative;
-      z-index: 3;
-      transform-style: preserve-3d;
-      transform: translateZ(0px) rotateY(0deg);
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
     }
 
-    .workflow-3d-arrow i {
-      font-size: 1.2rem;
-      color: #1e293b;
-      font-weight: bold;
+    .workflow-card:hover {
+      transform: translateY(-15px) rotateX(5deg);
+      box-shadow: 0 40px 80px rgba(2, 13, 39, 0.12);
+      background: #ffffff;
+      border-color: var(--secondary);
+    }
+
+    .workflow-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+      border-radius: 0 0 28px 28px;
+    }
+
+    .workflow-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    .workflow-step-num {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 4rem;
+      font-weight: 900;
+      font-family: "Sora", sans-serif;
+      color: rgba(2, 13, 39, 0.04);
       transition: all 0.4s ease;
+      user-select: none;
     }
 
-    .workflow-3d-step:hover .workflow-3d-arrow {
-      transform: translateZ(30px) rotateY(360deg) scale(1.15);
-      box-shadow: 0 15px 35px rgba(255, 184, 0, 0.6);
+    .workflow-card:hover .workflow-step-num {
+      color: rgba(255, 184, 0, 0.12);
+      transform: scale(1.1) translateY(10px);
     }
 
-    .workflow-3d-step:hover .workflow-3d-arrow i {
-      transform: scale(1.2);
+    .workflow-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, var(--secondary), #ffca28);
+      display: grid;
+      place-items: center;
+      margin-bottom: 30px;
+      color: #020d27;
+      font-size: 2rem;
+      box-shadow: 0 15px 30px rgba(255, 184, 0, 0.2);
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      z-index: 2;
     }
 
-    .workflow-3d-step:last-child .workflow-3d-arrow {
-      display: none;
+    .workflow-card:hover .workflow-icon {
+      transform: rotateY(180deg) scale(1.1);
+      background: linear-gradient(135deg, #020d27, #0a67bf);
+      color: #ffffff;
+      box-shadow: 0 20px 40px rgba(2, 13, 39, 0.3);
     }
 
-    /* Responsive Design for 3D Workflow Section */
-    @media (max-width: 1024px) {
-      .workflow-3d-steps {
-        gap: 30px;
-      }
-
-      .workflow-3d-card {
-        padding: 25px;
-      }
-
-      .workflow-3d-icon {
-        width: 60px;
-        height: 60px;
-        margin-bottom: 15px;
-      }
-
-      .workflow-3d-icon i {
-        font-size: 1.8rem;
-      }
-
-      .workflow-3d-content h3 {
-        font-size: 1rem;
-      }
-
-      .workflow-3d-content p {
-        font-size: 0.8rem;
-      }
-
-      .workflow-3d-number {
-        width: 30px;
-        height: 30px;
-        font-size: 0.7rem;
-      }
-
-      .workflow-3d-arrow {
-        width: 40px;
-        height: 40px;
-        margin-left: 15px;
-      }
-
-      .workflow-3d-arrow i {
-        font-size: 1rem;
-      }
+    .workflow-card h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #020d27;
+      margin-bottom: 15px;
+      letter-spacing: -0.01em;
+      transition: color 0.4s ease;
     }
+
+    .workflow-card p {
+      color: #64748b;
+      line-height: 1.7;
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .workflow-card:hover h3 {
+      color: var(--secondary);
+    }
+
 
     @media (max-width: 768px) {
-      .workflow-3d-container {
-        padding: 80px 0;
+      .smart-workflow {
+        padding: 70px 0;
       }
 
-      .workflow-3d-steps {
-        flex-direction: column;
-        gap: 40px;
-        max-width: 400px;
+      .workflow-card {
+        padding: 40px 30px;
       }
 
-      .workflow-3d-step {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .workflow-3d-card {
-        padding: 20px;
-        width: 100%;
-      }
-
-      .workflow-3d-icon {
-        width: 55px;
-        height: 55px;
-        margin-bottom: 12px;
-      }
-
-      .workflow-3d-icon i {
-        font-size: 1.5rem;
-      }
-
-      .workflow-3d-content h3 {
-        font-size: 0.95rem;
-      }
-
-      .workflow-3d-content p {
-        font-size: 0.75rem;
-      }
-
-      .workflow-3d-number {
-        width: 28px;
-        height: 28px;
-        font-size: 0.65rem;
-      }
-
-      .workflow-3d-arrow {
-        position: absolute;
-        bottom: -30px;
-        left: 50%;
-        transform: translateX(-50%);
-        margin-left: 0;
-        width: 35px;
-        height: 35px;
-      }
-
-      .workflow-3d-arrow i {
-        font-size: 0.9rem;
-        transform: rotate(90deg);
-      }
-
-      .workflow-3d-step:hover .workflow-3d-arrow i {
-        transform: rotate(90deg) scale(1.2);
+      .workflow-step-num {
+        font-size: 3rem;
       }
     }
 
-    @media (max-width: 480px) {
-      .workflow-3d-container {
-        padding: 60px 0;
-      }
-
-      .workflow-3d-steps {
-        gap: 30px;
-        max-width: 320px;
-      }
-
-      .workflow-3d-card {
-        padding: 18px;
-      }
-
-      .workflow-3d-icon {
-        width: 50px;
-        height: 50px;
-        margin-bottom: 10px;
-      }
-
-      .workflow-3d-icon i {
-        font-size: 1.3rem;
-      }
-
-      .workflow-3d-content h3 {
-        font-size: 0.9rem;
-      }
-
-      .workflow-3d-content p {
-        font-size: 0.7rem;
-      }
-
-      .workflow-3d-number {
-        width: 25px;
-        height: 25px;
-        font-size: 0.6rem;
-      }
-
-      .workflow-3d-arrow {
-        width: 30px;
-        height: 30px;
-        bottom: -25px;
-      }
-
-      .workflow-3d-arrow i {
-        font-size: 0.8rem;
-      }
-    }
 
     @media (max-width: 1080px) {
       .process-container {
         justify-content: center;
         gap: 60px;
       }
+
       .process-connector {
         display: none;
       }
@@ -1373,11 +1172,13 @@
     }
 
     .showcase-section.reversed .showcase-wrap {
-      direction: rtl; /* Simple way to swap grid columns */
+      direction: rtl;
+      /* Simple way to swap grid columns */
     }
 
-    .showcase-section.reversed .showcase-wrap > * {
-      direction: ltr; /* Reset direction for children */
+    .showcase-section.reversed .showcase-wrap>* {
+      direction: ltr;
+      /* Reset direction for children */
     }
 
     .showcase-visual {
@@ -1677,255 +1478,294 @@
       color: #eff7ff;
     }
 
-    #highlights {
+    /* --- Split Showcase Section --- */
+    .split-showcase {
+      padding: 120px 0;
+      background: #fdfdfd;
       position: relative;
       overflow: hidden;
-      background: radial-gradient(circle at 0% 0%, #041a44 0%, #020d27 50%, #051e4d 100%);
-      padding: clamp(80px, 10vw, 120px) 0;
     }
 
-    #highlights::before {
-      content: "";
+    .split-showcase::before {
+      content: '';
       position: absolute;
-      width: 600px;
-      height: 600px;
-      border-radius: 999px;
-      top: -250px;
-      right: -200px;
-      background: radial-gradient(circle, rgba(255, 184, 0, 0.12), transparent 70%);
+      top: -10%;
+      right: -10%;
+      width: 40%;
+      height: 40%;
+      background: radial-gradient(circle, rgba(255, 184, 0, 0.05), transparent 70%);
       pointer-events: none;
-      filter: blur(80px);
     }
 
-    #highlights::after {
-      content: "";
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      border-radius: 999px;
-      left: -150px;
-      bottom: -150px;
-      background: radial-gradient(circle, rgba(13, 71, 161, 0.3), transparent 70%);
-      pointer-events: none;
-      filter: blur(60px);
-    }
-
-    #highlights .section-head {
-      position: relative;
-      z-index: 2;
-      margin-bottom: 60px;
-    }
-
-    #highlights .section-head h2 {
-      color: #ffffff;
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800;
-    }
-
-    #highlights .section-head p {
-      color: #94a3b8;
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin-inline: auto;
-    }
-
-    .highlight-grid {
-      position: relative;
-      z-index: 2;
+    .showcase-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      perspective: 1500px;
-    }
-
-    .highlight-item {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 28px;
-      padding: 45px 30px;
-      display: flex;
-      flex-direction: column;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 80px;
       align-items: center;
-      text-align: center;
-      transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-      transform-style: preserve-3d;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 25px;
     }
 
-    /* Shine effect */
-    .highlight-item::after {
-      content: "";
+    .showcase-left {
+      position: relative;
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: 0 50px 100px rgba(2, 13, 39, 0.12);
+      aspect-ratio: 16 / 10;
+      background: #f1f5f9;
+      transform: perspective(1000px) rotateY(2deg);
+    }
+
+    .showcase-carousel-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .showcase-slide {
       position: absolute;
-      top: -150%;
-      left: -150%;
-      width: 300%;
-      height: 300%;
-      background: linear-gradient(
-        45deg,
-        transparent 0%,
-        transparent 45%,
-        rgba(255, 255, 255, 0.08) 50%,
-        transparent 55%,
-        transparent 100%
-      );
-      transition: all 0.8s;
-      pointer-events: none;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 1;
     }
 
-    .highlight-item:hover::after {
-      top: -50%;
-      left: -50%;
-    }
-
-    .highlight-item::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255, 184, 0, 0.1) 0%, transparent 100%);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-
-    .highlight-item:hover {
-      transform: translateY(-15px) rotateX(8deg) rotateY(-5deg);
-      background: rgba(255, 255, 255, 0.06);
-      border-color: rgba(255, 184, 0, 0.3);
-      box-shadow: 0 40px 70px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 184, 0, 0.05);
-    }
-
-    .highlight-item:hover::before {
+    .showcase-slide.active {
       opacity: 1;
-    }
-
-    .highlight-item i {
-      width: 70px;
-      height: 70px;
-      border-radius: 20px;
-      display: grid;
-      place-items: center;
-      font-size: 2rem;
-      margin-bottom: 28px;
-      color: #ffffff;
-      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-      box-shadow: 0 15px 30px rgba(30, 58, 138, 0.3);
-      transition: all 0.4s ease;
-      position: relative;
       z-index: 2;
     }
 
-    .highlight-item:hover i {
-      transform: scale(1.1) translateZ(20px);
-      background: linear-gradient(135deg, #FFB800, #ffca28);
-      color: #020d27;
-      box-shadow: 0 15px 35px rgba(255, 184, 0, 0.4);
+    .showcase-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.05);
+      transition: transform 6s ease;
     }
 
-    .highlight-copy {
-      position: relative;
-      z-index: 2;
+    .showcase-slide.active img {
+      transform: scale(1);
     }
 
-    .highlight-copy h3 {
-      color: #ffffff;
-      font-size: 1.25rem;
+    .showcase-right {
+      padding-right: 40px;
+    }
+
+    .showcase-content-item {
+      display: none;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .showcase-content-item.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .showcase-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(255, 184, 0, 0.1);
+      color: #b45309;
+      border-radius: 100px;
+      font-size: 0.85rem;
       font-weight: 700;
-      margin-bottom: 15px;
-      line-height: 1.3;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .showcase-right h2 {
+      font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+      color: #020d27;
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+      max-width: 450px;
+    }
+
+
+    .showcase-right p {
+      font-size: 1.2rem;
+      color: #64748b;
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+
+    .showcase-nav {
+      display: flex;
+      gap: 15px;
+      margin-top: 25px;
+      justify-content: flex-start;
+    }
+
+    .split-showcase .btn-gold {
+      background: #020d27;
+      color: #ffffff;
+      border: 2px solid #020d27;
       transition: all 0.4s ease;
-      transform: translateZ(0);
     }
 
-    .highlight-item:hover h3 {
-      color: #FFB800;
-      transform: translateZ(15px);
-    }
-
-    .highlight-copy p {
-      color: #94a3b8;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 0;
-      transition: all 0.4s ease;
-      transform: translateZ(0);
-    }
-
-    .highlight-item:hover p {
-      color: #cbd5e1;
-      transform: translateZ(10px);
-    }
-
-    /* Mobile responsiveness for the Hub */
-    @media (max-width: 1100px) {
-      .highlight-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 640px) {
-      .highlight-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .highlight-item {
-        padding: 35px 25px;
-      }
+    .split-showcase .btn-gold:hover {
+      background: #ffb800;
+      color: #020d27;
+      border-color: #ffb800;
+      box-shadow: 0 12px 25px rgba(255, 184, 0, 0.4);
+      transform: translateY(-3px);
     }
 
 
+    .showcase-dot {
+      width: 12px;
+      height: 12px;
+      background: #e2e8f0;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 2px solid transparent;
+    }
+
+    .showcase-dot.active {
+      background: var(--secondary);
+      transform: scale(1.4);
+      border-color: #ffffff;
+      box-shadow: 0 0 15px rgba(255, 184, 0, 0.4);
+      width: 40px;
+      border-radius: 20px;
+    }
+
+
+
+    /* --- Modern CTA Section --- */
     .cta {
-      padding: clamp(68px, 8vw, 108px) 0;
+      padding: clamp(80px, 12vw, 160px) 0;
+      background: #ffffff;
+      position: relative;
     }
 
-    .cta-box {
-      border-radius: 30px;
+    .cta-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 25px;
+    }
+
+    .cta-glass-card {
+      background: linear-gradient(135deg, #020d27 0%, #0a3161 100%);
+      border-radius: 50px;
+      padding: clamp(60px, 10vw, 100px) 40px;
       text-align: center;
-      padding: clamp(36px, 5vw, 56px) 20px;
-      background: linear-gradient(135deg, #020D27, #0274BD);
-      color: var(--white);
-      box-shadow: 0 28px 70px rgba(2, 13, 39, 0.42);
       position: relative;
       overflow: hidden;
+      box-shadow: 0 50px 100px rgba(2, 13, 39, 0.28);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      isolation: isolate;
     }
 
-    .cta-box::before,
-    .cta-box::after {
-      content: "";
+    .cta-glass-card::before {
+      content: '';
       position: absolute;
-      border-radius: 999px;
-      pointer-events: none;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255, 184, 0, 0.12), transparent 70%);
+      top: -200px;
+      right: -150px;
+      z-index: -1;
+      animation: pulseGlow 8s infinite alternate;
     }
 
-    .cta-box::before {
-      width: 340px;
-      height: 340px;
-      background: radial-gradient(circle, rgba(255, 184, 0, 0.38), rgba(255, 184, 0, 0));
-      top: -170px;
-      right: -90px;
+    .cta-glass-card::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(13, 110, 253, 0.1), transparent 70%);
+      bottom: -150px;
+      left: -100px;
+      z-index: -1;
+      animation: pulseGlow 10s infinite alternate-reverse;
     }
 
-    .cta-box::after {
-      width: 320px;
-      height: 320px;
-      background: radial-gradient(circle, rgba(2, 13, 39, 0.5), rgba(2, 13, 39, 0));
-      left: -95px;
-      bottom: -180px;
+    @keyframes pulseGlow {
+      0% {
+        transform: scale(1) translate(0, 0);
+        opacity: 0.5;
+      }
+
+      100% {
+        transform: scale(1.3) translate(-20px, 20px);
+        opacity: 0.8;
+      }
     }
 
-    .cta-box h2 {
-      color: var(--white);
-      font-size: clamp(1.9rem, 4vw, 2.95rem);
-      margin-bottom: 10px;
+    .cta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 184, 0, 0.1);
+      color: var(--secondary);
+      padding: 10px 20px;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border: 1px solid rgba(255, 184, 0, 0.2);
     }
 
-    .cta-box p {
-      color: rgba(255, 255, 255, 0.9);
-      margin-bottom: 22px;
-      font-size: 1.02rem;
+    .cta-glass-card h2 {
+      color: #ffffff;
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 900;
+      margin-bottom: 25px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .cta-glass-card p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto 45px;
+      line-height: 1.6;
+    }
+
+    .cta-glass-card .btn-gold {
+      background: #ffb800;
+      color: #020d27;
+      padding: 22px 55px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(255, 184, 0, 0.3);
+    }
+
+    .cta-glass-card .btn-gold:hover {
+      background: #ffffff;
+      color: #020d27;
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      .cta-glass-card {
+        padding: 60px 20px;
+        border-radius: 30px;
+      }
+
+      .cta-glass-card h2 {
+        font-size: 2.5rem;
+      }
+
+      .cta-glass-card p {
+        font-size: 1.1rem;
+      }
     }
 
     footer {
@@ -2394,25 +2234,29 @@
   <main>
     <section class="hero" id="home">
       <div id="heroParticles" class="hero-particles" aria-hidden="true"></div>
-      
-      <!-- Revolution Slider Style Carousel -->
-      <div class="hero-slider-container">
-        <div class="hero-slider">
+
+      <!-- Modern Fade Carousel -->
+      <div id="carousel-fade" class="carousel slide carousel-fade" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-fade" data-slide-to="0" class=""></li>
+          <li data-target="#carousel-fade" data-slide-to="1" class="active"></li>
+          <li data-target="#carousel-fade" data-slide-to="2" class=""></li>
+          <li data-target="#carousel-fade" data-slide-to="3" class=""></li>
+          <li data-target="#carousel-fade" data-slide-to="4" class=""></li>
+        </ol>
+        <!-- Carousel items -->
+        <div class="carousel-inner">
           <!-- Slide 1 -->
-          <div class="hero-slider-slide active" data-bg="assets/NTB.jpg">
-            <div class="slotholder" style="position: absolute; top: 0px; left: 0px; z-index: 1; width: 100%; height: 100%; backface-visibility: hidden; transform: translate3d(0px, 0px, 0px); visibility: inherit; opacity: 1;">
-              <div class="tp-bgimg defaultimg" style="background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url('assets/NTB.jpg'); background-size: cover; background-position: center 10%; width: 100%; height: 100%; opacity: 1; z-index: 20; visibility: inherit; position: inherit; transform: matrix(1, 0, 0, 1, 0, 0);"></div>
-            </div>
-            <div class="hero-content">
+          <div class="item">
+            <a href="online-registration.php"><img src="img/banner/std_unif_bnr_2026.jpg"
+                alt="Student Uniforms 2026"></a>
+            <div class="carousel-content">
               <div class="container">
-                <div class="hero-left">
-                  <span class="hero-pill"><i class="fa-solid fa-bolt"></i> Premium 3D SaaS Experience</span>
-                  <div class="hero-carousel">
-                    <article class="hero-slide active">
-                      <h1><span class="brand-word">Noshahi</span> Test Builder:<br>Create Professional Papers</h1>
-                      <p>Empower your institution with the most advanced automated test generation platform designed for modern educators.</p>
-                    </article>
-                  </div>
+                <div class="glass-overlay">
+                  <span class="hero-pill"><i class="fa-solid fa-bolt"></i> Modern Digital Classrooms</span>
+                  <h1><span class="brand-word">Noshahi</span> Test Builder<br>Revolutionizing Education</h1>
+                  <p>Experience the future of test creation with our advanced platform designed for modern educational
+                    excellence and clarity.</p>
                   <div class="hero-actions">
                     <a class="btn btn-gold" href="register.html"><i class="fa-solid fa-rocket"></i> Get Started</a>
                     <a class="btn btn-outline" href="#preview"><i class="fa-solid fa-circle-play"></i> Watch Demo</a>
@@ -2423,22 +2267,17 @@
           </div>
 
           <!-- Slide 2 -->
-          <div class="hero-slider-slide" data-bg="assets/NTB2.jpg">
-            <div class="slotholder" style="position: absolute; top: 0px; left: 0px; z-index: 1; width: 100%; height: 100%; backface-visibility: hidden; transform: translate3d(0px, 0px, 0px); visibility: inherit; opacity: 1;">
-              <div class="tp-bgimg defaultimg" style="background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url('assets/NTB2.jpg'); background-size: cover; background-position: center 10%; width: 100%; height: 100%; opacity: 1; z-index: 20; visibility: inherit; position: inherit; transform: matrix(1, 0, 0, 1, 0, 0);"></div>
-            </div>
-            <div class="hero-content">
+          <div class="item active">
+            <a href="online-registration.php"><img src="img/banner/positions_bnr_2024_2.jpg" alt="Positions 2024"></a>
+            <div class="carousel-content">
               <div class="container">
-                <div class="hero-left">
-                  <span class="hero-pill"><i class="fa-solid fa-graduation-cap"></i> Board-Aligned Excellence</span>
-                  <div class="hero-carousel">
-                    <article class="hero-slide active">
-                      <h1>Build Board Pattern Papers<br>with <span class="brand-word">Noshahi</span> Builder</h1>
-                      <p>Generate curriculum-aligned exam papers that follow official board patterns with 100% accuracy and professional formatting.</p>
-                    </article>
-                  </div>
+                <div class="glass-overlay">
+                  <span class="hero-pill"><i class="fa-solid fa-graduation-cap"></i> Academic Excellence</span>
+                  <h1>Celebrate <span class="brand-word">Achievements</span><br>of Positions 2024</h1>
+                  <p>Join the league of top performers with curriculum-aligned test papers that follow official board
+                    patterns with 100% accuracy.</p>
                   <div class="hero-actions">
-                    <a class="btn btn-gold" href="register.html"><i class="fa-solid fa-rocket"></i> Get Started</a>
+                    <a class="btn btn-gold" href="register.html"><i class="fa-solid fa-trophy"></i> Join Success</a>
                     <a class="btn btn-outline" href="#features"><i class="fa-solid fa-info-circle"></i> Learn More</a>
                   </div>
                 </div>
@@ -2447,23 +2286,62 @@
           </div>
 
           <!-- Slide 3 -->
-          <div class="hero-slider-slide" data-bg="assets/teacher_writing_paper.png">
-            <div class="slotholder" style="position: absolute; top: 0px; left: 0px; z-index: 1; width: 100%; height: 100%; backface-visibility: hidden; transform: translate3d(0px, 0px, 0px); visibility: inherit; opacity: 1;">
-              <div class="tp-bgimg defaultimg" style="background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url('assets/teacher_writing_paper.png'); background-size: cover; background-position: center 10%; width: 100%; height: 100%; opacity: 1; z-index: 20; visibility: inherit; position: inherit; transform: matrix(1, 0, 0, 1, 0, 0);"></div>
-            </div>
-            <div class="hero-content">
+          <div class="item">
+            <a href="alumni-registration.php"><img src="img/banner/teal_web_bnr_2026.jpg"
+                alt="Teal Web Banner 2026"></a>
+            <div class="carousel-content">
               <div class="container">
-                <div class="hero-left">
-                  <span class="hero-pill"><i class="fa-solid fa-users"></i> Trusted by Educators</span>
-                  <div class="hero-carousel">
-                    <article class="hero-slide active">
-                      <h1><span class="brand-word">Noshahi</span> Test Builder:<br>All-in-One Test Solution</h1>
-                      <p>Join thousands of teachers who rely on Noshahi to manage question banks and produce high-quality tests in seconds.</p>
-                    </article>
-                  </div>
+                <div class="glass-overlay">
+                  <span class="hero-pill"><i class="fa-solid fa-users"></i> Global Community</span>
+                  <h1>Alumni <span class="brand-word">Registration</span><br>Open for 2026</h1>
+                  <p>Connect with your roots and stay updated with the latest educational trends and smart tagging
+                    systems powered by AI.</p>
                   <div class="hero-actions">
-                    <a class="btn btn-gold" href="register.html"><i class="fa-solid fa-rocket"></i> Get Started</a>
-                    <a class="btn btn-outline" href="#how"><i class="fa-solid fa-cog"></i> How It Works</a>
+                    <a class="btn btn-gold" href="alumni-registration.php"><i class="fa-solid fa-user-plus"></i>
+                      Register Now</a>
+                    <a class="btn btn-outline" href="#highlights"><i class="fa-solid fa-star"></i> Alumni Stories</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="item">
+            <a href="https://quizillapro.com/"><img src="img/banner/quizilla_pro_web_banners.jpg"
+                alt="Quizilla Pro"></a>
+            <div class="carousel-content">
+              <div class="container">
+                <div class="glass-overlay">
+                  <span class="hero-pill"><i class="fa-solid fa-gamepad"></i> Interactive Quizzing</span>
+                  <h1>Explore <span class="brand-word">Quizilla Pro</span><br>For Smart Testing</h1>
+                  <p>Immerse yourself in a seamless workflow with smart tagging, analytics, and instant 3D layout
+                    generation for quizzes.</p>
+                  <div class="hero-actions">
+                    <a class="btn btn-gold" href="https://quizillapro.com/"><i class="fa-solid fa-external-link"></i>
+                      Visit Quizilla</a>
+                    <a class="btn btn-outline" href="book-demo.html"><i class="fa-solid fa-calendar-check"></i> Book
+                      Demo</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 5 -->
+          <div class="item">
+            <a href="save-our-stars.php"><img src="img/banner/save-our-star-sldr.jpg" alt="Save Our Stars"></a>
+            <div class="carousel-content">
+              <div class="container">
+                <div class="glass-overlay">
+                  <span class="hero-pill"><i class="fa-solid fa-star"></i> Community Impact</span>
+                  <h1>Help Us <span class="brand-word">Save Our Stars</span><br>Scholarship Program</h1>
+                  <p>Empower underprivileged students by providing them with premium educational resources and
+                    professional test building tools.</p>
+                  <div class="hero-actions">
+                    <a class="btn btn-gold" href="save-our-stars.php"><i class="fa-solid fa-heart"></i> Donate Now</a>
+                    <a class="btn btn-outline" href="contact-us.html"><i class="fa-solid fa-envelope"></i> Get in
+                      Touch</a>
                   </div>
                 </div>
               </div>
@@ -2471,21 +2349,8 @@
           </div>
         </div>
 
-        <!-- Navigation Dots -->
-        <div class="hero-slider-dots">
-          <button class="hero-slider-dot active" data-slide="0" aria-label="Slide 1"></button>
-          <button class="hero-slider-dot" data-slide="1" aria-label="Slide 2"></button>
-          <button class="hero-slider-dot" data-slide="2" aria-label="Slide 3"></button>
-        </div>
-
-        <!-- Navigation Arrows -->
-        <button class="hero-slider-nav prev" aria-label="Previous slide">
-          <i class="fa-solid fa-chevron-left"></i>
-        </button>
-        <button class="hero-slider-nav next" aria-label="Next slide">
-          <i class="fa-solid fa-chevron-right"></i>
-        </button>
       </div>
+
     </section>
 
     <section id="features" class="section">
@@ -2507,7 +2372,8 @@
                 </div>
                 <h3>Smart Question Bank</h3>
               </div>
-              <p>Organize by class, subject, board, chapter, and difficulty in one clean system with advanced search and filtering.</p>
+              <p>Organize by class, subject, board, chapter, and difficulty in one clean system with advanced search and
+                filtering.</p>
               <button class="feature-btn">
                 <span>Learn More</span>
                 <i class="fa-solid fa-arrow-right"></i>
@@ -2517,7 +2383,9 @@
 
           <div class="feature-card">
             <div class="feature-3d-image">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Custom Test Generator 3D">
+              <img
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                alt="Custom Test Generator 3D">
               <div class="image-overlay"></div>
             </div>
             <div class="feature-content">
@@ -2527,7 +2395,8 @@
                 </div>
                 <h3>Custom Test Generator</h3>
               </div>
-              <p>Create assessment sets with full control over question type, marks distribution, and difficulty levels.</p>
+              <p>Create assessment sets with full control over question type, marks distribution, and difficulty levels.
+              </p>
               <button class="feature-btn">
                 <span>Learn More</span>
                 <i class="fa-solid fa-arrow-right"></i>
@@ -2537,7 +2406,9 @@
 
           <div class="feature-card">
             <div class="feature-3d-image">
-              <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Print-Ready PDFs 3D">
+              <img
+                src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                alt="Print-Ready PDFs 3D">
               <div class="image-overlay"></div>
             </div>
             <div class="feature-content">
@@ -2547,7 +2418,8 @@
                 </div>
                 <h3>Print-Ready PDFs</h3>
               </div>
-              <p>Generate board-aligned paper format ready for immediate print with professional layout and formatting.</p>
+              <p>Generate board-aligned paper format ready for immediate print with professional layout and formatting.
+              </p>
               <button class="feature-btn">
                 <span>Learn More</span>
                 <i class="fa-solid fa-arrow-right"></i>
@@ -2557,78 +2429,55 @@
         </div>
       </div>
     </section>
-    <section id="how" class="section" style="background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);">
+    <section id="how" class="smart-workflow">
       <div class="container">
         <div class="section-head">
-          <h2>How It <span class="brand-word">Works</span></h2>
-          <p>Experience our revolutionary workflow from selection to final paper generation.</p>
+          <span class="hero-pill" style="margin-inline: auto;"><i class="fa-solid fa-wand-sparkles"></i> Simple
+            Workflow</span>
+          <h2>Revolutionary <span class="brand-word">Process</span> Hub</h2>
+          <p>Experience the most intuitive test generation cycle ever built for modern education.</p>
         </div>
-        <div class="workflow-3d-container">
-          <div class="workflow-3d-steps">
-            <div class="workflow-3d-step">
-              <div class="workflow-3d-card">
-                <div class="workflow-3d-icon">
-                  <i class="fa-solid fa-graduation-cap"></i>
-                </div>
-                <div class="workflow-3d-content">
-                  <h3>Select Board & Class</h3>
-                  <p>Choose your educational board, class level and subject</p>
-                </div>
-                <div class="workflow-3d-number">01</div>
-              </div>
-              <div class="workflow-3d-arrow">
-                <i class="fa-solid fa-arrow-right"></i>
-              </div>
-            </div>
 
-            <div class="workflow-3d-step">
-              <div class="workflow-3d-card">
-                <div class="workflow-3d-icon">
-                  <i class="fa-solid fa-list-check"></i>
-                </div>
-                <div class="workflow-3d-content">
-                  <h3>Pick Chapters & Topics</h3>
-                  <p>Select specific chapters, topics and difficulty levels</p>
-                </div>
-                <div class="workflow-3d-number">02</div>
-              </div>
-              <div class="workflow-3d-arrow">
-                <i class="fa-solid fa-arrow-right"></i>
-              </div>
+        <div class="workflow-grid">
+          <article class="workflow-card">
+            <div class="workflow-step-num">01</div>
+            <div class="workflow-icon">
+              <i class="fa-solid fa-graduation-cap"></i>
             </div>
+            <h3>Smart Selection</h3>
+            <p>Define your educational parameters: Board, Class, and Subject with intelligent filters.</p>
+          </article>
 
-            <div class="workflow-3d-step">
-              <div class="workflow-3d-card">
-                <div class="workflow-3d-icon">
-                  <i class="fa-solid fa-gears"></i>
-                </div>
-                <div class="workflow-3d-content">
-                  <h3>Generate Paper</h3>
-                  <p>Auto-build your professional test paper with AI</p>
-                </div>
-                <div class="workflow-3d-number">03</div>
-              </div>
-              <div class="workflow-3d-arrow">
-                <i class="fa-solid fa-arrow-right"></i>
-              </div>
+          <article class="workflow-card">
+            <div class="workflow-step-num">02</div>
+            <div class="workflow-icon">
+              <i class="fa-solid fa-list-check"></i>
             </div>
+            <h3>Chapter Hub</h3>
+            <p>Target specific chapters or combine multiple topics with deep-link granularity.</p>
+          </article>
 
-            <div class="workflow-3d-step">
-              <div class="workflow-3d-card">
-                <div class="workflow-3d-icon">
-                  <i class="fa-solid fa-download"></i>
-                </div>
-                <div class="workflow-3d-content">
-                  <h3>Download & Print</h3>
-                  <p>Get your board-aligned PDF instantly ready</p>
-                </div>
-                <div class="workflow-3d-number">04</div>
-              </div>
+          <article class="workflow-card">
+            <div class="workflow-step-num">03</div>
+            <div class="workflow-icon">
+              <i class="fa-solid fa-gears"></i>
             </div>
-          </div>
+            <h3>AI Synthesis</h3>
+            <p>Our engine automatically generates the most balanced test based on official patterns.</p>
+          </article>
+
+          <article class="workflow-card">
+            <div class="workflow-step-num">04</div>
+            <div class="workflow-icon">
+              <i class="fa-solid fa-cloud-arrow-down"></i>
+            </div>
+            <h3>Instant Export</h3>
+            <p>Get professional, board-ready PDF documents instantly with custom branding.</p>
+          </article>
         </div>
       </div>
     </section>
+
 
     <section id="preview" class="section showcase-section">
       <div class="showcase-particles" aria-hidden="true"></div>
@@ -2706,7 +2555,8 @@
 
         <div class="showcase-side">
           <h2>Advanced <span class="brand-word">AI</span> Analytics & Insights</h2>
-          <p>Gain deep visibility into your curriculum coverage and question bank distribution with our intelligent analytics engine.</p>
+          <p>Gain deep visibility into your curriculum coverage and question bank distribution with our intelligent
+            analytics engine.</p>
           <div class="showcase-mini-grid">
             <article class="showcase-mini">
               <i class="fa-solid fa-microchip"></i>
@@ -2760,62 +2610,92 @@
       </div>
     </section>
 
-    <section id="highlights" class="section">
+    <section id="highlights" class="split-showcase">
       <div class="container">
-        <div class="section-head">
-          <h2>3D Operational <span class="brand-word">Advantage</span> Hub</h2>
-          <p>Advanced BRD capability blocks with motion-driven presentation and practical value.</p>
+        <div class="showcase-grid">
+          <!-- Left side: Image Carousel -->
+          <div class="showcase-left">
+            <div class="showcase-carousel-inner">
+              <div class="showcase-slide active">
+                <img src="img/banner/std_unif_bnr_2026.jpg" alt="Smart Question Bank">
+              </div>
+              <div class="showcase-slide">
+                <img src="img/banner/positions_bnr_2024_2.jpg" alt="Dynamic Paper Generation">
+              </div>
+              <div class="showcase-slide">
+                <img src="img/banner/quizilla_pro_web_banners.jpg" alt="Real-time Analytics">
+              </div>
+            </div>
+            <!-- Navigation Dots moved here -->
+            <div class="showcase-nav">
+              <div class="showcase-dot active" data-index="0"></div>
+              <div class="showcase-dot" data-index="1"></div>
+              <div class="showcase-dot" data-index="2"></div>
+            </div>
+          </div>
+
+          <!-- Right side: Content -->
+          <div class="showcase-right">
+
+            <div class="showcase-content-list">
+              <!-- Content 1 -->
+              <div class="showcase-content-item active">
+                <span class="showcase-pill"><i class="fa-solid fa-database"></i> Smart Repository</span>
+                <h2>Intelligent <span class="brand-word">Question</span> Management</h2>
+                <p>Organize thousands of questions effortlessly. Filter by class, subject, and difficulty with our
+                  intelligent AI-powered indexing system that grows with your institution.</p>
+                <div class="hero-actions" style="justify-content: flex-start;">
+                  <a class="btn btn-gold" href="register.html">Get Started</a>
+                </div>
+              </div>
+
+              <!-- Content 2 -->
+              <div class="showcase-content-item">
+                <span class="showcase-pill"><i class="fa-solid fa-file-pdf"></i> Rapid Export</span>
+                <h2>Dynamic <span class="brand-word">Paper</span> Generation</h2>
+                <p>Create board-aligned test papers in seconds. Our engine ensures 100% accuracy and professional
+                  formatting for every subject, ready for immediate printing.</p>
+                <div class="hero-actions" style="justify-content: flex-start;">
+                  <a class="btn btn-gold" href="register.html">Try Generator</a>
+                </div>
+              </div>
+
+              <!-- Content 3 -->
+              <div class="showcase-content-item">
+                <span class="showcase-pill"><i class="fa-solid fa-chart-pie"></i> Deep Insights</span>
+                <h2>Real-time <span class="brand-word">Curriculum</span> Analytics</h2>
+                <p>Gain deep insights into curriculum coverage. Identify syllabus gaps and ensure high-quality academic
+                  standards across your entire institution with ease.</p>
+                <div class="hero-actions" style="justify-content: flex-start;">
+                  <a class="btn btn-gold" href="register.html">View Analytics</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
-        <div class="highlight-grid">
-          <article class="highlight-item">
-            <div class="highlight-icon">
-              <i class="fa-solid fa-download"></i>
-            </div>
-            <div class="highlight-copy">
-              <h3>Offline Use</h3>
-              <p>Generate papers once and print anytime without workflow breaks.</p>
-            </div>
-          </article>
-          <article class="highlight-item">
-            <div class="highlight-icon">
-              <i class="fa-solid fa-wifi-slash"></i>
-            </div>
-            <div class="highlight-copy">
-              <h3>Zero Connectivity</h3>
-              <p>Teachers can continue exam operations in low-connectivity environments.</p>
-            </div>
-          </article>
-          <article class="highlight-item">
-            <div class="highlight-icon">
-              <i class="fa-solid fa-square-plus"></i>
-            </div>
-            <div class="highlight-copy">
-              <h3>Instant Addition</h3>
-              <p>Add institution-specific questions and adjust paper depth instantly.</p>
-            </div>
-          </article>
-          <article class="highlight-item">
-            <div class="highlight-icon">
-              <i class="fa-solid fa-filter"></i>
-            </div>
-            <div class="highlight-copy">
-              <h3>Smart Filtering</h3>
-              <p>Auto-filter by board and chapter to produce focused assessments faster.</p>
-            </div>
-          </article>
+      </div>
+      </div>
+    </section>
+
+
+
+
+
+    <section class="cta" id="cta">
+      <div class="cta-container">
+        <div class="cta-glass-card">
+          <span class="cta-pill"><i class="fa-solid fa-fire-pulse"></i> limited release</span>
+          <h2>Start Creating <span class="brand-word">Tests</span> Today</h2>
+          <p>Experience the most professional and intuitive test generation platform built for the next generation of
+            educators.</p>
+          <div class="hero-actions" style="justify-content: center;">
+            <a class="btn btn-gold" href="register.html">Get Started Free <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="cta" id="cta">
-      <div class="container">
-        <div class="cta-box">
-          <h2>Start Creating <span class="brand-word">Tests</span> Today</h2>
-          <p>Professional 3D SaaS experience for faster and cleaner test generation.</p>
-          <a class="btn btn-gold" href="register.html">Get Started Free</a>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="site-footer">
@@ -2920,90 +2800,85 @@
       }
     });
 
-    // Revolution Slider Style Carousel
-    const sliderSlides = Array.from(document.querySelectorAll(".hero-slider-slide"));
-    const sliderDots = Array.from(document.querySelectorAll(".hero-slider-dot"));
-    const sliderNavPrev = document.querySelector(".hero-slider-nav.prev");
-    const sliderNavNext = document.querySelector(".hero-slider-nav.next");
-    const heroSection = document.getElementById("home");
-    let currentSliderSlide = 0;
+    // Hero Carousel Functionality
+    const carouselItems = Array.from(document.querySelectorAll(".carousel-inner .item"));
+    const carouselDots = Array.from(document.querySelectorAll(".carousel-indicators li"));
+    let currentIdx = carouselItems.findIndex(item => item.classList.contains("active")) || 0;
+    let autoPlayInterval;
 
-    function setSliderSlide(next) {
-      sliderSlides[currentSliderSlide].classList.remove("active");
-      sliderDots[currentSliderSlide].classList.remove("active");
-      currentSliderSlide = next;
-      sliderSlides[currentSliderSlide].classList.add("active");
-      sliderDots[currentSliderSlide].classList.add("active");
-      
-      // Force background image update
-      const bgImage = sliderSlides[currentSliderSlide].dataset.bg;
-      const bgImg = sliderSlides[currentSliderSlide].querySelector(".tp-bgimg");
-      if (bgImg && bgImage) {
-        // Preload the image
-        const img = new Image();
-        img.onload = function() {
-          bgImg.style.backgroundImage = `url('${bgImage}')`;
-          bgImg.style.opacity = '1';
-        };
-        img.onerror = function() {
-          // Fallback to solid color if image fails to load
-          bgImg.style.backgroundImage = 'none';
-          bgImg.style.backgroundColor = 'linear-gradient(118deg, rgba(5, 22, 59, 0.82) 0%, rgba(0, 49, 109, 0.74) 52%, rgba(1, 28, 70, 0.78) 100%)';
-        };
-        img.src = bgImage;
-      }
+    function showSlide(idx) {
+      if (carouselItems.length === 0) return;
+
+      carouselItems[currentIdx].classList.remove("active");
+      carouselDots[currentIdx].classList.remove("active");
+
+      currentIdx = (idx + carouselItems.length) % carouselItems.length;
+
+      carouselItems[currentIdx].classList.add("active");
+      carouselDots[currentIdx].classList.add("active");
     }
 
-    function nextSlide() {
-      const next = (currentSliderSlide + 1) % sliderSlides.length;
-      setSliderSlide(next);
-    }
+    function nextSlide() { showSlide(currentIdx + 1); }
 
-    function prevSlide() {
-      const prev = (currentSliderSlide - 1 + sliderSlides.length) % sliderSlides.length;
-      setSliderSlide(prev);
-    }
-
-    // Dot navigation
-    sliderDots.forEach((dot, index) => {
-      dot.addEventListener("click", () => setSliderSlide(index));
+    carouselDots.forEach((dot, idx) => {
+      dot.addEventListener("click", () => {
+        showSlide(idx);
+        resetAutoPlay();
+      });
     });
 
-    // Arrow navigation
-    if (sliderNavPrev) {
-      sliderNavPrev.addEventListener("click", prevSlide);
-    }
-    if (sliderNavNext) {
-      sliderNavNext.addEventListener("click", nextSlide);
-    }
-
-    // Auto-play
-    let autoPlayInterval = setInterval(nextSlide, 5000);
-
-    // Pause auto-play on hover
-    const sliderContainer = document.querySelector(".hero-slider-container");
-    if (sliderContainer) {
-      sliderContainer.addEventListener("mouseenter", () => {
-        clearInterval(autoPlayInterval);
-      });
-      
-      sliderContainer.addEventListener("mouseleave", () => {
+    function startAutoPlay() {
+      if (carouselItems.length > 0) {
         autoPlayInterval = setInterval(nextSlide, 5000);
-      });
+      }
     }
 
-    // Initialize first slide
-    setSliderSlide(0);
+    function resetAutoPlay() {
+      clearInterval(autoPlayInterval);
+      startAutoPlay();
+    }
 
-    // Keyboard navigation
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowLeft") {
-        prevSlide();
-      } else if (e.key === "ArrowRight") {
-        nextSlide();
-      }
+    // Split Showcase Carousel
+    const showcaseSlides = Array.from(document.querySelectorAll(".showcase-slide"));
+    const showcaseContents = Array.from(document.querySelectorAll(".showcase-content-item"));
+    const showcaseDots = Array.from(document.querySelectorAll(".showcase-dot"));
+    let showIdx = 0;
+    let showcaseInterval;
+
+    function updateShowcase(idx) {
+      showcaseSlides[showIdx].classList.remove("active");
+      showcaseContents[showIdx].classList.remove("active");
+      showcaseDots[showIdx].classList.remove("active");
+
+      showIdx = (idx + showcaseSlides.length) % showcaseSlides.length;
+
+      showcaseSlides[showIdx].classList.add("active");
+      showcaseContents[showIdx].classList.add("active");
+      showcaseDots[showIdx].classList.add("active");
+    }
+
+    showcaseDots.forEach((dot, idx) => {
+      dot.addEventListener("click", () => {
+        updateShowcase(idx);
+        resetShowcaseInterval();
+      });
     });
+
+    function startShowcaseInterval() {
+      showcaseInterval = setInterval(() => {
+        updateShowcase(showIdx + 1);
+      }, 6000);
+    }
+
+    function resetShowcaseInterval() {
+      clearInterval(showcaseInterval);
+      startShowcaseInterval();
+    }
+
+    startShowcaseInterval();
+
   </script>
+
 </body>
 
 </html>
