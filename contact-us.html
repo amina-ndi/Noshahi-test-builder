@@ -439,38 +439,264 @@
       padding-bottom: 25px;
     }
 
-    /* Map */
-    .map-section {
-      padding: 100px 0;
-      background: white;
+    /* Google Map Section - Wide with Rounded Corners */
+    .google-map-section {
+      width: 100%;
+      padding: 60px 0; /* Vertical spacing */
+      background: #f8fafc;
     }
 
-    .map-box {
-      height: 500px;
-      border-radius: 40px;
+    .map-container-full {
+      max-width: 1400px; /* Wide but not literally edge-to-edge */
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .map-card-full {
+      width: 100%;
+      height: 650px;
+      background: #eee;
+      border-radius: 40px; /* Premium rounded corners */
       overflow: hidden;
-      position: relative;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
-      border: 8px solid white;
+      box-shadow: 0 20px 50px rgba(2, 13, 39, 0.12);
+      border: 1px solid rgba(2, 13, 39, 0.05);
     }
 
-    .map-box iframe {
+    .map-card-full iframe {
+      display: block;
       width: 100%;
       height: 100%;
       border: 0;
     }
 
-    .office-card {
+
+    /* Professional Hero Section with Background Image */
+    .professional-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-background {
       position: absolute;
-      top: 40px;
-      left: 40px;
-      background: var(--primary);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://picsum.photos/seed/professional-contact-support/1920/1080.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      z-index: 1;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, 
+        rgba(2, 13, 39, 0.85) 0%, 
+        rgba(2, 13, 39, 0.75) 40%, 
+        rgba(255, 184, 0, 0.3) 100%);
+      z-index: 2;
+    }
+
+    .hero-content-wrapper {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      padding: 80px 0;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      border: 2px solid rgba(255, 184, 0, 0.4);
+      border-radius: 50px;
+      padding: 12px 24px;
+      margin-bottom: 30px;
+      font-weight: 700;
       color: white;
-      padding: 30px;
-      border-radius: 25px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      max-width: 300px;
-      z-index: 10;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .hero-badge:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+      border-color: var(--secondary);
+    }
+
+    .hero-badge i {
+      font-size: 1.1rem;
+      color: var(--secondary);
+    }
+
+    .hero-title {
+      margin-bottom: 25px;
+      line-height: 1.1;
+    }
+
+    .title-main {
+      display: block;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      color: white;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      margin-bottom: 10px;
+    }
+
+    .title-accent {
+      display: block;
+      font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--secondary), #FFD54F);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 4px 20px rgba(255, 184, 0, 0.3);
+    }
+
+    .hero-description {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .feature-item {
+      text-align: center;
+      padding: 30px 20px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .feature-item:hover {
+      transform: translateY(-8px) scale(1.02);
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 184, 0, 0.4);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--secondary), #FFD54F);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 15px;
+      font-size: 1.5rem;
+      color: var(--primary);
+      box-shadow: 0 8px 25px rgba(255, 184, 0, 0.3);
+    }
+
+    .feature-text h4 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .feature-text p {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0;
+      text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--secondary), #FFD54F);
+      color: var(--primary);
+      padding: 18px 32px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 30px rgba(255, 184, 0, 0.4);
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(255, 184, 0, 0.5);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      color: white;
+      padding: 18px 32px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: var(--secondary);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(255, 184, 0, 0.3);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Responsive adjustments */
@@ -620,28 +846,73 @@
   </header>
 
   <main>
-    <!-- Hero Section -->
-    <section class="contact-hero">
-      <div class="hero-grid">
-        <div class="hero-left">
-          <h1>Let’s Build <span style="color: var(--secondary)">Smarter</span> Exams Together</h1>
-          <p>Have questions about Noshahi Test Builder? Our team is here to help teachers and institutes create better
-            tests faster.</p>
-          <div class="hero-actions">
-            <a href="#form" class="btn btn-gold">Contact Team <i class="fa-solid fa-paper-plane"></i></a>
-            <a href="#" class="btn btn-outline">Watch Demo <i class="fa-solid fa-play"></i></a>
-          </div>
-        </div>
-        <div class="hero-right">
-          <div class="floating-box">
-            <div
-              style="height: 300px; background: rgba(255,255,255,0.05); border-radius: 15px; display: grid; place-items: center;">
-              <i class="fa-solid fa-envelope-open-text"
-                style="font-size: 8rem; color: var(--secondary); opacity: 0.8;"></i>
+    <!-- Professional Hero Section with Background Image -->
+    <section class="professional-hero">
+      <div class="hero-background">
+        <div class="hero-overlay"></div>
+      </div>
+      
+      <div class="hero-content-wrapper">
+        <div class="container">
+          <div class="hero-content">
+            <div class="hero-badge">
+              <i class="fa-solid fa-headset"></i>
+              <span>24/7 Professional Support</span>
+            </div>
+            
+            <h1 class="hero-title">
+              <span class="title-main">Get in Touch with</span>
+              <span class="title-accent">Noshahi Test Builder</span>
+            </h1>
+            
+            <p class="hero-description">
+              Connect with our expert team for personalized guidance, technical support, and educational solutions. 
+              We're here to help you transform your testing experience.
+            </p>
+            
+            <div class="hero-features">
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <div class="feature-text">
+                  <h4>Quick Response</h4>
+                  <p>Get replies within hours</p>
+                </div>
+              </div>
+              
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-users"></i>
+                </div>
+                <div class="feature-text">
+                  <h4>Expert Team</h4>
+                  <p>Dedicated education specialists</p>
+                </div>
+              </div>
+              
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-shield-check"></i>
+                </div>
+                <div class="feature-text">
+                  <h4>Secure & Private</h4>
+                  <p>Your data is always protected</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="hero-actions">
+              <a href="#contact-form" class="btn btn-primary">
+                <i class="fa-solid fa-message"></i>
+                <span>Start Conversation</span>
+              </a>
+              <a href="tel:+923000000000" class="btn btn-secondary">
+                <i class="fa-solid fa-phone"></i>
+                <span>Call Now</span>
+              </a>
             </div>
           </div>
-          <div class="message-card msg-1"><i class="fa-solid fa-check-double"></i> 24/7 Support Active</div>
-          <div class="message-card msg-2"><i class="fa-solid fa-bolt"></i> Fast Response</div>
         </div>
       </div>
     </section>
@@ -731,11 +1002,11 @@
             </div>
           </div>
 
-          <div style="margin-top: 50px; background: #020d27; color: white; padding: 40px; border-radius: 30px;">
-            <h3 style="margin-bottom: 15px;">Need Instant Help?</h3>
-            <p style="color: rgba(255,255,255,0.7); margin-bottom: 25px;">Check our FAQ section below or start a live
+          <div style="margin-top: 50px; background: white; color: #1a1a1a; padding: 40px; border-radius: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); border: 2px solid var(--secondary);">
+            <h3 style="margin-bottom: 15px; color: #020d27; font-weight: 700;">Need Instant Help?</h3>
+            <p style="color: #4a5568; margin-bottom: 25px; line-height: 1.6;">Check our FAQ section below or start a live
               chat with our agents.</p>
-            <a href="#" class="btn btn-gold" style="width: 100%;">Start Live Chat</a>
+            <a href="#" class="btn btn-gold" style="width: 100%; background: linear-gradient(135deg, var(--secondary), #FFD54F); color: #020d27; border: none; padding: 15px 30px; font-weight: 700; border-radius: 50px; text-decoration: none; display: inline-block; text-align: center; transition: all 0.3s ease;" onmouseover="this.style.background='var(--secondary)'; this.style.color='white';" onmouseout="this.style.background='linear-gradient(135deg, var(--secondary), #FFD54F)'; this.style.color='#020d27';">Start Live Chat</a>
           </div>
         </div>
       </div>
@@ -780,25 +1051,21 @@
       </div>
     </section>
 
-    <!-- Map Section -->
-    <section class="map-section">
-      <div class="container" style="max-width: var(--container); margin: 0 auto; padding: 0 24px;">
-        <div class="map-box">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1m3!1d108982.5097412808!2d73.00343354335938!3d31.41871465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x392242a895378c43%3A0xdec4a04d207d5794!2sFaisalabad%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
-            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    <!-- Modern Interactive Map Section -->
+    <!-- Google Map Section (Full Width) -->
+    <section class="google-map-section">
+      <div class="map-container-full">
+        <div class="map-card-full">
+          <iframe 
+            src="https://maps.google.com/maps?q=Vision%20College%20Gojra&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
           </iframe>
-          <div class="office-card">
-            <h3 style="margin-bottom: 10px;">Our Office</h3>
-            <p style="color: rgba(255,255,255,0.7); margin-bottom: 15px;">Faisalabad, Punjab, Pakistan</p>
-            <div style="display: flex; gap: 10px;">
-              <i class="fa-solid fa-clock" style="color: var(--secondary);"></i>
-              <span>Mon - Sat: 9:00 AM - 6:00 PM</span>
-            </div>
-          </div>
         </div>
       </div>
     </section>
+
 
   </main>
 
@@ -887,6 +1154,7 @@
     // Form Loading Animation Placeholder
     function handleFormSubmit(e) {
       e.preventDefault();
+
       const btn = document.getElementById('submitBtn');
       const originalText = btn.innerHTML;
       btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';

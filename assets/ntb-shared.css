@@ -490,6 +490,43 @@ body.ntb-menu-open {
   }
 }
 
+@media (max-width: 480px) {
+  .site-footer {
+    padding: 40px 0 20px;
+  }
+
+  .footer-grid {
+    padding: 20px 15px;
+    gap: 20px;
+    margin: 0 10px;
+  }
+
+  .footer-brand p, .footer-subscribe p {
+    font-size: 13px;
+  }
+
+  .footer-form {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px;
+  }
+
+  .footer-form input {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .footer-form button {
+    width: 100%;
+    height: 48px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
 /* ---------------- Floating Quick Actions ---------------- */
 .ntb-quick-actions {
   position: fixed;
