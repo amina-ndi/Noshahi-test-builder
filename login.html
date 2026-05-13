@@ -93,171 +93,6 @@
             box-shadow: 0 14px 28px rgba(255, 184, 0, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.8);
         }
 
-        /* --- New Footer Styling --- */
-        .pre-footer {
-            padding: 100px 20px;
-            background: radial-gradient(circle at 50% 0%, rgba(2, 13, 39, 0.1) 0%, transparent 70%);
-            text-align: center;
-            border-top: 1px solid rgba(15, 23, 42, 0.05);
-        }
-
-        footer {
-            padding: 42px 0 48px;
-            background: linear-gradient(145deg, #041d4d 0%, #00091D 52%, #020D27 100%);
-            border-top: 1px solid rgba(173, 206, 255, 0.24);
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 10%;
-            right: 10%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(2, 13, 39, 0.3), transparent);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1.5fr;
-            gap: 60px;
-            max-width: 1200px;
-            margin: 0 auto 60px;
-            padding: 0 20px;
-        }
-
-        .footer-brand .footer-logo {
-            font-size: 24px;
-            font-weight: 800;
-            color: #edf5ff;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            margin-bottom: 20px;
-        }
-
-        .footer-brand p {
-            color: #c6dbff;
-            line-height: 1.6;
-            font-size: 15px;
-        }
-
-        .footer-links h4 {
-            color: #edf5ff;
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .footer-links ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: #c6dbff;
-            text-decoration: none;
-            font-size: 15px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .footer-links a:hover {
-            color: #edf5ff;
-            transform: translateX(5px);
-        }
-
-        .footer-links a i {
-            font-size: 12px;
-            margin-left: 8px;
-            opacity: 0;
-            transition: all 0.3s;
-            transform: translateX(-10px);
-        }
-
-        .footer-links a:hover i {
-            opacity: 1;
-            transform: translateX(0);
-            color: #FFB800;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-btn {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: rgba(15, 23, 42, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(15, 23, 42, 0.6);
-            text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .social-btn:hover {
-            background: rgba(2, 13, 39, 0.1);
-            border-color: #020D27;
-            color: #0F172A;
-            transform: translateY(-5px) rotate(8deg);
-            box-shadow: 0 10px 20px rgba(2, 13, 39, 0.2);
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 30px 20px 0;
-            border-top: 1px solid rgba(15, 23, 42, 0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: rgba(15, 23, 42, 0.5);
-            font-size: 14px;
-        }
-
-        @media (max-width: 768px) {
-            .footer-grid {
-                grid-template-columns: 1fr !important;
-                gap: 40px;
-                text-align: center;
-            }
-
-            .footer-brand .footer-logo {
-                justify-content: center;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
-        }
-
-        .site-footer {
-            display: none;
-        }
     </style>
 
     <link rel="stylesheet" href="assets/ntb-shared.css">
@@ -563,76 +398,76 @@
         </div>
     </div>
 
-    <footer class="site-footer">
-        <div class="footer-inner">
-            <div class="footer-grid">
-                <div class="footer-brand footer-col">
-                    <a class="footer-logo" href="index.html#home">
-                        <span class="site-logo-icon"><i class="fa-solid fa-graduation-cap"></i></span>
-                        <span>Noshahi Test Builder</span>
-                    </a>
-                    <p>Inspiring minds, building futures. Create print-ready Matric &amp; Intermediate papers with a premium 3D experience.</p>
-                    <div class="footer-contact">
-                        <a href="mailto:support@noshahitestbuilder.com">
-                            <i class="fa-solid fa-envelope"></i>
-                            <span>support@noshahitestbuilder.com</span>
-                        </a>
-                        <a href="tel:+923000000000">
-                            <i class="fa-solid fa-phone"></i>
-                            <span>+92 300 000 0000</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Institutional</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Why Noshahi <i class="fa-solid fa-arrow-right"></i></a></li>
-                        <li><a href="index.html#features">Features <i class="fa-solid fa-arrow-right"></i></a></li>
-                        <li><a href="index.html#highlights">Highlights <i class="fa-solid fa-arrow-right"></i></a></li>
-                        <li><a href="book-demo.html">Book Demo <i class="fa-solid fa-arrow-right"></i></a></li>
-                        <li><a href="insights.html">Insights <i class="fa-solid fa-arrow-right"></i></a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Support</h4>
-                    <ul class="footer-links">
-                        <li><a href="login.html">Login <i class="fa-solid fa-arrow-right"></i></a></li>
-                        <li><a href="register.html">Create Account <i class="fa-solid fa-arrow-right"></i></a></li>
-                        <li><a href="#">Privacy Policy <i class="fa-solid fa-arrow-right"></i></a></li>
-                        <li><a href="#">Terms of Service <i class="fa-solid fa-arrow-right"></i></a></li>
-                        <li><a href="mailto:support@noshahitestbuilder.com">Contact Us <i class="fa-solid fa-arrow-right"></i></a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-subscribe footer-col">
-                    <h4>Join the legacy</h4>
-                    <p>Subscribe to receive product updates, academic templates, and release notes.</p>
-                    <form class="footer-form" action="#" onsubmit="return false;">
-                        <input type="email" placeholder="Your email address" aria-label="Email address">
-                        <button type="submit" aria-label="Subscribe">
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </button>
-                    </form>
-                    <div class="footer-social" aria-label="Social links">
-                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <span>© 2026 Noshahi Test Builder — Excellence in Education</span>
-                <div>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Cookie Policy</a>
-                </div>
-            </div>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand footer-col">
+          <a class="footer-logo" href="index.html#home">
+            <span class="site-logo-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+            <span>Noshahi Test Builder</span>
+          </a>
+          <p>Inspiring minds, building futures. Create print-ready Matric &amp; Intermediate papers with a premium 3D experience.</p>
+          <div class="footer-contact">
+            <a href="mailto:support@noshahitestbuilder.com">
+              <i class="fa-solid fa-envelope"></i>
+              <span>support@noshahitestbuilder.com</span>
+            </a>
+            <a href="tel:+923000000000">
+              <i class="fa-solid fa-phone"></i>
+              <span>+92 300 000 0000</span>
+            </a>
+          </div>
         </div>
-    </footer>
+
+        <div class="footer-col">
+          <h4>Institutional</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Why Noshahi <i class="fa-solid fa-arrow-right"></i></a></li>
+            <li><a href="index.html#features">Features <i class="fa-solid fa-arrow-right"></i></a></li>
+            <li><a href="index.html#highlights">Highlights <i class="fa-solid fa-arrow-right"></i></a></li>
+            <li><a href="book-demo.html">Book Demo <i class="fa-solid fa-arrow-right"></i></a></li>
+            <li><a href="insights.html">Insights <i class="fa-solid fa-arrow-right"></i></a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul class="footer-links">
+            <li><a href="login.html">Login <i class="fa-solid fa-arrow-right"></i></a></li>
+            <li><a href="register.html">Create Account <i class="fa-solid fa-arrow-right"></i></a></li>
+            <li><a href="#">Privacy Policy <i class="fa-solid fa-arrow-right"></i></a></li>
+            <li><a href="#">Terms of Service <i class="fa-solid fa-arrow-right"></i></a></li>
+            <li><a href="contact-us.html">Contact Us <i class="fa-solid fa-arrow-right"></i></a></li>
+          </ul>
+        </div>
+
+        <div class="footer-subscribe footer-col">
+          <h4>Join the legacy</h4>
+          <p>Subscribe to receive product updates, academic templates, and release notes.</p>
+          <form class="footer-form" action="#" onsubmit="return false;">
+            <input type="email" placeholder="Your email address" aria-label="Email address">
+            <button type="submit" aria-label="Subscribe">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </form>
+          <div class="footer-social" aria-label="Social links">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Noshahi Test Builder — Excellence in Education</span>
+        <div>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 </body>
 

@@ -97,7 +97,7 @@
             margin-left: clamp(28px, 6vw, 94px);
         }
 
-        .nav-links > a {
+        .nav-links>a {
             text-decoration: none;
             color: rgba(15, 23, 42, 0.7);
             font-weight: 600;
@@ -108,7 +108,7 @@
             position: relative;
         }
 
-        .nav-links .dropdown > a {
+        .nav-links .dropdown>a {
             text-decoration: none;
             color: rgba(15, 23, 42, 0.7);
             font-weight: 600;
@@ -121,23 +121,23 @@
             align-items: center;
         }
 
-        .nav-links > a:hover {
+        .nav-links>a:hover {
             color: #0F172A;
             background: rgba(255, 255, 255, 0.05);
         }
 
-        .nav-links .dropdown > a:hover {
+        .nav-links .dropdown>a:hover {
             color: #0F172A;
             background: rgba(255, 255, 255, 0.05);
         }
 
-        .nav-links > a.active {
+        .nav-links>a.active {
             color: #020D27;
             background: rgba(2, 13, 39, 0.08);
             text-shadow: 0 0 15px rgba(2, 13, 39, 0.2);
         }
 
-        .nav-links .dropdown > a.active {
+        .nav-links .dropdown>a.active {
             color: #020D27;
             background: rgba(2, 13, 39, 0.08);
             text-shadow: 0 0 15px rgba(2, 13, 39, 0.2);
@@ -253,7 +253,10 @@
         .btn-3d::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
             z-index: -1;
             opacity: 0;
@@ -318,7 +321,7 @@
                 visibility: visible;
             }
 
-            .nav-links > a {
+            .nav-links>a {
                 font-size: 20px;
                 width: 100%;
                 text-align: center;
@@ -330,7 +333,7 @@
                 text-align: center;
             }
 
-            .nav-links .dropdown > a {
+            .nav-links .dropdown>a {
                 font-size: 20px;
                 width: 100%;
                 text-align: center;
@@ -390,168 +393,6 @@
             }
         }
 
-        /* --- New Footer Styling --- */
-        .pre-footer {
-            padding: 100px 20px;
-            background: radial-gradient(circle at 50% 0%, rgba(2, 13, 39, 0.1) 0%, transparent 70%);
-            text-align: center;
-            border-top: 1px solid rgba(15, 23, 42, 0.05);
-        }
-
-        footer {
-            padding: 42px 0 48px;
-            background: linear-gradient(145deg, #041d4d 0%, #00091D 52%, #020D27 100%);
-            border-top: 1px solid rgba(173, 206, 255, 0.24);
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 10%;
-            right: 10%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(2, 13, 39, 0.2), transparent);
-        }
-
-        /* --- New Footer Styling (Synced from Homepage) --- */
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1.5fr;
-            gap: 60px;
-            max-width: 1200px;
-            margin: 0 auto 60px;
-            padding: 0 20px;
-        }
-
-        .footer-brand .footer-logo {
-            font-size: 24px;
-            font-weight: 800;
-            color: #edf5ff;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            margin-bottom: 20px;
-        }
-
-        .footer-brand p {
-            color: #c6dbff;
-            line-height: 1.6;
-            font-size: 15px;
-        }
-
-        .footer-links h4 {
-            color: #edf5ff;
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .footer-links ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: #c6dbff;
-            text-decoration: none;
-            font-size: 15px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .footer-links a:hover {
-            color: #edf5ff;
-            transform: translateX(5px);
-        }
-
-        .footer-links a i {
-            font-size: 12px;
-            margin-left: 8px;
-            opacity: 0;
-            transition: all 0.3s;
-            transform: translateX(-10px);
-        }
-
-        .footer-links a:hover i {
-            opacity: 1;
-            transform: translateX(0);
-            color: #FFB800;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-btn {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ffffff;
-            text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .social-btn:hover {
-            background: rgba(255, 184, 0, 0.15);
-            border-color: var(--secondary);
-            color: var(--secondary);
-            transform: translateY(-5px) rotate(8deg);
-            box-shadow: 0 10px 20px rgba(255, 184, 0, 0.2);
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 30px 20px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 14px;
-        }
-
-        @media (max-width: 768px) {
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                text-align: center;
-            }
-
-            .footer-brand .footer-logo {
-                justify-content: center;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
-        }
     </style>
 
     <link rel="stylesheet" href="assets/ntb-shared.css">
@@ -568,17 +409,18 @@
             </a>
 
             <nav class="site-links" data-ntb-nav-menu>
-                <a href="index.html">Home</a>
-                <a href="insights.html">Insights</a>
-                <a href="book-demo.html" class="active">Book Demo</a>
-                <a href="contact-us.html">Contact Us</a>
+                <a href="index.html" class="active">Home</a>
                 <a href="index.html#features">Features</a>
                 <a href="index.html#highlights">Highlights</a>
+                <a href="insights.html">Insights</a>
+                <a href="book-demo.html">Book Demo</a>
+                <a href="contact-us.html">Contact Us</a>
                 <a href="login.html" class="nav-login-cta">Login</a>
                 <a href="register.html" class="nav-cta">Get Started</a>
             </nav>
 
-            <button class="site-menu-toggle" type="button" aria-label="Toggle Menu" aria-expanded="false" data-ntb-menu-toggle>
+            <button class="site-menu-toggle" type="button" aria-label="Toggle Menu" aria-expanded="false"
+                data-ntb-menu-toggle>
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
@@ -587,14 +429,16 @@
     <main class="overflow-hidden pt-14 lg:pt-16 pb-20">
         <div class="mx-auto max-w-6xl px-6 sm:px-8 lg:px-10">
             <div class="text-center mb-10 lg:mb-16">
-                <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-4 tracking-tight">Book a <span class="brand-word">Demo</span></h1>
+                <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-4 tracking-tight">Book a <span
+                        class="brand-word">Demo</span></h1>
                 <p class="text-slate-500 text-lg max-w-2xl mx-auto">Let's see how Noshahi can automate professional
                     Matric and Intermediate test creation for your school.</p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
                 <!-- Form Area -->
-                <div class="bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm border border-slate-200 p-8 rounded-3xl">
+                <div
+                    class="bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm border border-slate-200 p-8 rounded-3xl">
                     <form class="space-y-6" action="index.html">
 
                         <div class="space-y-2">
@@ -713,12 +557,14 @@
                     <div class="space-y-8">
                         <div>
                             <h3 class="text-2xl font-bold text-slate-900 mb-2">High-Quality Assessments.</h3>
-                            <p class="text-slate-900/40 font-medium">Teachers are automating entire test batches in minutes.
+                            <p class="text-slate-900/40 font-medium">Teachers are automating entire test batches in
+                                minutes.
                             </p>
                         </div>
 
                         <!-- Video Section -->
-                        <div class="relative rounded-2xl overflow-hidden bg-white/80 shadow-md border-inherit border-slate-200 border border-slate-200 group">
+                        <div
+                            class="relative rounded-2xl overflow-hidden bg-white/80 shadow-md border-inherit border-slate-200 border border-slate-200 group">
                             <video
                                 src="https://firebasestorage.googleapis.com/v0/b/lancer-prod.firebasestorage.app/o/gifs%2Fnikola-final.mp4?alt=media&token=89ceb1b0-63c6-4d01-8984-28501380a767"
                                 class="w-full h-56 lg:h-64 object-cover" autoplay loop muted playsinline></video>
@@ -734,16 +580,19 @@
                             </div>
                         </div>
 
-                        <blockquote class="bg-white/80 shadow-md border-inherit border-slate-200 p-8 rounded-3xl border border-slate-200 relative">
+                        <blockquote
+                            class="bg-white/80 shadow-md border-inherit border-slate-200 p-8 rounded-3xl border border-slate-200 relative">
                             <div class="absolute top-4 left-6 text-primary/20 text-6xl font-serif">â€œ</div>
-                            <p class="text-slate-700 leading-relaxed italic relative z-10">â€œNoshahi was so effective for
+                            <p class="text-slate-700 leading-relaxed italic relative z-10">â€œNoshahi was so effective
+                                for
                                 our school. We were able to generate and grade over 300 papers in just under two weeks.
                                 Our faculty is finally focusing on teaching instead of paperwork.â€</p>
                             <div class="mt-8 flex items-center gap-4">
                                 <img class="w-10 h-10 rounded-full border border-slate-200" alt="Ali Hasan"
                                     src="https://ui-avatars.com/api/?name=Ali+Hasan&background=0A0A0A&color=fff">
                                 <div>
-                                    <div class="font-bold text-slate-900 text-sm uppercase tracking-wider">Ali Hasan</div>
+                                    <div class="font-bold text-slate-900 text-sm uppercase tracking-wider">Ali Hasan
+                                    </div>
                                     <div class="text-primary text-xs font-bold">Senior Teacher</div>
                                 </div>
                             </div>
@@ -754,78 +603,76 @@
         </div>
     </main>
 
-    <footer class="site-footer">
-        <div class="footer-inner">
-            <div class="footer-grid">
-                <div class="footer-brand footer-col">
-                    <a class="footer-logo" href="index.html#home">
-                        <span class="site-logo-icon"><i class="fa-solid fa-graduation-cap"></i></span>
-                        <span>Noshahi Test Builder</span>
-                    </a>
-                    <p>Inspiring minds, building futures. Create print-ready Matric &amp; Intermediate papers with a premium 3D experience.</p>
-                    <div class="footer-contact">
-                        <a href="mailto:support@noshahitestbuilder.com">
-                            <i class="fa-solid fa-envelope"></i>
-                            <span>support@noshahitestbuilder.com</span>
-                        </a>
-                        <a href="tel:+923000000000">
-                            <i class="fa-solid fa-phone"></i>
-                            <span>+92 300 000 0000</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Institutional</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Why Noshahi <i class="fa-solid fa-arrow-right"></i></a></li>
-                        <li><a href="index.html#features">Features <i class="fa-solid fa-arrow-right"></i></a></li>
-                        <li><a href="index.html#highlights">Highlights <i class="fa-solid fa-arrow-right"></i></a></li>
-                        <li><a href="book-demo.html">Book Demo <i class="fa-solid fa-arrow-right"></i></a></li>
-                        <li><a href="insights.html">Insights <i class="fa-solid fa-arrow-right"></i></a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Support</h4>
-                    <ul class="footer-links">
-                        <li><a href="login.html">Login <i class="fa-solid fa-arrow-right"></i></a></li>
-                        <li><a href="register.html">Create Account <i class="fa-solid fa-arrow-right"></i></a></li>
-                        <li><a href="#">Privacy Policy <i class="fa-solid fa-arrow-right"></i></a></li>
-                        <li><a href="#">Terms of Service <i class="fa-solid fa-arrow-right"></i></a></li>
-                        <li><a href="mailto:support@noshahitestbuilder.com">Contact Us <i class="fa-solid fa-arrow-right"></i></a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-subscribe footer-col">
-                    <h4>Join the legacy</h4>
-                    <p>Subscribe to receive product updates, academic templates, and release notes.</p>
-                    <form class="footer-form" action="#" onsubmit="return false;">
-                        <input type="email" placeholder="Your email address" aria-label="Email address">
-                        <button type="submit" aria-label="Subscribe">
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </button>
-                    </form>
-                    <div class="footer-social" aria-label="Social links">
-                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <span>© 2026 Noshahi Test Builder — Excellence in Education</span>
-                <div>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Cookie Policy</a>
-                </div>
-            </div>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand footer-col">
+          <a class="footer-logo" href="index.html#home">
+            <span class="site-logo-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+            <span>Noshahi Test Builder</span>
+          </a>
+          <p>Inspiring minds, building futures. Create print-ready Matric &amp; Intermediate papers with a premium 3D experience.</p>
+          <div class="footer-contact">
+            <a href="mailto:support@noshahitestbuilder.com">
+              <i class="fa-solid fa-envelope"></i>
+              <span>support@noshahitestbuilder.com</span>
+            </a>
+            <a href="tel:+923000000000">
+              <i class="fa-solid fa-phone"></i>
+              <span>+92 300 000 0000</span>
+            </a>
+          </div>
         </div>
-    </footer>
+
+        <div class="footer-col">
+          <h4>Institutional</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Why Noshahi <i class="fa-solid fa-arrow-right"></i></a></li>
+            <li><a href="index.html#features">Features <i class="fa-solid fa-arrow-right"></i></a></li>
+            <li><a href="index.html#highlights">Highlights <i class="fa-solid fa-arrow-right"></i></a></li>
+            <li><a href="book-demo.html">Book Demo <i class="fa-solid fa-arrow-right"></i></a></li>
+            <li><a href="insights.html">Insights <i class="fa-solid fa-arrow-right"></i></a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul class="footer-links">
+            <li><a href="login.html">Login <i class="fa-solid fa-arrow-right"></i></a></li>
+            <li><a href="register.html">Create Account <i class="fa-solid fa-arrow-right"></i></a></li>
+            <li><a href="#">Privacy Policy <i class="fa-solid fa-arrow-right"></i></a></li>
+            <li><a href="#">Terms of Service <i class="fa-solid fa-arrow-right"></i></a></li>
+            <li><a href="contact-us.html">Contact Us <i class="fa-solid fa-arrow-right"></i></a></li>
+          </ul>
+        </div>
+
+        <div class="footer-subscribe footer-col">
+          <h4>Join the legacy</h4>
+          <p>Subscribe to receive product updates, academic templates, and release notes.</p>
+          <form class="footer-form" action="#" onsubmit="return false;">
+            <input type="email" placeholder="Your email address" aria-label="Email address">
+            <button type="submit" aria-label="Subscribe">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </form>
+          <div class="footer-social" aria-label="Social links">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Noshahi Test Builder — Excellence in Education</span>
+        <div>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 
 </html>
-
-
