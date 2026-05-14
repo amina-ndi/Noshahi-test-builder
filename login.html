@@ -77,7 +77,10 @@
         .btn-primary::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
             z-index: -1;
             opacity: 0;
@@ -92,7 +95,6 @@
             transform: translateY(-4px) scale(1.02);
             box-shadow: 0 14px 28px rgba(255, 184, 0, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.8);
         }
-
     </style>
 
     <link rel="stylesheet" href="assets/ntb-shared.css">
@@ -103,374 +105,109 @@
     <header class="site-header">
         <div class="site-nav">
             <a class="site-logo" href="index.html#home">
-                <span class="site-logo-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+                <img src="img/NTB logo.jpg.jpeg" alt="Noshahi Test Builder Logo" class="site-logo-img">
                 <span>Noshahi Test Builder</span>
             </a>
 
             <nav class="site-links" data-ntb-nav-menu>
                 <a href="index.html">Home</a>
-                <a href="insights.html">Insights</a>
-                <a href="book-demo.html">Book Demo</a>
-                <a href="contact-us.html">Contact Us</a>
                 <a href="index.html#features">Features</a>
                 <a href="index.html#highlights">Highlights</a>
-                <a href="login.html" class="nav-login-cta active">Login</a>
+                <a href="insights.html">Insights</a>
+                <a href="book-demo.html">Book Demo</a>
+                <a href="contact-us.html" class="active">Contact Us</a>
+                <a href="login.html" class="nav-login-cta">Login</a>
                 <a href="register.html" class="nav-cta">Get Started</a>
             </nav>
 
-            <button class="site-menu-toggle" type="button" aria-label="Toggle Menu" aria-expanded="false" data-ntb-menu-toggle>
+            <button class="site-menu-toggle" type="button" aria-label="Toggle Menu" aria-expanded="false"
+                data-ntb-menu-toggle>
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
     </header>
 
-    <div class="w-screen">
-        <div class="flex flex-col lg:flex-row w-full min-h-[calc(100vh-78px)] bg-slate-50">
-            <!-- Left Side - Form -->
-            <div class="w-full lg:w-5/12 flex flex-col bg-white overflow-y-auto">
-                <div class="flex min-h-full flex-1 items-start lg:items-center">
-                    <div class="w-full py-10 lg:py-12">
-                        <div class="w-full max-w-md mx-auto space-y-8 px-8 sm:px-7 lg:mb-12">
-                            <div class="flex flex-col">
-                                <h1 class="text-4xl font-semibold tracking-tight text-slate-900 mt-4">Welcome <span class="brand-word">Back</span></h1>
-                                <p class="text-slate-500 mt-2">Log in to manage your school's assessments</p>
-                            </div>
+    <div class="h-[calc(100vh-78px)] flex items-center justify-center p-2 lg:p-4 bg-slate-50 overflow-hidden">
+        <div
+            class="max-w-5xl w-full max-h-[90%] grid grid-cols-1 lg:grid-cols-2 bg-white rounded-[32px] overflow-hidden shadow-[0_30px_80px_-15px_rgba(2,13,39,0.12)] border border-slate-200">
 
-                            <form class="space-y-5" action="index.html">
-                                <div class="space-y-4">
-                                    <div class="space-y-2">
-                                        <label
-                                            class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium text-slate-700"
-                                            for="email">School Email</label>
-                                        <div class="w-full">
-                                            <input
-                                                class="flex w-full rounded-md border bg-white px-3 py-2 text-sm shadow-sm placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-primary focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50 transition-colors h-12 border-gray-300 focus:border-black focus-visible:ring-0 focus-visible:ring-offset-0 input-focus"
-                                                id="email" placeholder="teacher@school.edu" required type="email"
-                                                name="email">
-                                        </div>
-                                    </div>
-                                    <div class="space-y-2">
-                                        <div class="flex items-center justify-between">
-                                            <label
-                                                class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium text-slate-700"
-                                                for="password">Password</label>
-                                            <a class="text-xs font-medium text-slate-600 hover:text-black transition-colors"
-                                                href="#">Forgot password?</a>
-                                        </div>
-                                        <div class="w-full">
-                                            <input
-                                                class="flex w-full rounded-md border bg-white px-3 py-2 text-sm shadow-sm placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-primary focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50 transition-colors h-12 border-gray-300 focus:border-black focus-visible:ring-0 focus-visible:ring-offset-0 input-focus"
-                                                id="password" required type="password" name="password"
-                                                placeholder="••••••••">
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center space-x-2">
-                                        <input type="checkbox" id="remember"
-                                            class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary cursor-pointer">
-                                        <label for="remember"
-                                            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-slate-600 cursor-pointer">Keep
-                                            me logged in</label>
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn-primary">
-                                    <span>Sign in</span>
-                                </button>
-                                <p class="text-center text-sm text-slate-500 mt-6">First time here? <a
-                                        class="font-semibold text-primary hover:text-secondary transition-colors"
-                                        href="register.html">Create school account</a></p>
-                            </form>
-                        </div>
+            <!-- Left Side - Login Card -->
+            <div class="p-6 lg:p-10 flex flex-col justify-center overflow-y-auto">
+                <div class="max-w-sm w-full mx-auto">
+                    <div class="mb-8 text-center lg:text-left">
+                        <h1 class="text-3xl font-extrabold tracking-tight text-slate-900">
+                            Welcome <span class="text-secondary">Back</span>
+                        </h1>
+                        <p class="text-slate-500 mt-2 text-base font-medium">Log in to your dashboard</p>
                     </div>
+
+                    <form class="space-y-4" action="index.html">
+                        <div class="space-y-1.5">
+                            <label class="text-xs font-bold text-slate-700 ml-1" for="email">School Email</label>
+                            <input
+                                class="flex w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-3 text-sm shadow-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all h-12 input-focus"
+                                id="email" placeholder="teacher@school.edu" required type="email" name="email">
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <div class="flex items-center justify-between ml-1">
+                                <label class="text-xs font-bold text-slate-700" for="password">Password</label>
+                                <a class="text-[10px] font-bold text-secondary hover:text-secondary-deep transition-colors"
+                                    href="#">Forgot password?</a>
+                            </div>
+                            <input
+                                class="flex w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-3 text-sm shadow-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all h-12 input-focus"
+                                id="password" required type="password" name="password" placeholder="••••••••">
+                        </div>
+
+                        <div class="flex items-center space-x-3 ml-1 py-1">
+                            <input type="checkbox" id="remember"
+                                class="w-4 h-4 rounded-md border-slate-300 text-secondary focus:ring-secondary cursor-pointer">
+                            <label for="remember" class="text-xs font-medium text-slate-600 cursor-pointer select-none">
+                                Keep me logged in
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn-primary py-4 rounded-xl shadow-md hover:shadow-secondary/25">
+                            <span>Sign in</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                        <div class="pt-4 border-t border-slate-100">
+                            <p class="text-center text-xs text-slate-500">
+                                New to Noshahi? <a class="font-bold text-primary hover:text-secondary transition-colors"
+                                    href="register.html">Create account</a>
+                            </p>
+                        </div>
+                    </form>
                 </div>
             </div>
 
-            <!-- Right Side - Visuals -->
-            <div class="hidden lg:flex flex-col lg:w-7/12 bg-slate-50 text-slate-900 h-screen">
-                <div class="relative z-10 w-full h-full flex flex-col">
-                    <div class="absolute inset-0 bg-gradient-to-tl from-[#020D27]/40 from-10% via-[#00091D]/30 via-40% to-slate-100 to-80% pointer-events-none"
-                        style="background-image: radial-gradient(circle at right bottom, rgba(2, 13, 39, 0.35) 20%, rgba(0, 9, 29, 0.25) 40%, rgba(248, 250, 252, 0.9) 80%);">
-                    </div>
-                    <div class="absolute inset-0 bg-slate-50/40 backdrop-blur-[100px] pointer-events-none"></div>
+            <!-- Right Side - Visual -->
+            <div class="hidden lg:block relative bg-primary overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1200&q=80"
+                    alt="Premium Education" class="absolute inset-0 w-full h-full object-cover opacity-70">
 
-                    <div class="relative z-20 px-12 pt-12">
+                <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent"></div>
+
+                <div class="relative h-full flex flex-col justify-end p-10 text-white">
+                    <div class="space-y-4">
                         <div
-                            class="inline-block px-3 py-1 rounded-full bg-[#020D27]/20 border border-[#020D27]/30 mb-6">
-                            <span class="text-xs font-bold text-[#020D27] uppercase tracking-widest">Supreme Quality</span>
+                            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
+                            <i class="fa-solid fa-star text-secondary text-[10px]"></i>
+                            <span class="text-[10px] font-bold uppercase tracking-widest">Premium Experience</span>
                         </div>
-                        <h2 class="text-5xl font-bold tracking-tight mb-3">Academic outreach on autopilot</h2>
-                        <p class="text-lg text-[#020D27]">Turn Noshahi into your best-performing education channel</p>
+                        <h2 class="text-3xl font-black leading-tight">
+                            Smart <span class="text-secondary">Testing</span> Solutions
+                        </h2>
+                        <p class="text-sm text-slate-200 font-medium leading-relaxed">
+                            Generating board-aligned papers in seconds with professional standards.
+                        </p>
                     </div>
-
-                    <div class="relative z-20 flex-1 flex items-center">
-                        <div class="w-full">
-                            <div class="px-12">
-                                <h3 class="text-lg font-semibold mb-6">Average teacher performance in 3 weeks</h3>
-                                <div class="grid grid-cols-5 gap-4 mb-10">
-
-                                    <div
-                                        class="bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm rounded-xl p-5 flex flex-col items-center border border-slate-200">
-                                        <div
-                                            class="w-12 h-12 rounded-full bg-slate-100/50 flex items-center justify-center mb-3">
-                                            <i class="fa-solid fa-file-signature text-blue-500 text-lg"></i>
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="text-xs text-slate-400 mb-1">TESTS MADE</div>
-                                            <div class="text-2xl font-bold">252</div>
-                                        </div>
-                                    </div>
-
-                                    <div
-                                        class="bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm rounded-xl p-5 flex flex-col items-center border border-slate-200">
-                                        <div
-                                            class="w-12 h-12 rounded-full bg-slate-100/50 flex items-center justify-center mb-3">
-                                            <i class="fa-solid fa-user-graduate text-green-500 text-lg"></i>
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="text-xs text-slate-400 mb-1">GRADED</div>
-                                            <div class="text-2xl font-bold">42</div>
-                                        </div>
-                                    </div>
-
-                                    <div
-                                        class="bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm rounded-xl p-5 flex flex-col items-center border border-slate-200">
-                                        <div
-                                            class="w-12 h-12 rounded-full bg-slate-100/50 flex items-center justify-center mb-3">
-                                            <i class="fa-solid fa-chalkboard-user text-purple-500 text-lg"></i>
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="text-xs text-slate-400 mb-1">AUTOMATED</div>
-                                            <div class="text-2xl font-bold">22</div>
-                                        </div>
-                                    </div>
-
-                                    <div
-                                        class="bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm rounded-xl p-5 flex flex-col items-center border border-slate-200">
-                                        <div
-                                            class="w-12 h-12 rounded-full bg-slate-100/50 flex items-center justify-center mb-3">
-                                            <i class="fa-solid fa-clock-rotate-left text-orange-500 text-lg"></i>
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="text-xs text-slate-400 mb-1">HOURS SAVED</div>
-                                            <div class="text-2xl font-bold">50+</div>
-                                        </div>
-                                    </div>
-
-                                    <div
-                                        class="bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm rounded-xl p-5 flex flex-col items-center border border-slate-200">
-                                        <div
-                                            class="w-12 h-12 rounded-full bg-slate-100/50 flex items-center justify-center mb-3">
-                                            <i class="fa-solid fa-chart-line text-blue-500 text-lg"></i>
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="text-xs text-slate-400 mb-1">EFFICIENCY</div>
-                                            <div class="text-2xl font-bold">95%</div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="px-12 py-8 border-t border-slate-200">
-                                <div class="grid grid-cols-3 gap-6">
-
-                                    <!-- Testimonial 1 -->
-                                    <div
-                                        class="bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm rounded-xl p-6 relative border border-slate-100">
-                                        <div class="absolute -top-3 left-6 text-blue-500 transform scale-[1.5]">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#020D27">
-                                                <path
-                                                    d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179z">
-                                                </path>
-                                            </svg>
-                                        </div>
-                                        <div class="mt-6">
-                                            <p class="text-sm italic text-slate-800 leading-relaxed">"Noshahi was
-                                                so effective I had to pause the assessment phase after just 2 weeksâ€”we
-                                                graded 300+ papers and saved countless hours."</p>
-                                        </div>
-                                        <div class="mt-4 flex items-center gap-3">
-                                            <span
-                                                class="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8 border border-slate-200">
-                                                <img class="aspect-square h-full w-full object-cover" alt="Ali Hasan"
-                                                    width="32" height="32"
-                                                    src="https://ui-avatars.com/api/?name=Ali+Hasan&background=6d28d9&color=fff">
-                                            </span>
-                                            <div>
-                                                <p class="font-medium text-xs text-slate-900">Ali Hasan</p>
-                                                <p class="text-slate-400 text-xs">Senior Teacher</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Testimonial 2 -->
-                                    <div
-                                        class="bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm rounded-xl p-6 relative border border-slate-100">
-                                        <div class="absolute -top-3 left-6 text-blue-500 transform scale-[1.5]">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#020D27">
-                                                <path
-                                                    d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179z">
-                                                </path>
-                                            </svg>
-                                        </div>
-                                        <div class="mt-6">
-                                            <p class="text-sm italic text-slate-800 leading-relaxed">"We closed a
-                                                500-student exam cycle in our first week using Noshahi. It outperformed
-                                                every manual grading process we had."</p>
-                                        </div>
-                                        <div class="mt-4 flex items-center gap-3">
-                                            <span
-                                                class="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8 border border-slate-200">
-                                                <img class="aspect-square h-full w-full object-cover" alt="Umer Zia"
-                                                    width="32" height="32"
-                                                    src="https://ui-avatars.com/api/?name=Umer+Zia&background=6d28d9&color=fff">
-                                            </span>
-                                            <div>
-                                                <p class="font-medium text-xs text-slate-900">Umer Zia</p>
-                                                <p class="text-slate-400 text-xs text-slate-400">Administrator</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Testimonial 3 -->
-                                    <div
-                                        class="bg-white/80 shadow-md border-inherit border-slate-200 backdrop-blur-sm rounded-xl p-6 relative border border-slate-100">
-                                        <div class="absolute -top-3 left-6 text-blue-500 transform scale-[1.5]">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#6D28D9">
-                                                <path
-                                                    d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179z">
-                                                </path>
-                                            </svg>
-                                        </div>
-                                        <div class="mt-6">
-                                            <p class="text-sm italic text-slate-800 leading-relaxed">"I avoided
-                                                automated builders for yearsâ€”Noshahi changed my mind. I landed a
-                                                flawless exam batch in just 2 weeks."</p>
-                                        </div>
-                                        <div class="mt-4 flex items-center gap-3">
-                                            <span
-                                                class="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8 border border-slate-200">
-                                                <img class="aspect-square h-full w-full object-cover"
-                                                    alt="Sarah M" width="32" height="32"
-                                                    src="https://ui-avatars.com/api/?name=Sarah+M&background=004b93&color=fff">
-                                            </span>
-                                            <div>
-                                                <p class="font-medium text-xs text-slate-900">Sarah M.</p>
-                                                <p class="text-slate-400 text-xs">Principal</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Bottom Footer Stats -->
-                    <div class="relative z-20 mt-auto px-12 py-6 border-t border-slate-200">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center">
-                                <i class="fa-solid fa-circle-check text-green-400 mr-2 text-sm"></i>
-                                <span class="text-sm text-slate-400 uppercase tracking-widest font-bold">Trusted by
-                                    10,000+ teachers</span>
-                            </div>
-                            <div class="flex items-center space-x-6">
-                                <div class="flex items-center space-x-2">
-                                    <i class="fa-solid fa-robot text-slate-400 text-sm"></i>
-                                    <span
-                                        class="text-[10px] text-slate-400 uppercase font-bold tracking-widest">AI-Powered</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <i class="fa-solid fa-bolt-lightning text-slate-400 text-sm"></i>
-                                    <span class="text-[10px] text-slate-400 uppercase font-bold tracking-widest">24/7
-                                        Automation</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <i class="fa-solid fa-lock text-slate-400 text-sm"></i>
-                                    <span class="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Secure
-                                        Integration</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
     </div>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-grid">
-        <div class="footer-brand footer-col">
-          <a class="footer-logo" href="index.html#home">
-            <span class="site-logo-icon"><i class="fa-solid fa-graduation-cap"></i></span>
-            <span>Noshahi Test Builder</span>
-          </a>
-          <p>Inspiring minds, building futures. Create print-ready Matric &amp; Intermediate papers with a premium 3D experience.</p>
-          <div class="footer-contact">
-            <a href="mailto:support@noshahitestbuilder.com">
-              <i class="fa-solid fa-envelope"></i>
-              <span>support@noshahitestbuilder.com</span>
-            </a>
-            <a href="tel:+923000000000">
-              <i class="fa-solid fa-phone"></i>
-              <span>+92 300 000 0000</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="footer-col">
-          <h4>Institutional</h4>
-          <ul class="footer-links">
-            <li><a href="index.html">Why Noshahi <i class="fa-solid fa-arrow-right"></i></a></li>
-            <li><a href="index.html#features">Features <i class="fa-solid fa-arrow-right"></i></a></li>
-            <li><a href="index.html#highlights">Highlights <i class="fa-solid fa-arrow-right"></i></a></li>
-            <li><a href="book-demo.html">Book Demo <i class="fa-solid fa-arrow-right"></i></a></li>
-            <li><a href="insights.html">Insights <i class="fa-solid fa-arrow-right"></i></a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Support</h4>
-          <ul class="footer-links">
-            <li><a href="login.html">Login <i class="fa-solid fa-arrow-right"></i></a></li>
-            <li><a href="register.html">Create Account <i class="fa-solid fa-arrow-right"></i></a></li>
-            <li><a href="#">Privacy Policy <i class="fa-solid fa-arrow-right"></i></a></li>
-            <li><a href="#">Terms of Service <i class="fa-solid fa-arrow-right"></i></a></li>
-            <li><a href="contact-us.html">Contact Us <i class="fa-solid fa-arrow-right"></i></a></li>
-          </ul>
-        </div>
-
-        <div class="footer-subscribe footer-col">
-          <h4>Join the legacy</h4>
-          <p>Subscribe to receive product updates, academic templates, and release notes.</p>
-          <form class="footer-form" action="#" onsubmit="return false;">
-            <input type="email" placeholder="Your email address" aria-label="Email address">
-            <button type="submit" aria-label="Subscribe">
-              <i class="fa-solid fa-arrow-right"></i>
-            </button>
-          </form>
-          <div class="footer-social" aria-label="Social links">
-            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <span>© 2026 Noshahi Test Builder — Excellence in Education</span>
-        <div>
-          <a href="#">Terms of Service</a>
-          <a href="#">Cookie Policy</a>
-        </div>
-      </div>
-    </div>
-  </footer>
 
 </body>
-
-</html>
-
-

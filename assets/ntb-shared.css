@@ -62,6 +62,18 @@
   box-shadow: 0 10px 24px rgba(255, 184, 0, 0.32);
 }
 
+.site-logo-img {
+  height: 54px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.site-logo:hover .site-logo-img {
+  transform: scale(1.05);
+}
+
+
 .site-links {
   margin-left: auto;
   display: flex;
@@ -289,6 +301,14 @@ body.ntb-menu-open {
   letter-spacing: -0.02em;
   margin-bottom: 20px;
 }
+
+.footer-logo-img {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
 
 .footer-brand p {
   color: rgba(255, 255, 255, 0.6);

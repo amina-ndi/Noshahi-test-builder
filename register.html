@@ -65,7 +65,7 @@
             width: 100%;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 10px;
             background: linear-gradient(135deg, #F8FAFC 0%, #EEF4FD 100%);
         }
 
@@ -85,27 +85,27 @@
         }
 
         .site-header {
-    position: absolute;
-    width: 100%;
-    z-index: 100;
-    border-bottom: none !important;
-    background: transparent !important;
-    backdrop-filter: none !important;
-}
+            position: absolute;
+            width: 100%;
+            z-index: 100;
+            border-bottom: none !important;
+            background: transparent !important;
+            backdrop-filter: none !important;
+        }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(15, 23, 42, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(2, 13, 39, 0.1);
             backdrop-filter: blur(20px);
             border-radius: 24px;
-            padding: 48px;
+            padding: 30px;
             width: 100%;
-            max-width: 500px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            max-width: 480px;
+            box-shadow: 0 30px 60px -12px rgba(2, 13, 39, 0.15);
         }
 
         .input-group {
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
 
         .input-label {
@@ -158,8 +158,8 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            font-size: 15px;
-            box-shadow: 0 6px 16px rgba(255, 184, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(255, 184, 0, 0.3);
             position: relative;
             overflow: hidden;
             z-index: 1;
@@ -168,7 +168,10 @@
         .btn-primary::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
             z-index: -1;
             opacity: 0;
@@ -201,6 +204,7 @@
                 min-height: 100vh;
                 padding-top: 20px;
             }
+
             body {
                 overflow: hidden;
             }
@@ -210,10 +214,12 @@
             .form-side {
                 padding: 20px;
             }
+
             .glass-card {
                 padding: 32px 24px;
                 border-radius: 20px;
             }
+
             .grid-cols-2 {
                 grid-template-columns: 1fr;
             }
@@ -223,9 +229,11 @@
             .glass-card {
                 padding: 24px 16px;
             }
+
             .text-3xl {
                 font-size: 1.75rem;
             }
+
             .btn-primary {
                 padding: 14px;
             }
@@ -237,7 +245,7 @@
             background: rgba(255, 255, 255, 0.98);
             border-radius: 28px;
             overflow: hidden;
-            box-shadow: 
+            box-shadow:
                 0 30px 60px rgba(0, 0, 0, 0.3),
                 0 0 0 1px rgba(255, 184, 0, 0.1);
             max-width: 440px;
@@ -249,7 +257,7 @@
 
         .generated-image-card:hover {
             transform: translateY(-8px) scale(1.02);
-            box-shadow: 
+            box-shadow:
                 0 40px 80px rgba(0, 0, 0, 0.4),
                 0 0 0 1px rgba(255, 184, 0, 0.2);
         }
@@ -275,10 +283,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, 
-                rgba(255, 184, 0, 0.2) 0%, 
-                rgba(2, 13, 39, 0.1) 50%, 
-                transparent 100%);
+            background: linear-gradient(135deg,
+                    rgba(255, 184, 0, 0.2) 0%,
+                    rgba(2, 13, 39, 0.1) 50%,
+                    transparent 100%);
             pointer-events: none;
         }
 
@@ -392,7 +400,10 @@
         .discover-btn::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
             z-index: -1;
             opacity: 0;
@@ -422,22 +433,24 @@
     <header class="site-header">
         <div class="site-nav">
             <a class="site-logo" href="index.html#home">
-                <span class="site-logo-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+                <img src="img/NTB logo.jpg.jpeg" alt="Noshahi Test Builder Logo" class="site-logo-img">
                 <span>Noshahi Test Builder</span>
             </a>
 
+
             <nav class="site-links" data-ntb-nav-menu>
                 <a href="index.html">Home</a>
-                <a href="insights.html">Insights</a>
-                <a href="book-demo.html">Book Demo</a>
-                <a href="contact-us.html">Contact Us</a>
                 <a href="index.html#features">Features</a>
                 <a href="index.html#highlights">Highlights</a>
+                <a href="insights.html">Insights</a>
+                <a href="book-demo.html">Book Demo</a>
+                <a href="contact-us.html" class="active">Contact Us</a>
                 <a href="login.html" class="nav-login-cta">Login</a>
-                <a href="register.html" class="nav-cta active">Get Started</a>
+                <a href="register.html" class="nav-cta">Get Started</a>
             </nav>
 
-            <button class="site-menu-toggle" type="button" aria-label="Toggle Menu" aria-expanded="false" data-ntb-menu-toggle>
+            <button class="site-menu-toggle" type="button" aria-label="Toggle Menu" aria-expanded="false"
+                data-ntb-menu-toggle>
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
@@ -451,9 +464,10 @@
             </div>
 
             <div class="glass-card">
-                <div class="mb-8 text-center">
-                    <h1 class="text-3xl font-bold mb-3 tracking-tight">Create <span class="brand-word">Account</span></h1>
-                    <p class="text-slate-900/40 text-sm">Join the next generation of educators</p>
+                <div class="mb-6 text-center">
+                    <h1 class="text-2xl font-bold mb-1 tracking-tight">Create <span class="brand-word">Account</span>
+                    </h1>
+                    <p class="text-slate-500 text-xs">Join the next generation of educators</p>
                 </div>
 
                 <form action="index.html">
@@ -484,7 +498,8 @@
 
                     <div class="input-group">
                         <label class="input-label" for="password">Create Password</label>
-                        <input type="password" id="password" class="input-field" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" required>
+                        <input type="password" id="password" class="input-field" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                            required>
                     </div>
 
                     <button type="submit" class="btn-primary">
@@ -492,7 +507,7 @@
                         <i class="fa-solid fa-sparkles text-xs"></i>
                     </button>
 
-                    <div class="mt-8 text-center text-sm">
+                    <div class="mt-4 text-center text-sm">
                         <span class="text-slate-900/30">Already have an account?</span>
                         <a href="login.html" class="text-primary font-bold ml-1 hover:underline underline-offset-4">Sign
                             In</a>
@@ -507,5 +522,3 @@
 </body>
 
 </html>
-
-
