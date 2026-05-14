@@ -25,8 +25,8 @@
   <style>
     :root {
       --primary: #020d27ff;
-      --secondary: #FFB800;
-      --secondary-deep: #E5A600;
+      --secondary: #F7941D;
+      --secondary-deep: #F7941D;
       --accent: #020d27ff;
       --text-main: #0F172A;
       --text-muted: #475569;
@@ -158,7 +158,7 @@
 
     .btn-gold:hover {
       transform: translateY(-5px);
-      background: #ffb800;
+      background: #F7941D;
       color: #020d27;
       box-shadow: var(--shadow-gold);
     }
@@ -476,9 +476,9 @@
     /* Professional Hero Section with Background Image */
     .professional-hero {
       position: relative;
-      min-height: 70vh;
+      min-height: 100vh;
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       padding-top: 60px;
       overflow: hidden;
     }
@@ -489,7 +489,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('https://picsum.photos/seed/professional-contact-support/1920/1080.jpg');
+      background-image: url('img/contact_hero_bg.png');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -570,7 +570,7 @@
       display: block;
       font-size: clamp(2.4rem, 5.5vw, 4.2rem);
       font-weight: 800;
-      background: linear-gradient(135deg, var(--secondary), #FFD54F);
+      background: linear-gradient(135deg, var(--secondary), #F7941D);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -616,7 +616,7 @@
     .feature-icon {
       width: 60px;
       height: 60px;
-      background: linear-gradient(135deg, var(--secondary), #FFD54F);
+      background: linear-gradient(135deg, var(--secondary), #F7941D);
       border-radius: 50%;
       display: grid;
       place-items: center;
@@ -649,7 +649,7 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--secondary), #FFD54F);
+      background: linear-gradient(135deg, var(--secondary), #F7941D);
       color: var(--primary);
       padding: 18px 32px;
       font-size: 1.1rem;
@@ -828,7 +828,7 @@
   <header class="site-header">
     <div class="site-nav">
       <a class="site-logo" href="index.html">
-        <img src="img/NTB logo.jpg.jpeg" alt="Noshahi Test Builder Logo" class="site-logo-img">
+        <img src="img/NTB_logo.png" alt="Noshahi Test Builder Logo" class="site-logo-img">
         <span>Noshahi Test Builder</span>
       </a>
 
@@ -875,37 +875,6 @@
               We're here to help you transform your testing experience.
             </p>
 
-            <div class="hero-features">
-              <div class="feature-item">
-                <div class="feature-icon">
-                  <i class="fa-solid fa-clock"></i>
-                </div>
-                <div class="feature-text">
-                  <h4>Quick Response</h4>
-                  <p>Get replies within hours</p>
-                </div>
-              </div>
-
-              <div class="feature-item">
-                <div class="feature-icon">
-                  <i class="fa-solid fa-users"></i>
-                </div>
-                <div class="feature-text">
-                  <h4>Expert Team</h4>
-                  <p>Dedicated education specialists</p>
-                </div>
-              </div>
-
-              <div class="feature-item">
-                <div class="feature-icon">
-                  <i class="fa-solid fa-shield-check"></i>
-                </div>
-                <div class="feature-text">
-                  <h4>Secure & Private</h4>
-                  <p>Your data is always protected</p>
-                </div>
-              </div>
-            </div>
 
             <div class="hero-actions">
               <a href="#contact-form" class="btn btn-primary">
@@ -1077,7 +1046,7 @@
       <div class="footer-grid">
         <div class="footer-brand footer-col">
           <a class="footer-logo" href="index.html#home">
-            <img src="img/NTB logo.jpg.jpeg" alt="Noshahi Test Builder Logo" class="footer-logo-img">
+            <img src="img/NTB_logo.png" alt="Noshahi Test Builder Logo" class="footer-logo-img">
             <span>Noshahi Test Builder</span>
           </a>
           <p>Inspiring minds, building futures. Create print-ready Matric &amp; Intermediate papers with a premium 3D experience.</p>

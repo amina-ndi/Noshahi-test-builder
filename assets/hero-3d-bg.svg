@@ -10,8 +10,8 @@
       <stop offset="1" stop-color="#0693E3" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="haloGold" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(430 860) rotate(20) scale(440 440)">
-      <stop stop-color="#FFB800" stop-opacity="0.3"/>
-      <stop offset="1" stop-color="#FFB800" stop-opacity="0"/>
+      <stop stop-color="#F7941D" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#F7941D" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="plateGrad" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.82"/>
@@ -32,7 +32,7 @@
   <g filter="url(#blur90)" opacity="0.52">
     <circle cx="1260" cy="620" r="210" fill="#0693E3"/>
     <circle cx="760" cy="280" r="180" fill="#004B93"/>
-    <circle cx="980" cy="780" r="170" fill="#FFB800"/>
+    <circle cx="980" cy="780" r="170" fill="#F7941D"/>
   </g>
 
   <g filter="url(#shadow)" opacity="0.9">
@@ -50,7 +50,7 @@
   </g>
 
   <g opacity="0.9">
-    <circle cx="1110" cy="143" r="7" fill="#FFB800"/>
+    <circle cx="1110" cy="143" r="7" fill="#F7941D"/>
     <circle cx="1132" cy="143" r="7" fill="#004B93"/>
     <circle cx="1154" cy="143" r="7" fill="#0693E3"/>
   </g>

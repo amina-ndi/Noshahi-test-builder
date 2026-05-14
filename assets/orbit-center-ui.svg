@@ -30,6 +30,6 @@
   <rect x="184" y="316" width="194" height="16" rx="8" fill="#DDEEFF"/>
   <rect x="184" y="346" width="178" height="16" rx="8" fill="#E3F0FF"/>
 
-  <circle cx="372" cy="405" r="34" fill="#FFB800"/>
+  <circle cx="372" cy="405" r="34" fill="#F7941D"/>
   <path d="M361 406L370 415L385 396" stroke="#0F172A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
