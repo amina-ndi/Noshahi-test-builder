@@ -849,6 +849,7 @@
       box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
       position: relative;
       overflow: hidden;
+      text-decoration: none;
     }
 
     .feature-btn::before {
@@ -2464,10 +2465,10 @@
                 <h3>Question Bank</h3>
               </div>
               <p>Find questions by class, subject, chapter, and difficulty  -  everything in one place, clean and simple.</p>
-              <button class="feature-btn">
+              <a href="#highlights" class="feature-btn" onclick="goToShowcaseSlide(0)">
                 <span>Learn More</span>
                 <i class="fa-solid fa-arrow-right"></i>
-              </button>
+              </a>
             </div>
           </div>
 
@@ -2486,10 +2487,10 @@
                 <h3>Test Generator</h3>
               </div>
               <p>Choose MCQ, short, or long questions  -  and set marks however you like. The paper is built your way.</p>
-              <button class="feature-btn">
+              <a href="#highlights" class="feature-btn" onclick="goToShowcaseSlide(1)">
                 <span>Learn More</span>
                 <i class="fa-solid fa-arrow-right"></i>
-              </button>
+              </a>
             </div>
           </div>
 
@@ -2508,10 +2509,10 @@
                 <h3>Print Ready</h3>
               </div>
               <p>Paper done? Print it right away. Board-style layout  -  fully ready, no editing, no stress.</p>
-              <button class="feature-btn">
+              <a href="#highlights" class="feature-btn" onclick="goToShowcaseSlide(2)">
                 <span>Learn More</span>
                 <i class="fa-solid fa-arrow-right"></i>
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -2963,6 +2964,13 @@
       clearInterval(showcaseInterval);
       startShowcaseInterval();
     }
+
+    function goToShowcaseSlide(idx) {
+      updateShowcase(idx);
+      resetShowcaseInterval();
+    }
+
+    window.goToShowcaseSlide = goToShowcaseSlide;
 
     startShowcaseInterval();
 
