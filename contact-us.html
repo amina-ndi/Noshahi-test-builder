@@ -723,7 +723,36 @@
       }
     }
 
-    @media (max-width: 768px) {
+        @media (max-width: 768px) {
+      .professional-hero {
+        height: calc(100dvh - 78px);
+        min-height: calc(100dvh - 78px);
+        padding: 10px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .title-main {
+        font-size: clamp(1.5rem, 6vw, 2.2rem) !important;
+      }
+      .title-accent {
+        font-size: clamp(1.8rem, 7vw, 2.8rem) !important;
+      }
+      .hero-description {
+        font-size: 0.85rem !important;
+        margin-bottom: 15px !important;
+      }
+      .hero-badge {
+        margin-bottom: 10px !important;
+      }
+      .hero-actions {
+        margin-top: 15px !important;
+      }
+      .hero-actions .btn {
+        padding: 12px 24px !important;
+        font-size: 0.95rem !important;
+        width: auto !important; /* don't make them full width if they want them smaller */
+      }
       .contact-hero {
         padding: 80px 0 60px;
       }
@@ -1138,6 +1167,11 @@
 </body>
 
 </html>
+
+
+
+
+
 
 
 

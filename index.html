@@ -484,13 +484,11 @@
         max-width: 100%;
       }
 
-      .glass-overlay h1 { font-size: clamp(1.4rem, 6vw, 2.2rem); margin-bottom: 10px; }
+      .glass-overlay h1 { font-size: clamp(1.8rem, 7vw, 2.6rem); margin-bottom: 15px; }
 
-      .glass-overlay p { font-size: 0.9rem; margin-bottom: 20px; line-height: 1.4; }
+      .glass-overlay p { font-size: 1rem; margin-bottom: 25px; line-height: 1.5; }
 
-      .carousel-indicators {
-        bottom: 10px;
-      }
+      .carousel-indicators { bottom: 25px; }
 
       .carousel-indicators li.active {
         width: 25px;
@@ -2143,7 +2141,7 @@
       }
     }
 
-    @media (max-width: 620px) { .hero { height: calc(100dvh - 78px); min-height: calc(100dvh - 78px); padding: 0; overflow: hidden; }
+    @media (max-width: 620px) { .carousel-content { align-items: center; padding-top: 30px; } .hero { height: calc(100dvh - 78px); min-height: calc(100dvh - 78px); padding: 0; overflow: hidden; }
 
       .hero-grid {
         grid-template-columns: 1fr !important;
@@ -2329,9 +2327,9 @@
         <div class="carousel-inner">
           <!-- Slide 1 -->
           <div class="item active">
-            <a href="register.html"><img
+            <img
                 src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?auto=format&fit=crop&w=1600&q=80"
-                alt="Teacher using Noshahi Test Builder on Laptop"></a>
+                alt="Teacher using Noshahi Test Builder on Laptop">
             <div class="carousel-content">
               <div class="container">
                 <div class="glass-overlay">
@@ -2350,8 +2348,8 @@
 
           <!-- Slide 2 -->
           <div class="item">
-            <a href="register.html"><img src="img/banner/save-our-star-sldr.jpg"
-                alt="Professional Teacher Working on Tests"></a>
+            <img src="img/banner/save-our-star-sldr.jpg"
+                alt="Professional Teacher Working on Tests">
             <div class="carousel-content">
               <div class="container">
                 <div class="glass-overlay">
@@ -2370,9 +2368,9 @@
 
           <!-- Slide 3 -->
           <div class="item">
-            <a href="register.html"><img
+            <img
                 src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80"
-                alt="Teacher managing Question Bank on Laptop"></a>
+                alt="Teacher managing Question Bank on Laptop">
             <div class="carousel-content">
               <div class="container">
                 <div class="glass-overlay">
@@ -2391,8 +2389,8 @@
 
           <!-- Slide 4 -->
           <div class="item">
-            <a href="https://quizillapro.com/"><img src="img/banner/quizilla_pro_web_banners.jpg"
-                alt="Quizilla Pro Integration"></a>
+            <img src="img/banner/quizilla_pro_web_banners.jpg"
+                alt="Quizilla Pro Integration">
             <div class="carousel-content">
               <div class="container">
                 <div class="glass-overlay">
@@ -2412,9 +2410,9 @@
 
           <!-- Slide 5 -->
           <div class="item">
-            <a href="register.html"><img
+            <img
                 src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80"
-                alt="Teachers collaborating on Test Builder"></a>
+                alt="Teachers collaborating on Test Builder">
             <div class="carousel-content">
               <div class="container">
                 <div class="glass-overlay">
@@ -2899,7 +2897,18 @@
       carouselDots[currentIdx].classList.add("active");
     }
 
-    function nextSlide() { showSlide(currentIdx + 1); }
+        function nextSlide() { showSlide(currentIdx + 1); }
+
+    carouselItems.forEach(item => {
+      const img = item.querySelector('img');
+      if(img) {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', () => {
+          nextSlide();
+          resetAutoPlay();
+        });
+      }
+    });
 
     carouselDots.forEach((dot, idx) => {
       dot.addEventListener("click", () => {
@@ -2970,6 +2979,11 @@
 </body>
 
 </html>
+
+
+
+
+
 
 
 
