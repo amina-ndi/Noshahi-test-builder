@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -389,12 +389,15 @@
       border-radius: 0;
       padding: clamp(20px, 4vw, 40px);
       max-width: 950px;
-      text-align: center;
+      text-align: center !important;
       box-shadow: none;
-      margin: 0 auto;
+      margin: 0 auto !important;
       transform: translateY(30px);
       opacity: 0;
       transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) 0.4s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
 
@@ -424,8 +427,9 @@
     .hero-actions {
       display: flex;
       gap: 16px;
-      justify-content: center;
+      justify-content: center !important;
       flex-wrap: wrap;
+      width: 100%;
     }
 
 
@@ -986,9 +990,7 @@
     }
 
     /* --- Smart Workflow Section --- */
-    .smart-workflow {
-      position: relative;
-      padding: 100px 0;
+    .smart-workflow { position: relative; padding: 20px 0 100px;
       background: radial-gradient(circle at 10% 20%, rgba(38, 33, 97, 0.03) 0%, transparent 40%),
         radial-gradient(circle at 90% 80%, rgba(255, 184, 0, 0.03) 0%, transparent 40%);
       overflow: hidden;
@@ -1105,10 +1107,7 @@
     }
 
 
-    @media (max-width: 768px) {
-      .smart-workflow {
-        padding: 70px 0;
-      }
+    @media (max-width: 768px) { .smart-workflow { padding: 10px 0 70px; }
 
       .workflow-card {
         padding: 40px 30px;
@@ -1533,9 +1532,7 @@
     }
 
     /* --- Split Showcase Section --- */
-    .split-showcase {
-      padding: 120px 0;
-      background: #fdfdfd;
+    .split-showcase { padding: 40px 0 20px; background: #fdfdfd;
       position: relative;
       overflow: hidden;
     }
@@ -1697,8 +1694,7 @@
 
 
     /* --- Modern CTA Section --- */
-    .cta {
-      padding: clamp(80px, 12vw, 160px) 0;
+    .cta { padding: 20px 0 clamp(80px, 12vw, 160px);
       background: #ffffff;
       position: relative;
     }
@@ -2041,20 +2037,25 @@
         grid-template-columns: 1fr;
       }
 
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
       .hero {
         min-height: auto;
         padding: 26px 0 72px;
       }
 
       .hero-left {
-        text-align: left;
+        text-align: center;
         min-height: auto;
       }
 
       .hero-actions,
       .carousel-dots,
       .hero-slider-dots {
-        justify-content: flex-start;
+        justify-content: center;
       }
 
       .hero-right {
@@ -2155,6 +2156,7 @@
       }
 
       .hero-grid {
+        grid-template-columns: 1fr !important;
         gap: 0;
       }
 
@@ -2177,13 +2179,15 @@
 
       .hero-actions {
         margin-top: 25px;
-        gap: 12px;
+        gap: 10px;
         justify-content: center;
+        flex-wrap: nowrap !important; /* Force one line */
       }
 
       .hero-actions .btn {
-        padding: 11px 16px;
-        font-size: 0.92rem;
+        padding: 10px 12px !important;
+        font-size: 0.8rem !important;
+        white-space: nowrap !important;
       }
 
       .section {
@@ -2739,7 +2743,7 @@
                 <span class="showcase-pill"><i class="fa-solid fa-database"></i> Smart Repository</span>
                 <h2>Intelligent <span class="brand-word">Question</span> Management</h2>
                 <p>Thousands of questions in one place  -  filter by class, subject, and difficulty. The more you grow, the more it grows with you.</p>
-                <div class="hero-actions" style="justify-content: flex-start;">
+                <div class="hero-actions">
                   <a class="btn btn-gold" href="register.html">Get Started</a>
                 </div>
               </div>
@@ -2749,7 +2753,7 @@
                 <span class="showcase-pill"><i class="fa-solid fa-bolt"></i> Instant Generation</span>
                 <h2>Create Papers in <span class="brand-word">Seconds</span></h2>
                 <p>Create a board-style test paper instantly  -  100% accurate formatting for every subject, ready to print in just a few clicks.</p>
-                <div class="hero-actions" style="justify-content: flex-start;">
+                <div class="hero-actions">
                   <a class="btn btn-gold" href="register.html">Generate Now</a>
                 </div>
               </div>
@@ -2759,7 +2763,7 @@
                 <span class="showcase-pill"><i class="fa-solid fa-chart-pie"></i> Deep Insights</span>
                 <h2>Real-time <span class="brand-word">Curriculum</span> Analytics</h2>
                 <p>See how much syllabus is covered. Find the missing topics and improve your school's overall academic quality.</p>
-                <div class="hero-actions" style="justify-content: flex-start;">
+                <div class="hero-actions">
                   <a class="btn btn-gold" href="register.html">View Analytics</a>
                 </div>
               </div>
@@ -2852,7 +2856,7 @@
       </div>
 
       <div class="footer-bottom">
-        <span>Â� 2026 Noshahi Test Builder  -  Excellence in Education</span>
+        <span>Ã‚ï¿½ 2026 Noshahi Test Builder  -  Excellence in Education</span>
         <div>
           <a href="#">Terms of Service</a>
           <a href="#">Cookie Policy</a>
@@ -2979,6 +2983,10 @@
 </body>
 
 </html>
+
+
+
+
 
 
 
