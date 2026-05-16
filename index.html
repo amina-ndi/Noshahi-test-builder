@@ -2208,6 +2208,64 @@
         margin-top: 10px;
         justify-content: flex-start;
       }
+
+      /* Showcase Grid Mobile - Fit in One Screen (Side-by-Side) */
+      .showcase-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 15px !important;
+        padding: 0 10px !important;
+        align-items: center !important;
+      }
+
+      .showcase-right {
+        padding-right: 0 !important;
+        text-align: left !important;
+      }
+
+      .showcase-right h2 {
+        font-size: 1.1rem !important;
+        margin-bottom: 8px !important;
+        line-height: 1.2 !important;
+        max-width: 100% !important;
+      }
+
+      .showcase-right p {
+        font-size: 0.75rem !important;
+        line-height: 1.4 !important;
+        margin-bottom: 12px !important;
+      }
+
+      .showcase-pill {
+        padding: 4px 8px !important;
+        font-size: 0.6rem !important;
+        margin-bottom: 8px !important;
+      }
+
+      .hero-actions {
+        justify-content: flex-start !important;
+      }
+
+      .hero-actions .btn {
+        padding: 8px 12px !important;
+        font-size: 0.75rem !important;
+      }
+
+      .showcase-left {
+        width: 100% !important;
+        aspect-ratio: 1 / 1.2 !important; /* Portrait aspect to match text height better */
+        height: auto !important;
+        border-radius: 16px !important;
+      }
+
+      .split-showcase {
+        padding: 20px 0 !important;
+      }
+      
+      .showcase-right .btn {
+        padding: 8px 12px !important;
+        font-size: 0.8rem !important;
+      }
     }
 
     @media (max-width: 420px) {

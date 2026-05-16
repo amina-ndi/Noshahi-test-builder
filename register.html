@@ -55,7 +55,7 @@
         /* Re-setting to Form Left, Visual Right to match login.html for consistency */
         .auth-container {
             display: flex;
-            height: 100vh;
+            height: calc(100vh - 78px);
             width: 100%;
             align-items: center;
             justify-content: center;
@@ -189,7 +189,7 @@
 
         @media (max-width: 1024px) {
             .auth-container {
-                height: 100vh;
+                height: calc(100vh - 78px);
                 padding: 10px;
                 overflow: hidden;
             }
