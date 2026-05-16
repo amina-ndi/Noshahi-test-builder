@@ -484,15 +484,9 @@
         max-width: 100%;
       }
 
-      .glass-overlay h1 {
-        font-size: clamp(1.8rem, 8vw, 2.8rem);
-        margin-bottom: 12px;
-      }
+      .glass-overlay h1 { font-size: clamp(1.4rem, 6vw, 2.2rem); margin-bottom: 10px; }
 
-      .glass-overlay p {
-        font-size: 1rem;
-        margin-bottom: 25px;
-      }
+      .glass-overlay p { font-size: 0.9rem; margin-bottom: 20px; line-height: 1.4; }
 
       .carousel-indicators {
         bottom: 10px;
@@ -2149,11 +2143,7 @@
       }
     }
 
-    @media (max-width: 620px) {
-      .hero {
-        min-height: calc(100vh - 78px);
-        padding: 0;
-      }
+    @media (max-width: 620px) { .hero { height: calc(100dvh - 78px); min-height: calc(100dvh - 78px); padding: 0; overflow: hidden; }
 
       .hero-grid {
         grid-template-columns: 1fr !important;
@@ -2273,10 +2263,7 @@
       }
     }
 
-    @media (max-width: 420px) {
-      .hero {
-        padding: 10px 0 14px;
-      }
+    @media (max-width: 420px) { .hero { padding: 0; height: calc(100dvh - 78px); }
 
       .hero-carousel {
         min-height: 104px;
@@ -2983,6 +2970,7 @@
 </body>
 
 </html>
+
 
 
 
