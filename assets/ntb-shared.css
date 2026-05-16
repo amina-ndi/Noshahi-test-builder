@@ -219,13 +219,13 @@ body.ntb-menu-open {
   }
 
   .site-nav {
-    height: 60px;
+    height: 78px;
     padding: 0 15px;
   }
 
   .site-links {
     position: fixed;
-    top: 60px;
+    top: 78px;
     left: 16px;
     right: 16px;
     margin-left: 0;
