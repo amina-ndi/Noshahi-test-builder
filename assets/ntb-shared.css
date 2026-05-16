@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --ntb-primary: #262161;
   --ntb-primary-deep: #262161;
   --ntb-primary-mid: #262161;
@@ -100,8 +100,8 @@
 }
 
 .site-links a.active {
-  background: rgba(255, 184, 0, 0.15);
-  color: var(--ntb-secondary);
+  background: #FFB800;
+  color: #262161 !important;
 }
 
 .site-links a.nav-cta {
@@ -226,26 +226,29 @@ body.ntb-menu-open {
   .site-links {
     position: fixed;
     top: 78px;
-    left: 16px;
-    right: 16px;
+    right: 0;
+    left: auto;
+    width: 260px;
+    height: calc(100vh - 78px);
     margin-left: 0;
-    padding: 14px;
-    gap: 10px;
+    padding: 20px;
+    gap: 12px;
     flex-direction: column;
     align-items: stretch;
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(38, 33, 97, 0.98);
     backdrop-filter: blur(18px);
-    border: 1px solid rgba(38, 33, 97, 0.12);
-    border-radius: 18px;
-    box-shadow: 0 28px 70px rgba(45, 39, 115, 0.18);
-    transform: translateY(-8px);
+    border-left: 1px solid rgba(38, 33, 97, 0.12);
+    border-radius: 0;
+    box-shadow: -5px 0 25px rgba(45, 39, 115, 0.1);
+    transform: translateX(100%);
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 999;
   }
 
   .site-links.open {
-    transform: translateY(0);
+    transform: translateX(0);
     opacity: 1;
     pointer-events: auto;
   }
@@ -857,3 +860,15 @@ body.ntb-menu-open {
     border-radius: 20px;
   }
 }
+
+
+
+@media (max-width: 768px) {
+  .site-links a { color: rgba(255, 255, 255, 0.9) !important; transition: all 0.2s ease; }
+  .site-links a:hover { background: rgba(255, 255, 255, 0.2) !important; color: #ffffff !important; cursor: pointer; }
+  .site-links a.nav-cta { color: #000000 !important; }
+  .site-links a.nav-cta:hover { opacity: 0.9 !important; background: #FFB800 !important; }
+}
+
+
+
