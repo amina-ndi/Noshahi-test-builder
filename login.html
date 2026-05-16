@@ -5,11 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Noshahi Test Builder</title>
-    <link rel="icon" type="image/png" href="favicon.png" sizes="64x64">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" sizes="any">
-    <link rel="shortcut icon" href="favicon.png" type="image/png">
-
-    <!-- Font Awesome & Google Fonts -->
+    
+  <link rel='icon' type='image/png' href='img/NTB_logo.png'>
+<!-- Font Awesome & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
@@ -24,9 +22,9 @@
                         sans: ['Outfit', 'sans-serif'],
                     },
                     colors: {
-                        primary: '#020D27',
+                        primary: '#262161',
                         secondary: '#F7941D',
-                        accent: '#020D27',
+                        accent: '#262161',
                         'primary-foreground': '#ffffff',
                     }
                 }
@@ -37,10 +35,11 @@
     <style>
         body {
             background-color: #F8FAFC;
-            color: #0F172A;
+            color: #262161;
             font-family: 'Outfit', sans-serif;
             margin: 0;
-            overflow-x: hidden;
+            overflow: hidden;
+            height: 100vh;
         }
 
         .input-focus {
@@ -49,26 +48,26 @@
 
         .input-focus:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(2, 13, 39, 0.2);
+            box-shadow: 0 0 0 2px rgba(38, 33, 97, 0.2);
         }
 
         .btn-primary {
             width: 100%;
             background: linear-gradient(135deg, #F7941D, #F7941D);
-            color: #0F172A;
-            padding: 16px;
-            border-radius: 14px;
+            color: #262161;
+            padding: 12px;
+            border-radius: 12px;
             font-weight: 700;
             border: 1px solid #D49A00;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-            margin-top: 10px;
+            margin-top: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            font-size: 15px;
-            box-shadow: 0 6px 16px rgba(255, 184, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(255, 184, 0, 0.3);
             position: relative;
             overflow: hidden;
             z-index: 1;
@@ -94,6 +93,69 @@
         .btn-primary:hover {
             transform: translateY(-4px) scale(1.02);
             box-shadow: 0 14px 28px rgba(255, 184, 0, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+        
+        @media (max-width: 1024px) {
+            body {
+                overflow: hidden; height: 100vh;
+            }
+            .site-header {
+                position: absolute;
+                width: 100%;
+                background: transparent !important;
+                border: none !important;
+                box-shadow: none !important;
+            }
+            .site-nav {
+                height: 60px;
+            }
+        }
+            
+
+            
+            .site-nav {
+                height: 60px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .max-h-\[90\%\] {
+                max-height: 100% !important;
+                border-radius: 0 !important;
+                border: none !important;
+            }
+            
+            .p-6 {
+                padding: 1.5rem 1rem !important;
+            }
+            
+            .mb-8 {
+                margin-bottom: 1rem !important;
+            }
+            
+            .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+                --tw-space-y-reverse: 0;
+                margin-top: 0.75rem !important;
+                margin-bottom: calc(0.75rem * var(--tw-space-y-reverse)) !important;
+            }
+        }
+        
+        /* Desktop Header Absolute for centering */
+        .site-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+        }
+        @media (max-height: 700px) {
+            .max-w-5xl {
+                transform: scale(0.85);
+                transform-origin: center;
+            }
         }
     </style>
 
@@ -127,37 +189,37 @@
         </div>
     </header>
 
-    <div class="h-[calc(100vh-78px)] flex items-center justify-center p-2 lg:p-4 bg-slate-50 overflow-hidden">
+    <div class="h-screen flex items-center justify-center p-2 lg:p-4 bg-slate-50 overflow-hidden">
         <div
-            class="max-w-5xl w-full max-h-[90%] grid grid-cols-1 lg:grid-cols-2 bg-white rounded-[32px] overflow-hidden shadow-[0_30px_80px_-15px_rgba(2,13,39,0.12)] border border-slate-200">
+            class="max-w-5xl w-full max-h-[90%] grid grid-cols-1 lg:grid-cols-2 bg-white rounded-[32px] overflow-hidden shadow-[0_30px_80px_-15px_rgba(38, 33, 97,0.12)] border border-slate-200">
 
             <!-- Left Side - Login Card -->
             <div class="p-6 lg:p-10 flex flex-col justify-center overflow-y-auto">
                 <div class="max-w-sm w-full mx-auto">
-                    <div class="mb-8 text-center lg:text-left">
-                        <h1 class="text-3xl font-extrabold tracking-tight text-slate-900">
+                    <div class="mb-4 text-center lg:text-left">
+                        <h1 class="text-2xl font-extrabold tracking-tight text-slate-900">
                             Welcome <span class="text-secondary">Back</span>
                         </h1>
-                        <p class="text-slate-500 mt-2 text-base font-medium">Log in to your dashboard</p>
+                        <p class="text-slate-500 mt-1 text-sm font-medium">Log in to your dashboard</p>
                     </div>
 
                     <form class="space-y-4" action="index.html">
-                        <div class="space-y-1.5">
-                            <label class="text-xs font-bold text-slate-700 ml-1" for="email">School Email</label>
+                        <div class="space-y-1">
+                            <label class="text-[11px] font-bold text-slate-700 ml-1" for="email">School Email</label>
                             <input
-                                class="flex w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-3 text-sm shadow-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all h-12 input-focus"
+                                class="flex w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-2.5 text-sm shadow-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all h-11 input-focus"
                                 id="email" placeholder="teacher@school.edu" required type="email" name="email">
                         </div>
 
-                        <div class="space-y-1.5">
+                        <div class="space-y-1">
                             <div class="flex items-center justify-between ml-1">
-                                <label class="text-xs font-bold text-slate-700" for="password">Password</label>
+                                <label class="text-[11px] font-bold text-slate-700" for="password">Password</label>
                                 <a class="text-[10px] font-bold text-secondary hover:text-secondary-deep transition-colors"
                                     href="#">Forgot password?</a>
                             </div>
                             <input
-                                class="flex w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-3 text-sm shadow-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all h-12 input-focus"
-                                id="password" required type="password" name="password" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢">
+                                class="flex w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-2.5 text-sm shadow-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all h-11 input-focus"
+                                id="password" required type="password" name="password" placeholder="••••••••">
                         </div>
 
                         <div class="flex items-center space-x-3 ml-1 py-1">
@@ -211,3 +273,10 @@
 
 
 </body>
+
+
+
+
+
+
+

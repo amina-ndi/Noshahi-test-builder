@@ -1,15 +1,15 @@
 :root {
-  --ntb-primary: #020D27;
-  --ntb-primary-deep: #000511;
-  --ntb-primary-mid: #01081A;
-  --ntb-primary-soft: rgba(2, 13, 39, 0.12);
+  --ntb-primary: #262161;
+  --ntb-primary-deep: #262161;
+  --ntb-primary-mid: #262161;
+  --ntb-primary-soft: rgba(38, 33, 97, 0.12);
   --ntb-secondary: #F7941D;
   --ntb-secondary-deep: #F7941D;
-  --ntb-text: #0f172a;
+  --ntb-text: #262161;
   --ntb-muted: rgba(15, 23, 42, 0.7);
   --ntb-surface: rgba(255, 255, 255, 0.82);
-  --ntb-border: rgba(2, 13, 39, 0.16);
-  --ntb-shadow: 0 10px 30px rgba(2, 13, 39, 0.08);
+  --ntb-border: rgba(38, 33, 97, 0.16);
+  --ntb-shadow: 0 10px 30px rgba(38, 33, 97, 0.08);
   --ntb-radius: 14px;
 }
 
@@ -58,7 +58,7 @@
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #F7941D, var(--ntb-secondary));
-  color: #0f172a;
+  color: #262161;
   box-shadow: 0 10px 24px rgba(255, 184, 0, 0.32);
 }
 
@@ -110,7 +110,7 @@
   justify-content: center;
   text-align: center;
   background: linear-gradient(135deg, #F7941D, #F7941D);
-  color: #0F172A;
+  color: #262161;
   font-weight: 800;
   padding: 11px 16px;
   border-radius: 12px;
@@ -137,7 +137,10 @@
 
 .site-links a.nav-cta:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 20px rgba(255, 184, 0, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 20px rgba(38, 33, 97, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  background: #262161;
+  color: #ffffff;
+  border-color: #262161;
 }
 
 .site-links a.nav-login-cta {
@@ -149,9 +152,9 @@
   font-weight: 800;
   padding: 11px 16px;
   border-radius: 12px;
-  background: linear-gradient(135deg, var(--ntb-primary), #0a67bf);
+  background: linear-gradient(135deg, var(--ntb-primary), #262161);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 12px rgba(2, 13, 39, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 12px rgba(38, 33, 97, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.15);
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -172,14 +175,16 @@
 }
 
 .site-links a.nav-login-cta:hover {
-  color: #ffffff;
+  color: #0F172A;
+  background: #F7941D;
+  border-color: #D49A00;
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 20px rgba(2, 13, 39, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 20px rgba(255, 184, 0, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.2);
 }
 
 .site-links a.nav-login-cta.active {
   color: #ffffff;
-  background: linear-gradient(135deg, var(--ntb-primary), #0a67bf);
+  background: linear-gradient(135deg, var(--ntb-primary), #262161);
 }
 
 .site-menu-toggle {
@@ -187,18 +192,18 @@
   width: 44px;
   height: 44px;
   border-radius: 14px;
-  border: 1px solid rgba(2, 13, 39, 0.22);
+  border: 1px solid rgba(38, 33, 97, 0.22);
   background: rgba(255, 255, 255, 0.9);
   color: var(--ntb-primary);
   cursor: pointer;
-  box-shadow: 0 12px 26px rgba(0, 47, 109, 0.12);
+  box-shadow: 0 12px 26px rgba(45, 39, 115, 0.12);
   transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .site-menu-toggle:hover {
   transform: translateY(-1px);
   background: #ffffff;
-  box-shadow: 0 16px 34px rgba(0, 47, 109, 0.18);
+  box-shadow: 0 16px 34px rgba(45, 39, 115, 0.18);
 }
 
 body.ntb-menu-open {
@@ -210,11 +215,17 @@ body.ntb-menu-open {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    margin-left: auto;
+  }
+
+  .site-nav {
+    height: 60px;
+    padding: 0 15px;
   }
 
   .site-links {
     position: fixed;
-    top: 78px;
+    top: 60px;
     left: 16px;
     right: 16px;
     margin-left: 0;
@@ -224,9 +235,9 @@ body.ntb-menu-open {
     align-items: stretch;
     background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(18px);
-    border: 1px solid rgba(2, 13, 39, 0.12);
+    border: 1px solid rgba(38, 33, 97, 0.12);
     border-radius: 18px;
-    box-shadow: 0 28px 70px rgba(0, 47, 109, 0.18);
+    box-shadow: 0 28px 70px rgba(45, 39, 115, 0.18);
     transform: translateY(-8px);
     opacity: 0;
     pointer-events: none;
@@ -254,20 +265,14 @@ body.ntb-menu-open {
   position: relative;
   overflow: hidden;
   padding: 80px 0 30px;
-  background: linear-gradient(145deg, #000511 0%, #01081A 45%, #020D27 100%);
+  background: #262161;
   color: rgba(255, 255, 255, 0.92);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   width: 100%;
 }
 
 .site-footer::before {
-  content: "";
-  position: absolute;
-  inset: -220px -180px auto -180px;
-  height: 360px;
-  background: radial-gradient(circle at 35% 40%, rgba(255, 184, 0, 0.15), transparent 60%);
-  filter: blur(40px);
-  pointer-events: none;
+  display: none;
 }
 
 .footer-inner {
@@ -590,7 +595,7 @@ body.ntb-menu-open {
 }
 
 .ntb-scroll-top {
-  color: #0f172a;
+  color: #262161;
   background: linear-gradient(145deg, #ffdb73, #F7941D);
   box-shadow: 0 18px 36px rgba(255, 184, 0, 0.28);
   opacity: 0;
@@ -642,9 +647,9 @@ body.ntb-menu-open {
   max-height: calc(100vh - 120px);
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(2, 13, 39, 0.12);
+  border: 1px solid rgba(38, 33, 97, 0.12);
   border-radius: 28px;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.18), 0 10px 40px rgba(2, 13, 39, 0.08);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.18), 0 10px 40px rgba(38, 33, 97, 0.08);
   z-index: 1200;
   display: flex;
   flex-direction: column;
@@ -663,7 +668,7 @@ body.ntb-menu-open {
 
 .ntb-chat-header {
   padding: 24px;
-  background: linear-gradient(135deg, var(--ntb-primary), #0a67bf);
+  background: linear-gradient(135deg, var(--ntb-primary), #262161);
   color: white;
   display: flex;
   align-items: center;
@@ -738,7 +743,7 @@ body.ntb-menu-open {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  background-image: radial-gradient(circle at 50% 50%, rgba(2, 13, 39, 0.02) 0%, transparent 100%);
+  background-image: radial-gradient(circle at 50% 50%, rgba(38, 33, 97, 0.02) 0%, transparent 100%);
 }
 
 .ntb-chat-msg {
@@ -772,7 +777,7 @@ body.ntb-menu-open {
 
 .ntb-chat-footer {
   padding: 16px 20px;
-  border-top: 1px solid rgba(2, 13, 39, 0.06);
+  border-top: 1px solid rgba(38, 33, 97, 0.06);
   background: white;
 }
 
@@ -780,7 +785,7 @@ body.ntb-menu-open {
   display: flex;
   gap: 10px;
   background: #f8fafc;
-  border: 1px solid rgba(2, 13, 39, 0.08);
+  border: 1px solid rgba(38, 33, 97, 0.08);
   padding: 6px;
   border-radius: 16px;
   transition: all 0.3s;
@@ -789,7 +794,7 @@ body.ntb-menu-open {
 .ntb-chat-input-wrap:focus-within {
   border-color: var(--ntb-primary);
   background: white;
-  box-shadow: 0 4px 12px rgba(2, 13, 39, 0.05);
+  box-shadow: 0 4px 12px rgba(38, 33, 97, 0.05);
 }
 
 .ntb-chat-input-wrap input {
@@ -818,7 +823,7 @@ body.ntb-menu-open {
 
 .ntb-chat-send:hover {
   transform: scale(1.05);
-  background: #0a67bf;
+  background: #262161;
 }
 
 .ntb-chat-whatsapp-cta {

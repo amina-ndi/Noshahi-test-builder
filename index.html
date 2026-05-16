@@ -7,10 +7,9 @@
   <title>Noshahi Test Builder</title>
   <meta name="description"
     content="Create professional, print-ready tests in minutes for Matric and Intermediate with premium 3D UI experience.">
-  <link rel="icon" type="image/png" href="favicon.png" sizes="64x64">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" sizes="any">
-  <link rel="shortcut icon" href="favicon.png" type="image/png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  
+  <link rel='icon' type='image/png' href='img/NTB_logo.png'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
@@ -18,19 +17,19 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
     :root {
-      --primary: #020d27ff;
+      --primary: #262161;
       --secondary: #F7941D;
       --secondary-deep: #F7941D;
-      --accent: #020d27ff;
-      --text-main: #0F172A;
+      --accent: #262161;
+      --text-main: #262161;
       --text-muted: #475569;
       --white: #FFFFFF;
       --glass: rgba(255, 255, 255, 0.75);
       --glass-strong: rgba(255, 255, 255, 0.9);
-      --border: rgba(2, 13, 39, 0.16);
+      --border: rgba(38, 33, 97, 0.16);
       --container: min(1180px, 92vw);
-      --shadow-soft: 0 16px 45px rgba(2, 13, 39, 0.14);
-      --shadow-medium: 0 24px 60px rgba(2, 13, 39, 0.2);
+      --shadow-soft: 0 16px 45px rgba(38, 33, 97, 0.14);
+      --shadow-medium: 0 24px 60px rgba(38, 33, 97, 0.2);
       --shadow-gold: 0 16px 36px rgba(255, 184, 0, 0.32);
       --radius-lg: 24px;
       --radius-md: 16px;
@@ -86,6 +85,12 @@
       margin-bottom: 10px;
     }
 
+    .section-head p {
+      color: #4e658f;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
     .brand-word {
       color: var(--secondary);
       text-shadow: 0 8px 18px rgba(255, 184, 0, 0.24);
@@ -97,8 +102,8 @@
       z-index: 100;
       background: rgba(255, 255, 255, 0.82);
       backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(2, 13, 39, 0.1);
-      box-shadow: 0 10px 30px rgba(0, 47, 109, 0.08);
+      border-bottom: 1px solid rgba(38, 33, 97, 0.1);
+      box-shadow: 0 10px 30px rgba(38, 33, 97, 0.08);
     }
 
     .navbar {
@@ -154,14 +159,14 @@
     }
 
     .nav-links a.active {
-      color: #003d85;
-      background: rgba(2, 13, 39, 0.12);
-      box-shadow: inset 0 0 0 1px rgba(2, 13, 39, 0.14);
+      color: #262161;
+      background: rgba(38, 33, 97, 0.12);
+      box-shadow: inset 0 0 0 1px rgba(38, 33, 97, 0.14);
     }
 
     .nav-links a:hover {
       color: var(--primary);
-      background: rgba(2, 13, 39, 0.08);
+      background: rgba(38, 33, 97, 0.08);
       transform: translateY(-2px);
     }
 
@@ -182,7 +187,7 @@
       left: 0;
       min-width: 180px;
       border-radius: 14px;
-      border: 1px solid rgba(2, 13, 39, 0.14);
+      border: 1px solid rgba(38, 33, 97, 0.14);
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(14px);
       box-shadow: 0 16px 34px rgba(0, 38, 95, 0.18);
@@ -205,13 +210,13 @@
       width: 100%;
       padding: 9px 10px;
       border-radius: 10px;
-      color: #173e7d;
+      color: #262161;
       font-weight: 600;
       background: transparent;
     }
 
     .dropdown-content a:hover {
-      background: rgba(2, 13, 39, 0.08);
+      background: rgba(38, 33, 97, 0.08);
       transform: none;
     }
 
@@ -220,7 +225,7 @@
       width: 42px;
       height: 42px;
       border-radius: 12px;
-      border: 1px solid rgba(2, 13, 39, 0.2);
+      border: 1px solid rgba(38, 33, 97, 0.2);
       background: var(--white);
       color: var(--primary);
       font-size: 1.1rem;
@@ -278,15 +283,15 @@
     .btn-gold {
       padding: 16px 32px;
       color: var(--white);
-      background: #020d27;
-      box-shadow: 0 8px 20px rgba(2, 13, 39, 0.3);
+      background: #262161;
+      box-shadow: 0 8px 20px rgba(38, 33, 97, 0.3);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .btn-gold:hover {
       transform: translateY(-3px) scale(1.02);
       background: #F7941D;
-      color: #020d27;
+      color: #262161;
       box-shadow: 0 14px 28px rgba(255, 184, 0, 0.45);
     }
 
@@ -311,7 +316,7 @@
       display: flex;
       align-items: center;
       isolation: isolate;
-      background: linear-gradient(135deg, #020d27 0%, #051a44 100%);
+      background: linear-gradient(135deg, #262161 0%, #262161 100%);
     }
 
 
@@ -319,7 +324,7 @@
     .carousel {
       position: relative;
       width: 100%;
-      background: #020d27;
+      background: #262161;
       overflow: hidden;
     }
 
@@ -510,7 +515,7 @@
       width: var(--size);
       height: var(--size);
       border-radius: 999px;
-      background: linear-gradient(145deg, rgba(2, 13, 39, 0.4), rgba(255, 184, 0, 0.34));
+      background: linear-gradient(145deg, rgba(38, 33, 97, 0.4), rgba(255, 184, 0, 0.34));
       animation: floatParticle var(--dur) linear infinite;
       animation-delay: var(--delay);
     }
@@ -661,7 +666,7 @@
 
     .hero-image-wrapper:hover {
       transform: rotateY(-2deg) rotateX(2deg) translateY(-8px);
-      box-shadow: 0 32px 64px rgba(2, 13, 39, 0.35);
+      box-shadow: 0 32px 64px rgba(38, 33, 97, 0.35);
     }
 
     .hero-image-wrapper img {
@@ -702,16 +707,12 @@
     }
 
     #features .section-head h2 {
-      color: #1e3a8a;
+      color: #262161;
       position: relative;
       z-index: 1;
     }
 
-    #features .section-head p {
-      color: #3b82f6;
-      position: relative;
-      z-index: 1;
-    }
+
 
     .features-grid {
       display: grid;
@@ -792,20 +793,20 @@
       display: grid;
       place-items: center;
       font-size: 1.5rem;
-      color: #3b82f6;
+      color: #F7941D;
       transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       flex-shrink: 0;
     }
 
     .feature-card:hover .feature-icon {
       transform: rotateY(180deg) scale(1.1);
-      color: #2563eb;
+      color: #262161;
     }
 
     .feature-content h3 {
       font-size: 1.4rem;
       font-weight: 800;
-      color: #1e3a8a;
+      color: #262161;
       margin: 0;
       transition: color 0.3s ease;
       line-height: 1.2;
@@ -815,7 +816,7 @@
     }
 
     .feature-card:hover .feature-content h3 {
-      color: #3b82f6;
+      color: #F7941D;
     }
 
     .feature-content p {
@@ -832,7 +833,7 @@
     }
 
     .feature-btn {
-      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      background: #262161;
       color: white;
       border: none;
       border-radius: 12px;
@@ -869,7 +870,7 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(255, 184, 0, 0.4);
       background: linear-gradient(135deg, #F7941D, #F7941D);
-      color: #1e3a8a;
+      color: #262161;
     }
 
     .feature-btn:active {
@@ -987,7 +988,7 @@
     .smart-workflow {
       position: relative;
       padding: 100px 0;
-      background: radial-gradient(circle at 10% 20%, rgba(2, 13, 39, 0.03) 0%, transparent 40%),
+      background: radial-gradient(circle at 10% 20%, rgba(38, 33, 97, 0.03) 0%, transparent 40%),
         radial-gradient(circle at 90% 80%, rgba(255, 184, 0, 0.03) 0%, transparent 40%);
       overflow: hidden;
     }
@@ -1005,7 +1006,7 @@
       background: rgba(255, 255, 255, 0.7);
       backdrop-filter: blur(15px);
       -webkit-backdrop-filter: blur(15px);
-      border: 1px solid rgba(2, 13, 39, 0.08);
+      border: 1px solid rgba(38, 33, 97, 0.08);
       border-radius: 28px;
       padding: 50px 35px;
       position: relative;
@@ -1019,7 +1020,7 @@
 
     .workflow-card:hover {
       transform: translateY(-15px) rotateX(5deg);
-      box-shadow: 0 40px 80px rgba(2, 13, 39, 0.12);
+      box-shadow: 0 40px 80px rgba(38, 33, 97, 0.12);
       background: #ffffff;
       border-color: var(--secondary);
     }
@@ -1049,7 +1050,7 @@
       font-size: 4rem;
       font-weight: 900;
       font-family: "Sora", sans-serif;
-      color: rgba(2, 13, 39, 0.04);
+      color: rgba(38, 33, 97, 0.04);
       transition: all 0.4s ease;
       user-select: none;
     }
@@ -1067,7 +1068,7 @@
       display: grid;
       place-items: center;
       margin-bottom: 30px;
-      color: #020d27;
+      color: #262161;
       font-size: 2rem;
       box-shadow: 0 15px 30px rgba(255, 184, 0, 0.2);
       transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -1077,15 +1078,15 @@
 
     .workflow-card:hover .workflow-icon {
       transform: rotateY(180deg) scale(1.1);
-      background: linear-gradient(135deg, #020d27, #0a67bf);
+      background: linear-gradient(135deg, #262161, #262161);
       color: #ffffff;
-      box-shadow: 0 20px 40px rgba(2, 13, 39, 0.3);
+      box-shadow: 0 20px 40px rgba(38, 33, 97, 0.3);
     }
 
     .workflow-card h3 {
       font-size: 1.5rem;
       font-weight: 800;
-      color: #020d27;
+      color: #262161;
       margin-bottom: 15px;
       letter-spacing: -0.01em;
       transition: color 0.4s ease;
@@ -1134,8 +1135,8 @@
       position: relative;
       overflow: hidden;
       background: linear-gradient(145deg, #f7fbff 0%, #eef5ff 55%, #f8fbff 100%);
-      border-top: 1px solid rgba(2, 13, 39, 0.08);
-      border-bottom: 1px solid rgba(2, 13, 39, 0.08);
+      border-top: 1px solid rgba(38, 33, 97, 0.08);
+      border-bottom: 1px solid rgba(38, 33, 97, 0.08);
     }
 
     .showcase-section::before {
@@ -1144,7 +1145,7 @@
       width: 440px;
       height: 440px;
       border-radius: 999px;
-      background: radial-gradient(circle, rgba(2, 13, 39, 0.2), rgba(2, 13, 39, 0));
+      background: radial-gradient(circle, rgba(38, 33, 97, 0.2), rgba(38, 33, 97, 0));
       top: -170px;
       right: -120px;
       pointer-events: none;
@@ -1177,7 +1178,7 @@
       width: var(--size);
       height: var(--size);
       border-radius: 999px;
-      background: linear-gradient(135deg, rgba(2, 13, 39, 0.35), rgba(255, 184, 0, 0.28));
+      background: linear-gradient(135deg, rgba(38, 33, 97, 0.35), rgba(255, 184, 0, 0.28));
       filter: blur(0.6px);
       animation: floatShowcaseUp var(--dur) linear infinite;
       animation-delay: var(--delay);
@@ -1216,7 +1217,7 @@
       background: rgba(255, 255, 255, 0.74);
       border: 1px solid rgba(126, 170, 240, 0.36);
       backdrop-filter: blur(14px);
-      box-shadow: 0 30px 70px rgba(2, 13, 39, 0.2);
+      box-shadow: 0 30px 70px rgba(38, 33, 97, 0.2);
       transform: rotateY(-9deg) rotateX(5deg);
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       overflow: visible;
@@ -1227,7 +1228,7 @@
 
     .showcase-main:hover {
       transform: rotateY(-4deg) rotateX(2deg) translateY(-12px);
-      box-shadow: 0 45px 85px rgba(2, 13, 39, 0.3);
+      box-shadow: 0 45px 85px rgba(38, 33, 97, 0.3);
     }
 
     .showcase-section.reversed .showcase-main {
@@ -1264,7 +1265,7 @@
 
     .showcase-glass:hover {
       transform: translateY(-6px) scale(1.04);
-      box-shadow: 0 24px 45px rgba(2, 13, 39, 0.24);
+      box-shadow: 0 24px 45px rgba(38, 33, 97, 0.24);
     }
 
     .showcase-glass i {
@@ -1308,14 +1309,14 @@
       background: rgba(255, 255, 255, 0.74);
       border: 1px solid rgba(126, 170, 240, 0.36);
       backdrop-filter: blur(14px);
-      box-shadow: 0 30px 70px rgba(2, 13, 39, 0.15);
+      box-shadow: 0 30px 70px rgba(38, 33, 97, 0.15);
       transform: rotateY(9deg) rotateX(3deg);
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .showcase-side:hover {
       transform: rotateY(4deg) rotateX(1deg) translateY(-12px);
-      box-shadow: 0 45px 85px rgba(2, 13, 39, 0.25);
+      box-shadow: 0 45px 85px rgba(38, 33, 97, 0.25);
     }
 
     .showcase-section.reversed .showcase-side {
@@ -1328,7 +1329,7 @@
 
     .showcase-side h2 {
       font-size: clamp(1.8rem, 3.2vw, 2.56rem);
-      color: #103a80;
+      color: #262161;
       margin-bottom: 12px;
       line-height: 1.2;
     }
@@ -1349,7 +1350,7 @@
       background: rgba(255, 255, 255, 0.6);
       border: 1px solid rgba(117, 164, 238, 0.2);
       padding: 18px 20px;
-      box-shadow: 0 8px 24px rgba(2, 13, 39, 0.05);
+      box-shadow: 0 8px 24px rgba(38, 33, 97, 0.05);
       position: relative;
       backdrop-filter: blur(12px);
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -1364,7 +1365,7 @@
       transform: translateX(12px) scale(1.02);
       background: rgba(255, 255, 255, 0.95);
       border-color: var(--secondary);
-      box-shadow: 0 20px 40px rgba(2, 13, 39, 0.15);
+      box-shadow: 0 20px 40px rgba(38, 33, 97, 0.15);
     }
 
     .showcase-section.reversed .showcase-mini:hover {
@@ -1392,7 +1393,7 @@
     }
 
     .showcase-mini h4 {
-      color: #124288;
+      color: #262161;
       font-size: 1.05rem;
       font-weight: 800;
       margin-bottom: 4px;
@@ -1425,8 +1426,8 @@
       background: rgba(255, 255, 255, 0.7);
       backdrop-filter: blur(15px);
       -webkit-backdrop-filter: blur(15px);
-      border: 1px solid rgba(2, 13, 39, 0.08);
-      box-shadow: 0 15px 35px rgba(2, 13, 39, 0.05);
+      border: 1px solid rgba(38, 33, 97, 0.08);
+      box-shadow: 0 15px 35px rgba(38, 33, 97, 0.05);
       position: relative;
       overflow: hidden;
       isolation: isolate;
@@ -1441,7 +1442,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(145deg, #020d27 0%, #0a3161 100%);
+      background: linear-gradient(145deg, #262161 0%, #262161 100%);
       opacity: 0;
       transition: opacity 0.5s ease;
       z-index: -1;
@@ -1449,7 +1450,7 @@
 
     .user-card:hover {
       transform: translateY(-15px) scale(1.02) perspective(1000px) rotateX(5deg);
-      box-shadow: 0 30px 60px rgba(2, 13, 39, 0.25);
+      box-shadow: 0 30px 60px rgba(38, 33, 97, 0.25);
       border-color: var(--secondary);
     }
 
@@ -1464,7 +1465,7 @@
       border-radius: 22px;
       display: grid;
       place-items: center;
-      color: #020d27;
+      color: #262161;
       background: linear-gradient(135deg, #F7941D, #F7941D);
       box-shadow: 0 10px 25px rgba(255, 184, 0, 0.35);
       font-size: 1.8rem;
@@ -1475,12 +1476,12 @@
     .user-card:hover .user-icon {
       transform: rotateY(180deg) scale(1.1);
       background: #ffffff;
-      color: #020d27;
+      color: #262161;
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
     }
 
     .user-card h3 {
-      color: #020d27;
+      color: #262161;
       font-size: 1.4rem;
       font-weight: 800;
       margin-bottom: 12px;
@@ -1563,7 +1564,7 @@
       position: relative;
       border-radius: 40px;
       overflow: hidden;
-      box-shadow: 0 50px 100px rgba(2, 13, 39, 0.12);
+      box-shadow: 0 50px 100px rgba(38, 33, 97, 0.12);
       aspect-ratio: 16 / 10;
       background: #f1f5f9;
       transform: perspective(1000px) rotateY(2deg);
@@ -1634,7 +1635,7 @@
 
     .showcase-right h2 {
       font-size: clamp(1.8rem, 3.2vw, 2.8rem);
-      color: #020d27;
+      color: #262161;
       font-weight: 900;
       line-height: 1.2;
       margin-bottom: 24px;
@@ -1658,15 +1659,15 @@
     }
 
     .split-showcase .btn-gold {
-      background: #020d27;
+      background: #262161;
       color: #ffffff;
-      border: 2px solid #020d27;
+      border: 2px solid #262161;
       transition: all 0.4s ease;
     }
 
     .split-showcase .btn-gold:hover {
       background: #F7941D;
-      color: #020d27;
+      color: #262161;
       border-color: #F7941D;
       box-shadow: 0 12px 25px rgba(255, 184, 0, 0.4);
       transform: translateY(-3px);
@@ -1708,13 +1709,13 @@
     }
 
     .cta-glass-card {
-      background: linear-gradient(135deg, #020d27 0%, #0a3161 100%);
+      background: linear-gradient(135deg, #262161 0%, #262161 100%);
       border-radius: 50px;
       padding: clamp(60px, 10vw, 100px) 40px;
       text-align: center;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 50px 100px rgba(2, 13, 39, 0.28);
+      box-shadow: 0 50px 100px rgba(38, 33, 97, 0.28);
       border: 1px solid rgba(255, 255, 255, 0.08);
       isolation: isolate;
     }
@@ -1790,7 +1791,7 @@
 
     .cta-glass-card .btn-gold {
       background: #F7941D;
-      color: #020d27;
+      color: #262161;
       padding: 22px 55px;
       font-size: 1.25rem;
       font-weight: 800;
@@ -1800,7 +1801,7 @@
 
     .cta-glass-card .btn-gold:hover {
       background: #ffffff;
-      color: #020d27;
+      color: #262161;
       transform: translateY(-8px) scale(1.05);
       box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
     }
@@ -1822,22 +1823,14 @@
 
     footer {
       padding: 42px 0 48px;
-      background: linear-gradient(145deg, #041d4d 0%, #00091D 52%, #020D27 100%);
+      background: #262161;
       border-top: 1px solid rgba(173, 206, 255, 0.24);
       position: relative;
       overflow: hidden;
     }
 
     footer::before {
-      content: "";
-      position: absolute;
-      width: 320px;
-      height: 320px;
-      border-radius: 999px;
-      top: -160px;
-      right: -100px;
-      background: radial-gradient(circle, rgba(255, 184, 0, 0.4), rgba(255, 184, 0, 0));
-      pointer-events: none;
+      display: none;
     }
 
     footer::after {
@@ -1848,7 +1841,7 @@
       border-radius: 999px;
       left: -120px;
       bottom: -140px;
-      background: radial-gradient(circle, rgba(2, 13, 39, 0.46), rgba(2, 13, 39, 0));
+      background: radial-gradient(circle, rgba(38, 33, 97, 0.46), rgba(38, 33, 97, 0));
       pointer-events: none;
     }
 
@@ -1889,7 +1882,7 @@
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      color: #08315f;
+      color: #262161;
       font-weight: 800;
       padding: 11px 18px;
       border-radius: 12px;
@@ -2024,7 +2017,7 @@
       24%,
       36% {
         transform: scale(1.08);
-        box-shadow: 0 0 0 6px rgba(255, 184, 0, 0.18), 0 22px 42px rgba(2, 13, 39, 0.34);
+        box-shadow: 0 0 0 6px rgba(255, 184, 0, 0.18), 0 22px 42px rgba(38, 33, 97, 0.34);
       }
     }
 
@@ -2106,7 +2099,7 @@
         align-items: stretch;
         padding: 14px 4vw 18px;
         background: rgba(248, 250, 252, 0.97);
-        border-bottom: 1px solid rgba(2, 13, 39, 0.14);
+        border-bottom: 1px solid rgba(38, 33, 97, 0.14);
         transform: translateY(-12px);
         opacity: 0;
         pointer-events: none;
@@ -2294,7 +2287,7 @@
                 <div class="glass-overlay">
                   <span class="hero-pill"><i class="fa-solid fa-bolt"></i> Papers in Seconds</span>
                   <h1><span class="brand-word">Noshahi</span> Test Builder<br>Make Test Papers in Seconds</h1>
-                  <p>The fastest tool for teachers — create professional Matric & Inter test papers in just a few clicks.</p>
+                  <p>The fastest tool for teachers  -  create professional Matric & Inter test papers in just a few clicks.</p>
                   <div class="hero-actions">
                     <a class="btn btn-gold" href="register.html"><i class="fa-solid fa-rocket"></i> Get Started Free</a>
                     <a class="btn btn-outline" href="#features"><i class="fa-solid fa-circle-play"></i> See How It
@@ -2314,7 +2307,7 @@
                 <div class="glass-overlay">
                   <span class="hero-pill"><i class="fa-solid fa-file-invoice"></i> Board Aligned</span>
                   <h1>Professional <span class="brand-word">Layout</span><br>Ready in No Time</h1>
-                  <p>No more wasting hours on formatting. Just one click — and your board-style paper is ready to print.</p>
+                  <p>No more wasting hours on formatting. Just one click  -  and your board-style paper is ready to print.</p>
                   <div class="hero-actions">
                     <a class="btn btn-gold" href="register.html"><i class="fa-solid fa-wand-magic-sparkles"></i> Try it
                       Now</a>
@@ -2335,7 +2328,7 @@
                 <div class="glass-overlay">
                   <span class="hero-pill"><i class="fa-solid fa-database"></i> 10,000+ Questions</span>
                   <h1>Smart <span class="brand-word">Question</span> Bank<br>For Every Subject</h1>
-                  <p>10,000+ questions sorted by class, subject, chapter and difficulty — pick what you need and build your test.</p>
+                  <p>10,000+ questions sorted by class, subject, chapter and difficulty  -  pick what you need and build your test.</p>
                   <div class="hero-actions">
                     <a class="btn btn-gold" href="register.html"><i class="fa-solid fa-search"></i> Explore Bank</a>
                     <a class="btn btn-outline" href="book-demo.html"><i class="fa-solid fa-calendar-days"></i> Request
@@ -2355,7 +2348,7 @@
                 <div class="glass-overlay">
                   <span class="hero-pill"><i class="fa-solid fa-circle-check"></i> Seamless Workflow</span>
                   <h1>Works with <span class="brand-word">Quizilla Pro</span><br>Smarter Testing Together</h1>
-                  <p>Noshahi Test Builder and Quizilla Pro work hand in hand — sync questions, view results, and generate reports with ease.</p>
+                  <p>Noshahi Test Builder and Quizilla Pro work hand in hand  -  sync questions, view results, and generate reports with ease.</p>
                   <div class="hero-actions">
                     <a class="btn btn-gold" href="https://quizillapro.com/"><i class="fa-solid fa-link"></i> Learn
                       More</a>
@@ -2377,7 +2370,7 @@
                 <div class="glass-overlay">
                   <span class="hero-pill"><i class="fa-solid fa-users-viewfinder"></i> Community of Teachers</span>
                   <h1>Join <span class="brand-word">Thousands</span><br>of Teachers Today</h1>
-                  <p>Thousands of teachers are already using NTB. Join them, save your time — this platform is made just for you.</p>
+                  <p>Thousands of teachers are already using NTB. Join them, save your time  -  this platform is made just for you.</p>
                   <div class="hero-actions">
                     <a class="btn btn-gold" href="register.html"><i class="fa-solid fa-user-check"></i> Join Now</a>
                     <a class="btn btn-outline" href="contact-us.html"><i class="fa-solid fa-comments"></i> Talk to
@@ -2397,7 +2390,7 @@
       <div class="container">
         <div class="section-head">
           <h2>Features That Make Your <span class="brand-word">Work Easy</span></h2>
-          <p>Three simple tools that every teacher needs — straightforward, clean, and easy to use.</p>
+          <p>Three simple tools that every teacher needs  -  straightforward, clean, and easy to use.</p>
         </div>
         <div class="features-grid">
           <div class="feature-card">
@@ -2412,7 +2405,7 @@
                 </div>
                 <h3>Question Bank</h3>
               </div>
-              <p>Find questions by class, subject, chapter, and difficulty — everything in one place, clean and simple.</p>
+              <p>Find questions by class, subject, chapter, and difficulty  -  everything in one place, clean and simple.</p>
               <button class="feature-btn">
                 <span>Learn More</span>
                 <i class="fa-solid fa-arrow-right"></i>
@@ -2434,7 +2427,7 @@
                 </div>
                 <h3>Test Generator</h3>
               </div>
-              <p>Choose MCQ, short, or long questions — and set marks however you like. The paper is built your way.</p>
+              <p>Choose MCQ, short, or long questions  -  and set marks however you like. The paper is built your way.</p>
               <button class="feature-btn">
                 <span>Learn More</span>
                 <i class="fa-solid fa-arrow-right"></i>
@@ -2456,7 +2449,7 @@
                 </div>
                 <h3>Print Ready</h3>
               </div>
-              <p>Paper done? Print it right away. Board-style layout — fully ready, no editing, no stress.</p>
+              <p>Paper done? Print it right away. Board-style layout  -  fully ready, no editing, no stress.</p>
               <button class="feature-btn">
                 <span>Learn More</span>
                 <i class="fa-solid fa-arrow-right"></i>
@@ -2472,7 +2465,7 @@
           <span class="hero-pill" style="margin-inline: auto;"><i class="fa-solid fa-wand-sparkles"></i> Simple
             Workflow</span>
           <h2>It's This <span class="brand-word">Easy</span> to Use</h2>
-          <p>Build your test in four simple steps — no technical knowledge needed at all.</p>
+          <p>Build your test in four simple steps  -  no technical knowledge needed at all.</p>
         </div>
 
         <div class="workflow-grid">
@@ -2501,7 +2494,7 @@
               <i class="fa-solid fa-layer-group"></i>
             </div>
             <h3>Quarter & Half</h3>
-            <p>Ready-made templates for Quarter and Half-book tests — just select and go.</p>
+            <p>Ready-made templates for Quarter and Half-book tests  -  just select and go.</p>
           </article>
 
           <article class="workflow-card">
@@ -2510,7 +2503,7 @@
               <i class="fa-solid fa-file-invoice"></i>
             </div>
             <h3>Full Session</h3>
-            <p>Make a final paper covering the whole syllabus — board pattern, complete and ready.</p>
+            <p>Make a final paper covering the whole syllabus  -  board pattern, complete and ready.</p>
           </article>
         </div>
       </div>
@@ -2540,13 +2533,13 @@
 
         <div class="showcase-side">
           <h2>See How <span class="brand-word">Easy</span> NTB Is to Use</h2>
-          <p>Get a professional board-style paper ready in minutes — an interface built especially for Pakistani schools.</p>
+          <p>Get a professional board-style paper ready in minutes  -  an interface built especially for Pakistani schools.</p>
           <div class="showcase-mini-grid">
             <article class="showcase-mini">
               <i class="fa-solid fa-pen-ruler"></i>
               <div>
                 <h4>Your School Name & Logo</h4>
-                <p>Add your school name and logo once — it will appear automatically on every paper.</p>
+                <p>Add your school name and logo once  -  it will appear automatically on every paper.</p>
               </div>
             </article>
             <article class="showcase-mini">
@@ -2560,7 +2553,7 @@
               <i class="fa-solid fa-bolt"></i>
               <div>
                 <h4>Marks Calculated Automatically</h4>
-                <p>The system counts marks for every section on its own — no mistakes, no stress.</p>
+                <p>The system counts marks for every section on its own  -  no mistakes, no stress.</p>
               </div>
             </article>
           </div>
@@ -2591,28 +2584,28 @@
         </div>
 
         <div class="showcase-side">
-          <h2>Know Instantly — Is Your <span class="brand-word">Syllabus</span> Complete?</h2>
-          <p>See how much syllabus is covered, which topics are left, and whether your paper level is balanced — all in one place.</p>
+          <h2>Know Instantly  -  Is Your <span class="brand-word">Syllabus</span> Complete?</h2>
+          <p>See how much syllabus is covered, which topics are left, and whether your paper level is balanced  -  all in one place.</p>
           <div class="showcase-mini-grid">
             <article class="showcase-mini">
               <i class="fa-solid fa-microchip"></i>
               <div>
                 <h4>Track Chapter Coverage</h4>
-                <p>No topic gets left out — the system keeps checking for you automatically.</p>
+                <p>No topic gets left out  -  the system keeps checking for you automatically.</p>
               </div>
             </article>
             <article class="showcase-mini">
               <i class="fa-solid fa-magnifying-glass-chart"></i>
               <div>
                 <h4>Balance the Difficulty Level</h4>
-                <p>Easy, medium, and hard questions — balanced just right as per board patterns.</p>
+                <p>Easy, medium, and hard questions  -  balanced just right as per board patterns.</p>
               </div>
             </article>
             <article class="showcase-mini">
               <i class="fa-solid fa-shield-check"></i>
               <div>
                 <h4>View Old Papers</h4>
-                <p>All your previously made tests are saved in the cloud — view and reuse anytime.</p>
+                <p>All your previously made tests are saved in the cloud  -  view and reuse anytime.</p>
               </div>
             </article>
           </div>
@@ -2627,28 +2620,28 @@
           <span class="hero-pill" style="margin-inline: auto;"><i class="fa-solid fa-users"></i> Academic
             Community</span>
           <h2>NTB Is Made for <span class="brand-word">Everyone</span> in Education</h2>
-          <p>Whether you're a teacher, school owner, or student — NTB has something special for each one of you.</p>
+          <p>Whether you're a teacher, school owner, or student  -  NTB has something special for each one of you.</p>
         </div>
         <div class="role-grid">
           <article class="user-card">
             <div class="user-icon"><i class="fa-solid fa-person-chalkboard"></i></div>
             <h3>Teachers</h3>
-            <p>Save 90% of your time. Make complex papers in seconds and focus on what really matters — teaching.</p>
+            <p>Save 90% of your time. Make complex papers in seconds and focus on what really matters  -  teaching.</p>
           </article>
           <article class="user-card">
             <div class="user-icon"><i class="fa-solid fa-school-flag"></i></div>
             <h3>School Owners</h3>
-            <p>Keep the same quality and branding across all school papers — effortlessly.</p>
+            <p>Keep the same quality and branding across all school papers  -  effortlessly.</p>
           </article>
           <article class="user-card">
             <div class="user-icon"><i class="fa-solid fa-building-columns"></i></div>
             <h3>Academy Owners</h3>
-            <p>Quickly make tests for thousands of students — with a separate label for every class.</p>
+            <p>Quickly make tests for thousands of students  -  with a separate label for every class.</p>
           </article>
           <article class="user-card">
             <div class="user-icon"><i class="fa-solid fa-user-graduate"></i></div>
             <h3>Students</h3>
-            <p>Practice with a board-style layout — feels like the real exam, so you perform better.</p>
+            <p>Practice with a board-style layout  -  feels like the real exam, so you perform better.</p>
           </article>
         </div>
       </div>
@@ -2686,7 +2679,7 @@
               <div class="showcase-content-item active">
                 <span class="showcase-pill"><i class="fa-solid fa-database"></i> Smart Repository</span>
                 <h2>Intelligent <span class="brand-word">Question</span> Management</h2>
-                <p>Thousands of questions in one place — filter by class, subject, and difficulty. The more you grow, the more it grows with you.</p>
+                <p>Thousands of questions in one place  -  filter by class, subject, and difficulty. The more you grow, the more it grows with you.</p>
                 <div class="hero-actions" style="justify-content: flex-start;">
                   <a class="btn btn-gold" href="register.html">Get Started</a>
                 </div>
@@ -2696,7 +2689,7 @@
               <div class="showcase-content-item">
                 <span class="showcase-pill"><i class="fa-solid fa-bolt"></i> Instant Generation</span>
                 <h2>Create Papers in <span class="brand-word">Seconds</span></h2>
-                <p>Create a board-style test paper instantly — 100% accurate formatting for every subject, ready to print in just a few clicks.</p>
+                <p>Create a board-style test paper instantly  -  100% accurate formatting for every subject, ready to print in just a few clicks.</p>
                 <div class="hero-actions" style="justify-content: flex-start;">
                   <a class="btn btn-gold" href="register.html">Generate Now</a>
                 </div>
@@ -2728,7 +2721,7 @@
         <div class="cta-glass-card">
           <span class="cta-pill"><i class="fa-solid fa-fire-pulse"></i> limited release</span>
           <h2>Make Your First <span class="brand-word">Test</span> Today</h2>
-          <p>Start using NTB now — it's built for every teacher who values their time. Join for free!</p>
+          <p>Start using NTB now  -  it's built for every teacher who values their time. Join for free!</p>
           <div class="hero-actions" style="justify-content: center;">
             <a class="btn btn-gold" href="register.html">Get Started Free <i class="fa-solid fa-arrow-right"></i></a>
           </div>
@@ -2746,7 +2739,7 @@
             <img src="img/NTB_logo.png" alt="Noshahi Test Builder Logo" class="footer-logo-img">
             <span>Noshahi Test Builder</span>
           </a>
-          <p>Create print-ready Matric & Inter papers — fast, easy, and professional.</p>
+          <p>Create print-ready Matric & Inter papers  -  fast, easy, and professional.</p>
           <div class="footer-contact">
             <a href="mailto:support@noshahitestbuilder.com">
               <i class="fa-solid fa-envelope"></i>
@@ -2800,7 +2793,7 @@
       </div>
 
       <div class="footer-bottom">
-        <span>© 2026 Noshahi Test Builder — Excellence in Education</span>
+        <span>Â� 2026 Noshahi Test Builder  -  Excellence in Education</span>
         <div>
           <a href="#">Terms of Service</a>
           <a href="#">Cookie Policy</a>
@@ -2920,3 +2913,6 @@
 </body>
 
 </html>
+
+
+

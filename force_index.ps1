@@ -1,0 +1,17 @@
+$file = 'e:\Frontend Developers\noshahi-test-bilder\index.html'
+$content = Get-Content $file -Raw
+$content = $content -replace '(?i)#020d27ff', '#262161'
+$content = $content -replace '(?i)#020D27', '#262161'
+$content = $content -replace '(?i)#000511', '#262161'
+$content = $content -replace '(?i)#01081A', '#262161'
+$content = $content -replace '(?i)#0a67bf', '#262161'
+$content = $content -replace '(?i)#051a44', '#262161'
+$content = $content -replace '(?i)#061b44', '#262161'
+$content = $content -replace '(?i)#0a3161', '#262161'
+$content = $content -replace '(?i)#041d4d', '#262161'
+$content = $content -replace '(?i)#00091D', '#262161'
+$content = $content -replace '(?i)#0F172A', '#262161'
+$content = $content -replace '(?i)rgba\(\s*2\s*,\s*13\s*,\s*39\s*,', 'rgba(38, 33, 97,'
+$content = $content -replace '(?i)rgba\(\s*0\s*,\s*47\s*,\s*109\s*,', 'rgba(38, 33, 97,'
+[System.IO.File]::WriteAllText($file, $content, (New-Object System.Text.UTF8Encoding($false)))
+Write-Host 'Done index.html'

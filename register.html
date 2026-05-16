@@ -5,11 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Noshahi Test Builder</title>
-    <link rel="icon" type="image/png" href="favicon.png" sizes="64x64">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" sizes="any">
-    <link rel="shortcut icon" href="favicon.png" type="image/png">
-
-    <!-- Font Awesome & Google Fonts -->
+    
+  <link rel='icon' type='image/png' href='img/NTB_logo.png'>
+<!-- Font Awesome & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
@@ -26,9 +24,9 @@
                     colors: {
                         background: '#F8FAFC',
                         primary: {
-                            DEFAULT: '#020D27',
-                            light: '#01123A',
-                            deep: '#00091D',
+                            DEFAULT: '#262161',
+                            light: '#262161',
+                            deep: '#262161',
                             foreground: '#ffffff',
                         },
                         secondary: {
@@ -45,28 +43,25 @@
     <style>
         body {
             background-color: #F8FAFC;
-            color: #0F172A;
+            color: #262161;
             font-family: 'Outfit', sans-serif;
-            overflow-x: hidden;
+            overflow: hidden;
+            height: 100vh;
+            margin: 0;
         }
 
-        .auth-container {
-            display: flex;
-            min-height: calc(100vh - 78px);
-            width: 100%;
-            flex-direction: row-reverse;
-            /* Form on right, visual on left for variety or keep consistent? Let's keep consistent with login. */
-        }
+
 
         /* Re-setting to Form Left, Visual Right to match login.html for consistency */
         .auth-container {
             display: flex;
-            min-height: 100vh;
+            height: 100vh;
             width: 100%;
             align-items: center;
             justify-content: center;
-            padding: 10px;
+            padding: 20px 10px;
             background: linear-gradient(135deg, #F8FAFC 0%, #EEF4FD 100%);
+            overflow: hidden;
         }
 
         .form-side {
@@ -75,7 +70,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 40px;
+            padding: 20px;
             position: relative;
             z-index: 10;
         }
@@ -95,13 +90,13 @@
 
         .glass-card {
             background: rgba(255, 255, 255, 0.95);
-            border: 1px solid rgba(2, 13, 39, 0.1);
+            border: 1px solid rgba(38, 33, 97, 0.1);
             backdrop-filter: blur(20px);
-            border-radius: 24px;
-            padding: 30px;
+            border-radius: 20px;
+            padding: 18px 24px;
             width: 100%;
-            max-width: 480px;
-            box-shadow: 0 30px 60px -12px rgba(2, 13, 39, 0.15);
+            max-width: 440px;
+            box-shadow: 0 30px 60px -12px rgba(38, 33, 97, 0.15);
         }
 
         .input-group {
@@ -123,16 +118,16 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             padding: 12px 16px;
-            color: #0F172A;
+            color: #262161;
             outline: none;
             transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-size: 14px;
         }
 
         .input-field:focus {
-            border-color: #020D27;
-            background: rgba(2, 13, 39, 0.05);
-            box-shadow: 0 0 20px rgba(2, 13, 39, 0.1);
+            border-color: #262161;
+            background: rgba(38, 33, 97, 0.05);
+            box-shadow: 0 0 20px rgba(38, 33, 97, 0.1);
         }
 
         select.input-field {
@@ -146,14 +141,14 @@
         .btn-primary {
             width: 100%;
             background: linear-gradient(135deg, #F7941D, #F7941D);
-            color: #0F172A;
-            padding: 16px;
-            border-radius: 14px;
+            color: #262161;
+            padding: 12px;
+            border-radius: 12px;
             font-weight: 700;
             border: 1px solid #D49A00;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-            margin-top: 10px;
+            margin-top: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -201,41 +196,70 @@
 
         @media (max-width: 1024px) {
             .auth-container {
-                min-height: 100vh;
-                padding-top: 20px;
+                height: 100vh;
+                padding: 10px;
+                overflow: hidden;
             }
 
             body {
                 overflow: hidden;
+                height: 100vh;
             }
         }
 
         @media (max-width: 768px) {
             .form-side {
-                padding: 20px;
+                padding: 10px;
+                width: 100%;
             }
 
             .glass-card {
-                padding: 32px 24px;
+                padding: 20px 15px;
                 border-radius: 20px;
+                margin: 0;
+                width: 100%;
             }
 
             .grid-cols-2 {
                 grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            
+            .input-group {
+                margin-bottom: 8px;
+            }
+            
+            .mb-6 {
+                margin-bottom: 12px;
             }
         }
 
         @media (max-width: 480px) {
+
+            
+            .site-nav {
+                height: 60px;
+            }
+
             .glass-card {
-                padding: 24px 16px;
+                padding: 15px 12px;
             }
 
-            .text-3xl {
-                font-size: 1.75rem;
+            .text-2xl {
+                font-size: 1.25rem;
             }
-
+            
+            .input-field {
+                padding: 8px 12px;
+            }
+            
             .btn-primary {
-                padding: 14px;
+                padding: 12px;
+                margin-top: 5px;
+            }
+            
+            .input-label {
+                margin-bottom: 4px;
             }
         }
 
@@ -285,7 +309,7 @@
             bottom: 0;
             background: linear-gradient(135deg,
                     rgba(255, 184, 0, 0.2) 0%,
-                    rgba(2, 13, 39, 0.1) 50%,
+                    rgba(38, 33, 97, 0.1) 50%,
                     transparent 100%);
             pointer-events: none;
         }
@@ -305,7 +329,7 @@
             align-items: center;
             gap: 6px;
             background: linear-gradient(135deg, #F7941D, #F7941D);
-            color: #0F172A;
+            color: #262161;
             font-size: 10px;
             font-weight: 700;
             padding: 8px 14px;
@@ -323,10 +347,10 @@
         .card-heading {
             font-size: 26px;
             font-weight: 800;
-            color: #0F172A;
+            color: #262161;
             margin-bottom: 14px;
             line-height: 1.2;
-            background: linear-gradient(135deg, #0F172A, #374151);
+            background: linear-gradient(135deg, #262161, #262161);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -383,7 +407,7 @@
 
         .discover-btn {
             background: linear-gradient(135deg, #F7941D, #F7941D);
-            color: #0F172A;
+            color: #262161;
             border: 1px solid #D49A00;
             padding: 16px 32px;
             border-radius: 16px;
@@ -423,6 +447,13 @@
             transform: translateY(0) scale(1);
             box-shadow: 0 4px 8px rgba(255, 184, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.8);
         }
+        @media (max-height: 700px) {
+            .glass-card {
+                transform: scale(0.85);
+                transform-origin: center;
+                margin-top: -20px;
+            }
+        }
     </style>
 
     <link rel="stylesheet" href="assets/ntb-shared.css">
@@ -460,18 +491,18 @@
         <!-- Form Side -->
         <div class="form-side">
             <div class="visual-glow"
-                style="background: radial-gradient(circle, rgba(2, 13, 39, 0.08) 0%, transparent 70%); top: 60%; left: 70%;">
+                style="background: radial-gradient(circle, rgba(38, 33, 97, 0.08) 0%, transparent 70%); top: 60%; left: 70%;">
             </div>
 
             <div class="glass-card">
-                <div class="mb-6 text-center">
-                    <h1 class="text-2xl font-bold mb-1 tracking-tight">Create <span class="brand-word">Account</span>
+                <div class="mb-4 text-center">
+                    <h1 class="text-xl font-bold mb-0.5 tracking-tight">Create <span class="brand-word">Account</span>
                     </h1>
-                    <p class="text-slate-500 text-xs">Join the next generation of educators</p>
+                    <p class="text-slate-500 text-[10px]">Join the next generation of educators</p>
                 </div>
 
                 <form action="index.html">
-                    <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div class="grid grid-cols-2 gap-3 mb-3">
                         <div class="input-group mb-0">
                             <label class="input-label" for="fname">First Name</label>
                             <input type="text" id="fname" class="input-field" placeholder="John" required>
@@ -482,12 +513,12 @@
                         </div>
                     </div>
 
-                    <div class="input-group">
+                    <div class="input-group mb-3">
                         <label class="input-label" for="email">Email Address</label>
                         <input type="email" id="email" class="input-field" placeholder="name@school.edu" required>
                     </div>
 
-                    <div class="input-group">
+                    <div class="input-group mb-3">
                         <label class="input-label" for="role">Role</label>
                         <select id="role" class="input-field cursor-pointer">
                             <option value="teacher">Teacher</option>
@@ -496,9 +527,9 @@
                         </select>
                     </div>
 
-                    <div class="input-group">
+                    <div class="input-group mb-3">
                         <label class="input-label" for="password">Create Password</label>
-                        <input type="password" id="password" class="input-field" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                        <input type="password" id="password" class="input-field" placeholder="••••••••"
                             required>
                     </div>
 
@@ -522,3 +553,6 @@
 </body>
 
 </html>
+
+
+
