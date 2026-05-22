@@ -350,6 +350,19 @@
       z-index: 2;
     }
 
+    .carousel-inner .item:first-child {
+      background: linear-gradient(135deg, #56607e 0%, #7b86a4 100%);
+    }
+
+    .carousel-inner .item:first-child::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(30, 41, 59, 0.24) 0%, rgba(30, 41, 59, 0.1) 42%, rgba(255, 255, 255, 0.02) 100%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
     .carousel-inner .item>a {
       display: block;
       width: 100%;
@@ -364,6 +377,10 @@
       object-fit: cover;
       display: block;
       filter: brightness(0.65);
+    }
+
+    .carousel-inner .item:first-child img {
+      filter: brightness(0.82) saturate(0.92);
     }
 
 
@@ -2326,7 +2343,7 @@
           <!-- Slide 1 -->
           <div class="item active">
             <img
-                src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?auto=format&fit=crop&w=1600&q=80"
+                src="img/banner/her2.avif"
                 alt="Teacher using Noshahi Test Builder on Laptop">
             <div class="carousel-content">
               <div class="container">
@@ -2346,7 +2363,7 @@
 
           <!-- Slide 2 -->
           <div class="item">
-            <img src="img/banner/save-our-star-sldr.jpg"
+            <img src="img/banner/hero.jpeg"
                 alt="Professional Teacher Working on Tests">
             <div class="carousel-content">
               <div class="container">
