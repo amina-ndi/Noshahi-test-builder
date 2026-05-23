@@ -1,4 +1,5 @@
 ﻿:root {
+  --ntb-header-height: 78px;
   --ntb-primary: #262161;
   --ntb-primary-deep: #262161;
   --ntb-primary-mid: #262161;
@@ -20,17 +21,23 @@
 
 /* ---------------- Header / Navbar ---------------- */
 .site-header {
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
+  width: 100%;
   background: var(--ntb-surface);
   backdrop-filter: blur(16px);
   border-bottom: 3px solid var(--ntb-secondary);
   box-shadow: var(--ntb-shadow);
+  isolation: isolate;
 }
 
 .site-nav {
-  height: 78px;
+  height: var(--ntb-header-height);
+  min-height: var(--ntb-header-height);
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
@@ -189,15 +196,19 @@
 
 .site-menu-toggle {
   display: none;
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
   border: 1px solid rgba(38, 33, 97, 0.22);
   background: rgba(255, 255, 255, 0.9);
   color: var(--ntb-primary);
   cursor: pointer;
   box-shadow: 0 12px 26px rgba(45, 39, 115, 0.12);
   transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.site-menu-toggle i {
+  font-size: 15px;
 }
 
 .site-menu-toggle:hover {
@@ -211,6 +222,13 @@ body.ntb-menu-open {
 }
 
 @media (max-width: 900px) {
+  .site-header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1200;
+  }
+
   .site-menu-toggle {
     display: inline-flex;
     align-items: center;
@@ -219,19 +237,20 @@ body.ntb-menu-open {
   }
 
   .site-nav {
-    height: 78px;
+    height: var(--ntb-header-height);
     padding: 0 15px;
   }
 
   .site-links {
     position: fixed;
-    top: 78px;
+    top: var(--ntb-header-height);
     right: 0;
     left: auto;
     width: 260px;
-    height: calc(100vh - 78px);
+    height: calc(100dvh - var(--ntb-header-height));
+    max-height: calc(100dvh - var(--ntb-header-height));
     margin-left: 0;
-    padding: 20px;
+    padding: 20px 20px max(20px, env(safe-area-inset-bottom));
     gap: 12px;
     flex-direction: column;
     align-items: stretch;
@@ -243,6 +262,8 @@ body.ntb-menu-open {
     transform: translateX(100%);
     opacity: 0;
     pointer-events: none;
+    overflow-y: auto;
+    overscroll-behavior: contain;
     transition: transform 0.3s ease, opacity 0.3s ease;
     z-index: 999;
   }
@@ -562,9 +583,9 @@ body.ntb-menu-open {
 .ntb-scroll-top,
 .ntb-whatsapp-fab {
   position: relative;
-  width: 58px;
-  height: 58px;
-  border-radius: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 16px;
   border: none;
   text-decoration: none;
   cursor: pointer;
@@ -594,7 +615,7 @@ body.ntb-menu-open {
 .ntb-whatsapp-fab i {
   position: relative;
   z-index: 1;
-  font-size: 24px;
+  font-size: 21px;
 }
 
 .ntb-scroll-top {
@@ -623,7 +644,7 @@ body.ntb-menu-open {
 }
 
 .ntb-whatsapp-fab i {
-  font-size: 28px;
+  font-size: 23px;
 }
 
 .ntb-scroll-top:hover {
@@ -635,8 +656,35 @@ body.ntb-menu-open {
 }
 
 @media (max-width: 640px) {
+  .site-menu-toggle {
+    width: 36px;
+    height: 36px;
+    border-radius: 11px;
+  }
+
+  .site-menu-toggle i {
+    font-size: 14px;
+  }
+
   .ntb-quick-actions {
-    right: 12px;
+    right: 10px;
+    gap: 8px;
+  }
+
+  .ntb-scroll-top,
+  .ntb-whatsapp-fab {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+  }
+
+  .ntb-scroll-top i,
+  .ntb-whatsapp-fab i {
+    font-size: 18px;
+  }
+
+  .ntb-whatsapp-fab i {
+    font-size: 20px;
   }
 }
 /* ---------------- Live Chat Widget ---------------- */

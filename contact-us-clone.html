@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
     :root {
+      --header-height: 78px;
       --primary: #262161ff;
       --secondary: #F7941D;
       --secondary-deep: #F7941D;
@@ -54,10 +55,12 @@
     }
 
     .site-header {
-      position: fixed;
+      position: -webkit-sticky;
+      position: sticky;
       top: 0;
       left: 0;
       right: 0;
+      width: 100%;
       z-index: 1000;
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(20px);
@@ -67,7 +70,8 @@
     .site-nav {
       width: var(--container);
       margin: 0 auto;
-      padding: 20px 24px;
+      min-height: var(--header-height);
+      padding: 16px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -766,11 +770,52 @@
 
     @media (max-width: 768px) {
       .site-links {
-        display: none;
+        position: fixed;
+        top: var(--header-height);
+        right: 0;
+        width: min(320px, 100vw);
+        height: calc(100dvh - var(--header-height));
+        padding: 20px 18px max(20px, env(safe-area-inset-bottom));
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        border-left: 1px solid rgba(38, 33, 97, 0.12);
+        box-shadow: -16px 0 40px rgba(38, 33, 97, 0.16);
+        transform: translateX(100%);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        overflow-y: auto;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      .site-links.active {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .site-links a,
+      .site-links a.nav-login-cta,
+      .site-links a.nav-cta {
+        width: 100%;
+        text-align: center;
       }
 
       .site-menu-toggle {
-        display: block;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        border: 1px solid rgba(38, 33, 97, 0.15);
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 12px 28px rgba(38, 33, 97, 0.12);
       }
 
       .contact-hero {
@@ -804,6 +849,10 @@
         flex-direction: column;
         gap: 20px;
         text-align: center;
+      }
+
+      body.menu-open {
+        overflow: hidden;
       }
     }
   </style>
@@ -1015,7 +1064,7 @@
     </div>
 
     <div class="footer-bottom">
-      <span>© 2026 Noshahi Test Builder - Excellence in Education</span>
+      <span>&copy; 2026 Noshahi Test Builder - Excellence in Education</span>
       <div>
         <a href="#">Terms of Service</a>
         <a href="#">Cookie Policy</a>
@@ -1066,15 +1115,25 @@
     if (menuToggle) {
       menuToggle.addEventListener('click', () => {
         siteLinks.classList.toggle('active');
+        document.body.classList.toggle('menu-open', siteLinks.classList.contains('active'));
         menuToggle.setAttribute('aria-expanded', 
           menuToggle.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'
         );
       });
     }
+
+    siteLinks?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        siteLinks.classList.remove('active');
+        document.body.classList.remove('menu-open');
+        menuToggle?.setAttribute('aria-expanded', 'false');
+      });
+    });
   </script>
 </body>
 
 </html>
+
 
 
 
