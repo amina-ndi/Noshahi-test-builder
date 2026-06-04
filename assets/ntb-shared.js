@@ -90,6 +90,17 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
+    function toggleScrollTopButton() {
+      if (window.scrollY > 200 || document.documentElement.scrollTop > 200) {
+        scrollTopButton.classList.add("is-visible");
+      } else {
+        scrollTopButton.classList.remove("is-visible");
+      }
+    }
+
+    window.addEventListener("scroll", toggleScrollTopButton);
+    toggleScrollTopButton();
+
     document.body.appendChild(wrapper);
   }
 

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -2190,15 +2190,28 @@
 
       .hero-actions {
         margin-top: 25px;
-        gap: 10px;
+        gap: 12px;
         justify-content: center;
-        flex-wrap: nowrap !important; /* Force one line */
+        flex-wrap: wrap !important;
       }
 
       .hero-actions .btn {
-        padding: 10px 12px !important;
-        font-size: 0.8rem !important;
+        padding: 12px 20px !important;
+        font-size: 0.9rem !important;
         white-space: nowrap !important;
+      }
+
+      @media (max-width: 480px) {
+        .hero-actions {
+          flex-direction: column !important;
+          align-items: stretch !important;
+          max-width: 320px;
+          margin-inline: auto;
+        }
+        .hero-actions .btn {
+          width: 100% !important;
+          justify-content: center !important;
+        }
       }
 
       .section {
