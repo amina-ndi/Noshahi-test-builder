@@ -56,6 +56,17 @@
   font-weight: 800;
   font-size: 28px;
   letter-spacing: -0.02em;
+  /* Expand to fill all space between logo-img and toggle button */
+  flex: 1;
+  min-width: 0;
+}
+
+.site-logo span {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .site-logo-icon {
@@ -83,10 +94,10 @@
 
 
 .site-links {
-  margin-left: auto;
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-shrink: 0;
 }
 
 .site-links a {
@@ -267,7 +278,7 @@ body.ntb-menu-open {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-left: auto;
+    flex-shrink: 0;
   }
 
   .site-nav {
