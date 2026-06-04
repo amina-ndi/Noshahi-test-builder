@@ -24,20 +24,65 @@
     if (!menuToggle || !navMenu) return;
 
     var menuIcon = menuToggle.querySelector("i");
+    var siteHeader = document.querySelector(".site-header");
 
-    function setOpen(isOpen) {
-      navMenu.classList.toggle("open", isOpen);
-      document.body.classList.toggle("ntb-menu-open", isOpen);
-      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    // Create backdrop overlay
+    var backdrop = document.createElement("div");
+    backdrop.className = "ntb-menu-backdrop";
+    document.body.appendChild(backdrop);
+
+    var savedScrollY = 0;
+    var isMenuOpen = false;
+
+    function lockBody() {
+      savedScrollY = window.pageYOffset || document.documentElement.scrollTop;
+      document.body.style.position = "fixed";
+      document.body.style.top = "-" + savedScrollY + "px";
+      document.body.style.left = "0";
+      document.body.style.right = "0";
+      document.body.style.width = "100%";
+      document.body.style.overflow = "hidden";
+    }
+
+    function unlockBody() {
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.width = "";
+      document.body.style.overflow = "";
+      window.scrollTo(0, savedScrollY);
+    }
+
+    function setOpen(open) {
+      if (open === isMenuOpen) return;
+      isMenuOpen = open;
+
+      if (open) {
+        lockBody();
+      } else {
+        unlockBody();
+      }
+
+      navMenu.classList.toggle("open", open);
+      document.body.classList.toggle("ntb-menu-open", open);
+      backdrop.classList.toggle("is-active", open);
+      menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
 
       if (menuIcon) {
-        menuIcon.classList.toggle("fa-bars", !isOpen);
-        menuIcon.classList.toggle("fa-xmark", isOpen);
+        menuIcon.classList.toggle("fa-bars", !open);
+        menuIcon.classList.toggle("fa-xmark", open);
       }
     }
 
-    menuToggle.addEventListener("click", function () {
-      setOpen(!navMenu.classList.contains("open"));
+    menuToggle.addEventListener("click", function (e) {
+      e.stopPropagation();
+      setOpen(!isMenuOpen);
+    });
+
+    // Close on backdrop click
+    backdrop.addEventListener("click", function () {
+      setOpen(false);
     });
 
     navMenu.querySelectorAll("a").forEach(function (link) {
@@ -47,19 +92,20 @@
     });
 
     document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape" && isMenuOpen) setOpen(false);
     });
 
+    // Close on outside click (not on backdrop since it has its own handler)
     document.addEventListener("click", function (event) {
-      if (!navMenu.classList.contains("open")) return;
+      if (!isMenuOpen) return;
       var target = event.target;
       if (!target) return;
-      if (navMenu.contains(target) || menuToggle.contains(target)) return;
+      if (navMenu.contains(target) || menuToggle.contains(target) || backdrop.contains(target)) return;
       setOpen(false);
     });
 
     window.addEventListener("resize", function () {
-      if (window.innerWidth > 900) setOpen(false);
+      if (window.innerWidth > 900 && isMenuOpen) setOpen(false);
     });
   }
 
