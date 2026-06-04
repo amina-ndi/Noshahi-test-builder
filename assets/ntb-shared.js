@@ -86,24 +86,11 @@
 
     var scrollTopButton = wrapper.querySelector(".ntb-scroll-top");
 
-    function syncScrollButton() {
-      var isVisible = window.scrollY > 160;
-      scrollTopButton.classList.toggle("is-visible", isVisible);
-    }
-
     scrollTopButton.addEventListener("click", function () {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "Home" && !event.defaultPrevented) {
-        scrollTopButton.classList.add("is-visible");
-      }
-    });
-
     document.body.appendChild(wrapper);
-    syncScrollButton();
-    window.addEventListener("scroll", syncScrollButton, { passive: true });
   }
 
   function initChatWidget() {
