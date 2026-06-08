@@ -1183,5 +1183,428 @@ html, body {
   overflow-x: clip;
 }
 
+/* ============================================================
+   UNIFIED PROFESSIONAL RESPONSIVE BUTTON SYSTEM
+   Covers: .btn, .btn-primary, .btn-gold, .btn-outline,
+           .btn-secondary, .btn-3d, .discover-btn, .feature-btn
+           Used across: index, contact-us, book-demo, login,
+                        register, insights pages
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   1. BASE — shared foundation for ALL button variants
+   ---------------------------------------------------------- */
+.btn,
+.btn-primary,
+.btn-gold,
+.btn-outline,
+.btn-secondary,
+.btn-3d,
+.discover-btn,
+.feature-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  font-family: "Outfit", sans-serif;
+  font-size: 1rem;
+  line-height: 1;
+  border: none;
+  cursor: pointer;
+  border-radius: 50px;
+  padding: 15px 32px;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition: transform 0.28s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.28s cubic-bezier(0.25, 1, 0.5, 1),
+              background 0.28s ease,
+              color 0.28s ease,
+              border-color 0.28s ease;
+  /* Shine layer */
+  isolation: isolate;
+}
+
+/* Shine sweep on hover */
+.btn::after,
+.btn-primary::after,
+.btn-gold::after,
+.btn-outline::after,
+.btn-secondary::after,
+.btn-3d::after,
+.discover-btn::after,
+.feature-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  transition: left 0.55s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.btn:hover::after,
+.btn-primary:hover::after,
+.btn-gold:hover::after,
+.btn-outline:hover::after,
+.btn-secondary:hover::after,
+.btn-3d:hover::after,
+.discover-btn:hover::after,
+.feature-btn:hover::after {
+  left: 160%;
+}
+
+/* Icon nudge on hover */
+.btn > i,
+.btn-primary > i,
+.btn-gold > i,
+.btn-outline > i,
+.btn-secondary > i,
+.btn-3d > i,
+.discover-btn > i,
+.feature-btn > i,
+.btn span + i,
+.btn i:last-child {
+  flex-shrink: 0;
+  transition: transform 0.28s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.btn:hover > i,
+.btn-primary:hover > i,
+.btn-gold:hover > i,
+.btn-outline:hover > i,
+.btn-secondary:hover > i,
+.btn-3d:hover > i,
+.discover-btn:hover > i,
+.feature-btn:hover > i {
+  transform: translateX(4px);
+}
+
+/* Text content stays above shine */
+.btn > span,
+.btn-primary > span,
+.btn-gold > span,
+.btn-3d > span {
+  position: relative;
+  z-index: 2;
+}
+
+/* Press micro-bounce */
+.btn:active,
+.btn-primary:active,
+.btn-gold:active,
+.btn-outline:active,
+.btn-secondary:active,
+.btn-3d:active,
+.discover-btn:active,
+.feature-btn:active {
+  transform: scale(0.95) !important;
+  transition-duration: 0.08s !important;
+}
+
+/* Focus ring — keyboard accessibility */
+.btn:focus-visible,
+.btn-primary:focus-visible,
+.btn-gold:focus-visible,
+.btn-outline:focus-visible,
+.btn-secondary:focus-visible,
+.btn-3d:focus-visible,
+.discover-btn:focus-visible,
+.feature-btn:focus-visible {
+  outline: 3px solid var(--ntb-secondary);
+  outline-offset: 3px;
+}
+
+/* ----------------------------------------------------------
+   2. VARIANT STYLES — visual identity per button type
+   ---------------------------------------------------------- */
+
+/* btn-gold  →  primary CTA (dark navy → orange on hover) */
+.btn-gold {
+  background: #262161;
+  color: #ffffff;
+  box-shadow: 0 8px 22px rgba(38, 33, 97, 0.30);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.btn-gold:hover {
+  background: #F7941D;
+  color: #262161;
+  box-shadow: 0 14px 36px rgba(247, 148, 29, 0.42);
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* btn-primary  →  orange CTA (used on login/register/book-demo) */
+.btn-primary {
+  background: linear-gradient(135deg, #F7941D, #e8850e);
+  color: #262161;
+  box-shadow: 0 8px 22px rgba(247, 148, 29, 0.32);
+  border: 1px solid #D49A00;
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #ffaa44, #F7941D);
+  color: #1a1560;
+  box-shadow: 0 14px 36px rgba(247, 148, 29, 0.48);
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* btn-3d  →  same orange premium style (book-demo, register) */
+.btn-3d {
+  background: linear-gradient(135deg, #F7941D, #e8850e);
+  color: #262161;
+  box-shadow: 0 6px 18px rgba(247, 148, 29, 0.32),
+              inset 0 1px 2px rgba(255, 255, 255, 0.5);
+  border: 1px solid #D49A00;
+  border-radius: 16px;
+}
+.btn-3d:hover {
+  background: linear-gradient(135deg, #ffaa44, #F7941D);
+  color: #1a1560;
+  box-shadow: 0 14px 32px rgba(247, 148, 29, 0.46),
+              inset 0 1px 2px rgba(255, 255, 255, 0.7);
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* btn-outline  →  ghost / transparent (hero overlays) */
+.btn-outline {
+  background: rgba(255, 255, 255, 0.10);
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.36);
+  backdrop-filter: blur(6px);
+  box-shadow: none;
+}
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.20);
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #ffffff;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* btn-secondary  →  white glass (contact hero "Call Now") */
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.30);
+  backdrop-filter: blur(14px);
+  box-shadow: none;
+}
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.26);
+  border-color: #F7941D;
+  color: #ffffff;
+  box-shadow: 0 12px 30px rgba(247, 148, 29, 0.28);
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* discover-btn  →  register page card button (same as btn-3d) */
+.discover-btn {
+  background: linear-gradient(135deg, #F7941D, #e8850e);
+  color: #262161;
+  box-shadow: 0 6px 18px rgba(247, 148, 29, 0.32),
+              inset 0 1px 2px rgba(255, 255, 255, 0.5);
+  border: 1px solid #D49A00;
+  border-radius: 16px;
+  padding: 16px 32px;
+  font-size: 1rem;
+}
+.discover-btn:hover {
+  background: linear-gradient(135deg, #ffaa44, #F7941D);
+  color: #1a1560;
+  box-shadow: 0 14px 32px rgba(247, 148, 29, 0.46);
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* feature-btn  →  index.html feature card buttons */
+.feature-btn {
+  background: #262161;
+  color: #ffffff;
+  border-radius: 14px;
+  padding: 14px 24px;
+  font-size: 0.92rem;
+  box-shadow: 0 4px 15px rgba(38, 33, 97, 0.26);
+}
+.feature-btn:hover {
+  background: #F7941D;
+  color: #262161;
+  box-shadow: 0 10px 26px rgba(247, 148, 29, 0.38);
+  transform: translateY(-3px) scale(1.02);
+}
+
+/* ----------------------------------------------------------
+   3. FORM SUBMIT BUTTONS — always full width inside forms
+   ---------------------------------------------------------- */
+form .btn,
+form .btn-gold,
+form .btn-primary,
+form .btn-3d,
+form button[type="submit"].btn,
+form button[type="submit"].btn-gold,
+form button[type="submit"].btn-primary,
+form button[type="submit"].btn-3d {
+  width: 100%;
+  justify-content: center;
+  letter-spacing: 0.02em;
+}
+
+/* ----------------------------------------------------------
+   4. HERO ACTION GROUPS — flex layout helpers
+   ---------------------------------------------------------- */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+/* ----------------------------------------------------------
+   5. TABLET  ≤ 768px
+   ---------------------------------------------------------- */
+@media (max-width: 768px) {
+  .btn,
+  .btn-primary,
+  .btn-gold,
+  .btn-outline,
+  .btn-secondary,
+  .btn-3d,
+  .discover-btn {
+    padding: 14px 28px;
+    font-size: 0.95rem;
+    min-height: 50px;
+    gap: 8px;
+  }
+
+  .feature-btn {
+    padding: 12px 20px;
+    font-size: 0.88rem;
+    min-height: 46px;
+  }
+
+  .hero-actions {
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+}
+
+/* ----------------------------------------------------------
+   6. MOBILE  ≤ 480px
+   ---------------------------------------------------------- */
+@media (max-width: 480px) {
+  .btn,
+  .btn-primary,
+  .btn-gold,
+  .btn-outline,
+  .btn-secondary,
+  .btn-3d,
+  .discover-btn {
+    padding: 13px 24px;
+    font-size: 0.92rem;
+    min-height: 48px;
+    gap: 8px;
+    border-radius: 50px;
+    letter-spacing: 0.01em;
+  }
+
+  .btn-3d,
+  .discover-btn {
+    border-radius: 14px;
+  }
+
+  .feature-btn {
+    padding: 12px 18px;
+    font-size: 0.85rem;
+    border-radius: 12px;
+    min-height: 44px;
+  }
+
+  /* Hero buttons — column, full-width */
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+    max-width: 360px;
+    margin-inline: auto;
+  }
+
+  .hero-actions .btn,
+  .hero-actions .btn-primary,
+  .hero-actions .btn-gold,
+  .hero-actions .btn-outline,
+  .hero-actions .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 15px 20px;
+    font-size: 0.97rem;
+  }
+
+  /* Form buttons already full-width via rule above */
+  form .btn,
+  form .btn-gold,
+  form .btn-primary,
+  form .btn-3d,
+  form button[type="submit"] {
+    padding: 16px 20px;
+    font-size: 1rem;
+    min-height: 52px;
+  }
+}
+
+/* ----------------------------------------------------------
+   7. SMALL MOBILE  ≤ 360px
+   ---------------------------------------------------------- */
+@media (max-width: 360px) {
+  .btn,
+  .btn-primary,
+  .btn-gold,
+  .btn-outline,
+  .btn-secondary,
+  .btn-3d,
+  .discover-btn {
+    padding: 12px 18px;
+    font-size: 0.88rem;
+    min-height: 46px;
+    gap: 6px;
+  }
+
+  .hero-actions .btn,
+  .hero-actions .btn-primary,
+  .hero-actions .btn-gold,
+  .hero-actions .btn-outline,
+  .hero-actions .btn-secondary {
+    padding: 14px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ----------------------------------------------------------
+   8. REDUCED MOTION — respect user preference
+   ---------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .btn, .btn-primary, .btn-gold, .btn-outline,
+  .btn-secondary, .btn-3d, .discover-btn, .feature-btn {
+    transition: none !important;
+  }
+  .btn::after, .btn-primary::after, .btn-gold::after,
+  .btn-outline::after, .btn-secondary::after,
+  .btn-3d::after, .discover-btn::after, .feature-btn::after {
+    display: none;
+  }
+}
 
 

@@ -2374,7 +2374,7 @@
                   <p>The fastest tool for teachers  -  create professional Matric & Inter test papers in just a few clicks.</p>
                   <div class="hero-actions">
                     <a class="btn btn-gold" href="register.html"><i class="fa-solid fa-rocket"></i> Get Started Free</a>
-                    <a class="btn btn-outline" href="#features"><i class="fa-solid fa-circle-play"></i> See How It
+                    <a class="btn btn-outline" href="javascript:void(0)" onclick="openVideoModal()" id="see-how-it-works-btn"><i class="fa-solid fa-circle-play"></i> See How It
                       Works</a>
                   </div>
                 </div>
@@ -2468,6 +2468,56 @@
 
       </div>
 
+    </section>
+
+    <!-- NEW SECTION: Why NTB? Problem We Solve -->
+    <section id="why-ntb" class="section" style="background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%); position: relative; overflow: hidden; padding-bottom: 20px;">
+      <div class="container">
+        <div class="section-head">
+          <span class="hero-pill" style="margin-inline: auto;"><i class="fa-solid fa-lightbulb"></i> Why NTB?</span>
+          <h2>What Problem Do We <span class="brand-word">Solve?</span></h2>
+          <p>Stop spending hours typing and formatting. NTB is built to save your time and give you total control over your exams.</p>
+        </div>
+        <div class="features-grid">
+          
+          <div class="feature-card" style="border-top: 4px solid var(--secondary);">
+            <div class="feature-content">
+              <div class="feature-heading">
+                <div class="feature-icon" style="background: rgba(247, 148, 29, 0.1); border-radius: 12px; width: 60px; height: 60px; font-size: 1.8rem;">
+                  <i class="fa-solid fa-stopwatch"></i>
+                </div>
+                <h3>1-Second Generation</h3>
+              </div>
+              <p style="font-size: 1.05rem; color: #475569;">No more typing or manual formatting. With NTB, you can generate a complete, ready-to-print exam paper in just <strong>1 second</strong>.</p>
+            </div>
+          </div>
+
+          <div class="feature-card" style="border-top: 4px solid var(--primary);">
+            <div class="feature-content">
+              <div class="feature-heading">
+                <div class="feature-icon" style="background: rgba(38, 33, 97, 0.1); border-radius: 12px; width: 60px; height: 60px; font-size: 1.8rem; color: var(--primary);">
+                  <i class="fa-solid fa-book-open-reader"></i>
+                </div>
+                <h3>Total Freedom</h3>
+              </div>
+              <p style="font-size: 1.05rem; color: #475569;">Generate tests exactly how you need them. Choose from <strong>Topic-wise, Chapter-wise, Half Book, or Full Book</strong> options instantly.</p>
+            </div>
+          </div>
+
+          <div class="feature-card" style="border-top: 4px solid #10b981;">
+            <div class="feature-content">
+              <div class="feature-heading">
+                <div class="feature-icon" style="background: rgba(16, 185, 129, 0.1); border-radius: 12px; width: 60px; height: 60px; font-size: 1.8rem; color: #10b981;">
+                  <i class="fa-solid fa-clipboard-list"></i>
+                </div>
+                <h3>Flexible Formats</h3>
+              </div>
+              <p style="font-size: 1.05rem; color: #475569;">Want only MCQs? Only long questions? Or a mix of both? NTB lets you create <strong>Objective, Subjective, or combined</strong> papers effortlessly.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </section>
 
     <section id="features" class="section">
@@ -3010,6 +3060,160 @@
 
     startShowcaseInterval();
 
+  </script>
+
+  <!-- Video Modal -->
+  <div class="video-modal-overlay" id="videoModal">
+    <div class="video-modal-container">
+      <button class="video-modal-close" id="videoModalClose" aria-label="Close video">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="video-modal-content">
+        <video id="videoPlayer" controls playsinline preload="metadata" poster="">
+          <source src="video/noshahi.jpg.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    /* --- Video Modal Styles --- */
+    .video-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(10, 8, 30, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 20px;
+    }
+
+    .video-modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .video-modal-container {
+      position: relative;
+      width: 100%;
+      max-width: 960px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #0a0a1a;
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.08),
+        0 40px 80px rgba(0, 0, 0, 0.5),
+        0 0 60px rgba(99, 102, 241, 0.15);
+      transform: scale(0.88) translateY(30px);
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .video-modal-overlay.active .video-modal-container {
+      transform: scale(1) translateY(0);
+    }
+
+    .video-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 10;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .video-modal-close:hover {
+      background: rgba(247, 148, 29, 0.8);
+      border-color: rgba(247, 148, 29, 0.9);
+      transform: rotate(90deg) scale(1.1);
+    }
+
+    .video-modal-content {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      position: relative;
+    }
+
+    .video-modal-content video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .video-modal-container {
+        max-width: 100%;
+        border-radius: 14px;
+      }
+
+      .video-modal-close {
+        top: 10px;
+        right: 10px;
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .video-modal-overlay {
+        padding: 10px;
+      }
+
+      .video-modal-container {
+        border-radius: 10px;
+      }
+    }
+  </style>
+
+  <script>
+    // --- Video Modal Logic ---
+    function openVideoModal() {
+      const modal = document.getElementById('videoModal');
+      const video = document.getElementById('videoPlayer');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    }
+
+    function closeVideoModal() {
+      const modal = document.getElementById('videoModal');
+      const video = document.getElementById('videoPlayer');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+      video.pause();
+    }
+
+    document.getElementById('videoModalClose').addEventListener('click', closeVideoModal);
+
+    document.getElementById('videoModal').addEventListener('click', function(e) {
+      if (e.target === this) closeVideoModal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeVideoModal();
+    });
   </script>
 
 </body>
